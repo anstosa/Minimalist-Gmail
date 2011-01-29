@@ -1,0 +1,94 @@
+<html>
+<head>
+<style type="text/css">
+	body {
+		margin: 0px;
+		padding: 3px;
+		overflow: hidden;
+	}
+	body, td, input, select, textarea, button {
+		font-family: arial,sans-serif;
+		font-size: 11px;
+	}
+	table {
+		width: 100%;
+	}
+	#title {
+		cursor: pointer;
+	}
+	#title:hover {
+		text-decoration: underline;
+	}
+</style>
+<script type="application/javascript">
+	var link
+	
+	function init() {
+		document.getElementById("from").innerHTML = getQueryVariable("from");
+		document.getElementById("title").innerHTML = getQueryVariable("title");
+		document.getElementById("summary").innerHTML = getQueryVariable("summary");
+		link = getQueryVariable("go") + "/#inbox/" + getQueryVariable("link");
+	}
+
+	function getQueryVariable(variable) { 
+		var query = window.location.search.substring(1);
+		query = unescape(query.replace(/\+/g,' '));
+		var vars = query.split("&"); 
+		for (var i = 0; i < vars.length; i++) { 
+			var pair = vars[i].split("="); 
+			if (pair[0] == variable) {
+			return pair[1]; 
+			} 
+		} 
+	}
+	
+	function openURL() {
+		chrome.tabs.getAllInWindow(null,function(tabs){
+			for (var i=0;i<tabs.length;i++){
+				
+				var re1='.*?';
+				var re2='(mail\\.google\\.com)';
+		
+				var p = new RegExp(re1+re2,["i"]);
+				var m = p.exec(tabs[i].url);
+				if (m != null)
+				{
+					 var file1=m[1];
+					 var GMAIL = (file1.replace(/</,"&lt;"));
+				}
+				if (GMAIL == "mail.google.com"){
+					chrome.tabs.update(tabs[i].id, {selected:true, url:link});
+					close();
+					return;
+				}
+			}
+			chrome.tabs.create({url: link})
+			close();
+		});
+    }
+</script>
+</head>
+<body onload="init()" >
+	<table>
+		<tr>
+			<td id="header">
+				<span style="color:#999;font-style: italic;">From: </span>
+				<span id="from" style="font-style: italic;">
+					Author
+				</span>
+				<div style="padding-top:3px"></div>
+				<span id="title" onclick="openURL()" style="font-weight: bold;">
+					Subject
+				</span>
+			</td>
+		</tr>
+		<tr>
+			<td id="body">
+				<span id="summary">
+					Summary
+				</a>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

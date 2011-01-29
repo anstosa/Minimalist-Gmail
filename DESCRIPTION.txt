@@ -1,0 +1,327 @@
+== ANNOUNCEMENTS ==
+
+  Featured on Lifehacker! http://lifehacker.com/5741771/minimalist-gmail-is-the-best-gmail-tweaker-for-chrome-yet
+  
+  Minimalist Google Calendar pushed back a week to accomodate all the great feature requests and bugs from Lifehackers
+
+  Questions about the permissions? Please see PERMISSIONS section below. Issue is explained in depth with source link
+
+
+== WHAT DOES IT DO? ==
+
+  It is a personalized solution for those who are tired of useless and distracting elements in the Gmail interface.
+  It removes as much or as little as you want. It also adds functionality if you so choose.
+  Look around the options page to see what it does first hand. Link below.
+
+
+== OPTIONS ==
+
+  The Options page is easy to use and interactive features:
+  * Screenshots when you mouseover options so you know what you're changing
+  * Organized tabbed navigation
+  * See it in action here: [http://www.anselsantosa.com/sites/MinimalistGmail/options.html]
+
+  The following elements can be modified individually:
+ == GENERAL
+  * Hide Minimalist Gmail options icon
+  * Customize button colors
+ == NOTIFICATIONS
+  * Favicon unread count
+  * Desktop notifications
+ == GOOGLE BAR
+  * Hide Google bar [click to toggle when hidden]
+  * Hide Google links
+  * Replace Google links with custom menu
+  * Hide logged in
+  * Hide Labs icon
+  * Hide Settings link
+  * Hide Help link
+  * Hide Sign out link
+ == HEADER
+  * Hide header [click to toggle when hidden]
+  * Use custom logo
+  * Hide all search
+  * Hide mail search button
+  * Hide web search button
+  * Hide search sub-links
+ == MAIN
+  * Show starred item row highlighting
+  * Show row highlights with custom colors [in mail and contacts. keyboard navigation support]
+  * Hide star icons
+  * Show better attachment icons [file specific, two built in styles and custom input via URL or base64]
+  * Hide top toolbar
+  * Hide bottom toolbar
+  * Hide checkbox tools in toolbar
+  * Hide Archive, Spam, Delete buttons
+  * Hide Move to, Labels buttons
+  * Hide More actions button
+  * Hide Refresh link
+  * Hide "No new mail! Want to read updates from your favorite sites? Try Google Reader"
+  * Hide sidebar ads
+  * Hide experimental bottom ads
+ == NAVIGATION
+  * Hide navigation
+  * Hide top of nav
+  * Hide mail button
+  * Hide contacts button
+  * Hide tasks button
+  * Hide middle of nav
+  * Hide compose mail button
+  * Hide Spam count
+  * Hide Buzz count
+  * Hide icons
+  * Hide more link
+  * Hide invites
+ == CHAT
+  * Hide chat
+  * Hide "Search, add, or invite" box in chat
+  * Hide offline chat contacts
+  * Hide chat statuses
+ == FOOTER
+  * Tips
+  * Options
+  * Legal
+  * Storage [classic]
+  * Storage > Label
+  * Storage > Graphic
+  * Storage > Verbose
+  * Storage > Menu
+  * Account activity [remove or move to top]
+ == MORE?
+  * Leave feature suggestions in the Issue Tracker: [http://code.google.com/p/minimalist-gmail/issues/list]
+
+
+== HOW DO I WORK IT? ==
+
+  All the instructions you need are on the support page:
+  [http://code.google.com/p/minimalist-gmail/wiki/Support]
+
+
+== ISSUES TRACKING ==
+
+  I test as thoroughly as I can before each release, but bugs are bound to get through.
+  Read, track, and submit bugs in the Issue Tracker:
+  [http://code.google.com/p/minimalist-gmail/issues]
+
+
+== QUESTION? ==
+
+  * Ping me on Twitter: @anstosa
+  * Email me: ansel@anselsantosa.com
+
+
+== COMING SOON ==
+
+  Want to see what's coming up? See the public to-do list:
+  [https://www.rememberthemilk.com/home/anstosa/10200213]
+
+  Want to recommend a feature? Submit it in the Issues Tracker:
+  [http://code.google.com/p/minimalist-gmail/issues/list]
+
+
+== PERMISSIONS ==
+
+  Learn more about Chrome Extension permissions here: http://www.google.com/support/chrome/bin/answer.py?hl=en&answer=186213
+  If you look as the permissions required by similar extensions in the Web Store, you will see that they are exactly the same
+  so before you make assumptions based on two short and broad statements, please read the following:
+
+ == "tabs"
+  * This permissions results in the "This extensions can access your browsing history" warning.
+  * I *NEVER* access your browsing history.
+  * I need this permission to open tabs. I use this to open the options page on major updates.
+  * This permission is also used to refresh the Gmail tab when you save your settings.
+ == "http://*/*", "https://*/*"
+  * This permission results in the "This extension can access your data on all websites" warning.
+  * I *NEVER* access, read, store, or transmit your personal data.
+  * I need this permission to run user scripts behind specific pages in the browser.
+  * These scripts inject Javascript and CSS into Gmail to enhance functionality and hide elements
+  * The reason I ask for permissions to all pages and not just Gmail is because of my open in Gmail feature
+    which replaces all "mailto:" links in websites with a script that opens clickable email addresses in Gmail.
+
+  Still don't trust me? Go to [http://code.google.com/p/minimalist-gmail/source/browse/] to see the entire source code.
+
+
+== CHANGELOG ==
+
+ == 1.6.0
+  * Added: Toggle Minimalist Gmail on/off. New dropdown from URL bar icon allows toggling and link to Options
+  * Added: "Panic!" button in URL icon dropdown. Just reloads the page but that fixes a lot of problems
+  * Added: Reset option for custom button colors
+  * Added: Hide "You are invisible" alert in chat
+  * Added: "Settings saved" message for peace of mind and to remind you to refresh! 
+  * Added: Notes and explanations everywhere for clarification
+  * Added: Custom navigation width
+  * Added: Custom loading screen
+  * Added: Rounded corners on fields and text areas
+  * Added: Hide logo
+  * Added: Hide Google Bar border & background
+  * Added: Hide reply textbox in message. [ r ] and reply links still trigger reply pane
+  * Added: Hide row borders
+  * Added: Unread item highlighting
+  * Added: Simplify rows, hides most elements in row until mouseover
+  * Added: Hide Inbox link
+  * Added: Hide "more" count
+  * Added: Use classic selection link list instead of dropdown menu
+  * Added: Custom CSS input for advanced users
+  * Added: Import/Export settings and several presets
+  * Improved: [ / ] shortcut focuses search and unhides header if hidden. Rehide with [ \ ]
+  * Improved: Toggle stripes are only tinted on mouseover. Ultra minimalists rejoice!
+  * Improved: Activity no longer replaces Google Links when moved to top
+  * Imporved: Google Bar toggle stripe now above Google Bar
+  * Improved: If Google Bar and Header are both hidden, they share a toggle stripe
+  * Improved: Resource usage. Should be a bit less bulky now
+  * Improved: Options page scrolling and expandable element behavior
+  * Improved: Added 6th custom link for Google Link Bar. "More" hides automatically
+  * Improved: Added seperate hover/select row highlight color for unread items
+  * Improved: Navigation now has click to toggle and show on mouseover
+  * Fixed: Options page mouseovers should no longer appear outside the viewport on smaller screens
+  * Fixed: Hide mail search doesn't work with apps search lab enabled
+  * Fixed: Activity still visible if Google Bar hidden
+  * Fixed: Easter Egg! Click "more" in title of the "More" tab to load my personal Voice, Reader, & Calendar Scripts
+  * Fixed: Navigation not hiding
+  * Fixed: No row highlight colors applied to first item on load [starred takes precendent]
+  * Fixed: Starred item highlight color not applied when superstars enabled
+  * Fixed: OpenOffice formats not recognized by Better Attachment Icons
+  * Fixed: Whitespace when hiding sidebar & package tracking infomation hidden
+  * Fixed: Hide Chat hiding all gadgets. Will work with Drag & Drop but Chat must be second, after Compose, inbox etc.
+  * Fixed: All Google User Bar elements causing problems
+  * Fixed: Hide Offline not hiding offline cell phones
+  * Fixed: Hide chat search box hiding RTM add task box
+  * Fixed: Bottom toolbar not hiding in messages
+ == 1.5.0
+  * Added: Hide Google User bar elements [logged in, Labs icon, Settings, Help, Sign Out] [[good idea Sarah]]
+  * Added: Hide Google Bar [click to toggle stripe]
+  * Added: Custom better attachment icons via URL or base64 input
+  * Added: Vertical scrollbar is not invisible if page fits within window [Gmail disabled it instead of hiding it]
+  * Added: Hide "No new mail! Want to read updates from your favorite sites? Try Google Reader" [good idea Sarah]
+  * Improved: Hide header, new click to toggle stripe
+  * Improved: Fallback fonts appear on options page until custom fonts are loaded from Google [for low/no internet]
+  * Improved: All options auto-save, no need to click save anymore [sorry if that was confusing in the 1.4.0 update]
+  * Fixed: Some screenshots not visible on new options page
+ == 1.4.2
+  * Fixed: Starred item highlighting broken again [seriously? Gmail changed class names twice this week...]
+  * Fixed: Navigation not hiding
+  * Fixed: Middle navigation not hiding
+ == 1.4.1
+  * Fixed: Legal option in Footer tab didn't save when checked
+ == 1.4.0
+  * Added: Custom Google bar. Swap out Google's choices with your 5 favorite links
+  * Added: New better attachment icon options [thanks CarlosJ]
+  * Improved: Options page
+  * Fixed: Google user info section hiding instead of navigation
+ == 1.3.9
+  * Added: Get the Reader link back in the Google Bar!
+ == 1.3.8
+  * Fixed: gbar not hiding
+ == 1.3.7
+  * Fixed: Inability to disable custom buttons
+ == 1.3.6
+  * Fixed: Manifest error
+ == 1.3.5
+  * Added: Custom button colors [Great idea jack limit]
+ == 1.3.4
+  * Fixed: Desktop notifications active on mac without enabling option
+ == 1.3.3
+  * Fixed: Desktop notifications repeat all after browser reload
+ == 1.3.2
+  * Fixed: Desktop notifications not showing up on mac
+ == 1.3.1
+  * Improved: Clickable desktop notifications
+  * Fixed: Desktop notifications
+ == 1.3.0
+  * Added: Hide Spam count
+  * Added: Hide Buzz count
+  * Added: Show unread count in favicon [thanks to Peter Wooley for allowing me to republish his script]
+  * Added: Desktop notifications [more options coming next week]
+  * Added: Better attachment icons
+  * Improved: Gmail reloads on save automatically
+  * Improved: Code optimization
+  * Fixed: Header not hiding in some cases [added fallback css]
+ == 1.2.8
+  * Toggle header when hidden by clicking blank area below gbar [good idea ds]
+  * Fixed: Web search not hiding 
+ == 1.2.7
+  * Added: Easter egg [want a minimalist Google Voice, Reader, and Calendar? Click the question mark]
+  * Fixed: Bottom toolbar not hiding
+ == 1.2.6
+  * Fixed: Chat options hiding pop-up bars
+ == 1.2.5
+  * Fixed: Custom logo not displaying
+ == 1.2.4
+  * Improved: Default custom colors
+ == 1.2.3
+  * Added: donate link [please? :-)]
+  * Added: Hide experimental bottom ads
+  * Added: Hide classic storage in footer [Google apps, some themes]
+  * Improved: Google Apps support [work in progress, please report bus]
+  * Fixed: Color picker not showing default colors
+ == 1.2.2
+  * Added: visual color picker [thanks for the idea EBreHNN]
+ == 1.2.1
+  * Added: Hide sidebar ads [iconizes contextual options and relocates above message]
+  * Added: Starred item row highlighting
+  * Added: Hide Archive, Spam, Delete buttons
+  * Added: Hide Move to, Labels buttons
+  * Added: Hide More actions button
+  * Added: Hide Refresh link
+  * Added: Hide top toolbar
+  * Fixed: Search button options not hiding the right elements
+ == 1.2.0
+  * Added: Hide navigation
+  * Added: Hide middle nav section
+  * Added: Hide Compose Mail button
+  * Added: Hide Offline chat contacts [good idea Collin]
+  * Added: Hide "Search, add, or invite" box in chat
+  * Improved: Row highlighting in Contacts
+  * Improved: Keyboard navigation support for row highlighting [good idea Louie]
+  * Improved: Added columns in the options form to keep the page from getting too long
+ == 1.1.6
+  * Improved: Icons updated
+  * Improved: Web Store promotional material updated
+  * Improved: Web Store screenshots updated
+ == 1.1.5
+  * Added: Hide top of nav
+  * Added: Hide Mail link
+  * Added: Hide Contacts link
+  * Added: Hide Tasks link
+  * Added: Hide "more" link
+  * Added: Update notifications system
+  * Improved: Redesigned options page
+  * Improved: Working mailto script
+ == 1.1.4
+  * Added: Custom logo support
+  * Added: Row highlighting with custom colors
+  * Added: Hide header
+  * Added: Hide search
+  * Added: Hide mail search
+  * Added: Hide star icons
+  * Added: Hide chat statuses
+  * Added: Send using gmail [mailto:]. Needs more testing, will be fully functional in next release
+ == 1.1.3
+  * Added: Hide chat [incoming chats still come through]
+  * Added: Minimalist Gmail options shortcut in URL bar [can be disabled in options]
+ == 1.1.2
+  * Improved: Web store screenshots
+  * Improved: Web store description formatting
+  * Improved: Options page highlighting on update [will only appear when features are added]
+  * Fixed: Conflicts with labs [Right Side chat & Apps Search]
+ == 1.1.0
+  * Added: Screenshots in options page
+  * Improved: Options page organization tweaked
+  * Improved: Instructions to hide chat
+ == 1.0.0
+  * First!
+
+
+== CREDITS ==
+
+  Most of Minimalist Gmail is written from the ground-up but some things are just perfect already:
+  * mailto script by Julien Couvreur
+  * favicon unread counter by Peter Wooley 
+  Full details on the About page: [http://www.anselsantosa.com/sites/MinimalistGmai/options.html#abo] 
+
+== LEGAL ==
+
+  I am not a Google Employee or officially affiliated with Google in any way. This extension is not endorsed by Google.
+  Google, Gmail, and the Gmail logo are copyright of Google Inc. All Rights Reserved.
+  All bundled scripts are copyright of their original authors.

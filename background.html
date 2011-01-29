@@ -1,0 +1,179 @@
+<html>
+<head>
+	<script>
+		// ---- CHECK UPDATE ----//
+		var major = 6;
+		var minor = 9;
+		if (localStorage["major"] == undefined) {
+			localStorage["major"] = 0;
+		}
+		if (localStorage["major"] < major) {
+			chrome.tabs.create({url:chrome.extension.getURL("options.html#update")});
+			localStorage["uncheckedUpdate"] = true;
+			localStorage["major"] = major;
+		}
+		if (localStorage["minor"] == undefined) {
+			localStorage["minor"] = 0;
+		}
+		if (localStorage["minor"] < minor) {
+			localStorage["uncheckedUpdate"] = true;
+			localStorage["minor"] = minor;
+		}
+		
+		//---- TALK TO ICON ----//
+		chrome.tabs.onUpdated.addListener(checkForGmail);
+		
+		function checkForGmail(tabId, changeInfo, tab) {
+			if (localStorage["uncheckedUpdate"] == "true") {
+				chrome.pageAction.setIcon({tabId: tab.id, path: "img/icons/icon19_update.png"});
+				chrome.pageAction.setTitle({tabId: tab.id, title:"Minimalist Gmail has been updated! Click to dismiss."});
+			} else {
+				chrome.pageAction.setIcon({tabId: tab.id, path: "img/icons/icon19.png"});
+				chrome.pageAction.setTitle({tabId: tab.id, title: "Minimalist Gmail Options"});
+				localStorage["uncheckedUpdate"] = false;
+			}
+			var o = JSON.parse(localStorage["options"]);
+			if (tab.url.indexOf('mail.google.com') > -1 && !o.mgicon) {
+				chrome.pageAction.show(tabId);
+			}
+		};
+		
+		chrome.pageAction.onClicked.addListener(function(tab) {
+			if (localStorage["uncheckedUpdate"] == "true") {
+				chrome.tabs.create({url:chrome.extension.getURL("options.html#update")});
+				chrome.pageAction.setIcon({tabId: tab.id, path:"img/icons/icon19.png"});
+				chrome.pageAction.setTitle({tabId: tab.id, title:"Minimalist Gmail Options"});
+				localStorage["uncheckedUpdate"] = false;
+			} else {
+				chrome.tabs.create({url:chrome.extension.getURL("options.html")});
+			}
+		});
+		var joy = true;
+		//---- TALK TO SCRIPTS ----//
+		chrome.extension.onRequest.addListener(function (request, sender, sendResponse) {
+			if (request.elements == "o" && joy) {
+				sendResponse({
+					"o": JSON.parse(localStorage["options"])
+				});
+			}
+			if (request.elements == "e") {
+				sendResponse({
+					"e": localStorage["easterEgg"]
+				});
+			}
+			if (request.action == "reload") reloadTab();
+			if (request.action == "toggle") {
+				joy ? joy = false : joy = true;
+			}
+		});
+		
+		//---- NOTIFICATIONS ----//
+		var o = JSON.parse(localStorage["options"]);
+		if (o.desktop) {
+			function playSound() {
+				try {
+					document.getElementById('sound').play();
+				} catch (e) { console.error(e); }
+			}
+			var lastTime = localStorage["notification"];
+			function check() {
+				
+				var url = "";
+				if (o.apps)
+					url = o.appsURL + "/feed/atom/unread";
+				else url = "https://mail.google.com/mail/feed/atom/unread";
+				
+				var xmlhttp = new window.XMLHttpRequest();
+				xmlhttp.open("GET", url, false);
+				xmlhttp.send(null);
+				var xmlDoc = xmlhttp.responseXML.documentElement;
+				
+				if (xmlDoc.getElementsByTagName("fullcount")[0].childNodes[0].nodeValue > 0) {
+					entries = xmlDoc.getElementsByTagName("entry");
+					var i = entries.length;
+					while (i--) {
+						var time = entries[i].getElementsByTagName("modified")[0].childNodes[0].nodeValue;
+						time = Date.parse(time.replace("T24", " 00").replace("T", " ").replace("Z", ""));
+						if (lastTime && time <= lastTime) continue;
+
+						var from = entries[i].querySelector("name").textContent;
+						var title = entries[i].querySelector("title").textContent;
+						var summary = entries[i].querySelector("summary").textContent;
+						var link = entries[i].querySelector("link").getAttribute("href");
+
+						var go = "";
+						link = parseURL(link, "message_id");
+						if (o.apps) go = o.appsURL;
+						else go = "https://mail.google.com/mail/#inbox/";
+
+						var notification = webkitNotifications.createHTMLNotification("notification.html?from=" + from + "&title=" + title + "&summary=" + summary + "&link=" + link + "&go=" + go);
+						playSound();
+						if (o.desktop) {
+							notification.show();
+							setTimeout(function(){notification.cancel();}, 10000);
+						}
+						localStorage["notification"] = time;
+						lastTime = time;
+					}
+				}
+			}
+			
+			function parseURL(url, variable) { 
+				var urlp = url.replace("&amp;", "&");
+				var vars = urlp.split("&"); 
+				for (var i = 0; i < vars.length; i++) { 
+					var pair = vars[i].split("="); 
+					if (pair[0] == variable) {
+					return pair[1]; 
+					} 
+				} 
+			}
+	
+			var messageCheck = setInterval(check, 5000);
+			
+			Date.prototype.setISO8601 = function (string) {
+				var regexp = "([0-9]{4})(-([0-9]{2})(-([0-9]{2})" +
+					"(T([0-9]{2}):([0-9]{2})(:([0-9]{2})(\.([0-9]+))?)?" +
+					"(Z|(([-+])([0-9]{2}):([0-9]{2})))?)?)?)?";
+				var d = string.match(new RegExp(regexp));
+
+				var offset = 0;
+				var date = new Date(d[1], 0, 1);
+
+				if (d[3]) { date.setMonth(d[3] - 1); }
+				if (d[5]) { date.setDate(d[5]); }
+				if (d[7]) { date.setHours(d[7]); }
+				if (d[8]) { date.setMinutes(d[8]); }
+				if (d[10]) { date.setSeconds(d[10]); }
+				if (d[12]) { date.setMilliseconds(Number("0." + d[12]) * 1000); }
+				if (d[14]) {
+					offset = (Number(d[16]) * 60) + Number(d[17]);
+					offset *= ((d[15] == '-') ? 1 : -1);
+				}
+
+				offset -= date.getTimezoneOffset();
+				time = (Number(date) + (offset * 60 * 1000));
+				this.setTime(Number(time));
+			}
+		}
+		
+		function reloadTab() {
+			chrome.windows.getCurrent(function(win) {
+				var cwin = win.id;
+				chrome.tabs.getAllInWindow(cwin, function(tabs) {
+					for (var i = 0; i < tabs.length; i++) {
+						var t = tabs[i].url;
+							if (t.match('mail.google.com')) {
+								var tab = tabs[i];
+								chrome.tabs.update(tab.id, {url: tab.url, selected: tab.selected}, null);
+							}
+					}
+				});
+			});
+		}
+	</script>
+</head>
+<body>
+	<audio id="sound" src="sound/notify.mp3"></audio>
+</body>
+</html>

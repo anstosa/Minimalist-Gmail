@@ -1,0 +1,967 @@
+<html>
+<head>
+	<title>Minimalist Gmail Options</title>
+	<link type="text/css" rel="stylesheet" href="css/options.css" />
+	<link type="text/css" rel="stylesheet" href="css/picker/colorpicker.css" />
+	<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+	<script type="text/javascript" src="js/options.js"></script>
+	<script type="text/javascript" src="js/picker/colorpicker.js"></script>
+	<script type="text/javascript" src="js/picker/eye.js"></script>
+	<script type="text/javascript" src="js/picker/utils.js"></script>
+	<script type="text/javascript">
+		(function($){
+			var initLayout = function() {
+				var bottom = localStorage["BTNbottom"];
+				var top = localStorage["BTNtop"];
+				$('#BTNcolor').ColorPicker({
+					color: localStorage["BTNcolor"],
+					onShow: function (colpkr) {
+						$(colpkr).fadeIn(500);
+						return false;
+					},
+					onHide: function (colpkr) {
+						$(colpkr).fadeOut(500);
+						return false;
+					},
+					onChange: function (hsb, hex, rgb) {
+						$('#BTNcolor div').css('backgroundColor', '#' + hex);
+						$('#testButton').css('color', '#' + hex);
+						localStorage["BTNcolor"] = "#" + hex;
+					}
+				});
+				$('#BTNborder').ColorPicker({
+					color: localStorage["BTNborder"],
+					onShow: function (colpkr) {
+						$(colpkr).fadeIn(500);
+						return false;
+					},
+					onHide: function (colpkr) {
+						$(colpkr).fadeOut(500);
+						return false;
+					},
+					onChange: function (hsb, hex, rgb) {
+						$('#BTNborder div').css('backgroundColor', '#' + hex);
+						$('#testButton').css('border-color', '#' + hex);
+						localStorage["BTNborder"] = "#" + hex;
+					}
+				});
+				$('#BTNbottom').ColorPicker({
+					color: localStorage["BTNbottom"],
+					onShow: function (colpkr) {
+						$(colpkr).fadeIn(500);
+						return false;
+					},
+					onHide: function (colpkr) {
+						$(colpkr).fadeOut(500);
+						return false;
+					},
+					onChange: function (hsb, hex, rgb) {
+						$('#BTNbottom div').css('backgroundColor', '#' + hex);
+						$('#testButton').css('background', '-webkit-gradient(linear,0% 40%,0% 70%,from(#' + hex + '),to(' + top + '))');
+						bottom = "#" + hex;
+						localStorage["BTNbottom"] = "#" + hex;
+					}
+				});
+				$('#BTNtop').ColorPicker({
+					color: localStorage["BTNtop"],
+					onShow: function (colpkr) {
+						$(colpkr).fadeIn(500);
+						return false;
+					},
+					onHide: function (colpkr) {
+						$(colpkr).fadeOut(500);
+						return false;
+					},
+					onChange: function (hsb, hex, rgb) {
+						$('#BTNtop div').css('backgroundColor', '#' + hex);
+						$('#testButton').css('background', '-webkit-gradient(linear,0% 40%,0% 70%,from(' + bottom + '),to(#' + hex + '))');
+						top = "#" + hex;
+						localStorage["BTNtop"] = "#" + hex;
+					}
+				});
+				$('#starCLR').ColorPicker({
+					color: localStorage["starCLR"],
+					onShow: function (colpkr) {
+						$(colpkr).fadeIn(500);
+						return false;
+					},
+					onHide: function (colpkr) {
+						$(colpkr).fadeOut(500);
+						return false;
+					},
+					onChange: function (hsb, hex, rgb) {
+						$('#starCLR div').css('backgroundColor', '#' + hex);
+						localStorage["starCLR"] = "#" + hex;
+					}
+				});
+				$('#uCLR').ColorPicker({
+					color: localStorage["uCLR"],
+					onShow: function (colpkr) {
+						$(colpkr).fadeIn(500);
+						return false;
+					},
+					onHide: function (colpkr) {
+						$(colpkr).fadeOut(500);
+						return false;
+					},
+					onChange: function (hsb, hex, rgb) {
+						$('#uCLR div').css('backgroundColor', '#' + hex);
+						localStorage["uCLR"] = "#" + hex;
+					}
+				});
+				$('#highCLR').ColorPicker({
+					color: localStorage["highCLR"],
+					onShow: function (colpkr) {
+						$(colpkr).fadeIn(500);
+						return false;
+					},
+					onHide: function (colpkr) {
+						$(colpkr).fadeOut(500);
+						return false;
+					},
+					onChange: function (hsb, hex, rgb) {
+						$('#highCLR div').css('backgroundColor', '#' + hex);
+						localStorage["highCLR"] = "#" + hex;
+					}
+				});
+				$('#highCLRu').ColorPicker({
+					color: localStorage["highCLRu"],
+					onShow: function (colpkr) {
+						$(colpkr).fadeIn(500);
+						return false;
+					},
+					onHide: function (colpkr) {
+						$(colpkr).fadeOut(500);
+						return false;
+					},
+					onChange: function (hsb, hex, rgb) {
+						$('#highCLRu div').css('backgroundColor', '#' + hex);
+						localStorage["highCLRu"] = "#" + hex;
+					}
+				});
+			};
+			EYE.register(initLayout, 'init');
+		})(jQuery)
+	</script>
+	<script type="text/javascript">
+	  WebFontConfig = {
+		google: { families: [ 'Raleway:100' ] }
+	  };
+	  (function() {
+		var wf = document.createElement('script');
+		wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+			'://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+		wf.type = 'text/javascript';
+		wf.async = 'true';
+		var s = document.getElementsByTagName('script')[0];
+		s.parentNode.insertBefore(wf, s);
+	  })();
+	</script>
+</head>
+<body>
+<div id="OPTwrap">
+	<div id="OPTside">
+		<h1>Minimalist</h1>
+		<div id="announce" style="display: block;">
+			<strong>Subtract until it breaks</strong><br />The way of the minimalist
+		</div>
+		<div id="refresh">
+			<strong>Settings saved!</strong><br /><a href="#" onclick="javascript:chrome.extension.sendRequest({action: 'reload'},function(){});">Refresh Gmail to apply changes</a>
+		</div>
+		<div id="refreshEI">
+			<strong>Import successful!</strong><br /><a href="#" onclick="javascript:chrome.extension.sendRequest({action: 'reload'},function(){});">Refresh Gmail to apply changes</a>
+		</div>
+		<div id="easterEgg_on">
+			<strong>Easter Egg enabled!</strong><br />Refresh Voice, Reader, &amp; Calendar
+		</div>
+		<div id="easterEgg_off">
+			<strong>Easter Egg disabled...</strong><br />
+		</div>
+		<ul>
+			<li><a href="#gen" class="" id="gen" onclick="navigate('gen')">General</a></li>
+			<li><a href="#not" class="" id="not" onclick="navigate('not')">Notifications</a></li>
+			<li><a href="#goo" class="" id="goo" onclick="navigate('goo')">Google Bar</a></li>
+			<li><a href="#hea" class="" id="hea" onclick="navigate('hea')">Header</a></li>
+			<li><a href="#mai" class="" id="mai" onclick="navigate('mai')">Main</a></li>
+			<li><a href="#gat" class="" id="gat" onclick="navigate('gat')">Navigation</a></li>
+			<li><a href="#cha" class="" id="cha" onclick="navigate('cha')">Chat</a></li>
+			<li><a href="#foo" class="" id="foo" onclick="navigate('foo')">Footer</a></li>
+			<li>&nbsp;</li>
+			<li>&nbsp;</li>
+			<li><a href="#imp" class="" id="imp" onclick="navigate('imp')">Import/Export</a></li>
+			<li><a href="#mor" class="" id="mor" onclick="navigate('mor')">More</a></li>
+			<li><a href="#nge" class="" id="nge" onclick="navigate('nge')">Changes</a></li>
+			<li><a href="#sup" class="" id="sup" onclick="navigate('sup')">Support</a></li>
+			<li><a href="#abo" class="" id="abo" onclick="navigate('abo')">About</a></li>
+		</ul>
+	</div>
+	<form name="preferences">
+	<div class="OPTmain" id="OPTgen">
+		<h1 class="dark">Gmail <span>| general</span></h1>
+		<section>
+			<h3>Options Icon</h3>
+			<div>
+				<input type="checkbox" id="mgicon" />
+					&nbsp;<label for="mgicon" title="">Hide Minimalist Gmail options icon</label><br />
+					<span class="note"><strong>NOT RECOMMENDED:</strong> Only shows up in Gmail</span>
+			</div>
+		</section>
+		<section>
+			<h3>Loading Overlay</h3>
+			<div>
+				<!--Don't like the Gmail loading screen? Don't want to see the only interface for the split secon before Minimalist Gmail does it's work?-->
+				<input type="checkbox" id="loader" />
+					&nbsp;<label for="loader" title="">Show custom loader</label><br />
+			</div>
+		</section>
+		<section>
+			<h3>Buttons</h3>
+				<div>
+					<input type="checkbox" id="BTN" />
+						&nbsp;<label for="BTN" title="Click color to change">Enable custom buttons</label><div class="J-Zh-I" id="testButton" style="-webkit-user-select: none; ">Test button</div>
+						<table>
+							<tr>
+								<td>Font</td>
+								<td><div c id="BTNcolor"><div id="BTNcolorSUB" style="background-color: #000000;"></div></div></td>
+							</tr>
+							<tr>
+								<td>Border</td>
+								<td><div c id="BTNborder"><div id="BTNborderSUB" style="background-color: #bbbbbb;"></div></div></td>
+							</tr>
+							<tr>
+								<td>Top</td>
+								<td><div c id="BTNbottom"><div id="BTNbottomSUB" style="background-color: #f9f9f9;"></div></div></td>
+							</tr>
+							<tr>
+								<td>Bottom</td>
+								<td><div c id="BTNtop"><div id="BTNtopSUB" style="background-color: #e3e3e3;"></div></div></td>
+							</tr>
+							<tr>
+								<td colspan="2"><input type="button" value="Reset" onClick="cButtonReset()" /></td>
+							</tr>
+						</table>
+				</div>
+		</section>
+		<section>
+			<h3>Fields &amp; Input</h3>
+			<div>
+				<input type="checkbox" id="corners" />
+					&nbsp;<label for="corners" title="">Round corners</label><br />
+			</div>
+		</section>
+		<section>
+			<h3>Custom CSS</h3>
+			<div>
+				<input type="checkbox" id="customCSS" />
+					&nbsp;<label for="customCSS" title="">Use custom CSS</label><br />
+					<textarea id="customCSSval" rows="5" cols="40"></textarea>
+			</div>
+		</section>
+	</div>
+	<div class="OPTmain" id="OPTnot">
+		<h1 class="dark">Gmail <span>| notifications</span></h1>
+		<section>
+			<h3>Favicon</h3>
+			<div>
+				<input type="checkbox" id="favicon" />
+					&nbsp;<label for="favicon" title="">Enable favicon unread counter</label><br />
+					<span class="note">Note: Gmail has the <a href="https://mail.google.com/mail/u/0/#settings/labs" target="_blank">Unread message icon</a> lab</span>
+			</div>
+		</section>
+		<section>
+			<h3>Desktop</h3>
+			<div>
+				<span style="opacity: .35;"><input type="checkbox" id="desktop" />
+					&nbsp;<label for="desktop" title="">Show desktop notifications</label><br /></span>
+					<span class="note">Note: Gmail's <a href="https://mail.google.com/mail/u/0/#settings" target="_blank">Dekstop Notifications</a> are much more stable.</span><br />
+					<span class="note">I recommend using theirs for now. Mine will be improved.</span><br />
+					<span class="note">Power Users: try <a href="https://chrome.google.com/webstore/detail/gffjhibehnempbkeheiccaincokdjbfe" target="_blank">Google Mail Checker Plus</a></span>
+				<br /><br />
+				<input type="checkbox" id="apps" />
+					&nbsp;<label for="apps" title="">Google Apps domain:</label><br />
+					<input type="text" id="appsURL" size="40" class="field" value="https://mail.google.com/a/yourdomain.com" /><br />
+					<span class="note">Make sure there is no trailing slash!</span>
+			</div>
+		</section>
+	</div>
+	<div class="OPTmain" id="OPTgoo">
+		<h1 class="dark">Gmail <span>| google bar</span></h1>
+		<section>
+			<h3>Hide All</h3>
+			<div>
+				<input type="checkbox" id="gbarH" />
+					&nbsp;<label for="gbarH" title="">Hide Google Bar</label><br />
+					<span class="note">Click blank stripe to toggle</span>
+			</div>
+		</section>
+		<section>
+			<h3>Appearance</h3>
+			<div>
+				<input type="checkbox" id="gbarB" />
+					&nbsp;<label for="gbarB" title="">Hide Background * Border</label><br />
+			</div>
+		</section>
+		<section>
+			<h3>Google Links</h3>
+			<div>
+				<input type="checkbox" id="gbar" />
+					&nbsp;<label for="gbar" title="">Hide Google links</label><br />
+				<input type="checkbox" id="cbar" />
+					&nbsp;<label for="cbar" title="">Enable custom links</label><br />
+				<span class="note"><a href="#" id="expandClinks" onclick="javascript:document.getElementById('cLinks').setAttribute('style','display: block');document.getElementById('expandClinks').setAttribute('style','display: none');">Show input table</a></span>
+				<div id="cLinks" class="indent" style="display: none;">
+					<br />
+					Choose link text, link location, and link target *.<br />
+					If you want less links, just leave rows blank.<br /><br />
+					<input type="text" id="c_n_1" size="6" class="field" value="Gmail" />
+					<input type="text" id="c_u_1" size="24" class="field" value="http://mail.google.com" style="margin-left: 1px;" />
+					<input type="text" id="c_t_1" size="3" class="field" value="_blank" style="margin-left: 1px;" /><br />
+					<input type="text" id="c_n_2" size="6" class="field" value="Calendar" />
+					<input type="text" id="c_u_2" size="24" class="field" value="http://www.google.com/calendar" style="margin-left: 1px;" />
+					<input type="text" id="c_t_2" size="3" class="field" value="_blank" style="margin-left: 1px;" /><br />
+					<input type="text" id="c_n_3" size="6" class="field" value="Documents" />
+					<input type="text" id="c_u_3" size="24" class="field" value="http://docs.google.com" style="margin-left: 1px;" />
+					<input type="text" id="c_t_3" size="3" class="field" value="_blank" style="margin-left: 1px;" /><br />
+					<input type="text" id="c_n_4" size="6" class="field" value="Reader" />
+					<input type="text" id="c_u_4" size="24" class="field" value="http://www.google.com/reader" style="margin-left: 1px;" />
+					<input type="text" id="c_t_4" size="3" class="field" value="_blank" style="margin-left: 1px;" /><br />
+					<input type="text" id="c_n_5" size="6" class="field" value="Photos" />
+					<input type="text" id="c_u_5" size="24" class="field" value="http://picasaweb.google.com" style="margin-left: 1px;" />
+					<input type="text" id="c_t_5" size="3" class="field" value="_blank" style="margin-left: 1px;" /><br />
+					<input type="text" id="c_n_6" size="6" class="field" value="Web" />
+					<input type="text" id="c_u_6" size="24" class="field" value="http://www.google.com" style="margin-left: 1px;" />
+					<input type="text" id="c_t_6" size="3" class="field" value="_blank" style="margin-left: 1px;" /><br />
+					<br />
+					* "_blank" for new window, "_top" for this window
+				</div>
+			</div>
+		</section>
+		<section>
+			<h3>Google User Bar</h3>
+			<div>
+				<input type="checkbox" id="user" />
+					&nbsp;<label for="user" title="">Hide signed in</label><br />
+				<input type="checkbox" id="labs" />
+					&nbsp;<label for="labs" title="">Hide Labs icon</label><br />
+				<input type="checkbox" id="settings" />
+					&nbsp;<label for="settings" title="">Hide Settings link</label><br />
+				<input type="checkbox" id="help" />
+					&nbsp;<label for="help" title="">Hide Help link</label><br />
+				<input type="checkbox" id="out" />
+					&nbsp;<label for="out" title="">Hide Sign out link</label><br />
+			</div>
+		</section>
+	</div>
+	<div class="OPTmain" id="OPThea">
+		<h1 class="dark">Gmail <span>| header</span></h1>
+		<section>
+			<h3>Hide All</h3>
+			<div>
+				<input type="checkbox" id="header" />
+					&nbsp;<label for="header" title="">Hide header</label><br />
+					<span class="note">Click blank stripe to toggle, [ / ] to focus search, [ \ ] to rehide</span>
+			</div>
+		</section>
+		<section>
+			<h3>Logo</h3>
+			<div>
+				<input type="checkbox" id="logoH" />
+					&nbsp;<label for="logoH" title="">Hide logo</label><br />
+				<input type="checkbox" id="logo" />
+					&nbsp;<label for="logo" title="">Enable custom logo</label><br />
+					<input type="text" id="logoSRC" size="40" class="field" value="http://www.example.com/image.jpg" /><br />
+					<span class="note">143x59px. Input via URL or Convert to Base64</span><br />
+					<span class="note">Base64 conversion <a href="http://www.greywyvern.com/code/php/binary2base64" target="_blank">via URL</a> or <a href="http://www.opinionatedgeek.com/dotnet/tools/base64encode/" target="_blank">via upload</a></span>
+			</div>
+		</section>
+		<section>
+			<h3>Search</h3>
+			<div>
+				<input type="checkbox" id="s_all" />
+					&nbsp;<label for="s_all" title="">Hide all search</label><br />
+				<input type="checkbox" id="s_mail" />
+					&nbsp;<label for="s_mail" title="">Hide mail search</label><br />
+				<input type="checkbox" id="s_web" />
+					&nbsp;<label for="s_web" title="">Hide web search</label><br />
+				<input type="checkbox" id="s_links" />
+					&nbsp;<label for="s_links" title="">Hide search tools</label><br />
+			</div>
+		</section>
+	</div>
+	<div class="OPTmain" id="OPTmai">
+		<h1 class="dark">Gmail <span>| main</span></h1>
+		<section>
+			<h3>Rows</h3>
+			<div>
+				<input type="checkbox" id="borders" />
+					&nbsp;<label for="borders" title="">Hide row borders</label><br />
+				<input type="checkbox" id="simplify" />
+					&nbsp;<label for="simplify" title="">Simplify rows</label><br />
+					<span class="note">Hides all but the essentials until mouseover</span><br /><br />
+				<input type="checkbox" id="starHigh" />
+					&nbsp;<label for="starHigh" title="">Show starred item row highlights</label>
+					<table>
+						<tr>
+							<td style="width:50px;">Starred</td><td><div c id="starCLR"><div id="starCLRsub" style="background-color: #ffcc00;"></div></div></td>
+						</tr>
+					</table><br />
+				<input type="checkbox" id="uHigh" />
+					&nbsp;<label for="uHigh" title="">Show unread item row highlights</label>
+					<table>
+						<tr>
+							<td style="width:50px;">Unread</td><td><div c id="uCLR"><div id="uCLRsub" style="background-color: #00ccff;"></div></div></td>
+						</tr>
+					</table><br />
+				<input type="checkbox" id="high" />
+					&nbsp;<label for="high" title="">Show hover/select row highlights</label>
+					<table>
+						<tr>
+							<td>Standard</td><td><div c id="highCLR"><div id="highCLRsub" style="background-color: #0099ff;"></div></div></td>
+						</tr>
+						<tr>
+							<td>Unread</td><td><div c id="highCLRu"><div id="highCLRusub" style="background-color: #00ccff;"></div></div>
+						</tr>
+					</table>
+			</div>
+		</section>
+		<section>
+			<h3>Icons</h3>
+			<div>
+				<input type="checkbox" id="stars" />
+					&nbsp;<label for="stars" title="">Hide star icons</label><br />
+					<span class="note">Only hides icons on unstarred items. [ s ] or click to star an item.</span>
+				<input type="checkbox" id="attach" />
+					&nbsp;<label for="attach" title="">Better attachment icons [Classic] *</label><br />
+				<input type="checkbox" id="attachNew" />
+					&nbsp;<label for="attachNew" title="">Better attachment icons [New Google Style] *</label><br />
+				<input type="checkbox" id="attachC" />
+					&nbsp;<label for="attachC" title="">Better attachment icons [Custom] *</label><br />
+					<span class="note"><a href="#" id="expandCtable" onclick="javascript:document.getElementById('attachCtable').setAttribute('style','display: block');document.getElementById('expandCtable').setAttribute('style','display: none');">Show input table</a></span>
+					<div id="attachCtable" class="indent">
+					<table cellpadding="0" cellspacing="0">
+						<tr>
+							<td colspan="2"><br />Pick your own 16px square icons.<br />Input URL or Convert to Base64 <a href="http://www.greywyvern.com/code/php/binary2base64" target="_blank">via URL</a> or <a href="http://www.opinionatedgeek.com/dotnet/tools/base64encode/" target="_blank">via upload</a><br /><br /></td>
+						</tr>
+						<tr>
+							<td>Spreadsheets</td>
+							<td><input type="text" id="ci_1" size="29" class="field" value="data:image/png;base64,*" /></td>
+						</tr>
+						<tr>
+							<td>Audio</td>
+							<td><input type="text" id="ci_2" size="29" class="field" value="data:image/png;base64,*" /></td>
+						</tr>
+						<tr>
+							<td>Documents</td>
+							<td><input type="text" id="ci_3" size="29" class="field" value="data:image/png;base64,*" /></td>
+						</tr>
+						<tr>
+							<td>Web Pages</td>
+							<td><input type="text" id="ci_4" size="29" class="field" value="data:image/png;base64,*" /></td>
+						</tr>
+						<tr>
+							<td>Archives</td>
+							<td><input type="text" id="ci_5" size="29" class="field" value="data:image/png;base64,*" /></td>
+						</tr>
+						<tr>
+							<td>PDF</td>
+							<td><input type="text" id="ci_6" size="29" class="field" value="data:image/png;base64,*" /></td>
+						</tr>
+						<tr>
+							<td>Images</td>
+							<td><input type="text" id="ci_7" size="29" class="field" value="data:image/png;base64,*" /></td>
+						</tr>
+						<tr>
+							<td>Presentations</td>
+							<td><input type="text" id="ci_8" size="29" class="field" value="data:image/png;base64,*" /></td>
+						</tr>
+						<tr>
+							<td>Video</td>
+							<td><input type="text" id="ci_9" size="29" class="field" value="data:image/png;base64,*" /></td>
+						</tr>
+					</table></div><br /><br />
+					<span class="note">* Use <a href="https://mail.google.com/mail/u/0/#settings/labs" target="_blank">Move Icon Column</a> lab for left-side attachments</span>
+			</div>
+		</section>
+		<section>
+			<h3>Toolbars</h3>
+			<div>
+				<input type="checkbox" id="pi" />
+					&nbsp;<label for="pi" title="">Priority Inbox User? Check this box!</label><br />
+				<input type="checkbox" id="t_top" />
+					&nbsp;<label for="t_top" title="">Hide top toolbar</label><br />
+				<input type="checkbox" id="bottom" />
+					&nbsp;<label for="bottom" title="">Hide bottom toolbar</label><br />
+					<br />
+					<input type="checkbox" id="t_check" />
+						&nbsp;<label for="t_check" title="">Hide checkbox tools</label><br />
+					<input type="checkbox" id="t_check_l" />
+						&nbsp;<label for="t_check_l" title="">Show checkbox tools list</label><br />
+					<input type="checkbox" id="t_arch" />
+						&nbsp;<label for="t_arch" title="">Hide Archive, Spam, Delete</label><br />
+					<input type="checkbox" id="t_move" />
+						&nbsp;<label for="t_move" title="">Hide Move to, Labels</label><br />
+					<input type="checkbox" id="t_actions" />
+						&nbsp;<label for="t_actions" title="">Hide More actions</label><br />
+					<input type="checkbox" id="t_refresh" />
+						&nbsp;<label for="t_refresh" title="">Hide Refresh</label><br />
+			</div>
+		</section>
+		<section>
+			<h3>Message</h3>
+			<div>
+				<!-- <input type="checkbox" id="details" />
+					&nbsp;<label for="details" title="">Show details by default</label><br /> -->
+				<input type="checkbox" id="reply" />
+					&nbsp;<label for="reply" title="">Hide reply textarea</label><br />
+					<span class="note">[ r ] and the reply links will still trigger reply</span><br />
+			</div>
+		</section>
+		<section style="height: 300px;">
+			<h3>Ads</h3>
+			<div>
+				<input type="checkbox" id="zads" />
+					&nbsp;<label for="zads" title="">Hide zero-inbox Google Reader ad</label><br />
+				<input type="checkbox" id="ads" />
+					&nbsp;<label for="ads" title="">Hide sidebar ads</label><br />
+				<input type="checkbox" id="bads" />
+					&nbsp;<label for="bads" title="">Hide bottom ads</label><br />
+				<br />
+				<span class="note">The ads at the top are called "Web Clips"</span><br />
+				<span class="note">Disable them in <a href="https://mail.google.com/mail/#settings/webclips" target="_blank">Gmail Settings</a></span>
+			</div>
+		</section>
+	</div>
+	<div class="OPTmain" id="OPTgat">
+		<h1 class="dark">Gmail <span>| navigation</span></h1>
+		<section>
+			<h3>Hide All</h3>
+			<div>
+				<input type="checkbox" id="nav" />
+					&nbsp;<label for="nav" title="">Hide navigation</label><br />
+						<span class="note">Click blank stripe to toggle</span>
+			</div>
+		</section>
+		<section>
+			<h3>Custom width</h3>
+			<div>
+				<input type="text" id="navW" size="3" class="field" value="172" /> pixels<br />
+				<span class="note">Default is 172</span>
+			</div>
+		</section>
+		<section>
+			<h3>Top Section</h3>
+			<div>
+				<input type="checkbox" id="top" />
+					&nbsp;<label for="top" title="">Hide top nav</label><br />
+				<input type="checkbox" id="mail" />
+					&nbsp;<label for="mail" title="">Hide mail link</label><br />
+				<input type="checkbox" id="contacts" />
+					&nbsp;<label for="contacts" title="">Hide contacts link</label><br />
+				<input type="checkbox" id="tasks" />
+					&nbsp;<label for="tasks" title="">Hide tasks link</label><br />
+			</div>
+		</section>
+		<section>
+			<h3>Middle Section</h3>
+			<div>
+				<input type="checkbox" id="middle" />
+					&nbsp;<label for="middle" title="">Hide middle nav</label><br />
+				<input type="checkbox" id="compose" />
+					&nbsp;<label for="compose" title="">Hide compose button</label><br />
+				<input type="checkbox" id="icons" />
+					&nbsp;<label for="icons" title="">Hide icons</label><br />
+				<input type="checkbox" id="inboxH" />
+					&nbsp;<label for="inboxH" title="">Hide Inbox link</label><br />
+				<input type="checkbox" id="spam" />
+					&nbsp;<label for="spam" title="">Hide spam count</label><br />
+				<!-- <input type="checkbox" id="spamH" />
+					&nbsp;<label for="spamH" title="">Hide spam link</label><br /> -->
+				<input type="checkbox" id="buzz" />
+					&nbsp;<label for="buzz" title="">Hide buzz count</label><br />
+				<input type="checkbox" id="moreC" />
+					&nbsp;<label for="moreC" title="">Hide more count</label><br />
+				<input type="checkbox" id="more" />
+					&nbsp;<label for="more" title="">Hide more link</label><br />
+			</div>
+		</section>
+		<section>
+			<h3>Invites</h3>
+			<div>
+				<input type="checkbox" id="invites" />
+					&nbsp;<label for="invites" title="">Hide invites</label><br />
+			</div>
+		</section>
+	</div>
+	<div class="OPTmain" id="OPTcha">
+		<h1 class="dark">Gmail <span>| chat</span></h1>
+		<section>
+			<h3>Hide All</h3>
+			<div>
+				<input type="checkbox" id="chat" />
+					&nbsp;<label for="chat" title="">Hide chat</label><br />
+					<span class="note">Must be 2<sup>nd</sup> and follow nav links if Drag & Drop is enabled</span>
+			</div>
+		</section>
+		<section>
+			<h3>Elements</h3>
+			<div>
+				<input type="checkbox" id="c_search" />
+					&nbsp;<label for="c_search" title="">Hide search box</label><br />
+				<input type="checkbox" id="c_invisible" />
+					&nbsp;<label for="c_invisible" title="">Hide "You are invisible" alert</label><br />
+				<input type="checkbox" id="offline" />
+					&nbsp;<label for="offline" title="">Hide offline</label><br />
+				<input type="checkbox" id="status" />
+					&nbsp;<label for="status" title="">Hide statuses</label><br />
+			</div>
+		</section>
+	</div>
+	<div class="OPTmain" id="OPTfoo">
+		<h1 class="dark">Gmail <span>| footer</span></h1>
+		<section>
+			<h3>General</h3>
+			<div>
+				<input type="checkbox" id="f_tips" />
+					&nbsp;<label for="f_tips" title="">Hide tips</label><br />
+				<input type="checkbox" id="f_options" />
+					&nbsp;<label for="f_options" title="">Hide options</label><br />
+				<input type="checkbox" id="f_legal" />
+					&nbsp;<label for="f_legal" title="">Hide legal</label>
+			</div>
+		</section>
+		<section>
+			<h3>Storage</h3>
+			<div>
+				<input type="checkbox" id="f_s_classic" />
+					&nbsp;<label for="f_s_classic" title="">Hide classic</label><br />
+				<input type="checkbox" id="f_s_label" />
+					&nbsp;<label for="f_s_label" title="">Hide label</label><br />
+				<input type="checkbox" id="f_s_graphic" />
+					&nbsp;<label for="f_s_graphic" title="">Hide graphic</label><br />
+				<input type="checkbox" id="f_s_verbose" />
+					&nbsp;<label for="f_s_verbose" title="">Hide verbose</label><br />
+				<input type="checkbox" id="f_s_menu" />
+					&nbsp;<label for="f_s_menu" title="">Hide menu</label><br />
+			</div>
+		</section>
+		<section>
+			<h3>Recent Activity</h3>
+			<div>
+				<input type="radio" class="radio" name="activity" id="f_activity_show" />
+					&nbsp;<label for="f_activity_show" title="">Show in footer</label><br />
+				<input type="radio" class="radio" name="activity" id="f_activity_hide" />
+					&nbsp;<label for="f_activity_hide" title="">Hide completely</label><br />
+				<input type="radio" class="radio" name="activity" id="f_activity_move" />
+					&nbsp;<label for="f_activity_move" title="">Move to top *</label><br />
+					<span class="note">* Requires wide screen unless you hide Google Links! [1200px+]</span>
+			</div>
+		</section>
+	</div>
+	<div class="OPTmain" id="OPTimp">
+		<h1 class="dark">Gmail | <span>import/export</span></h1>
+		<section>
+			<h3>Import/Export</h3>
+			<div>
+				To transfer settings, click "Export", copy everything, paste it back in another browser and click "Import".
+				<br /><br />
+				<form name="EI">
+				<textarea id="EImain" rows="5" cols="40"></textarea>
+				<input type="button" value="Export" onClick="export()" /><input type="button" value="Import" onClick="import('EImain')" />
+				</form>
+			</div>
+		</section>
+		<section>
+			<h3>Presets</h3>
+			<div>
+				<div style="display: none;">
+					<textarea id="EI_0" rows="5" cols="40">{"mgicon":false,"BTN":false,"BTNcolor":"#000000","BTNborder":"#bbbbbb","BTNbottom":"#f9f9f9","BTNtop":"#e3e3e3","loader":false,"corners":false,"customCSS":false,"customCSSval":"","favicon":false,"desktop":false,"apps":false,"appsURL":"https://mail.google.com/a/yourdomain.com","gbarH":false,"gbarB":false,"gbar":false,"cbar":false,"c_n_1":"Gmail","c_u_1":"https://mail.google.com","c_t_1":"_blank","c_n_2":"Calendar","c_u_2":"http://www.google.com/calendar","c_t_2":"_blank","c_n_3":"Documents","c_u_3":"http://docs.google.com","c_t_3":"_blank","c_n_4":"Reader","c_u_4":"http://www.google.com/reader","c_t_4":"_blank","c_n_5":"Photos","c_u_5":"http://picasaweb.google.com","c_t_5":"_blank","c_n_6":"Web","c_u_6":"http://www.google.com","c_t_6":"_blank","user":false,"labs":false,"settings":false,"help":false,"out":false,"header":false,"logoH":false,"logo":false,"logoSRC":"http://www.example.com/image.jpg","s_all":false,"s_mail":false,"s_web":false,"s_links":false,"borders":false,"simplify":false,"starHigh":false,"starCLR":"#ffcc00","uHigh":false,"uCLR":"#00ccff","high":false,"highCLR":"#0099ff","highCLRu":"#00ccff","stars":false,"attach":false,"attachNew":false,"attachC":false,"ci_1":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAwFBMVEX///9twmOXt5vV08ZivFXX1cc4n2BKnW3QzsE1k2AdlkxTsFceoEVjvV5rvVhCrkyMzWx5wVxauFbU7dLc2suo1nxemneSsJcmiFLS0MM3qErN5dU5p2BXs2jl4tKByGcqp0UAiDyv1YHg3s9Oq1KHyGzRz8JknnoAfT85l1ZMsk+cup8ZjUjk6+XMyr0BljrX1cljplhHs1Msp1Flrnr8/PsNgUcOkUVKnlYxhFXq9ukQnj2FxV/z8+9qp4Fzu4ZQkmYmAAAAAXRSTlMAQObYZgAAALxJREFUeF5lzEVuBFEQA9D6CM2Mw8wTZrj/reJWlFXeoiRbKtN/H2mUHeJZ8H69zuc7ojSNZHbo/oodRUOOuxnyb3ELL7Dfn5pXoMWiLNfj5bIoNBeby4VKmI4noI+Fai2FYZjd3X+DZ76AfN9fdcEDnMy2qipKkmQdjiYY0by11tIUshFy4erNUATgPWvt3FPjgFbQeZzzutnWQExKGTslWutqfAgixphvbpQQ5iiEInrL87zvP6E/4zz+ANk3GWWQfcMTAAAAAElFTkSuQmCC","ci_2":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAYFBMVEX////JGBLBBwfFDwvPJRzVNCbNIhrDCgfKGhPIFRDXOCndSDTPKB7TMCP22NfHEg3bRDLMHRXjVD3BBAPaQC7hTzrfSzfSLSH88vHOJBq/AQHRKh7YOyvNKSP75+XNIBeaWx34AAAAAXRSTlMAQObYZgAAAHVJREFUeF5NywcKA0EIBVB1ai/bW5L73zIJLOt8EPTxhTvDEO6N4YKtg3mufu0byzKps3UQwqSiFSNDBRXRHA9UDzkiMcgEkBHxD+/fbFICx6sEpTGk9ZQfW/h71806QQ+80BVhRgaShsbDUWbRu9YEXYiI7y+jRgSXm47dBAAAAABJRU5ErkJggg==","ci_3":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAwFBMVEX///9Jvv9qyP8Rq/4BjNAxtv8hsP+R1f97zf8stP8Fld4HmeMJneoEkNcWrf8Ne7QnW3wEktoKoO4ImuZaw/8/uv8esP8Glt8NpvgcmdhRmsUAicwCjtOJ0v8MpfYohrl0y/8LofCC0P8MpPRSwf8Bis4OqPsem9oRh8Qlsv9cos0Qgr06dJh5x/UweaNCu/+c2P8cmNYfnt45uf8ar/82t/8mTmcnVXK/5f8dZI0zoNkWe7K14f9Xwv9evvUXmtyLnD/iAAAAAXRSTlMAQObYZgAAAKlJREFUeF41ylOWBEEARNFE2bbRtsf731WnJv5enAsAUDUUQTi8gJhaa+jnKCun/6feF79TrN/U0zcX2u65g9e10w3iQYW3ieUEd0g80QRjee0sEBIPPF5pN8Fqu3U/ibjLukK6t0zDnl0ilMTBtMPUr8qSCIwX2ch7ZkfWjH1gmayZCL4ebWgarJkIP7yD4du0uUjtNrcribQQf5fLcpmf+agAkiRRLMAbyPoVvHcsEKMAAAAASUVORK5CYII%3D","ci_4":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAYBQTFRFOEtOrlhX2gAARa5RZpdqh9GR7u3tx7FPKKYw/+kwuI2K3st1R2mErrGpbqdy/u1z8cwT89M8d5d829za+QEAIaUq/+pP/tsm8fHx/dYNGFV7raN21lZTq6KEeLb09NddTmN6NLQ7/9kNsayabNdzi6aNyjIx/9sbFpYeJpwu08rK6wAA78whzdHNzs/O9tAQ/f39/9sQzbq60CUl/+IRNZdF7x4gioBu5clKjsHzm7uWdJpbkLyht0Qswk1N20RFNZQ9nJF55+fn3woKwMfA6cUaIDRI694zRcVMX9Jl4xAP4hERK386y71ye6CDLrE2IYDCTYO8fpuBdWthYVVZlGJRvWlsa5R31cFRjkQ98ywri2koRZ3sv8LDgL75yFJSO3CBGXayAIUJDIsUpp10ibmNOJjgqp5n40hNvYZ0Nm9KzSoqpbVVnBwqvTMz4sAlu7A7J580L1t0h417Ob1CL5XqMJPnN5juR2+lOZ3v1tbV3NfX9RoZadZvdNl9////1FKScAAAAIB0Uk5T/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wA4BUtnAAAA/ElEQVR42mKoBwE2LSMjLQkwkwGIJbjis42N1ey4JCACekL2zkxe3kxMznnVIAFhVpuMGhlGRpkobW01tnoGAz4VVi5GhcAKhTAzEZHMegaXkhIVK4U0ubhKntDIXFthBlVFRc/UojI5y5gEX/eCaGUGvkJ/D1aGxNLyAAZuEyUdaQYWTVF/FSEGKSk3czFJfVdpBlVNDQ7FOr+QYFl+JUmBfGUGPYdkDVHTYm5+MSDflb2KoT6oMMnHUZ5T3FBJ31VQ1oCh3omlMEueU91QUl9HMN0J5HRhIWZrHRN1cUGLFGGI59h4w1lyItiledmgvgUK6cXqCUO8DxBgAGnMP5299Ij8AAAAAElFTkSuQmCC","ci_5":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAYFBMVEX////gTTnaQS+/AADrcVfqZkzXdmjOJBray7zYVkTVk4TjWkS/DQqnHRXvfGHWNynbppbXtqjLHBXp1Mfr5tjPMya0SDzXSDnTLSHh3s/pkHvFKSPyd1a6eG9nal6GiHWkF23gAAAAAXRSTlMAQObYZgAAAIhJREFUeF6NykcKQkEQhOEOk/PLwXT/W9oOgogbv139FPznIe7iE6B7h3IVqpwlxoibBFn6nFpwk9ntCKC01m3yiDSsEkZQSpX51DpGjxvVCjnndVhzlwQgopoN1eX1T4mBiPzc6r4E5y6JGaoIh7F2bE02wy5sOAZj3I17oM77bbGCAfgL/HgCqrEIzdJPFbQAAAAASUVORK5CYII=","ci_6":"https://mail.google.com/mail/u/0/images/pdf.gif","ci_7":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAwFBMVEX///8AiDwcokLy8eUBmTlCvP9Jvv96zf9zy/9syf+32ufz8+pDr0wAkjppvO2E0f9exP+L0v46rEpVwv9at+2f2f9Ov/+ExO3w7eInpkQyqkjH5vWAz/84uP8qqpF6we254faS1f+b2P88uf9RwP80t//u7N9kxv9Vv/vr6dve5uG43/ERnz5oxfh3yfYNl2CX1//i389Zw//e28wSoV7o5ddYvsQDiEm82N8cmkNOtnfl4tIJnDwVoWtKt5Y9tc6aIrEXAAAAAXRSTlMAQObYZgAAAKdJREFUeF5NzdWuAzEMBFAnWWZmLDNzL/z/XzWudtX6zUczGoBd69qFrKhTx48kESD8wGEkiUMIB23TLItvyHWWLDRN7SHUdTaZn5+3TQc5YwnC/rh+w8CN47q2LCsIZgi46tqy0s+WgH+/GonDEvDvAtgYw4Pf3wUDvIFgeFmWUlo5/n+1JeSKkKZ09XP6NU2TEPIGykEQ8EcwDA+N350fAcAGBrrGC6HBFvKj4FQ8AAAAAElFTkSuQmCC","ci_8":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAYFBMVEX////aWwf+gwD8ZQHEVQP/mxz0YwL/zY3eXAb/r0f/oiv+27H/05rsYQP/fAD/dQD/qDn/wXH/tVX/u2P/cAD0cALubgT+iQDoXwSxSgb/x3/pbQTbWwf/awDQaQLjXQXM1JhSAAAAAXRSTlMAQObYZgAAAIlJREFUeF5lykUCQjEMhOFJvU/dhfvfkqTQDWT3/Rn8X1lW/ujHIXaF/bWVUlV+XR/VNO2kzWsDvHg/JZjdbAHHsSr1iG9nag59r5Ric9Cufl0YR2Yyhy0QhiE7DQgxtsyPeUDoukmYzANCUdzCbIK1WjOzCbCOxQzJFwDXzvO8LGc6CZD/d0DlG4N+DR+Rmb4UAAAAAElFTkSuQmCC","ci_9":"data:image/gif;base64,R0lGODlhEAAQAMQfAMS35mtMwlItt5N70lw5vEUdsVUwuGNCvnJTxFsnpFg0ukwmtVUgoa2b3aCL2IZszWdGwGA+vU8otntfyXdax0sktEgfsm9QxKiV27Gg3lk1ukghs2k4qUQbsbOi3////yH5BAEAAB8ALAAAAAAQABAAAAWk4AdkwwCcDkSdAPI5ntcMDxYPR9DE1wR7mMfE5hkQIDtPIsFpLplOBvRCmUwolEsAciAoDJJKIXBBmLXciFcg2XQggXg8TdAYBAtL5wDpcw9qdmwbBQURh4CHdXdhehsaBJGRGl9sFXoWEgYKnF93lnoFC58CpWwSCxuhCwIaC6+oCxUbhB0WrAoaFrS0FoUdBRuauQofvG4dybTDxR/Oz9DRHyEAOw==","pi":false,"t_top":false,"bottom":false,"t_check":false,"t_check_l":false,"t_arch":false,"t_move":false,"t_actions":false,"t_refresh":false,"reply":false,"zads":false,"ads":false,"bads":false,"nav":false,"navW":"172","invites":false,"top":false,"mail":false,"contacts":false,"tasks":false,"middle":false,"compose":false,"inboxH":false,"spam":false,"buzz":false,"icons":false,"moreC":false,"more":false,"chat":false,"c_search":false,"c_invisible":false,"offline":false,"status":false,"f_tips":false,"f_options":false,"f_legal":false,"f_s_classic":false,"f_s_label":false,"f_s_graphic":false,"f_s_verbose":false,"f_s_menu":false,"f_activity_show":false,"f_activity_hide":false,"f_activity_move":false}
+#000000
+#bbbbbb
+#f9f9f9
+#e3e3e3
+
+https://mail.google.com/a/yourdomain.com
+#ffcc00
+#00ccff
+#0099ff
+#00ccff</textarea>
+					<textarea id="EI_1" rows="5" cols="40">{"mgicon":false,"BTN":false,"BTNcolor":"#000000","BTNborder":"#bbbbbb","BTNbottom":"#f9f9f9","BTNtop":"#e3e3e3","loader":false,"corners":false,"customCSS":false,"customCSSval":"","favicon":true,"desktop":false,"apps":false,"appsURL":"https://mail.google.com/a/yourdomain.com","gbarH":false,"gbarB":false,"gbar":false,"cbar":false,"c_n_1":"Gmail","c_u_1":"https://mail.google.com","c_t_1":"_blank","c_n_2":"Calendar","c_u_2":"http://www.google.com/calendar","c_t_2":"_blank","c_n_3":"Documents","c_u_3":"http://docs.google.com","c_t_3":"_blank","c_n_4":"Reader","c_u_4":"http://www.google.com/reader","c_t_4":"_blank","c_n_5":"Photos","c_u_5":"http://picasaweb.google.com","c_t_5":"_blank","c_n_6":"Web","c_u_6":"http://www.google.com","c_t_6":"_blank","user":false,"labs":false,"settings":false,"help":false,"out":false,"header":false,"logoH":false,"logo":false,"logoSRC":"http://www.example.com/image.jpg","s_all":false,"s_mail":false,"s_web":false,"s_links":false,"borders":false,"simplify":false,"starHigh":true,"starCLR":"#ffcc00","uHigh":true,"uCLR":"#00ccff","high":true,"highCLR":"#0099ff","highCLRu":"#00ccff","stars":false,"attach":true,"attachNew":false,"attachC":false,"ci_1":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAwFBMVEX///9twmOXt5vV08ZivFXX1cc4n2BKnW3QzsE1k2AdlkxTsFceoEVjvV5rvVhCrkyMzWx5wVxauFbU7dLc2suo1nxemneSsJcmiFLS0MM3qErN5dU5p2BXs2jl4tKByGcqp0UAiDyv1YHg3s9Oq1KHyGzRz8JknnoAfT85l1ZMsk+cup8ZjUjk6+XMyr0BljrX1cljplhHs1Msp1Flrnr8/PsNgUcOkUVKnlYxhFXq9ukQnj2FxV/z8+9qp4Fzu4ZQkmYmAAAAAXRSTlMAQObYZgAAALxJREFUeF5lzEVuBFEQA9D6CM2Mw8wTZrj/reJWlFXeoiRbKtN/H2mUHeJZ8H69zuc7ojSNZHbo/oodRUOOuxnyb3ELL7Dfn5pXoMWiLNfj5bIoNBeby4VKmI4noI+Fai2FYZjd3X+DZ76AfN9fdcEDnMy2qipKkmQdjiYY0by11tIUshFy4erNUATgPWvt3FPjgFbQeZzzutnWQExKGTslWutqfAgixphvbpQQ5iiEInrL87zvP6E/4zz+ANk3GWWQfcMTAAAAAElFTkSuQmCC","ci_2":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAYFBMVEX////JGBLBBwfFDwvPJRzVNCbNIhrDCgfKGhPIFRDXOCndSDTPKB7TMCP22NfHEg3bRDLMHRXjVD3BBAPaQC7hTzrfSzfSLSH88vHOJBq/AQHRKh7YOyvNKSP75+XNIBeaWx34AAAAAXRSTlMAQObYZgAAAHVJREFUeF5NywcKA0EIBVB1ai/bW5L73zIJLOt8EPTxhTvDEO6N4YKtg3mufu0byzKps3UQwqSiFSNDBRXRHA9UDzkiMcgEkBHxD+/fbFICx6sEpTGk9ZQfW/h71806QQ+80BVhRgaShsbDUWbRu9YEXYiI7y+jRgSXm47dBAAAAABJRU5ErkJggg==","ci_3":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAwFBMVEX///9Jvv9qyP8Rq/4BjNAxtv8hsP+R1f97zf8stP8Fld4HmeMJneoEkNcWrf8Ne7QnW3wEktoKoO4ImuZaw/8/uv8esP8Glt8NpvgcmdhRmsUAicwCjtOJ0v8MpfYohrl0y/8LofCC0P8MpPRSwf8Bis4OqPsem9oRh8Qlsv9cos0Qgr06dJh5x/UweaNCu/+c2P8cmNYfnt45uf8ar/82t/8mTmcnVXK/5f8dZI0zoNkWe7K14f9Xwv9evvUXmtyLnD/iAAAAAXRSTlMAQObYZgAAAKlJREFUeF41ylOWBEEARNFE2bbRtsf731WnJv5enAsAUDUUQTi8gJhaa+jnKCun/6feF79TrN/U0zcX2u65g9e10w3iQYW3ieUEd0g80QRjee0sEBIPPF5pN8Fqu3U/ibjLukK6t0zDnl0ilMTBtMPUr8qSCIwX2ch7ZkfWjH1gmayZCL4ebWgarJkIP7yD4du0uUjtNrcribQQf5fLcpmf+agAkiRRLMAbyPoVvHcsEKMAAAAASUVORK5CYII%3D","ci_4":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAYBQTFRFOEtOrlhX2gAARa5RZpdqh9GR7u3tx7FPKKYw/+kwuI2K3st1R2mErrGpbqdy/u1z8cwT89M8d5d829za+QEAIaUq/+pP/tsm8fHx/dYNGFV7raN21lZTq6KEeLb09NddTmN6NLQ7/9kNsayabNdzi6aNyjIx/9sbFpYeJpwu08rK6wAA78whzdHNzs/O9tAQ/f39/9sQzbq60CUl/+IRNZdF7x4gioBu5clKjsHzm7uWdJpbkLyht0Qswk1N20RFNZQ9nJF55+fn3woKwMfA6cUaIDRI694zRcVMX9Jl4xAP4hERK386y71ye6CDLrE2IYDCTYO8fpuBdWthYVVZlGJRvWlsa5R31cFRjkQ98ywri2koRZ3sv8LDgL75yFJSO3CBGXayAIUJDIsUpp10ibmNOJjgqp5n40hNvYZ0Nm9KzSoqpbVVnBwqvTMz4sAlu7A7J580L1t0h417Ob1CL5XqMJPnN5juR2+lOZ3v1tbV3NfX9RoZadZvdNl9////1FKScAAAAIB0Uk5T/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wA4BUtnAAAA/ElEQVR42mKoBwE2LSMjLQkwkwGIJbjis42N1ey4JCACekL2zkxe3kxMznnVIAFhVpuMGhlGRpkobW01tnoGAz4VVi5GhcAKhTAzEZHMegaXkhIVK4U0ubhKntDIXFthBlVFRc/UojI5y5gEX/eCaGUGvkJ/D1aGxNLyAAZuEyUdaQYWTVF/FSEGKSk3czFJfVdpBlVNDQ7FOr+QYFl+JUmBfGUGPYdkDVHTYm5+MSDflb2KoT6oMMnHUZ5T3FBJ31VQ1oCh3omlMEueU91QUl9HMN0J5HRhIWZrHRN1cUGLFGGI59h4w1lyItiledmgvgUK6cXqCUO8DxBgAGnMP5299Ij8AAAAAElFTkSuQmCC","ci_5":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAYFBMVEX////gTTnaQS+/AADrcVfqZkzXdmjOJBray7zYVkTVk4TjWkS/DQqnHRXvfGHWNynbppbXtqjLHBXp1Mfr5tjPMya0SDzXSDnTLSHh3s/pkHvFKSPyd1a6eG9nal6GiHWkF23gAAAAAXRSTlMAQObYZgAAAIhJREFUeF6NykcKQkEQhOEOk/PLwXT/W9oOgogbv139FPznIe7iE6B7h3IVqpwlxoibBFn6nFpwk9ntCKC01m3yiDSsEkZQSpX51DpGjxvVCjnndVhzlwQgopoN1eX1T4mBiPzc6r4E5y6JGaoIh7F2bE02wy5sOAZj3I17oM77bbGCAfgL/HgCqrEIzdJPFbQAAAAASUVORK5CYII=","ci_6":"https://mail.google.com/mail/u/0/images/pdf.gif","ci_7":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAwFBMVEX///8AiDwcokLy8eUBmTlCvP9Jvv96zf9zy/9syf+32ufz8+pDr0wAkjppvO2E0f9exP+L0v46rEpVwv9at+2f2f9Ov/+ExO3w7eInpkQyqkjH5vWAz/84uP8qqpF6we254faS1f+b2P88uf9RwP80t//u7N9kxv9Vv/vr6dve5uG43/ERnz5oxfh3yfYNl2CX1//i389Zw//e28wSoV7o5ddYvsQDiEm82N8cmkNOtnfl4tIJnDwVoWtKt5Y9tc6aIrEXAAAAAXRSTlMAQObYZgAAAKdJREFUeF5NzdWuAzEMBFAnWWZmLDNzL/z/XzWudtX6zUczGoBd69qFrKhTx48kESD8wGEkiUMIB23TLItvyHWWLDRN7SHUdTaZn5+3TQc5YwnC/rh+w8CN47q2LCsIZgi46tqy0s+WgH+/GonDEvDvAtgYw4Pf3wUDvIFgeFmWUlo5/n+1JeSKkKZ09XP6NU2TEPIGykEQ8EcwDA+N350fAcAGBrrGC6HBFvKj4FQ8AAAAAElFTkSuQmCC","ci_8":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAYFBMVEX////aWwf+gwD8ZQHEVQP/mxz0YwL/zY3eXAb/r0f/oiv+27H/05rsYQP/fAD/dQD/qDn/wXH/tVX/u2P/cAD0cALubgT+iQDoXwSxSgb/x3/pbQTbWwf/awDQaQLjXQXM1JhSAAAAAXRSTlMAQObYZgAAAIlJREFUeF5lykUCQjEMhOFJvU/dhfvfkqTQDWT3/Rn8X1lW/ujHIXaF/bWVUlV+XR/VNO2kzWsDvHg/JZjdbAHHsSr1iG9nag59r5Ric9Cufl0YR2Yyhy0QhiE7DQgxtsyPeUDoukmYzANCUdzCbIK1WjOzCbCOxQzJFwDXzvO8LGc6CZD/d0DlG4N+DR+Rmb4UAAAAAElFTkSuQmCC","ci_9":"data:image/gif;base64,R0lGODlhEAAQAMQfAMS35mtMwlItt5N70lw5vEUdsVUwuGNCvnJTxFsnpFg0ukwmtVUgoa2b3aCL2IZszWdGwGA+vU8otntfyXdax0sktEgfsm9QxKiV27Gg3lk1ukghs2k4qUQbsbOi3////yH5BAEAAB8ALAAAAAAQABAAAAWk4AdkwwCcDkSdAPI5ntcMDxYPR9DE1wR7mMfE5hkQIDtPIsFpLplOBvRCmUwolEsAciAoDJJKIXBBmLXciFcg2XQggXg8TdAYBAtL5wDpcw9qdmwbBQURh4CHdXdhehsaBJGRGl9sFXoWEgYKnF93lnoFC58CpWwSCxuhCwIaC6+oCxUbhB0WrAoaFrS0FoUdBRuauQofvG4dybTDxR/Oz9DRHyEAOw==","pi":false,"t_top":false,"bottom":true,"t_check":false,"t_check_l":false,"t_arch":false,"t_move":false,"t_actions":false,"t_refresh":false,"reply":false,"zads":true,"ads":true,"bads":true,"nav":false,"navW":"172","invites":true,"top":false,"mail":false,"contacts":false,"tasks":false,"middle":false,"compose":false,"inboxH":false,"spam":false,"buzz":false,"icons":false,"moreC":false,"more":false,"chat":false,"c_search":false,"c_invisible":false,"offline":false,"status":false,"f_tips":true,"f_options":true,"f_legal":true,"f_s_classic":true,"f_s_label":true,"f_s_graphic":true,"f_s_verbose":true,"f_s_menu":true,"f_activity_show":true,"f_activity_hide":false,"f_activity_move":false}
+#000000
+#bbbbbb
+#f9f9f9
+#e3e3e3
+
+https://mail.google.com/a/yourdomain.com
+#ffcc00
+#00ccff
+#0099ff
+#00ccff</textarea>
+					<textarea id="EI_2" rows="5" cols="40">{"mgicon":false,"BTN":false,"BTNcolor":"#000000","BTNborder":"#bbbbbb","BTNbottom":"#f9f9f9","BTNtop":"#e3e3e3","loader":false,"corners":false,"customCSS":false,"customCSSval":"","favicon":true,"desktop":false,"apps":false,"appsURL":"https://mail.google.com/a/yourdomain.com","gbarH":false,"gbarB":true,"gbar":true,"cbar":false,"c_n_1":"Gmail","c_u_1":"https://mail.google.com","c_t_1":"_blank","c_n_2":"Calendar","c_u_2":"http://www.google.com/calendar","c_t_2":"_blank","c_n_3":"Documents","c_u_3":"http://docs.google.com","c_t_3":"_blank","c_n_4":"Reader","c_u_4":"http://www.google.com/reader","c_t_4":"_blank","c_n_5":"Photos","c_u_5":"http://picasaweb.google.com","c_t_5":"_blank","c_n_6":"Web","c_u_6":"http://www.google.com","c_t_6":"_blank","user":false,"labs":true,"settings":false,"help":true,"out":false,"header":false,"logoH":false,"logo":false,"logoSRC":"http://www.example.com/image.jpg","s_all":false,"s_mail":false,"s_web":true,"s_links":true,"borders":false,"simplify":false,"starHigh":true,"starCLR":"#ffcc00","uHigh":true,"uCLR":"#00ccff","high":true,"highCLR":"#0099ff","highCLRu":"#00ccff","stars":true,"attach":false,"attachNew":true,"attachC":false,"ci_1":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAwFBMVEX///9twmOXt5vV08ZivFXX1cc4n2BKnW3QzsE1k2AdlkxTsFceoEVjvV5rvVhCrkyMzWx5wVxauFbU7dLc2suo1nxemneSsJcmiFLS0MM3qErN5dU5p2BXs2jl4tKByGcqp0UAiDyv1YHg3s9Oq1KHyGzRz8JknnoAfT85l1ZMsk+cup8ZjUjk6+XMyr0BljrX1cljplhHs1Msp1Flrnr8/PsNgUcOkUVKnlYxhFXq9ukQnj2FxV/z8+9qp4Fzu4ZQkmYmAAAAAXRSTlMAQObYZgAAALxJREFUeF5lzEVuBFEQA9D6CM2Mw8wTZrj/reJWlFXeoiRbKtN/H2mUHeJZ8H69zuc7ojSNZHbo/oodRUOOuxnyb3ELL7Dfn5pXoMWiLNfj5bIoNBeby4VKmI4noI+Fai2FYZjd3X+DZ76AfN9fdcEDnMy2qipKkmQdjiYY0by11tIUshFy4erNUATgPWvt3FPjgFbQeZzzutnWQExKGTslWutqfAgixphvbpQQ5iiEInrL87zvP6E/4zz+ANk3GWWQfcMTAAAAAElFTkSuQmCC","ci_2":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAYFBMVEX////JGBLBBwfFDwvPJRzVNCbNIhrDCgfKGhPIFRDXOCndSDTPKB7TMCP22NfHEg3bRDLMHRXjVD3BBAPaQC7hTzrfSzfSLSH88vHOJBq/AQHRKh7YOyvNKSP75+XNIBeaWx34AAAAAXRSTlMAQObYZgAAAHVJREFUeF5NywcKA0EIBVB1ai/bW5L73zIJLOt8EPTxhTvDEO6N4YKtg3mufu0byzKps3UQwqSiFSNDBRXRHA9UDzkiMcgEkBHxD+/fbFICx6sEpTGk9ZQfW/h71806QQ+80BVhRgaShsbDUWbRu9YEXYiI7y+jRgSXm47dBAAAAABJRU5ErkJggg==","ci_3":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAwFBMVEX///9Jvv9qyP8Rq/4BjNAxtv8hsP+R1f97zf8stP8Fld4HmeMJneoEkNcWrf8Ne7QnW3wEktoKoO4ImuZaw/8/uv8esP8Glt8NpvgcmdhRmsUAicwCjtOJ0v8MpfYohrl0y/8LofCC0P8MpPRSwf8Bis4OqPsem9oRh8Qlsv9cos0Qgr06dJh5x/UweaNCu/+c2P8cmNYfnt45uf8ar/82t/8mTmcnVXK/5f8dZI0zoNkWe7K14f9Xwv9evvUXmtyLnD/iAAAAAXRSTlMAQObYZgAAAKlJREFUeF41ylOWBEEARNFE2bbRtsf731WnJv5enAsAUDUUQTi8gJhaa+jnKCun/6feF79TrN/U0zcX2u65g9e10w3iQYW3ieUEd0g80QRjee0sEBIPPF5pN8Fqu3U/ibjLukK6t0zDnl0ilMTBtMPUr8qSCIwX2ch7ZkfWjH1gmayZCL4ebWgarJkIP7yD4du0uUjtNrcribQQf5fLcpmf+agAkiRRLMAbyPoVvHcsEKMAAAAASUVORK5CYII%3D","ci_4":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAYBQTFRFOEtOrlhX2gAARa5RZpdqh9GR7u3tx7FPKKYw/+kwuI2K3st1R2mErrGpbqdy/u1z8cwT89M8d5d829za+QEAIaUq/+pP/tsm8fHx/dYNGFV7raN21lZTq6KEeLb09NddTmN6NLQ7/9kNsayabNdzi6aNyjIx/9sbFpYeJpwu08rK6wAA78whzdHNzs/O9tAQ/f39/9sQzbq60CUl/+IRNZdF7x4gioBu5clKjsHzm7uWdJpbkLyht0Qswk1N20RFNZQ9nJF55+fn3woKwMfA6cUaIDRI694zRcVMX9Jl4xAP4hERK386y71ye6CDLrE2IYDCTYO8fpuBdWthYVVZlGJRvWlsa5R31cFRjkQ98ywri2koRZ3sv8LDgL75yFJSO3CBGXayAIUJDIsUpp10ibmNOJjgqp5n40hNvYZ0Nm9KzSoqpbVVnBwqvTMz4sAlu7A7J580L1t0h417Ob1CL5XqMJPnN5juR2+lOZ3v1tbV3NfX9RoZadZvdNl9////1FKScAAAAIB0Uk5T/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wA4BUtnAAAA/ElEQVR42mKoBwE2LSMjLQkwkwGIJbjis42N1ey4JCACekL2zkxe3kxMznnVIAFhVpuMGhlGRpkobW01tnoGAz4VVi5GhcAKhTAzEZHMegaXkhIVK4U0ubhKntDIXFthBlVFRc/UojI5y5gEX/eCaGUGvkJ/D1aGxNLyAAZuEyUdaQYWTVF/FSEGKSk3czFJfVdpBlVNDQ7FOr+QYFl+JUmBfGUGPYdkDVHTYm5+MSDflb2KoT6oMMnHUZ5T3FBJ31VQ1oCh3omlMEueU91QUl9HMN0J5HRhIWZrHRN1cUGLFGGI59h4w1lyItiledmgvgUK6cXqCUO8DxBgAGnMP5299Ij8AAAAAElFTkSuQmCC","ci_5":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAYFBMVEX////gTTnaQS+/AADrcVfqZkzXdmjOJBray7zYVkTVk4TjWkS/DQqnHRXvfGHWNynbppbXtqjLHBXp1Mfr5tjPMya0SDzXSDnTLSHh3s/pkHvFKSPyd1a6eG9nal6GiHWkF23gAAAAAXRSTlMAQObYZgAAAIhJREFUeF6NykcKQkEQhOEOk/PLwXT/W9oOgogbv139FPznIe7iE6B7h3IVqpwlxoibBFn6nFpwk9ntCKC01m3yiDSsEkZQSpX51DpGjxvVCjnndVhzlwQgopoN1eX1T4mBiPzc6r4E5y6JGaoIh7F2bE02wy5sOAZj3I17oM77bbGCAfgL/HgCqrEIzdJPFbQAAAAASUVORK5CYII=","ci_6":"https://mail.google.com/mail/u/0/images/pdf.gif","ci_7":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAwFBMVEX///8AiDwcokLy8eUBmTlCvP9Jvv96zf9zy/9syf+32ufz8+pDr0wAkjppvO2E0f9exP+L0v46rEpVwv9at+2f2f9Ov/+ExO3w7eInpkQyqkjH5vWAz/84uP8qqpF6we254faS1f+b2P88uf9RwP80t//u7N9kxv9Vv/vr6dve5uG43/ERnz5oxfh3yfYNl2CX1//i389Zw//e28wSoV7o5ddYvsQDiEm82N8cmkNOtnfl4tIJnDwVoWtKt5Y9tc6aIrEXAAAAAXRSTlMAQObYZgAAAKdJREFUeF5NzdWuAzEMBFAnWWZmLDNzL/z/XzWudtX6zUczGoBd69qFrKhTx48kESD8wGEkiUMIB23TLItvyHWWLDRN7SHUdTaZn5+3TQc5YwnC/rh+w8CN47q2LCsIZgi46tqy0s+WgH+/GonDEvDvAtgYw4Pf3wUDvIFgeFmWUlo5/n+1JeSKkKZ09XP6NU2TEPIGykEQ8EcwDA+N350fAcAGBrrGC6HBFvKj4FQ8AAAAAElFTkSuQmCC","ci_8":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAYFBMVEX////aWwf+gwD8ZQHEVQP/mxz0YwL/zY3eXAb/r0f/oiv+27H/05rsYQP/fAD/dQD/qDn/wXH/tVX/u2P/cAD0cALubgT+iQDoXwSxSgb/x3/pbQTbWwf/awDQaQLjXQXM1JhSAAAAAXRSTlMAQObYZgAAAIlJREFUeF5lykUCQjEMhOFJvU/dhfvfkqTQDWT3/Rn8X1lW/ujHIXaF/bWVUlV+XR/VNO2kzWsDvHg/JZjdbAHHsSr1iG9nag59r5Ric9Cufl0YR2Yyhy0QhiE7DQgxtsyPeUDoukmYzANCUdzCbIK1WjOzCbCOxQzJFwDXzvO8LGc6CZD/d0DlG4N+DR+Rmb4UAAAAAElFTkSuQmCC","ci_9":"data:image/gif;base64,R0lGODlhEAAQAMQfAMS35mtMwlItt5N70lw5vEUdsVUwuGNCvnJTxFsnpFg0ukwmtVUgoa2b3aCL2IZszWdGwGA+vU8otntfyXdax0sktEgfsm9QxKiV27Gg3lk1ukghs2k4qUQbsbOi3////yH5BAEAAB8ALAAAAAAQABAAAAWk4AdkwwCcDkSdAPI5ntcMDxYPR9DE1wR7mMfE5hkQIDtPIsFpLplOBvRCmUwolEsAciAoDJJKIXBBmLXciFcg2XQggXg8TdAYBAtL5wDpcw9qdmwbBQURh4CHdXdhehsaBJGRGl9sFXoWEgYKnF93lnoFC58CpWwSCxuhCwIaC6+oCxUbhB0WrAoaFrS0FoUdBRuauQofvG4dybTDxR/Oz9DRHyEAOw==","pi":false,"t_top":false,"bottom":true,"t_check":false,"t_check_l":false,"t_arch":false,"t_move":false,"t_actions":false,"t_refresh":false,"reply":true,"zads":true,"ads":true,"bads":true,"nav":false,"navW":"172","invites":true,"top":false,"mail":false,"contacts":false,"tasks":false,"middle":false,"compose":false,"inboxH":false,"spam":false,"buzz":false,"icons":false,"moreC":false,"more":false,"chat":false,"c_search":true,"c_invisible":false,"offline":true,"status":false,"f_tips":true,"f_options":true,"f_legal":true,"f_s_classic":true,"f_s_label":true,"f_s_graphic":true,"f_s_verbose":true,"f_s_menu":true,"f_activity_show":false,"f_activity_hide":false,"f_activity_move":true}
+#000000
+#bbbbbb
+#f9f9f9
+#e3e3e3
+
+https://mail.google.com/a/yourdomain.com
+#ffcc00
+#00ccff
+#0099ff
+#00ccff</textarea>
+					<textarea id="EI_3" rows="5" cols="40">{"mgicon":false,"BTN":false,"BTNcolor":"#000000","BTNborder":"#bbbbbb","BTNbottom":"#f9f9f9","BTNtop":"#e3e3e3","loader":true,"corners":false,"customCSS":false,"customCSSval":"","favicon":true,"desktop":false,"apps":false,"appsURL":"https://mail.google.com/a/yourdomain.com","gbarH":true,"gbarB":true,"gbar":true,"cbar":false,"c_n_1":"Gmail","c_u_1":"https://mail.google.com","c_t_1":"_blank","c_n_2":"Calendar","c_u_2":"http://www.google.com/calendar","c_t_2":"_blank","c_n_3":"Documents","c_u_3":"http://docs.google.com","c_t_3":"_blank","c_n_4":"Reader","c_u_4":"http://www.google.com/reader","c_t_4":"_blank","c_n_5":"Photos","c_u_5":"http://picasaweb.google.com","c_t_5":"_blank","c_n_6":"Web","c_u_6":"http://www.google.com","c_t_6":"_blank","user":false,"labs":true,"settings":false,"help":true,"out":false,"header":true,"logoH":false,"logo":false,"logoSRC":"http://www.example.com/image.jpg","s_all":false,"s_mail":false,"s_web":true,"s_links":true,"borders":true,"simplify":true,"starHigh":true,"starCLR":"#ffcc00","uHigh":true,"uCLR":"#00ccff","high":true,"highCLR":"#0099ff","highCLRu":"#00ccff","stars":true,"attach":false,"attachNew":true,"attachC":false,"ci_1":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAwFBMVEX///9twmOXt5vV08ZivFXX1cc4n2BKnW3QzsE1k2AdlkxTsFceoEVjvV5rvVhCrkyMzWx5wVxauFbU7dLc2suo1nxemneSsJcmiFLS0MM3qErN5dU5p2BXs2jl4tKByGcqp0UAiDyv1YHg3s9Oq1KHyGzRz8JknnoAfT85l1ZMsk+cup8ZjUjk6+XMyr0BljrX1cljplhHs1Msp1Flrnr8/PsNgUcOkUVKnlYxhFXq9ukQnj2FxV/z8+9qp4Fzu4ZQkmYmAAAAAXRSTlMAQObYZgAAALxJREFUeF5lzEVuBFEQA9D6CM2Mw8wTZrj/reJWlFXeoiRbKtN/H2mUHeJZ8H69zuc7ojSNZHbo/oodRUOOuxnyb3ELL7Dfn5pXoMWiLNfj5bIoNBeby4VKmI4noI+Fai2FYZjd3X+DZ76AfN9fdcEDnMy2qipKkmQdjiYY0by11tIUshFy4erNUATgPWvt3FPjgFbQeZzzutnWQExKGTslWutqfAgixphvbpQQ5iiEInrL87zvP6E/4zz+ANk3GWWQfcMTAAAAAElFTkSuQmCC","ci_2":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAYFBMVEX////JGBLBBwfFDwvPJRzVNCbNIhrDCgfKGhPIFRDXOCndSDTPKB7TMCP22NfHEg3bRDLMHRXjVD3BBAPaQC7hTzrfSzfSLSH88vHOJBq/AQHRKh7YOyvNKSP75+XNIBeaWx34AAAAAXRSTlMAQObYZgAAAHVJREFUeF5NywcKA0EIBVB1ai/bW5L73zIJLOt8EPTxhTvDEO6N4YKtg3mufu0byzKps3UQwqSiFSNDBRXRHA9UDzkiMcgEkBHxD+/fbFICx6sEpTGk9ZQfW/h71806QQ+80BVhRgaShsbDUWbRu9YEXYiI7y+jRgSXm47dBAAAAABJRU5ErkJggg==","ci_3":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAwFBMVEX///9Jvv9qyP8Rq/4BjNAxtv8hsP+R1f97zf8stP8Fld4HmeMJneoEkNcWrf8Ne7QnW3wEktoKoO4ImuZaw/8/uv8esP8Glt8NpvgcmdhRmsUAicwCjtOJ0v8MpfYohrl0y/8LofCC0P8MpPRSwf8Bis4OqPsem9oRh8Qlsv9cos0Qgr06dJh5x/UweaNCu/+c2P8cmNYfnt45uf8ar/82t/8mTmcnVXK/5f8dZI0zoNkWe7K14f9Xwv9evvUXmtyLnD/iAAAAAXRSTlMAQObYZgAAAKlJREFUeF41ylOWBEEARNFE2bbRtsf731WnJv5enAsAUDUUQTi8gJhaa+jnKCun/6feF79TrN/U0zcX2u65g9e10w3iQYW3ieUEd0g80QRjee0sEBIPPF5pN8Fqu3U/ibjLukK6t0zDnl0ilMTBtMPUr8qSCIwX2ch7ZkfWjH1gmayZCL4ebWgarJkIP7yD4du0uUjtNrcribQQf5fLcpmf+agAkiRRLMAbyPoVvHcsEKMAAAAASUVORK5CYII%3D","ci_4":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAYBQTFRFOEtOrlhX2gAARa5RZpdqh9GR7u3tx7FPKKYw/+kwuI2K3st1R2mErrGpbqdy/u1z8cwT89M8d5d829za+QEAIaUq/+pP/tsm8fHx/dYNGFV7raN21lZTq6KEeLb09NddTmN6NLQ7/9kNsayabNdzi6aNyjIx/9sbFpYeJpwu08rK6wAA78whzdHNzs/O9tAQ/f39/9sQzbq60CUl/+IRNZdF7x4gioBu5clKjsHzm7uWdJpbkLyht0Qswk1N20RFNZQ9nJF55+fn3woKwMfA6cUaIDRI694zRcVMX9Jl4xAP4hERK386y71ye6CDLrE2IYDCTYO8fpuBdWthYVVZlGJRvWlsa5R31cFRjkQ98ywri2koRZ3sv8LDgL75yFJSO3CBGXayAIUJDIsUpp10ibmNOJjgqp5n40hNvYZ0Nm9KzSoqpbVVnBwqvTMz4sAlu7A7J580L1t0h417Ob1CL5XqMJPnN5juR2+lOZ3v1tbV3NfX9RoZadZvdNl9////1FKScAAAAIB0Uk5T/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wA4BUtnAAAA/ElEQVR42mKoBwE2LSMjLQkwkwGIJbjis42N1ey4JCACekL2zkxe3kxMznnVIAFhVpuMGhlGRpkobW01tnoGAz4VVi5GhcAKhTAzEZHMegaXkhIVK4U0ubhKntDIXFthBlVFRc/UojI5y5gEX/eCaGUGvkJ/D1aGxNLyAAZuEyUdaQYWTVF/FSEGKSk3czFJfVdpBlVNDQ7FOr+QYFl+JUmBfGUGPYdkDVHTYm5+MSDflb2KoT6oMMnHUZ5T3FBJ31VQ1oCh3omlMEueU91QUl9HMN0J5HRhIWZrHRN1cUGLFGGI59h4w1lyItiledmgvgUK6cXqCUO8DxBgAGnMP5299Ij8AAAAAElFTkSuQmCC","ci_5":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAYFBMVEX////gTTnaQS+/AADrcVfqZkzXdmjOJBray7zYVkTVk4TjWkS/DQqnHRXvfGHWNynbppbXtqjLHBXp1Mfr5tjPMya0SDzXSDnTLSHh3s/pkHvFKSPyd1a6eG9nal6GiHWkF23gAAAAAXRSTlMAQObYZgAAAIhJREFUeF6NykcKQkEQhOEOk/PLwXT/W9oOgogbv139FPznIe7iE6B7h3IVqpwlxoibBFn6nFpwk9ntCKC01m3yiDSsEkZQSpX51DpGjxvVCjnndVhzlwQgopoN1eX1T4mBiPzc6r4E5y6JGaoIh7F2bE02wy5sOAZj3I17oM77bbGCAfgL/HgCqrEIzdJPFbQAAAAASUVORK5CYII=","ci_6":"https://mail.google.com/mail/u/0/images/pdf.gif","ci_7":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAwFBMVEX///8AiDwcokLy8eUBmTlCvP9Jvv96zf9zy/9syf+32ufz8+pDr0wAkjppvO2E0f9exP+L0v46rEpVwv9at+2f2f9Ov/+ExO3w7eInpkQyqkjH5vWAz/84uP8qqpF6we254faS1f+b2P88uf9RwP80t//u7N9kxv9Vv/vr6dve5uG43/ERnz5oxfh3yfYNl2CX1//i389Zw//e28wSoV7o5ddYvsQDiEm82N8cmkNOtnfl4tIJnDwVoWtKt5Y9tc6aIrEXAAAAAXRSTlMAQObYZgAAAKdJREFUeF5NzdWuAzEMBFAnWWZmLDNzL/z/XzWudtX6zUczGoBd69qFrKhTx48kESD8wGEkiUMIB23TLItvyHWWLDRN7SHUdTaZn5+3TQc5YwnC/rh+w8CN47q2LCsIZgi46tqy0s+WgH+/GonDEvDvAtgYw4Pf3wUDvIFgeFmWUlo5/n+1JeSKkKZ09XP6NU2TEPIGykEQ8EcwDA+N350fAcAGBrrGC6HBFvKj4FQ8AAAAAElFTkSuQmCC","ci_8":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAYFBMVEX////aWwf+gwD8ZQHEVQP/mxz0YwL/zY3eXAb/r0f/oiv+27H/05rsYQP/fAD/dQD/qDn/wXH/tVX/u2P/cAD0cALubgT+iQDoXwSxSgb/x3/pbQTbWwf/awDQaQLjXQXM1JhSAAAAAXRSTlMAQObYZgAAAIlJREFUeF5lykUCQjEMhOFJvU/dhfvfkqTQDWT3/Rn8X1lW/ujHIXaF/bWVUlV+XR/VNO2kzWsDvHg/JZjdbAHHsSr1iG9nag59r5Ric9Cufl0YR2Yyhy0QhiE7DQgxtsyPeUDoukmYzANCUdzCbIK1WjOzCbCOxQzJFwDXzvO8LGc6CZD/d0DlG4N+DR+Rmb4UAAAAAElFTkSuQmCC","ci_9":"data:image/gif;base64,R0lGODlhEAAQAMQfAMS35mtMwlItt5N70lw5vEUdsVUwuGNCvnJTxFsnpFg0ukwmtVUgoa2b3aCL2IZszWdGwGA+vU8otntfyXdax0sktEgfsm9QxKiV27Gg3lk1ukghs2k4qUQbsbOi3////yH5BAEAAB8ALAAAAAAQABAAAAWk4AdkwwCcDkSdAPI5ntcMDxYPR9DE1wR7mMfE5hkQIDtPIsFpLplOBvRCmUwolEsAciAoDJJKIXBBmLXciFcg2XQggXg8TdAYBAtL5wDpcw9qdmwbBQURh4CHdXdhehsaBJGRGl9sFXoWEgYKnF93lnoFC58CpWwSCxuhCwIaC6+oCxUbhB0WrAoaFrS0FoUdBRuauQofvG4dybTDxR/Oz9DRHyEAOw==","pi":false,"t_top":false,"bottom":true,"t_check":false,"t_check_l":false,"t_arch":false,"t_move":false,"t_actions":false,"t_refresh":false,"reply":true,"zads":true,"ads":true,"bads":true,"nav":true,"navW":"172","invites":true,"top":false,"mail":false,"contacts":false,"tasks":false,"middle":false,"compose":false,"inboxH":false,"spam":true,"buzz":true,"icons":true,"moreC":true,"more":false,"chat":false,"c_search":true,"c_invisible":true,"offline":true,"status":true,"f_tips":true,"f_options":true,"f_legal":true,"f_s_classic":true,"f_s_label":true,"f_s_graphic":true,"f_s_verbose":true,"f_s_menu":true,"f_activity_show":false,"f_activity_hide":false,"f_activity_move":true}
+#000000
+#bbbbbb
+#f9f9f9
+#e3e3e3
+
+https://mail.google.com/a/yourdomain.com
+#ffcc00
+#00ccff
+#0099ff
+#00ccff</textarea>
+				</div>
+				<input type="button" value="None" onClick="import('EI_0')" />
+				<input type="button" value="Basics" onClick="import('EI_1')" />
+				<input type="button" value="Simple" onClick="import('EI_2')" />
+				<input type="button" value="What!?" onClick="import('EI_3')" /><br /><br />
+				<table>
+				<tr>
+				<td><input type="button" value="Custom 1" onClick="import('EIC_1')"/></td><td><textarea id="EIC_1" rows="1" cols="26"></textarea></td>
+				</tr>
+				<tr>
+				<td><input type="button" value="Custom 2" onClick="import('EIC_2')" /></td><td><textarea id="EIC_2" rows="1" cols="26"></textarea></td>
+				</tr>
+				<tr>
+				<td><input type="button" value="Custom 3" onClick="import('EIC_3')" /></td><td><textarea id="EIC_3" rows="1" cols="26"></textarea></td>
+				</tr>
+				</table>
+			</div>
+		</section>
+	</div>
+	<div class="OPTmain" id="OPTmor">
+		<h1 class="dark">Gmail <span onclick="easterEgg()" style="cursor:pointer;">| more</span></h1>
+		<section>
+			<h3>Extensions</h3>
+			<div>
+				<ul>
+					<li><a href="https://chrome.google.com/webstore/detail/cfhdojbkjhnklbpkdaibdccddilifddb" target="_blank">Adblock Plus</a>: duh</li>
+				</ul>
+			</div>
+		</section>
+		<section>
+			<h3>Settings</h3>
+			<div>
+				<ul>
+					<li><a href="https://mail.google.com/mail/#settings/webclips" target="_blank">Disable web clips</a>: mostly ads now anyway</li>
+					<li><a href="https://mail.google.com/mail/#settings/themes" target="_blank">Themes</a>: I recommend "Minimalist"</li>
+					<li><a href="https://mail.google.com/mail/#settings/labs" target="_blank">Gmail Labs</a>: great stuff in here, check it out
+						<ul>
+							<li>Caution: some labs features conflict with Minimalst Gmail. If you point them out I'll write exceptions for them.</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</section>
+		<section>
+			<h3>Bugs &amp; Ideas</h3>
+			<div>
+				I'm always looking for new ideas and bugs to fix. I respond in the Issue Tracker, email, and Twitter within an hour if I'm awake [UTC-8].<br /><br />
+				<ul>
+					<li>Submit a bug or feature request: <a href="http://code.google.com/p/minimalist-gmail/issues/list" target="_blank">Official Issues Tracker</a></li>
+					<li>Have immediate questions?
+						<ul>
+							<li>Ping me on Twitter: <a href="http://www.twitter.com/anstosa" target="_blank">@anstosa</a></li>
+							<li>Email me: <a href="https://mail.google.com/mail/?view=cm&tf=0&to=ansel@anselsantosa.com&fs=1" target="_blank">ansel@anselsantosa.com</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</section>
+	</div>
+	<div class="OPTmain" id="OPTnge">
+		<h1 class="dark">Gmail <span>| changes</span></h1>
+		<section id="updated" style="display: none;">
+			<h3>Update</h3>
+			<div>
+				Minimalist Gmail has been updated!
+			</div>
+		</section>
+		<section>
+			<h3>Announcements</h3>
+			<div>
+				Minimalist Gmail has exploded overnight thanks to <a href="http://lifehacker.com/5741771/minimalist-gmail-is-the-best-gmail-tweaker-for-chrome-yet" target="_blank">Lifehacker</a>.<br />
+				The improvements and fixes in this release are all thanks the detailed bug reports and ideas from new users. Thanks!
+			</div>
+		</section>
+		<section>
+			<h3>What's new</h3>
+			<div>
+				Full changelog on <a href="http://code.google.com/p/minimalist-gmail/#CHANGELOG" target="_blank">Google Code</a><br /><br />
+				<strong>General</strong>
+				<ul>
+					<li>New Dropdown from URL icon. Options, Toggle Minimalist Gmail on/off, Panic!</li>
+					<li>Reset button for custom colors</li>
+					<li>Minimalist Gmail style loading screen</li>
+					<li>Rounded corners for fields and textareas</li>
+					<li>Custom CSS input for advanced users</li>
+				</ul>
+				<strong>Google Bar</strong>
+				<ul>
+					<li>Hide border &amp; background</li>
+					<li>6th custom link and "more" auto-hidden</li>
+				</ul>
+				<strong>Header</strong>
+				<ul>
+					<li>Hide logo</li>
+					<li>[ / ] focuses search and header if hidden. Rehide with [ \ ]</li>
+				</ul>
+				<strong>Main</strong>
+				<ul>
+					<li>Hide row borders</li>
+					<li>Simplify rows until mouseover</li>
+					<li>Unread item highlighting</li>
+					<li>Seperate highlight color for hover over unread items</li>
+					<li>User classic selection links instead of dropdown menu</li>
+					<li>Hide reply textbox in message view</li>
+				</ul>
+				<strong>Navigation</strong>
+				<ul>
+					<li>Custom nav width</li>
+					<li>Hidden nav has click to toggle and mouseover to show</li>
+					<li>Hide Inbox link</li>
+					<li>Hide "more" count</li>
+				</ul>
+				<strong>Chat</strong>
+				<ul>
+					<li>Hide "You are invisible" alert in chat</li>
+				</ul>
+				<strong>Footer</strong>
+				<ul>
+					<li>Activity no longer replaces Google Links when moved to top</li>
+				</ul>
+				<strong>Import/Export</strong>
+				<ul>
+					<li>Easy settings transfer and presets</li>
+					<li>Instructions/clarification improved, graphics tweaked</li>
+				</ul>
+				<strong>Backend/Options page</strong>
+				<ul>
+					<li>Messages in upper left of Options page for autosave, easter egg, etc</li>
+					<li>Instructions/clarification improved, graphics tweaked</li>
+					<li><a href="http://code.google.com/p/minimalist-gmail/#CHANGELOG" target="_blank"><strong>TONS OF BIGFIXES</strong></a></li>
+				</ul>
+			</div>
+		</section>
+		<section>
+			<h3>Rate &amp; Review</h3>
+			<div>
+				Like Minimalist Gmail? Please <a href="https://chrome.google.com/webstore/detail/oddhbkghjoccbljmagcgoklbfdjeiinb" target="_blank">rate and review it in the Web Store!</a>
+			</div>
+		</section>
+		<section>
+			<h3>Donate</h3>
+			<div>
+				<p>This is a personal project and I am a full-time student, please <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4RVCM5TZRYBK8">support me by donating</a> so I can keep Minimalist Gmail up to date and competitive.</p>
+				<br />
+				<a class="button" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4RVCM5TZRYBK8" target="_blank">Donate</a>
+			</div>
+		</section>
+		<section>
+			<h3>Bugs &amp; Ideas</h3>
+			<div>
+				I'm always looking for new ideas and bugs to fix. I respond in the Issue Tracker, email, and Twitter within an hour if I'm awake [UTC-8].<br /><br />
+				<ul>
+					<li>Submit a bug or feature request: <a href="http://code.google.com/p/minimalist-gmail/issues/list" target="_blank">Official Issues Tracker</a></li>
+					<li>Have immediate questions?
+						<ul>
+							<li>Ping me on Twitter: <a href="http://www.twitter.com/anstosa" target="_blank">@anstosa</a></li>
+							<li>Email me: <a href="https://mail.google.com/mail/?view=cm&tf=0&to=ansel@anselsantosa.com&fs=1" target="_blank">ansel@anselsantosa.com</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</section>
+	</div>
+	<div class="OPTmain" id="OPTabo">
+		<h1 class="dark">Gmail <span>| about</span></h1>
+		<section>
+			<h3>Credits</h3>
+			<div>
+				<p>My name is <a href="http://www.anselsantosa.com">Ansel Santosa</a> [<a href="http://www.twitter.com/anstosa" target="_blank">@anstosa</a>]. I'm an Informatics student at the University of Washington in Seattle studying to to a UX Designer.<br />
+				<br />
+				I created this extension because none of the others on the market would cut it for me. It was just a handful of personal scripts for a while. But I recently decided to polish and publish.<br />
+				<br />
+				I wrote the vast majority of the code myself, but some things were perfect already:</p>
+				<ul>
+					<li><a href="http://userscripts.org/scripts/show/595" target="_blank">mailto script by Julien Couvreur</a></li>
+					<li><a href="http://userscripts.org/scripts/show/24430" target="_blank">favicon script by Peter Wooley </a></li>
+				</ul>
+			</div>
+		</section>
+		<section>
+			<h3>Rate &amp; Review</h3>
+			<div>
+				Like Minimalist Gmail? Please <a href="https://chrome.google.com/webstore/detail/oddhbkghjoccbljmagcgoklbfdjeiinb" target="_blank">rate and review it in the Web Store!</a>
+			</div>
+		</section>
+		<section>
+			<h3>Donate</h3>
+			<div>
+				<p>This is a personal project and I am a full-time student, please <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4RVCM5TZRYBK8">support me by donating</a> so I can keep Minimalist Gmail up to date and competitive.</p>
+				<br />
+				<a class="button" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4RVCM5TZRYBK8" target="_blank">Donate</a>
+			</div>
+		</section>
+	</div>
+	<div class="OPTmain" id="OPTsup">
+		<h1 class="dark">Gmail <span>| support</span></h1>
+		<section>
+			<h3>Support Page</h3>
+			<div>
+				Try the <a href="http://code.google.com/p/minimalist-gmail/wiki/Support" target="_blank">official support page</a> first. Otherwise, see below:
+			</div>
+		</section>
+		<section>
+			<h3>Bugs &amp; Ideas</h3>
+			<div>
+				I'm always looking for new ideas and bugs to fix. I respond in the Issue Tracker, email, and Twitter within an hour if I'm awake [UTC-8].<br /><br />
+				<ul>
+					<li>Submit a bug or feature request: <a href="http://code.google.com/p/minimalist-gmail/issues/list" target="_blank">Official Issues Tracker</a></li>
+					<li>Have immediate questions?
+						<ul>
+							<li>Ping me on Twitter: <a href="http://www.twitter.com/anstosa" target="_blank">@anstosa</a></li>
+							<li>Email me: <a href="https://mail.google.com/mail/?view=cm&tf=0&to=ansel@anselsantosa.com&fs=1" target="_blank">ansel@anselsantosa.com</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</section>
+	</div>
+	</form>
+</div>
+<script type="text/javascript">
+	var hash = window.location.hash.substr(1);
+	document.getElementById("refresh").setAttribute("style","");
+
+	if (hash == "update") {
+		document.getElementById("nge").setAttribute("class", "current");
+		document.getElementById("OPTnge").setAttribute("style", "display: block;");
+		document.getElementById("updated").setAttribute("style", "");
+		last = "nge";
+	} else if (hash == "imps") {
+		document.getElementById("imp").setAttribute("class", "current");
+		document.getElementById("OPTimp").setAttribute("style", "display: block;");
+		$("#announce").attr("style", "");
+		document.getElementById("refreshEI").setAttribute("style","display: block;");
+		last = "imp";
+	} else if (hash == null || hash == "") {
+		document.getElementById("gen").setAttribute("class", "current");
+		document.getElementById("OPTgen").setAttribute("style", "display: block;");
+		last = "gen";
+	} else {
+		document.getElementById(hash).setAttribute("class", "current");
+		document.getElementById("OPT" + hash).setAttribute("style", "display: block;");
+		last = hash;
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<html>
+<head>
+	<style type="text/css">
+		body {
+			background: url("../img/bg.png") repeat-x #222;
+			padding: 10px 10px 0 10px;
+		}
+		h1 {
+			font-family: 'Raleway', sans-serif;
+			font-weight: normal;
+			color: #fff;
+			font-size: 21px;
+			text-shadow: 0 0 1px rgba(255,255,255,.5);
+			margin: 0;
+		}
+		input[type = 'button'] {
+			width: 155px;
+			tex-align: center;
+			padding: 3px 0;
+			margin: 10px 0 0 0;
+			-webkit-border-radius: 2px;
+			border-top: 1px solid #fff;
+			border-left: 1px solid #fff;
+			border-bottom: 1px solid #444;
+			border-right: 1px solid #444;
+			background: -webkit-gradient(linear, left bottom, left top, from(rgb(150,150,150)), to(rgb(200,200,200)));
+		}
+		input[type = 'button']:hover {
+			background: -webkit-gradient(linear, left bottom, left top, from(rgb(150,150,150)), to(rgb(150,150,150)));
+		}
+		input[type = 'button']:active {
+			border-top: 1px solid #444;
+			border-left: 1px solid #444;
+			border-bottom: 1px solid #fff;
+			border-right: 1px solid #fff;
+			background: -webkit-gradient(linear, left top, left bottom, from(rgb(150,150,150)), to(rgb(200,200,200)));
+		}
+	</style>
+	<script type="text/javascript">
+		WebFontConfig = {
+			google: { families: [ 'Raleway:100' ] }
+		};
+		(function() {
+			var wf = document.createElement('script');
+			wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+				'://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+			wf.type = 'text/javascript';
+			wf.async = 'true';
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(wf, s);
+		})();
+	</script>
+	<script type="text/javascript">
+		function toggle() {
+			chrome.extension.sendRequest({action: 'toggle'}, function(response) {});
+			chrome.extension.sendRequest({action: 'reload'}, function(response) {});
+		}
+		function options() {
+			chrome.tabs.create({url:chrome.extension.getURL("options.html")});
+		}
+		function reload() {
+			chrome.extension.sendRequest({action: 'reload'}, function(response) {});
+		}
+	</script>
+</head>
+<body>
+	<h1>Minimalist Gmail</h1>
+	<input type="button" onclick="options()" value="Options" /><br />
+	<input type="button" onclick="toggle()" value="Toggle on/off" /><br />
+	<input type="button" onclick="reload()" value="PANIC!" />
+</body>
+</html>
