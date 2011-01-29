@@ -2,7 +2,7 @@
 // @name             Minimalist Gmail
 // @author           Ansel Santosa
 // @namespace        http://chrome.google.com/webstore
-// @description      Features that require no initialization
+// @description      Features that respond to keypress
 // ==/UserScript==
 
 chrome.extension.sendRequest({elements: 'o'}, function(response) {
@@ -12,6 +12,7 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			element = event.target;
 			elementName = element.nodeName.toLowerCase();
 			if (elementName == "input" || elementName == "textarea") return true;
+			// [ j ] [ k ]
 			if ((String.fromCharCode(event.which)=="j" || String.fromCharCode(event.which)=="k") && !event.ctrlKey && !event.metaKey) {
 				if (selected != null) selected.setAttribute("style","");
 				var img = document.getElementsByTagName("img");
@@ -34,15 +35,17 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 								} else img[x].parentNode.parentNode.previousSibling.setAttribute("style", "background-color: #0099ff !important;");
 							}
 						}
-					} catch (err) {}
+					} catch (err) { console.error(e); }
 				}
 			}
+			// [ / ]
 			if ((event.which == "47") && !event.ctrlKey && !event.metaKey && response.o.header) {
 				if (response.o.gbarH) {
 					document.getElementById('gbarToggle').nextSibling.firstChild.setAttribute('style', '');
 					document.getElementById('gbarToggle').nextSibling.nextSibling.nextSibling.firstChild.setAttribute('style', '');
 				} else document.getElementById('headerToggle').nextSibling.setAttribute('style', '');
 			}
+			// [ \ ]
 			if ((event.which == "92") && !event.ctrlKey && !event.metaKey && response.o.header) {
 				if (response.o.gbarH) {
 					document.getElementById('gbarToggle').nextSibling.firstChild.setAttribute('style', 'display: none !important;');

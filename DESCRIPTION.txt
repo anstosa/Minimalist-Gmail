@@ -1,11 +1,12 @@
 == ANNOUNCEMENTS ==
 
+  Huge Post-Lifehacker update! I know there are going to be issues and I will be pushing small silent
+  patches over the next few days. Issue Tracker is here: [http://code.google.com/p/minimalist-gmail/issues]
+  
   Featured on Lifehacker! http://lifehacker.com/5741771/minimalist-gmail-is-the-best-gmail-tweaker-for-chrome-yet
   
   Minimalist Google Calendar pushed back a week to accomodate all the great feature requests and bugs from Lifehackers
-
-  Questions about the permissions? Please see PERMISSIONS section below. Issue is explained in depth with source link
-
+  
 
 == WHAT DOES IT DO? ==
 
@@ -24,12 +25,16 @@
   The following elements can be modified individually:
  == GENERAL
   * Hide Minimalist Gmail options icon
+  * Custom loading screen
   * Customize button colors
+  * Rounded corners on input fields and textareas
+  * Custom CSS input
  == NOTIFICATIONS
   * Favicon unread count
   * Desktop notifications
  == GOOGLE BAR
   * Hide Google bar [click to toggle when hidden]
+  * Hide background & border
   * Hide Google links
   * Replace Google links with custom menu
   * Hide logged in
@@ -39,42 +44,52 @@
   * Hide Sign out link
  == HEADER
   * Hide header [click to toggle when hidden]
+  * Hide logo
   * Use custom logo
   * Hide all search
   * Hide mail search button
   * Hide web search button
   * Hide search sub-links
  == MAIN
+  * Hide row borders
+  * Simplify rows until mouseover
   * Show starred item row highlighting
-  * Show row highlights with custom colors [in mail and contacts. keyboard navigation support]
+  * Show unread item highlighting
+  * Show select/hover highlights with custom colors [in mail and contacts. keyboard navigation support]
   * Hide star icons
   * Show better attachment icons [file specific, two built in styles and custom input via URL or base64]
   * Hide top toolbar
   * Hide bottom toolbar
+  * Use classic selection links instead of dropdown menu
   * Hide checkbox tools in toolbar
   * Hide Archive, Spam, Delete buttons
   * Hide Move to, Labels buttons
   * Hide More actions button
   * Hide Refresh link
+  * Hide reply textbox in message view
   * Hide "No new mail! Want to read updates from your favorite sites? Try Google Reader"
   * Hide sidebar ads
   * Hide experimental bottom ads
  == NAVIGATION
   * Hide navigation
+  * Custom nav width
   * Hide top of nav
   * Hide mail button
   * Hide contacts button
+  * Hide Inbox link
   * Hide tasks button
   * Hide middle of nav
   * Hide compose mail button
   * Hide Spam count
   * Hide Buzz count
   * Hide icons
+  * Hide more count
   * Hide more link
   * Hide invites
  == CHAT
   * Hide chat
   * Hide "Search, add, or invite" box in chat
+  * Hide "You are invisible" alert in chat
   * Hide offline chat contacts
   * Hide chat statuses
  == FOOTER
@@ -88,7 +103,7 @@
   * Storage > Menu
   * Account activity [remove or move to top]
  == MORE?
-  * Leave feature suggestions in the Issue Tracker: [http://code.google.com/p/minimalist-gmail/issues/list]
+  * Leave feature suggestions in the Issue Tracker: [http://code.google.com/p/minimalist-gmail/issues]
 
 
 == HOW DO I WORK IT? ==
@@ -138,7 +153,7 @@
   * The reason I ask for permissions to all pages and not just Gmail is because of my open in Gmail feature
     which replaces all "mailto:" links in websites with a script that opens clickable email addresses in Gmail.
 
-  Still don't trust me? Go to [http://code.google.com/p/minimalist-gmail/source/browse/] to see the entire source code.
+  Still don't trust me? Go to [https://github.com/anstosa/Minimalist-Gmail] to see the entire source code.
 
 
 == CHANGELOG ==
@@ -323,5 +338,5 @@
 == LEGAL ==
 
   I am not a Google Employee or officially affiliated with Google in any way. This extension is not endorsed by Google.
-  Google, Gmail, and the Gmail logo are copyright of Google Inc. All Rights Reserved.
+  Google, Gmail, and the Gmail logo are trademarks of Google Inc. Use of these trademarks is subject to Google Permissions.
   All bundled scripts are copyright of their original authors.

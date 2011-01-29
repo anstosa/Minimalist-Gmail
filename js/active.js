@@ -7,6 +7,8 @@
 
 chrome.extension.sendRequest({elements: "o"}, function(response) {
 
+	//---- VARIABLES ----//
+	// f_* whether one-time task is done
 	var f_guser = false;
 	var f_user = false;
 	var f_labs = false;
@@ -20,15 +22,18 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 	var f_rows = false;
 	var f_details = false;
 	var f_actPlace = false;
-	var loaded = false;
-	var go = false;
+	//---- END VARIABLES ----//
 
+	//---- CHECK PAGE LOAD ----//
 	function init() {
 		var el = document.body.getElementsByTagName('b');
 		if (el && el.length && (el[0].innerHTML == 'Gmail' || el[0].innerHTML == 'Mail' || el[0].innerHTML == 'Google Mail')) {
 			wait();
 		} else window.setTimeout(init,1000);
 	}
+	//---- END CHECK PAGE LOAD ----//
+	
+	// KEYSTROKE INTERCEPTION. ONLY ACT IF NOT ENTERING INPUT
 	function keypress(event) {
 		element = event.target;
 		elementName = element.nodeName.toLowerCase();
@@ -36,7 +41,9 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 		else wait();
 		return true;
 	}
-	function doit() {
+	
+	//---- MAIN LOOP ----//
+	function run() {
 		if (response.o.starHigh) {
 			var img = document.getElementsByTagName("img");
 			try {
@@ -216,9 +223,14 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 			} catch (e) { console.error(e); }
 		} */
 	}
+	//---- END MAIN LOOP ----//
+	
+	// LOAD > ACTION TIME DELAY
 	function wait() {
-		var starcheck = setInterval(doit, 1000);
+		var starcheck = setInterval(run, 1000);
 	}
+
+	//---- RESIZE HANDLER ----//
 	function reconfig() {
 		if (f_navToggle) {
 			if (response.o.nav) {
@@ -238,7 +250,11 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 			}
 		}
 	}
+	//---- END RESIZE HANDLER ----//
+	
 	init();
+	
+	// LISTENERS
 	document.addEventListener("keypress", keypress, false);
 	document.addEventListener("click", wait, false);
 	window.addEventListener("resize", reconfig, false);

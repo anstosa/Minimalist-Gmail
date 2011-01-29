@@ -18,7 +18,7 @@ $(function(){
 
 	if(localStorage['options']){
 		var o = JSON.parse(localStorage['options']);
-		// general
+		// GENERAL
 			$("#mgicon").attr('checked', o.mgicon);
 			$("#BTN").attr('checked', o.BTN);
 			if ((o.BTNcolor != null) && (o.BTNcolor != ""))
@@ -35,14 +35,14 @@ $(function(){
 			$("#customCSS").attr('checked', o.customCSS);
 			if ((o.customCSSval != null) && (o.customCSSval != ""))
 				$("#customCSSval").val(localStorage["customCSSval"]);
-		// notifications
+		// NOTIFICATIONS
 			$("#favicon").attr('checked', o.favicon);
 			$("#desktop").attr('checked', o.desktop);
 			$("#apps").attr('checked', o.apps);
 			if ((o.appsURL != null) && (o.appsURL != ""))
 				$("#appsURL").val(o.appsURL);
 			else $("#appsURL").val("https://mail.google.com/a/yourdomain.com");
-		// gooogle bar
+		// GOOGLE BAR
 			$("#gbarH").attr('checked', o.gbarH);
 			$("#gbarB").attr('checked', o.gbarB);
 			$("#gbar").attr('checked', o.gbar);
@@ -103,7 +103,7 @@ $(function(){
 			$("#settings").attr('checked', o.settings);
 			$("#help").attr('checked', o.help);
 			$("#out").attr('checked', o.out);
-		// header
+		// HEADER
 			$("#header").attr('checked', o.header);
 			$("#logoH").attr('checked', o.logoH);
 			$("#logo").attr('checked', o.logo);
@@ -114,7 +114,7 @@ $(function(){
 			$("#s_mail").attr('checked', o.s_mail);
 			$("#s_web").attr('checked', o.s_web);
 			$("#s_links").attr('checked', o.s_links);
-		// main
+		// MAIN
 			$("#borders").attr('checked', o.borders);
 			$("#simplify").attr('checked', o.simplify);
 			$("#starHigh").attr('checked', o.starHigh);
@@ -173,7 +173,7 @@ $(function(){
 			$("#zads").attr('checked', o.zads);
 			$("#ads").attr('checked', o.ads);
 			$("#bads").attr('checked', o.bads);
-		// navigation
+		// NAVIGATION
 			$("#nav").attr('checked', o.nav);
 			if ((o.navW != null) && (o.navW != ""))
 				$("#navW").val(o.navW);
@@ -192,13 +192,13 @@ $(function(){
 			$("#icons").attr('checked', o.icons);
 			$("#moreC").attr('checked', o.moreC);
 			$("#more").attr('checked', o.more);
-		// chat
+		// CHAT
 			$("#chat").attr('checked', o.chat);
 			$("#c_search").attr('checked', o.c_search);
 			$("#c_invisible").attr('checked', o.c_invisible);
 			$("#offline").attr('checked', o.offline);
 			$("#status").attr('checked', o.status);
-		// footer
+		// FOOTER
 			$("#f_tips").attr('checked', o.f_tips);
 			$("#f_options").attr('checked', o.f_options);
 			$("#f_legal").attr('checked', o.f_legal);
@@ -216,11 +216,12 @@ $(function(){
 			$("#EIC_3").val(localStorage["EIC_3"]);
 		localStorage["uncheckedUpdate"] = false;
 	}
+	//---- END LOAD ----//
 	
 	//---- SAVE ----//
 	function save(){
 		localStorage['options'] = JSON.stringify({
-			// general
+			// GENERAL
 				"mgicon":$("#mgicon").attr('checked'),
 				"BTN":$("#BTN").attr('checked'),
 					"BTNcolor":localStorage["BTNcolor"],
@@ -231,12 +232,12 @@ $(function(){
 				"corners":$("#corners").attr('checked'),
 				"customCSS":$("#customCSS").attr('checked'),
 					"customCSSval":$("#customCSSval").val().replace(/(\r\n|\n|\r)/gm,""),
-			// notifications
+			// NOTIFICATIONS
 				"favicon":$("#favicon").attr('checked'),
 				"desktop":$("#desktop").attr('checked'),
 				"apps":$("#apps").attr('checked'),
 					"appsURL":$("#appsURL").val(),
-			// google bar
+			// GOOGLE BAR
 				"gbarH":$("#gbarH").attr('checked'),
 				"gbarB":$("#gbarB").attr('checked'),
 				"gbar":$("#gbar").attr('checked'),
@@ -264,7 +265,7 @@ $(function(){
 				"settings":$("#settings").attr('checked'),
 				"help":$("#help").attr('checked'),
 				"out":$("#out").attr('checked'),
-			// header
+			// HEADER
 				"header":$("#header").attr('checked'),
 				"logoH":$("#logoH").attr('checked'),
 				"logo":$("#logo").attr('checked'),
@@ -273,7 +274,7 @@ $(function(){
 				"s_mail":$("#s_mail").attr('checked'),
 				"s_web":$("#s_web").attr('checked'),
 				"s_links":$("#s_links").attr('checked'),
-			// main
+			// MAIN
 				"borders":$("#borders").attr('checked'),
 				"simplify":$("#simplify").attr('checked'),
 				"starHigh":$("#starHigh").attr('checked'),
@@ -310,7 +311,7 @@ $(function(){
 				"zads":$("#zads").attr('checked'),
 				"ads":$("#ads").attr('checked'),
 				"bads":$("#bads").attr('checked'),
-			// navigation
+			// NAVIGATION
 				"nav":$("#nav").attr('checked'),
 				"navW":$("#navW").val(),
 				"invites":$("#invites").attr('checked'),
@@ -327,25 +328,25 @@ $(function(){
 				"icons":$("#icons").attr('checked'),
 				"moreC":$("#moreC").attr('checked'),
 				"more":$("#more").attr('checked'),
-			// chat
+			// CHAT
 				"chat":$("#chat").attr('checked'),
 				"c_search":$("#c_search").attr('checked'),
 				"c_invisible":$("#c_invisible").attr('checked'),
 				"offline":$("#offline").attr('checked'),
 				"status":$("#status").attr('checked'),
-			// footer
-			"f_tips":$("#f_tips").attr('checked'),
-			"f_options":$("#f_options").attr('checked'),
-			"f_legal":$("#f_legal").attr('checked'),
-			"f_s_classic":$("#f_s_classic").attr('checked'),
-			"f_s_label":$("#f_s_label").attr('checked'),
-			"f_s_graphic":$("#f_s_graphic").attr('checked'),
-			"f_s_verbose":$("#f_s_verbose").attr('checked'),
-			"f_s_menu":$("#f_s_menu").attr('checked'),
-			"f_activity_show":$("#f_activity_show").attr('checked'),
-			"f_activity_hide":$("#f_activity_hide").attr('checked'),
-			"f_activity_move":$("#f_activity_move").attr('checked'),
-			"f_activity_center":$("#f_activity_center").attr('checked'),
+			// FOOTER
+				"f_tips":$("#f_tips").attr('checked'),
+				"f_options":$("#f_options").attr('checked'),
+				"f_legal":$("#f_legal").attr('checked'),
+				"f_s_classic":$("#f_s_classic").attr('checked'),
+				"f_s_label":$("#f_s_label").attr('checked'),
+				"f_s_graphic":$("#f_s_graphic").attr('checked'),
+				"f_s_verbose":$("#f_s_verbose").attr('checked'),
+				"f_s_menu":$("#f_s_menu").attr('checked'),
+				"f_activity_show":$("#f_activity_show").attr('checked'),
+				"f_activity_hide":$("#f_activity_hide").attr('checked'),
+				"f_activity_move":$("#f_activity_move").attr('checked'),
+				"f_activity_center":$("#f_activity_center").attr('checked'),
 		});
 		localStorage["appsURL"] = $("#appsURL").val();
 		localStorage["customCSSval"] = $("#customCSSval").val();
@@ -356,8 +357,9 @@ $(function(){
 		$("#refreshEI").attr("style", "");
 		$("#refresh").attr("style", "display: block !important;");
 	}
+	//---- END SAVE ----//
 	
-	// save on action
+	//---- SAVE LISTENERS ----//
 	document.getElementById("OPTgen").addEventListener("keypress", save, false);
 	document.getElementById("OPTgen").addEventListener("click", save, false);
 	document.getElementById("OPTnot").addEventListener("keypress", save, false);
@@ -377,6 +379,7 @@ $(function(){
 	document.getElementById("EIC_1").addEventListener("keypress", save, false);
 	document.getElementById("EIC_2").addEventListener("keypress", save, false);
 	document.getElementById("EIC_3").addEventListener("keypress", save, false);
+	//---- END SAVE LISTENERS ----//
 	
 	//---- IMAGE PREVIEW ----//
 	imagePreview = function(){
@@ -428,14 +431,15 @@ $(function(){
 	$(document).ready(function(){
 		imagePreview();
 	});
+	//---- END IMAGE PREVIEW ----//
 });
 
-// update example button
+// UPDATE EXAMPLE BUTTON
 function updateButton() {
 	$("#testButton").attr("style","border: 1px solid #" + localStorage["BTNborder"] + ";background: -webkit-gradient(linear,0% 40%,0% 70%,from(#" + localStorage["BTNbottom"] + "),to(#" + localStorage["BTNtop"] + "));");
 }
 
-//---- NAVIGATION ----//
+// NAVIGATION HANDLER
 var last = "gen";
 function navigate(link) {
 	$("#" + last).attr("class", "");
@@ -445,6 +449,7 @@ function navigate(link) {
 	last = link;
 }
 
+// RESET CUSTOM BUTTONS COLORS
 function cButtonReset() {
 	localStorage["BTNcolor"] = "#000000";
 	localStorage["BTNborder"] = "#bbbbbb";
@@ -453,54 +458,56 @@ function cButtonReset() {
 	window.location.reload();
 }
 
-function export() {
-	var pref = new Array();
-		pref[0] = localStorage["options"];
-		pref[1] = localStorage["BTNcolor"];
-		pref[2] = localStorage["BTNborder"];
-		pref[3] = localStorage["BTNbottom"];
-		pref[4] = localStorage["BTNtop"];
-		pref[5] = localStorage["customCSSval"];
-		pref[6] = localStorage["appsURL"];
-		pref[7] = localStorage["starCLR"];
-		pref[8] = localStorage["uCLR"];
-		pref[9] = localStorage["highCLR"];
-		pref[10] = localStorage["highCLRu"];
-	var i;
-	var prefs = pref[0];
+//---- EXPORT/IMPORT ----//
+function export(EIid) {
+	var prefOut = new Array();
+		prefOut[0] = localStorage["options"];
+		prefOut[1] = localStorage["BTNcolor"];
+		prefOut[2] = localStorage["BTNborder"];
+		prefOut[3] = localStorage["BTNbottom"];
+		prefOut[4] = localStorage["BTNtop"];
+		prefOut[5] = localStorage["customCSSval"];
+		prefOut[6] = localStorage["appsURL"];
+		prefOut[7] = localStorage["starCLR"];
+		prefOut[8] = localStorage["uCLR"];
+		prefOut[9] = localStorage["highCLR"];
+		prefOut[10] = localStorage["highCLRu"];
+	var prefsOut = prefOut[0];	// fencepost
 	for (var i = 1; i <= 10; i++) {
-		prefs += '\n' + pref[i];
+		prefsOut += '\n' + prefOut[i];
 	}
-	document.getElementById('EImain').innerHTML = prefs;
+	document.getElementById(EIid).innerHTML = prefsOut;
+	if (EIid == "EIC_3") localStorage["EIC_3"] = prefsOut;	// backup existing to Custom 3
 }
 
 function import(EIid) {
-	var prefsin = document.getElementById(EIid).value;
-	var prefin = prefsin.split("\n");
-		localStorage["options"] = prefin[0];
-		localStorage["BTNcolor"] = prefin[1];
-		localStorage["BTNborder"] = prefin[2];
-		localStorage["BTNbottom"] = prefin[3];
-		localStorage["BTNtop"] = prefin[4];
-		localStorage["customCSSval"] = prefin[5];
-		localStorage["appsURL"] = prefin[6];
-		localStorage["starCLR"] = prefin[7];
-		localStorage["uCLR"] = prefin[8];
-		localStorage["highCLR"] = prefin[9];
-		localStorage["highCLRu"] = prefin[10];
+	var prefsIn = document.getElementById(EIid).value;
+	var prefIn = prefsIn.split("\n");
+		localStorage["options"] = prefIn[0];
+		localStorage["BTNcolor"] = prefIn[1];
+		localStorage["BTNborder"] = prefIn[2];
+		localStorage["BTNbottom"] = prefIn[3];
+		localStorage["BTNtop"] = prefIn[4];
+		localStorage["customCSSval"] = prefIn[5];
+		localStorage["appsURL"] = prefIn[6];
+		localStorage["starCLR"] = prefIn[7];
+		localStorage["uCLR"] = prefIn[8];
+		localStorage["highCLR"] = prefIn[9];
+		localStorage["highCLRu"] = prefIn[10];
 	window.location.hash = "imps";
 	window.location.reload();
 }
+//---- END EXPORT/IMPORT ----//
 
-// easter egg
+// EASTER EGG
 function easterEgg() {
-		if (!localStorage['easterEgg']) {
-			localStorage['easterEgg'] = true;
-			$('#easterEgg_off').attr('style','display:none;');
-			$('#easterEgg_on').attr('style','display:block;');
-		} else {
-			localStorage.removeItem('easterEgg');
-			$('#easterEgg_on').attr('style','display:none;');
-			$('#easterEgg_off').attr('style','display:block;');
-		}
+	if (!localStorage['easterEgg']) {
+		localStorage['easterEgg'] = true;
+		$('#easterEgg_off').attr('style','display:none;');
+		$('#easterEgg_on').attr('style','display:block;');
+	} else {
+		localStorage.removeItem('easterEgg');
+		$('#easterEgg_on').attr('style','display:none;');
+		$('#easterEgg_off').attr('style','display:block;');
 	}
+}

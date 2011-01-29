@@ -8,11 +8,11 @@
 chrome.extension.sendRequest({elements: 'o'}, function(response) {
 	var css = "";
 
-	//css += "@import url(http://fonts.googleapis.com/css?family=Raleway:100)";
-	//css += "::-webkit-scrollbar { width: 6px !important; background-color: #000; }\n";
-	//css += "::-webkit-scrollbar-track-piece { background-color: rgba(0,0,0,.75); -webkit-border-radius: 2px; }\n";
+	// css += "@import url(http://fonts.googleapis.com/css?family=Raleway:100)";
+	// css += "::-webkit-scrollbar { width: 6px !important; background-color: #000; }\n";
+	// css += "::-webkit-scrollbar-track-piece { background-color: rgba(0,0,0,.75); -webkit-border-radius: 2px; }\n";
 	css += "div.nH.qp[role = 'navigation'] { margin-bottom: 0px !important; }\n";
-	
+
 	// GENERAL
 		if (response.o.BTN)
 			css += ".J-Zh-I { color: " + response.o.BTNcolor + "; border: 1px solid " + response.o.BTNborder + "; background: -webkit-gradient(linear,0% 40%,0% 70%,from(" + response.o.BTNbottom + "),to(" + response.o.BTNtop + ")); }\n";
@@ -51,8 +51,8 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 		if (response.o.logo)
 			css += "div.a9.Rgky9 { background-image: url(" + response.o.logoSRC + ") !important; background-position: 0% 0%; background-repeat: no-repeat no-repeat; }\n";
 		if (response.o.logoH) {
-			css += "div.nH.nn[style = 'width: 172px; height: 65px; '] { width: 10px !important; }";
-			css += "div[id = ':rm'] { display: none !important; }";
+			//css += "div.no div.nH.nn[style = 'width: 172px; height: 65px; '] + div.nH.nn[style ^= 'width: '] { margin-left: -162px !important; }\n";
+			css += "div[id = ':rm'] { display: none !important; }\n";
 		}
 		if (response.o.s_all)
 			css += "table.cf.d { display: none !important; }\n";
@@ -215,9 +215,10 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			css += "div.nH.pp.T0:nth-child(4), div.nH.pp.ps.TZ:nth-child(4) { display: none !important; } \n";
 		if (response.o.c_search)
 			css += "input[class = 'dI dG'] { display: none !important; } \n";
-		if (response.o.c_invisible)
+		if (response.o.c_invisible){
 			css += "div.ul[role = 'alert'] { display: none; }\n";
 			//css += "div.nH.pp.T0:nth-child(4) > div > div > div > div:nth-child(2) > div:nth-child(3), div.nH.pp.ps.TZ:nth-child(4) > div > div > div > div:nth-child(2) > div:nth-child(3) { display: none !important; } \n";
+		}
 		if (response.o.status)
 			css += "table.cf.vH tr.vm { display: none !important; }\n";
 	// FOOTER
@@ -241,7 +242,7 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			css += "div.nH.l2.ov div:nth-child(5) { display: none; !important;}";
 		if (response.o.f_activity_hide)
 			css += "div.nH.l2.ov div:nth-child(5) { display: none !important; }\n";
-			
+	// CUSTOM
 		if (response.o.customCSS)
 			css += response.o.customCSSval;
 
@@ -253,4 +254,5 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 		node.appendChild(document.createTextNode(css));
 		heads[0].appendChild(node);
 	}
+	//---- END INJECT CSS ----//
 });

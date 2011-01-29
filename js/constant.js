@@ -2,7 +2,7 @@
 // @name             Minimalist Gmail
 // @author           Ansel Santosa
 // @namespace        http://chrome.google.com/webstore
-// @description      Features that require constant checking.
+// @description      Features that require constant checking
 // ==/UserScript==
 
 chrome.extension.sendRequest({elements: "o"}, function(response) {

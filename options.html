@@ -9,6 +9,7 @@
 	<script type="text/javascript" src="js/picker/eye.js"></script>
 	<script type="text/javascript" src="js/picker/utils.js"></script>
 	<script type="text/javascript">
+		//---- COLOR PICKERS ----//
 		(function($){
 			var initLayout = function() {
 				var bottom = localStorage["BTNbottom"];
@@ -142,26 +143,30 @@
 			};
 			EYE.register(initLayout, 'init');
 		})(jQuery)
+		//---- END COLOR PICKERS ----//
 	</script>
 	<script type="text/javascript">
-	  WebFontConfig = {
-		google: { families: [ 'Raleway:100' ] }
-	  };
-	  (function() {
-		var wf = document.createElement('script');
-		wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-			'://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-		wf.type = 'text/javascript';
-		wf.async = 'true';
-		var s = document.getElementsByTagName('script')[0];
-		s.parentNode.insertBefore(wf, s);
-	  })();
+		//---- GOOGLE WEB FONT LOADER ----//
+		WebFontConfig = {
+			google: { families: [ 'Raleway:100' ] }
+		};
+		(function() {
+			var wf = document.createElement('script');
+				wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+					'://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+				wf.type = 'text/javascript';
+				wf.async = 'true';
+			var s = document.getElementsByTagName('script')[0];
+				s.parentNode.insertBefore(wf, s);
+		})();
+		//---- END GOOGLE WEB FONT LOADER ----//
 	</script>
 </head>
 <body>
 <div id="OPTwrap">
 	<div id="OPTside">
 		<h1>Minimalist</h1>
+		<!-- SYSTEM MESSAGES -->
 		<div id="announce" style="display: block;">
 			<strong>Subtract until it breaks</strong><br />The way of the minimalist
 		</div>
@@ -177,6 +182,8 @@
 		<div id="easterEgg_off">
 			<strong>Easter Egg disabled...</strong><br />
 		</div>
+		<!-- END SYSTEM MESSAGES -->
+		<!-- NAVIGATION -->
 		<ul>
 			<li><a href="#gen" class="" id="gen" onclick="navigate('gen')">General</a></li>
 			<li><a href="#not" class="" id="not" onclick="navigate('not')">Notifications</a></li>
@@ -194,8 +201,8 @@
 			<li><a href="#sup" class="" id="sup" onclick="navigate('sup')">Support</a></li>
 			<li><a href="#abo" class="" id="abo" onclick="navigate('abo')">About</a></li>
 		</ul>
+		<!-- END NAVIGATION -->
 	</div>
-	<form name="preferences">
 	<div class="OPTmain" id="OPTgen">
 		<h1 class="dark">Gmail <span>| general</span></h1>
 		<section>
@@ -298,7 +305,7 @@
 			<h3>Appearance</h3>
 			<div>
 				<input type="checkbox" id="gbarB" />
-					&nbsp;<label for="gbarB" title="">Hide Background * Border</label><br />
+					&nbsp;<label for="gbarB" title="">Hide Background &amp; Border</label><br />
 			</div>
 		</section>
 		<section>
@@ -349,6 +356,8 @@
 					&nbsp;<label for="help" title="">Hide Help link</label><br />
 				<input type="checkbox" id="out" />
 					&nbsp;<label for="out" title="">Hide Sign out link</label><br />
+					<span class="note"><strong>WARNING:</strong> if you check this box you will have to toggle M.G.</span>
+					<span class="note">off with the URL bar icon to sign out</span>
 			</div>
 		</section>
 	</div>
@@ -370,7 +379,7 @@
 				<input type="checkbox" id="logo" />
 					&nbsp;<label for="logo" title="">Enable custom logo</label><br />
 					<input type="text" id="logoSRC" size="40" class="field" value="http://www.example.com/image.jpg" /><br />
-					<span class="note">143x59px. Input via URL or Convert to Base64</span><br />
+					<span class="note">172x64px max. Input via URL or Convert to Base64</span><br />
 					<span class="note">Base64 conversion <a href="http://www.greywyvern.com/code/php/binary2base64" target="_blank">via URL</a> or <a href="http://www.opinionatedgeek.com/dotnet/tools/base64encode/" target="_blank">via upload</a></span>
 			</div>
 		</section>
@@ -666,13 +675,14 @@
 				<br /><br />
 				<form name="EI">
 				<textarea id="EImain" rows="5" cols="40"></textarea>
-				<input type="button" value="Export" onClick="export()" /><input type="button" value="Import" onClick="import('EImain')" />
+				<input type="button" value="Export" onClick="export('EImain')" /><input type="button" value="Import" onClick="import('EImain')" />
 				</form>
 			</div>
 		</section>
 		<section>
 			<h3>Presets</h3>
 			<div>
+				<strong>Warning:</strong> clicking a preset will replace your current settings. Your current settings will be saved to "Custom 3", overriding it's contents.<br /><br />
 				<div style="display: none;">
 					<textarea id="EI_0" rows="5" cols="40">{"mgicon":false,"BTN":false,"BTNcolor":"#000000","BTNborder":"#bbbbbb","BTNbottom":"#f9f9f9","BTNtop":"#e3e3e3","loader":false,"corners":false,"customCSS":false,"customCSSval":"","favicon":false,"desktop":false,"apps":false,"appsURL":"https://mail.google.com/a/yourdomain.com","gbarH":false,"gbarB":false,"gbar":false,"cbar":false,"c_n_1":"Gmail","c_u_1":"https://mail.google.com","c_t_1":"_blank","c_n_2":"Calendar","c_u_2":"http://www.google.com/calendar","c_t_2":"_blank","c_n_3":"Documents","c_u_3":"http://docs.google.com","c_t_3":"_blank","c_n_4":"Reader","c_u_4":"http://www.google.com/reader","c_t_4":"_blank","c_n_5":"Photos","c_u_5":"http://picasaweb.google.com","c_t_5":"_blank","c_n_6":"Web","c_u_6":"http://www.google.com","c_t_6":"_blank","user":false,"labs":false,"settings":false,"help":false,"out":false,"header":false,"logoH":false,"logo":false,"logoSRC":"http://www.example.com/image.jpg","s_all":false,"s_mail":false,"s_web":false,"s_links":false,"borders":false,"simplify":false,"starHigh":false,"starCLR":"#ffcc00","uHigh":false,"uCLR":"#00ccff","high":false,"highCLR":"#0099ff","highCLRu":"#00ccff","stars":false,"attach":false,"attachNew":false,"attachC":false,"ci_1":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAwFBMVEX///9twmOXt5vV08ZivFXX1cc4n2BKnW3QzsE1k2AdlkxTsFceoEVjvV5rvVhCrkyMzWx5wVxauFbU7dLc2suo1nxemneSsJcmiFLS0MM3qErN5dU5p2BXs2jl4tKByGcqp0UAiDyv1YHg3s9Oq1KHyGzRz8JknnoAfT85l1ZMsk+cup8ZjUjk6+XMyr0BljrX1cljplhHs1Msp1Flrnr8/PsNgUcOkUVKnlYxhFXq9ukQnj2FxV/z8+9qp4Fzu4ZQkmYmAAAAAXRSTlMAQObYZgAAALxJREFUeF5lzEVuBFEQA9D6CM2Mw8wTZrj/reJWlFXeoiRbKtN/H2mUHeJZ8H69zuc7ojSNZHbo/oodRUOOuxnyb3ELL7Dfn5pXoMWiLNfj5bIoNBeby4VKmI4noI+Fai2FYZjd3X+DZ76AfN9fdcEDnMy2qipKkmQdjiYY0by11tIUshFy4erNUATgPWvt3FPjgFbQeZzzutnWQExKGTslWutqfAgixphvbpQQ5iiEInrL87zvP6E/4zz+ANk3GWWQfcMTAAAAAElFTkSuQmCC","ci_2":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAYFBMVEX////JGBLBBwfFDwvPJRzVNCbNIhrDCgfKGhPIFRDXOCndSDTPKB7TMCP22NfHEg3bRDLMHRXjVD3BBAPaQC7hTzrfSzfSLSH88vHOJBq/AQHRKh7YOyvNKSP75+XNIBeaWx34AAAAAXRSTlMAQObYZgAAAHVJREFUeF5NywcKA0EIBVB1ai/bW5L73zIJLOt8EPTxhTvDEO6N4YKtg3mufu0byzKps3UQwqSiFSNDBRXRHA9UDzkiMcgEkBHxD+/fbFICx6sEpTGk9ZQfW/h71806QQ+80BVhRgaShsbDUWbRu9YEXYiI7y+jRgSXm47dBAAAAABJRU5ErkJggg==","ci_3":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAwFBMVEX///9Jvv9qyP8Rq/4BjNAxtv8hsP+R1f97zf8stP8Fld4HmeMJneoEkNcWrf8Ne7QnW3wEktoKoO4ImuZaw/8/uv8esP8Glt8NpvgcmdhRmsUAicwCjtOJ0v8MpfYohrl0y/8LofCC0P8MpPRSwf8Bis4OqPsem9oRh8Qlsv9cos0Qgr06dJh5x/UweaNCu/+c2P8cmNYfnt45uf8ar/82t/8mTmcnVXK/5f8dZI0zoNkWe7K14f9Xwv9evvUXmtyLnD/iAAAAAXRSTlMAQObYZgAAAKlJREFUeF41ylOWBEEARNFE2bbRtsf731WnJv5enAsAUDUUQTi8gJhaa+jnKCun/6feF79TrN/U0zcX2u65g9e10w3iQYW3ieUEd0g80QRjee0sEBIPPF5pN8Fqu3U/ibjLukK6t0zDnl0ilMTBtMPUr8qSCIwX2ch7ZkfWjH1gmayZCL4ebWgarJkIP7yD4du0uUjtNrcribQQf5fLcpmf+agAkiRRLMAbyPoVvHcsEKMAAAAASUVORK5CYII%3D","ci_4":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAYBQTFRFOEtOrlhX2gAARa5RZpdqh9GR7u3tx7FPKKYw/+kwuI2K3st1R2mErrGpbqdy/u1z8cwT89M8d5d829za+QEAIaUq/+pP/tsm8fHx/dYNGFV7raN21lZTq6KEeLb09NddTmN6NLQ7/9kNsayabNdzi6aNyjIx/9sbFpYeJpwu08rK6wAA78whzdHNzs/O9tAQ/f39/9sQzbq60CUl/+IRNZdF7x4gioBu5clKjsHzm7uWdJpbkLyht0Qswk1N20RFNZQ9nJF55+fn3woKwMfA6cUaIDRI694zRcVMX9Jl4xAP4hERK386y71ye6CDLrE2IYDCTYO8fpuBdWthYVVZlGJRvWlsa5R31cFRjkQ98ywri2koRZ3sv8LDgL75yFJSO3CBGXayAIUJDIsUpp10ibmNOJjgqp5n40hNvYZ0Nm9KzSoqpbVVnBwqvTMz4sAlu7A7J580L1t0h417Ob1CL5XqMJPnN5juR2+lOZ3v1tbV3NfX9RoZadZvdNl9////1FKScAAAAIB0Uk5T/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////wA4BUtnAAAA/ElEQVR42mKoBwE2LSMjLQkwkwGIJbjis42N1ey4JCACekL2zkxe3kxMznnVIAFhVpuMGhlGRpkobW01tnoGAz4VVi5GhcAKhTAzEZHMegaXkhIVK4U0ubhKntDIXFthBlVFRc/UojI5y5gEX/eCaGUGvkJ/D1aGxNLyAAZuEyUdaQYWTVF/FSEGKSk3czFJfVdpBlVNDQ7FOr+QYFl+JUmBfGUGPYdkDVHTYm5+MSDflb2KoT6oMMnHUZ5T3FBJ31VQ1oCh3omlMEueU91QUl9HMN0J5HRhIWZrHRN1cUGLFGGI59h4w1lyItiledmgvgUK6cXqCUO8DxBgAGnMP5299Ij8AAAAAElFTkSuQmCC","ci_5":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAYFBMVEX////gTTnaQS+/AADrcVfqZkzXdmjOJBray7zYVkTVk4TjWkS/DQqnHRXvfGHWNynbppbXtqjLHBXp1Mfr5tjPMya0SDzXSDnTLSHh3s/pkHvFKSPyd1a6eG9nal6GiHWkF23gAAAAAXRSTlMAQObYZgAAAIhJREFUeF6NykcKQkEQhOEOk/PLwXT/W9oOgogbv139FPznIe7iE6B7h3IVqpwlxoibBFn6nFpwk9ntCKC01m3yiDSsEkZQSpX51DpGjxvVCjnndVhzlwQgopoN1eX1T4mBiPzc6r4E5y6JGaoIh7F2bE02wy5sOAZj3I17oM77bbGCAfgL/HgCqrEIzdJPFbQAAAAASUVORK5CYII=","ci_6":"https://mail.google.com/mail/u/0/images/pdf.gif","ci_7":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAwFBMVEX///8AiDwcokLy8eUBmTlCvP9Jvv96zf9zy/9syf+32ufz8+pDr0wAkjppvO2E0f9exP+L0v46rEpVwv9at+2f2f9Ov/+ExO3w7eInpkQyqkjH5vWAz/84uP8qqpF6we254faS1f+b2P88uf9RwP80t//u7N9kxv9Vv/vr6dve5uG43/ERnz5oxfh3yfYNl2CX1//i389Zw//e28wSoV7o5ddYvsQDiEm82N8cmkNOtnfl4tIJnDwVoWtKt5Y9tc6aIrEXAAAAAXRSTlMAQObYZgAAAKdJREFUeF5NzdWuAzEMBFAnWWZmLDNzL/z/XzWudtX6zUczGoBd69qFrKhTx48kESD8wGEkiUMIB23TLItvyHWWLDRN7SHUdTaZn5+3TQc5YwnC/rh+w8CN47q2LCsIZgi46tqy0s+WgH+/GonDEvDvAtgYw4Pf3wUDvIFgeFmWUlo5/n+1JeSKkKZ09XP6NU2TEPIGykEQ8EcwDA+N350fAcAGBrrGC6HBFvKj4FQ8AAAAAElFTkSuQmCC","ci_8":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAYFBMVEX////aWwf+gwD8ZQHEVQP/mxz0YwL/zY3eXAb/r0f/oiv+27H/05rsYQP/fAD/dQD/qDn/wXH/tVX/u2P/cAD0cALubgT+iQDoXwSxSgb/x3/pbQTbWwf/awDQaQLjXQXM1JhSAAAAAXRSTlMAQObYZgAAAIlJREFUeF5lykUCQjEMhOFJvU/dhfvfkqTQDWT3/Rn8X1lW/ujHIXaF/bWVUlV+XR/VNO2kzWsDvHg/JZjdbAHHsSr1iG9nag59r5Ric9Cufl0YR2Yyhy0QhiE7DQgxtsyPeUDoukmYzANCUdzCbIK1WjOzCbCOxQzJFwDXzvO8LGc6CZD/d0DlG4N+DR+Rmb4UAAAAAElFTkSuQmCC","ci_9":"data:image/gif;base64,R0lGODlhEAAQAMQfAMS35mtMwlItt5N70lw5vEUdsVUwuGNCvnJTxFsnpFg0ukwmtVUgoa2b3aCL2IZszWdGwGA+vU8otntfyXdax0sktEgfsm9QxKiV27Gg3lk1ukghs2k4qUQbsbOi3////yH5BAEAAB8ALAAAAAAQABAAAAWk4AdkwwCcDkSdAPI5ntcMDxYPR9DE1wR7mMfE5hkQIDtPIsFpLplOBvRCmUwolEsAciAoDJJKIXBBmLXciFcg2XQggXg8TdAYBAtL5wDpcw9qdmwbBQURh4CHdXdhehsaBJGRGl9sFXoWEgYKnF93lnoFC58CpWwSCxuhCwIaC6+oCxUbhB0WrAoaFrS0FoUdBRuauQofvG4dybTDxR/Oz9DRHyEAOw==","pi":false,"t_top":false,"bottom":false,"t_check":false,"t_check_l":false,"t_arch":false,"t_move":false,"t_actions":false,"t_refresh":false,"reply":false,"zads":false,"ads":false,"bads":false,"nav":false,"navW":"172","invites":false,"top":false,"mail":false,"contacts":false,"tasks":false,"middle":false,"compose":false,"inboxH":false,"spam":false,"buzz":false,"icons":false,"moreC":false,"more":false,"chat":false,"c_search":false,"c_invisible":false,"offline":false,"status":false,"f_tips":false,"f_options":false,"f_legal":false,"f_s_classic":false,"f_s_label":false,"f_s_graphic":false,"f_s_verbose":false,"f_s_menu":false,"f_activity_show":false,"f_activity_hide":false,"f_activity_move":false}
 #000000
@@ -719,21 +729,32 @@ https://mail.google.com/a/yourdomain.com
 #0099ff
 #00ccff</textarea>
 				</div>
-				<input type="button" value="None" onClick="import('EI_0')" />
-				<input type="button" value="Basics" onClick="import('EI_1')" />
-				<input type="button" value="Simple" onClick="import('EI_2')" />
-				<input type="button" value="What!?" onClick="import('EI_3')" /><br /><br />
+				<input type="button" value="None" onClick="javascript:export('EIC_3');import('EI_0');;" />
+				<input type="button" value="Basics" onClick="javascript:export('EIC_3');import('EI_1');;" />
+				<input type="button" value="Simple" onClick="javascript:export('EIC_3');import('EI_2');;" />
+				<input type="button" value="Crazy" onClick="javascript:export('EIC_3');import('EI_3');;" /><br /><br />
 				<table>
-				<tr>
-				<td><input type="button" value="Custom 1" onClick="import('EIC_1')"/></td><td><textarea id="EIC_1" rows="1" cols="26"></textarea></td>
-				</tr>
-				<tr>
-				<td><input type="button" value="Custom 2" onClick="import('EIC_2')" /></td><td><textarea id="EIC_2" rows="1" cols="26"></textarea></td>
-				</tr>
-				<tr>
-				<td><input type="button" value="Custom 3" onClick="import('EIC_3')" /></td><td><textarea id="EIC_3" rows="1" cols="26"></textarea></td>
-				</tr>
+					<tr>
+						<td><input type="button" value="Custom 1" onClick="import('EIC_1')"/></td>
+						<td><textarea id="EIC_1" rows="1" cols="26"></textarea></td>
+					</tr>
+					<tr>
+						<td><input type="button" value="Custom 2" onClick="import('EIC_2')" /></td>
+						<td><textarea id="EIC_2" rows="1" cols="26"></textarea></td>
+					</tr>
+					<tr>
+						<td><input type="button" value="Custom 3" onClick="import('EIC_3')" /></td>
+						<td><textarea id="EIC_3" rows="1" cols="26"></textarea></td>
+					</tr>
 				</table>
+			</div>
+		</section>
+		<section>
+			<h3>Full Reset</h3>
+			<div>
+				If you are having problems and just want to start fresh, use this button. <strong>It will clear all local settings and reset them to Gmail default.</strong>
+				<br /><br />
+				<input type="button" class="red" value="Reset All" onClick="javascript:localStorage.clear();import('EI_0');;" />
 			</div>
 		</section>
 	</div>
@@ -936,9 +957,9 @@ https://mail.google.com/a/yourdomain.com
 			</div>
 		</section>
 	</div>
-	</form>
 </div>
 <script type="text/javascript">
+	<!-- PROCESS URL HASHES -->
 	var hash = window.location.hash.substr(1);
 	document.getElementById("refresh").setAttribute("style","");
 
@@ -962,6 +983,7 @@ https://mail.google.com/a/yourdomain.com
 		document.getElementById("OPT" + hash).setAttribute("style", "display: block;");
 		last = hash;
 	}
+	<!-- END PROCESS URL HASHES -->
 </script>
 </body>
 </html>
