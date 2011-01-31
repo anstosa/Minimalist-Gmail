@@ -12,9 +12,7 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 	// css += "::-webkit-scrollbar { width: 6px !important; background-color: #000; }\n";
 	// css += "::-webkit-scrollbar-track-piece { background-color: rgba(0,0,0,.75); -webkit-border-radius: 2px; }\n";
 	css += "div.nH.qp[role = 'navigation'] { margin-bottom: 0px !important; }\n";
-	css += "* { -webkit-transition-property: height, background-color, border-color, color, opacity, width; -webkit-transition-duration: .15s; -webkit-transition-timing-function: ease-out; }\n"
-	if (response.o.nav || response.o.navW)
-		css += "* { -webkit-transition-property: height, background-color, border-color, color, opacity; }\n"
+	
 	// GENERAL
 		if (response.o.BTN)
 			css += ".J-Zh-I { color: " + response.o.BTNcolor + "; border: 1px solid " + response.o.BTNborder + "; background: -webkit-gradient(linear,0% 40%,0% 70%,from(" + response.o.BTNbottom + "),to(" + response.o.BTNtop + ")); }\n";
@@ -30,6 +28,11 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 		if (response.o.corners) {
 			css += "div[id = ':rm'] { margin-top: 4px !important; }\n";
 			css += "input[type = 'text'], textarea, div.Ar.Au { -webkit-border-radius: 5px; }\n";
+		}
+		if (response.o.trans) {
+			css += "* { -webkit-transition-property: height, background-color, border-color, color, opacity, width; -webkit-transition-duration: .15s; -webkit-transition-timing-function: ease-out; }\n"
+			if (response.o.nav || response.o.navW)
+				css += "* { -webkit-transition-property: height, background-color, border-color, color, opacity; }\n"
 		}
 		if (response.o.scroll)
 			css += "html.cQ { overflow-y: auto !important; }\n";

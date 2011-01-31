@@ -34,6 +34,7 @@ $(function(){
 			$("#loader").attr('checked', o.loader);
 			$("#corners").attr('checked', o.corners);
 			$("#scroll").attr('checked', o.scroll);
+			$("#trans").attr('checked', o.trans);
 			$("#customCSS").attr('checked', o.customCSS);
 			if ((o.customCSSval != null) && (o.customCSSval != ""))
 				$("#customCSSval").val(localStorage["customCSSval"]);
@@ -238,6 +239,7 @@ $(function(){
 				"loader":$("#loader").attr('checked'),
 				"corners":$("#corners").attr('checked'),
 				"scroll":$("#scroll").attr('checked'),
+				"trans":$("#trans").attr('checked'),
 				"customCSS":$("#customCSS").attr('checked'),
 					"customCSSval":$("#customCSSval").val().replace(/(\r\n|\n|\r)/gm,""),
 			// NOTIFICATIONS

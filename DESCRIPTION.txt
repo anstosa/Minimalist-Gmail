@@ -158,6 +158,8 @@
 
 == CHANGELOG ==jj
 
+ == 1.6.4
+  * Added: Made animated transitions optional [may decrease performance on slower machines]
  == 1.6.3
   * Added: Very subtle transition effects
   * Added: Hide inactive scrollbar option
