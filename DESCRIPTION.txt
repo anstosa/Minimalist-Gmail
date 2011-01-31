@@ -156,8 +156,10 @@
   Still don't trust me? Go to [https://github.com/anstosa/Minimalist-Gmail] to see the entire source code.
 
 
-== CHANGELOG ==jj
+== CHANGELOG ==
 
+ == 1.6.5
+  * Fixed: Random backend stuff to make remotedbug diagnostics easier
  == 1.6.4
   * Added: Made animated transitions optional [may decrease performance on slower machines]
  == 1.6.3

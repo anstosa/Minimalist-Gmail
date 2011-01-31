@@ -1,6 +1,6 @@
 {
 	"name": "Minimalist for Gmail",
-	"version": "1.6.4",
+	"version": "1.6.5",
 	"description": "Individually hide almost 100 interface elements, custom logos and row highlighting, favicon/desktop notifier, and more...",
 	"icons": {
          "16": "img/icons/icon16.png",

@@ -79,10 +79,10 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 			var toggleN = document.createElement("div");
 				toggleN.setAttribute("id", "navToggle");
 			nav.parentNode.insertBefore(toggleN, nav);
+			f_navToggle = true;
 			document.getElementById("navToggle").setAttribute("onClick", "javascript:if(document.getElementById('navToggle').nextSibling.getAttribute('style')=='width: " + response.o.navW + "px !important'){document.getElementById('navToggle').nextSibling.setAttribute('style', 'display: none !important;');document.getElementById('navToggle').nextSibling.nextSibling.setAttribute('style', 'width: ' + (document.getElementsByClassName(\"cQ\")[0].scrollWidth - 10) + 'px !important;');}else{document.getElementById('navToggle').nextSibling.setAttribute('style', 'width: " + response.o.navW + "px !important');document.getElementById('navToggle').nextSibling.nextSibling.setAttribute('style', 'width: ' + (document.getElementsByClassName(\"cQ\")[0].scrollWidth - 10 - " + response.o.navW + ") + 'px !important;');};");
 			if (response.o.navO)
 				document.getElementById("navToggle").setAttribute("onMouseOver", "javascript:if(document.getElementById('navToggle').nextSibling.getAttribute('style')!='width: " + response.o.navW + "px !important'){document.getElementById('navToggle').nextSibling.setAttribute('style', 'width: " + response.o.navW + "px !important');document.getElementById('navToggle').nextSibling.nextSibling.setAttribute('style', 'width: ' + (document.getElementsByClassName(\"cQ\")[0].scrollWidth - 10 - " + response.o.navW + ") + 'px !important;');};");
-			f_navToggle = true;
 			if (!response.o.nav) {
 				toggleN.setAttribute("style", "display: none;");
 				var navs = document.getElementById("navToggle").nextSibling;
@@ -111,7 +111,6 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 			console.log("MINIMALIST GMAIL: moving activity to top...");
 			try {
 				if (document.getElementsByClassName("nH l2 ov")) {
-					f_actPlace = true;
 					var act = document.getElementsByClassName("nH l2 ov")[0].childNodes[4];
 						//act.setAttribute('style', 'display: none !important');
 						act.parentNode.insertBefore(document.createElement('div'),act);
@@ -120,6 +119,7 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 						else act.setAttribute("style","float: left; height: 20px !important; width: 50%; text-align: center; margin-top: -7px !important;");
 					var bar = document.getElementById("gbar").parentNode;
 						bar.insertBefore(act, document.getElementById("gbar").nextSibling);
+					f_actPlace = true;
 				}
 			} catch (e) { console.error(e); }
 		}
@@ -208,54 +208,54 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 			console.log("MINIMALIST GMAIL: targetting Google User bar...");
 			try {
 				if (document.getElementById("guser")) {
-					f_guser = true;
 					guser = document.getElementById("guser").firstChild;
+					f_guser = true;
 				}
 			} catch (e) { console.error(e); }
 		}
 		if (response.o.user && !f_user && f_guser) {
 			console.log("MINIMALIST GMAIL: hiding signed in...");
 			try {
-				f_user = true;
 				var user = guser.childNodes[0];
 					user.setAttribute("style","display: none !important;");
 					user.nextSibling.setAttribute("style","display: none !important;");
+				f_user = true;
 			} catch (e) { console.error(e); }
 		}
 		if (response.o.labs && !f_labs && f_guser) {
 			console.log("MINIMALIST GMAIL: hiding labs icon...");
 			try {
-				f_labs = true;
 				var labs = guser.childNodes[4];
 					labs.setAttribute("style","display: none !important;");
 					labs.previousSibling.previousSibling.previousSibling.setAttribute("style","display: none !important;");
+				f_labs = true;
 			} catch (e) { console.error(e); }
 		}
 		if (response.o.settings && !f_settings && f_guser) {
 			console.log("MINIMALIST GMAIL: hiding settings...");
 			try {
-				f_settings = true;
 				var settings = guser.childNodes[6];
 					settings.setAttribute("style","display: none !important;");
 					settings.previousSibling.setAttribute("style","display: none !important;");
+				f_settings = true;
 			} catch (e) { console.error(e); }
 		}
 		if (response.o.help && !f_help && f_guser) {
 			console.log("MINIMALIST GMAIL: hiding help...");
 			try {
-				f_help = true;
 				var help = guser.childNodes[8];
 					help.setAttribute("style","display: none !important;");
 					help.previousSibling.setAttribute("style","display: none !important;");
+				f_help = true;
 			} catch (e) { console.error(e); }
 		}
 		if (response.o.out && !f_out && f_guser) {
 			console.log("MINIMALIST GMAIL: hiding sign out...");
 			try {
-				f_out = true;
 				var out = guser.childNodes[10];
 					out.setAttribute("style","display: none !important;");
 					out.previousSibling.setAttribute("style","display: none !important;");
+				f_out = true;
 			} catch (e) { console.error(e); }
 		}
 		/* if (response.o.details && !f_details) {
