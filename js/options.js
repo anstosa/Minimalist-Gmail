@@ -20,6 +20,7 @@ $(function(){
 		var o = JSON.parse(localStorage['options']);
 		// GENERAL
 			$("#mgicon").attr('checked', o.mgicon);
+			$("#mailto").attr('checked', o.mailto);
 			$("#BTN").attr('checked', o.BTN);
 			if ((o.BTNcolor != null) && (o.BTNcolor != ""))
 				$("#BTNcolorSUB").attr("style","background-color:" + o.BTNcolor + ";");
@@ -32,6 +33,7 @@ $(function(){
 			$("#testButton").attr("style","color: " + o.BTNcolor + ";border: 1px solid " + o.BTNborder + ";background: -webkit-gradient(linear,0% 40%,0% 70%,from(" + o.BTNbottom + "),to(" + o.BTNtop + "));");
 			$("#loader").attr('checked', o.loader);
 			$("#corners").attr('checked', o.corners);
+			$("#scroll").attr('checked', o.scroll);
 			$("#customCSS").attr('checked', o.customCSS);
 			if ((o.customCSSval != null) && (o.customCSSval != ""))
 				$("#customCSSval").val(localStorage["customCSSval"]);
@@ -44,60 +46,62 @@ $(function(){
 			else $("#appsURL").val("https://mail.google.com/a/yourdomain.com");
 		// GOOGLE BAR
 			$("#gbarH").attr('checked', o.gbarH);
+			$("#gbarO").attr('checked', o.gbarO);
 			$("#gbarB").attr('checked', o.gbarB);
 			$("#gbar").attr('checked', o.gbar);
 			$("#cbar").attr('checked', o.cbar);
-			if ((o.c_n_1 != null) && (o.c_n_1 != ""))
-				$("#c_n_1").val(o.c_n_1);
-			else $("#c_n_1").val("Gmail");
-			if ((o.c_u_1 != null) && (o.c_u_1 != ""))
-				$("#c_u_1").val(o.c_u_1);
-			else $("#c_u_1").val("https://mail.google.com");
-			if ((o.c_t_1 != null) && (o.c_t_1 != ""))
-				$("#c_t_1").val(o.c_t_1);
-			else $("#c_t_1").val("_blank");
-			if ((o.c_n_2 != null) && (o.c_n_2 != ""))
-				$("#c_n_2").val(o.c_n_2);
-			else $("#c_n_2").val("Calendar");
-			if ((o.c_u_2 != null) && (o.c_u_2 != ""))
-				$("#c_u_2").val(o.c_u_2);
-			else $("#c_u_2").val("http://www.google.com/calendar");
-			if ((o.c_t_2 != null) && (o.c_t_2 != ""))
-				$("#c_t_2").val(o.c_t_2);
-			else $("#c_t_2").val("_blank")
-			if ((o.c_n_3 != null) && (o.c_n_3 != ""))
-				$("#c_n_3").val(o.c_n_3);
-			else $("#c_n_3").val("Documents");
-			if ((o.c_u_3 != null) && (o.c_u_3 != ""))
-				$("#c_u_3").val(o.c_u_3);
-			else $("#c_u_3").val("http://docs.google.com");
-			if ((o.c_t_3 != null) && (o.c_t_3 != ""))
-				$("#c_t_3").val(o.c_t_3);
-			else $("#c_t_3").val("_blank")
-			if ((o.c_n_4 != null) && (o.c_n_4 != ""))
-				$("#c_n_4").val(o.c_n_4);
-			else $("#c_n_4").val("Reader");
-			if ((o.c_u_4 != null) && (o.c_u_4 != ""))
-				$("#c_u_4").val(o.c_u_4);
-			else $("#c_u_4").val("http://www.google.com/reader");
-			if ((o.c_t_5 != null) && (o.c_t_5 != ""))
-				$("#c_t_5").val(o.c_t_5);
-			else $("#c_t_5").val("_blank")
-			if ((o.c_n_5 != null) && (o.c_n_5 != ""))
-				$("#c_n_5").val(o.c_n_5);
-			else $("#c_n_5").val("Photos");
-			if ((o.c_u_5 != null) && (o.c_u_5 != ""))
-				$("#c_u_5").val(o.c_u_5);
-			else $("#c_u_5").val("http://picasaweb.google.com");
-			if ((o.c_n_6 != null) && (o.c_n_6 != ""))
-				$("#c_n_6").val(o.c_n_6);
-			else $("#c_n_6").val("Web");
-			if ((o.c_u_6 != null) && (o.c_u_6 != ""))
-				$("#c_u_6").val(o.c_u_6);
-			else $("#c_u_6").val("http://www.google.com");
-			if ((o.c_t_6 != null) && (o.c_t_6 != ""))
-				$("#c_t_6").val(o.c_t_6);
-			else $("#c_t_6").val("_blank")
+				if ((o.c_n_1 != null) && (o.c_n_1 != ""))
+					$("#c_n_1").val(o.c_n_1);
+				else $("#c_n_1").val("Gmail");
+				if ((o.c_u_1 != null) && (o.c_u_1 != ""))
+					$("#c_u_1").val(o.c_u_1);
+				else $("#c_u_1").val("https://mail.google.com");
+				if ((o.c_t_1 != null) && (o.c_t_1 != ""))
+					$("#c_t_1").val(o.c_t_1);
+				else $("#c_t_1").val("_blank");
+				if ((o.c_n_2 != null) && (o.c_n_2 != ""))
+					$("#c_n_2").val(o.c_n_2);
+				else $("#c_n_2").val("Calendar");
+				if ((o.c_u_2 != null) && (o.c_u_2 != ""))
+					$("#c_u_2").val(o.c_u_2);
+				else $("#c_u_2").val("http://www.google.com/calendar");
+				if ((o.c_t_2 != null) && (o.c_t_2 != ""))
+					$("#c_t_2").val(o.c_t_2);
+				else $("#c_t_2").val("_blank")
+				if ((o.c_n_3 != null) && (o.c_n_3 != ""))
+					$("#c_n_3").val(o.c_n_3);
+				else $("#c_n_3").val("Documents");
+				if ((o.c_u_3 != null) && (o.c_u_3 != ""))
+					$("#c_u_3").val(o.c_u_3);
+				else $("#c_u_3").val("http://docs.google.com");
+				if ((o.c_t_3 != null) && (o.c_t_3 != ""))
+					$("#c_t_3").val(o.c_t_3);
+				else $("#c_t_3").val("_blank")
+				if ((o.c_n_4 != null) && (o.c_n_4 != ""))
+					$("#c_n_4").val(o.c_n_4);
+				else $("#c_n_4").val("Reader");
+				if ((o.c_u_4 != null) && (o.c_u_4 != ""))
+					$("#c_u_4").val(o.c_u_4);
+				else $("#c_u_4").val("http://www.google.com/reader");
+				if ((o.c_t_5 != null) && (o.c_t_5 != ""))
+					$("#c_t_5").val(o.c_t_5);
+				else $("#c_t_5").val("_blank")
+				if ((o.c_n_5 != null) && (o.c_n_5 != ""))
+					$("#c_n_5").val(o.c_n_5);
+				else $("#c_n_5").val("Photos");
+				if ((o.c_u_5 != null) && (o.c_u_5 != ""))
+					$("#c_u_5").val(o.c_u_5);
+				else $("#c_u_5").val("http://picasaweb.google.com");
+				if ((o.c_n_6 != null) && (o.c_n_6 != ""))
+					$("#c_n_6").val(o.c_n_6);
+				else $("#c_n_6").val("Web");
+				if ((o.c_u_6 != null) && (o.c_u_6 != ""))
+					$("#c_u_6").val(o.c_u_6);
+				else $("#c_u_6").val("http://www.google.com");
+				if ((o.c_t_6 != null) && (o.c_t_6 != ""))
+					$("#c_t_6").val(o.c_t_6);
+				else $("#c_t_6").val("_blank")
+				$("#cbarM").attr('checked', o.cbarM);
 			$("#user").attr('checked', o.user);
 			$("#labs").attr('checked', o.labs);
 			$("#settings").attr('checked', o.settings);
@@ -175,6 +179,8 @@ $(function(){
 			$("#bads").attr('checked', o.bads);
 		// NAVIGATION
 			$("#nav").attr('checked', o.nav);
+			$("#navO").attr('checked', o.navO);
+			$("#navWC").attr('checked', o.navWC);
 			if ((o.navW != null) && (o.navW != ""))
 				$("#navW").val(o.navW);
 			else $("#navW").val("172");
@@ -223,6 +229,7 @@ $(function(){
 		localStorage['options'] = JSON.stringify({
 			// GENERAL
 				"mgicon":$("#mgicon").attr('checked'),
+				"mailto":$("#mailto").attr('checked'),
 				"BTN":$("#BTN").attr('checked'),
 					"BTNcolor":localStorage["BTNcolor"],
 					"BTNborder":localStorage["BTNborder"],
@@ -230,6 +237,7 @@ $(function(){
 					"BTNtop":localStorage["BTNtop"],
 				"loader":$("#loader").attr('checked'),
 				"corners":$("#corners").attr('checked'),
+				"scroll":$("#scroll").attr('checked'),
 				"customCSS":$("#customCSS").attr('checked'),
 					"customCSSval":$("#customCSSval").val().replace(/(\r\n|\n|\r)/gm,""),
 			// NOTIFICATIONS
@@ -239,6 +247,7 @@ $(function(){
 					"appsURL":$("#appsURL").val(),
 			// GOOGLE BAR
 				"gbarH":$("#gbarH").attr('checked'),
+				"gbarO":$("#gbarO").attr('checked'),
 				"gbarB":$("#gbarB").attr('checked'),
 				"gbar":$("#gbar").attr('checked'),
 				"cbar":$("#cbar").attr('checked'),
@@ -260,6 +269,7 @@ $(function(){
 					"c_n_6":$("#c_n_6").val(),
 					"c_u_6":$("#c_u_6").val(),
 					"c_t_6":$("#c_t_6").val(),
+					"cbarM":$("#cbarM").attr('checked'),
 				"user":$("#user").attr('checked'),
 				"labs":$("#labs").attr('checked'),
 				"settings":$("#settings").attr('checked'),
@@ -313,6 +323,8 @@ $(function(){
 				"bads":$("#bads").attr('checked'),
 			// NAVIGATION
 				"nav":$("#nav").attr('checked'),
+				"navO":$("#navO").attr('checked'),
+				"navWC":$("#navWC").attr('checked'),
 				"navW":$("#navW").val(),
 				"invites":$("#invites").attr('checked'),
 				"top":$("#top").attr('checked'),
@@ -360,25 +372,25 @@ $(function(){
 	//---- END SAVE ----//
 	
 	//---- SAVE LISTENERS ----//
-	document.getElementById("OPTgen").addEventListener("keypress", save, false);
+	document.getElementById("OPTgen").addEventListener("keyup", save, false);
 	document.getElementById("OPTgen").addEventListener("click", save, false);
-	document.getElementById("OPTnot").addEventListener("keypress", save, false);
+	document.getElementById("OPTnot").addEventListener("keyup", save, false);
 	document.getElementById("OPTnot").addEventListener("click", save, false);
-	document.getElementById("OPTgoo").addEventListener("keypress", save, false);
+	document.getElementById("OPTgoo").addEventListener("keyup", save, false);
 	document.getElementById("OPTgoo").addEventListener("click", save, false);
-	document.getElementById("OPThea").addEventListener("keypress", save, false);
+	document.getElementById("OPThea").addEventListener("keyup", save, false);
 	document.getElementById("OPThea").addEventListener("click", save, false);
-	document.getElementById("OPTmai").addEventListener("keypress", save, false);
+	document.getElementById("OPTmai").addEventListener("keyup", save, false);
 	document.getElementById("OPTmai").addEventListener("click", save, false);
-	document.getElementById("OPTgat").addEventListener("keypress", save, false);
+	document.getElementById("OPTgat").addEventListener("keyup", save, false);
 	document.getElementById("OPTgat").addEventListener("click", save, false);
-	document.getElementById("OPTcha").addEventListener("keypress", save, false);
+	document.getElementById("OPTcha").addEventListener("keyup", save, false);
 	document.getElementById("OPTcha").addEventListener("click", save, false);
-	document.getElementById("OPTfoo").addEventListener("keypress", save, false);
+	document.getElementById("OPTfoo").addEventListener("keyup", save, false);
 	document.getElementById("OPTfoo").addEventListener("click", save, false);
-	document.getElementById("EIC_1").addEventListener("keypress", save, false);
-	document.getElementById("EIC_2").addEventListener("keypress", save, false);
-	document.getElementById("EIC_3").addEventListener("keypress", save, false);
+	document.getElementById("EIC_1").addEventListener("keyup", save, false);
+	document.getElementById("EIC_2").addEventListener("keyup", save, false);
+	document.getElementById("EIC_3").addEventListener("keyup", save, false);
 	//---- END SAVE LISTENERS ----//
 	
 	//---- IMAGE PREVIEW ----//
@@ -442,10 +454,12 @@ function updateButton() {
 // NAVIGATION HANDLER
 var last = "gen";
 function navigate(link) {
-	$("#" + last).attr("class", "");
-	$("#" + link).attr("class", "current");
 	$("#OPT" + last).attr("style", "");
 	$("#OPT" + link).attr("style", "display: block;");
+	//document.getElementById("OPT" + link).scrollTop = 0;
+	$("#" + last).attr("class", "");
+	$("#" + link).attr("class", "current");
+	//document.getElementById("OPTside").scrollTop = 0;
 	last = link;
 }
 

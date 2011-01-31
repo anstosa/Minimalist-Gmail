@@ -1,3 +1,8 @@
+* {
+	-webkit-transition-property: height, background-color;
+	-webkit-transition-duration: .15s;
+	-webkit-transition-timing-function: ease-out;
+}
 body {
 	background-color: #F2F2F2;
 	color: #000;
@@ -133,9 +138,6 @@ body {
 				table td:first-child {
 					padding-right: 5px;
 				}
-			#attachCtable {
-				display: none;
-			}
 			.column{
 				float: left;
 				width: 50%;
@@ -194,33 +196,51 @@ body {
 					color: #0099ff;
 				}
 			div.indent {
-				padding: 0 0 20px 25px;
-				margin: 10px 0 10px;
 				-webkit-box-shadow: 1px 1px 5px rgba(0,0,0,.75) inset;
 				background-color: #d5d5d5;
+			}
+			div.indent.expanded {
+				padding: 0 0 20px 25px;
+				margin: 10px 0 10px;
+				height: 275px;
+			
+			}
+			div#attachCtable.indent.expanded {
+				height: 300px;
 			}
 				.indent input.field {
 					margin: 2px 2px 2px 0;
 				}
+			div.indent.compressed {
+				height: 0;
+				padding: 0;
+				margin: 0;
+			}
+				div.indent.compressed table {
+					display: none;
+				}
 			li {
 				list-style-type: square;
 			}
-			input.field {
+			input.field, textarea {
 				padding: 0 2px 2px 2px;
 				margin: 2px 0 2px 25px;
 				outline: none;
 				border: 1px solid #333;
 			}
-				input.field:hover, input.field:focus {
+				input.field:hover, input.field:focus, textarea:hover, textarea:focus {
 					background: #eee;
 					color: #222;
 					outline: none;
 				}
-				input.field:focus {
+				input.field:focus, textarea:focus {
 					background: #fff;
 					color: #000;
 					-webkit-box-shadow:0 0 10px rgba(0,153,255,.5);
 					border: 1px solid #0099ff;
+				}
+				textarea {
+					margin: 0;
 				}
 			a {
 				

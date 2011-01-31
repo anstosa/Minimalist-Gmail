@@ -214,6 +214,14 @@
 			</div>
 		</section>
 		<section>
+			<h3>mailto script</h3>
+			<div>
+				<input type="checkbox" id="mailto" />
+					&nbsp;<label for="mailto" title="">Don't open mailto links in Gmail</label><br />
+					<span class="note"><strong>NOT RECOMMENDED:</strong> Only check if you use a desktop client</span>
+			</div>
+		</section>
+		<section>
 			<h3>Loading Overlay</h3>
 			<div>
 				<!--Don't like the Gmail loading screen? Don't want to see the only interface for the split secon before Minimalist Gmail does it's work?-->
@@ -254,6 +262,13 @@
 			<div>
 				<input type="checkbox" id="corners" />
 					&nbsp;<label for="corners" title="">Round corners</label><br />
+			</div>
+		</section>
+		<section>
+			<h3>Scrollbar</h3>
+			<div>
+				<input type="checkbox" id="scroll" />
+					&nbsp;<label for="scroll" title="">Hide inactive scrollbar</label><br />
 			</div>
 		</section>
 		<section>
@@ -298,7 +313,10 @@
 			<div>
 				<input type="checkbox" id="gbarH" />
 					&nbsp;<label for="gbarH" title="">Hide Google Bar</label><br />
-					<span class="note">Click blank stripe to toggle</span>
+					<span class="note">[ \ ] or click blank stripe to toggle</span><br /><br />
+				<input type="checkbox" id="gbarO" />
+					&nbsp;<label for="gbarO" title="">Make invisible until mouseover</label><br />
+					<span class="note">Note: This will simplify appearance, not save pixels</span>
 			</div>
 		</section>
 		<section>
@@ -315,8 +333,8 @@
 					&nbsp;<label for="gbar" title="">Hide Google links</label><br />
 				<input type="checkbox" id="cbar" />
 					&nbsp;<label for="cbar" title="">Enable custom links</label><br />
-				<span class="note"><a href="#" id="expandClinks" onclick="javascript:document.getElementById('cLinks').setAttribute('style','display: block');document.getElementById('expandClinks').setAttribute('style','display: none');">Show input table</a></span>
-				<div id="cLinks" class="indent" style="display: none;">
+				<span class="note"><a href="#" id="expandClinks" onclick="javascript:document.getElementById('cLinks').setAttribute('class','indent expanded');document.getElementById('expandClinks').setAttribute('style','opacity: 0;');">Show input table</a></span>
+				<div id="cLinks" class="indent compressed">
 					<br />
 					Choose link text, link location, and link target *.<br />
 					If you want less links, just leave rows blank.<br /><br />
@@ -338,6 +356,9 @@
 					<input type="text" id="c_n_6" size="6" class="field" value="Web" />
 					<input type="text" id="c_u_6" size="24" class="field" value="http://www.google.com" style="margin-left: 1px;" />
 					<input type="text" id="c_t_6" size="3" class="field" value="_blank" style="margin-left: 1px;" /><br />
+					<input type="checkbox" id="cbarM" />
+					&nbsp;<label for="cbarM" title="">Show "more" dropdown</label><br />
+					<span class="note">Moves original Google Links into the more menu</span><br />
 					<br />
 					* "_blank" for new window, "_top" for this window
 				</div>
@@ -368,7 +389,7 @@
 			<div>
 				<input type="checkbox" id="header" />
 					&nbsp;<label for="header" title="">Hide header</label><br />
-					<span class="note">Click blank stripe to toggle, [ / ] to focus search, [ \ ] to rehide</span>
+					<span class="note">Click blank stripe to toggle, [ / ] to focus search, [ \ ] to toggle</span>
 			</div>
 		</section>
 		<section>
@@ -438,15 +459,15 @@
 			<div>
 				<input type="checkbox" id="stars" />
 					&nbsp;<label for="stars" title="">Hide star icons</label><br />
-					<span class="note">Only hides icons on unstarred items. [ s ] or click to star an item.</span>
+					<span class="note">Only hides icons on unstarred items. [ s ] or click to star an item.</span><br />
 				<input type="checkbox" id="attach" />
 					&nbsp;<label for="attach" title="">Better attachment icons [Classic] *</label><br />
 				<input type="checkbox" id="attachNew" />
 					&nbsp;<label for="attachNew" title="">Better attachment icons [New Google Style] *</label><br />
 				<input type="checkbox" id="attachC" />
 					&nbsp;<label for="attachC" title="">Better attachment icons [Custom] *</label><br />
-					<span class="note"><a href="#" id="expandCtable" onclick="javascript:document.getElementById('attachCtable').setAttribute('style','display: block');document.getElementById('expandCtable').setAttribute('style','display: none');">Show input table</a></span>
-					<div id="attachCtable" class="indent">
+					<span class="note"><a href="#" id="expandCtable" onclick="javascript:document.getElementById('attachCtable').setAttribute('class','indent expanded');document.getElementById('expandCtable').setAttribute('style','opacity: 0;');">Show input table</a></span>
+					<div id="attachCtable" class="indent compressed">
 					<table cellpadding="0" cellspacing="0">
 						<tr>
 							<td colspan="2"><br />Pick your own 16px square icons.<br />Input URL or Convert to Base64 <a href="http://www.greywyvern.com/code/php/binary2base64" target="_blank">via URL</a> or <a href="http://www.opinionatedgeek.com/dotnet/tools/base64encode/" target="_blank">via upload</a><br /><br /></td>
@@ -547,13 +568,19 @@
 			<div>
 				<input type="checkbox" id="nav" />
 					&nbsp;<label for="nav" title="">Hide navigation</label><br />
-						<span class="note">Click blank stripe to toggle</span>
+						<span class="note"><strong>WARNING:</strong> Possible CPU drain. Disable if Gmail slows.</span><br />
+						<span class="note">[ ` ] tilde key or click blank stripe to toggle</span><br /><br />
+				<input type="checkbox" id="navO" />
+					&nbsp;<label for="navO" title="">Expand nav on mouseover</label><br />
 			</div>
 		</section>
 		<section>
 			<h3>Custom width</h3>
 			<div>
-				<input type="text" id="navW" size="3" class="field" value="172" /> pixels<br />
+				<input type="checkbox" id="navWC" />
+					&nbsp;<label for="navWC" title="">Enable custom width</label><br />
+					<span class="note"><strong>WARNING:</strong> Possible CPU drain. Disable if Gmail slows.</span><br />
+				<input type="text" id="navW" size="3" class="field" value="172" /> pixels<!-- <input type="button" value="Confirm" /> --><br />
 				<span class="note">Default is 172</span>
 			</div>
 		</section>

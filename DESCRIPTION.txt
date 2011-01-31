@@ -156,8 +156,29 @@
   Still don't trust me? Go to [https://github.com/anstosa/Minimalist-Gmail] to see the entire source code.
 
 
-== CHANGELOG ==
+== CHANGELOG ==jj
 
+ == 1.6.3
+  * Added: Very subtle transition effects
+  * Added: Hide inactive scrollbar option
+  * Added: mailto script is not optional for those with bugs on other sites or who use desktop clients
+  * Added: Show "more" menu with custom Google Bar links with all original links included in the dropdown
+  * Added: Made show nav on mouseover optional
+  * Improved: First line no longer highlights as if selected for users who don't use keyboard navigation
+  * Improved: [ ` ] tilde key now toggles nav bar if hidden
+  * Improved: [ \ ] now toggles header and gbar on and off [only when either is hidden by default]
+  * Improved: Performace improvement for keyboard navigation in messaged
+  * Improved: Performace improvement for offline contact hiding
+  * Fixed: Keyboard navigation past either end of list unhighlights top or bottom item
+  * Fixed: Keyboard navigation not highlighting the right rows, not unhighlighting non-selected rows
+  * Fixed: Displaying checkbox tools as list breaks all toolbar dropdowns
+  * Fixed: Icon row from hidden sidebar floats over long subject lines
+  * Fixed: [ g ] + [ l ] shortcut broken
+  * Fixed: CPU obliteration bug. [Sorry, didn't notice it on my Quad Core i7 but turned my CR-48 into a rock :-)]
+ == 1.6.2
+  * Fixed: Messaged appearing below for unknown reasons [hide nav and custom nav width still broken for those users]
+ == 1.6.1
+  * Fixed: Messages appearing below chat because of gadgets
  == 1.6.0
   * Added: Toggle Minimalist Gmail on/off. New dropdown from URL bar icon allows toggling and link to Options
   * Added: "Panic!" button in URL icon dropdown. Just reloads the page but that fixes a lot of problems

@@ -22,69 +22,57 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 	var f_rows = false;
 	var f_details = false;
 	var f_actPlace = false;
+	var secondary = false;
+	var guser;
+	var counter = 0;
+	//var loaded = false;
 	//---- END VARIABLES ----//
-
+	
 	//---- CHECK PAGE LOAD ----//
 	function init() {
+		//console.log("MINIMALIST GMAIL: Waiting for Gmail to load...");
 		var el = document.body.getElementsByTagName('b');
 		if (el && el.length && (el[0].innerHTML == 'Gmail' || el[0].innerHTML == 'Mail' || el[0].innerHTML == 'Google Mail')) {
-			wait();
-		} else window.setTimeout(init,1000);
+			//console.log("MINIMALIST GMAIL: Gmail loaded! Work the magic...");
+			wait()
+		} else window.setTimeout(init, 1000);
 	}
 	//---- END CHECK PAGE LOAD ----//
+
 	
 	// KEYSTROKE INTERCEPTION. ONLY ACT IF NOT ENTERING INPUT
-	function keypress(event) {
+	function keyup(event) {
 		element = event.target;
 		elementName = element.nodeName.toLowerCase();
 		if (elementName == "input" || elementName == "textarea") return true;
-		else wait();
+		else {
+			console.log("MINIMALIST GMAIL: keystroke intercepted by active.js");
+			wait();
+		}
 		return true;
 	}
 	
 	//---- MAIN LOOP ----//
 	function run() {
+		console.log("MINIMALIST GMAIL: active.js main loop running...");
 		if (response.o.starHigh) {
-			var img = document.getElementsByTagName("img");
+			console.log("MINIMALIST GMAIL: checking for starred items");
+			var images = document.querySelectorAll("tr.yO > td:nth-child(2) > img");
 			try {
-				var x;
-				for (x in img) {
-					if (((img[x].getAttribute("class") == "W5RYx") || (img[x].getAttribute("class") == "xf") || (img[x].getAttribute("class") == "xd") || (img[x].getAttribute("class") == "xc") || (img[x].getAttribute("class") == "xh") || (img[x].getAttribute("class") == "xe") || (img[x].getAttribute("class") == "xm") || (img[x].getAttribute("class") == "xk") || (img[x].getAttribute("class") == "xl") || (img[x].getAttribute("class") == "xo") || (img[x].getAttribute("class") == "xn") || (img[x].getAttribute("class") == "xj") || (img[x].getAttribute("class") == "xd"))) {
-						if (response.o.starCLR != null && response.o.starCLR != "")
-							img[x].parentNode.parentNode.setAttribute("style", "background-color: " + response.o.starCLR + ";");
-						else img[x].parentNode.parentNode.setAttribute("style", "background-color: #ffcc00;");
-					} else if (((img[x].getAttribute("class") == "EqK8f") || (img[x].getAttribute("class") == "xi")) && !((img[x].parentNode.previousSibling.firstChild.getAttribute("style") == "visibility: visible; ") && response.o.high)) 
-						img[x].parentNode.parentNode.setAttribute("style", "");
+				for (var i = 0; i < images.length; i++) {
+					if (images[i].parentNode.previousSibling.firstChild.getAttribute("style") == null || images[i].parentNode.previousSibling.firstChild.getAttribute("style") != "visiblity: visible;") {
+						if (((images[i].getAttribute("class") == "W5RYx") || (images[i].getAttribute("class") == "xf") || (images[i].getAttribute("class") == "xd") || (images[i].getAttribute("class") == "xc") || (images[i].getAttribute("class") == "xh") || (images[i].getAttribute("class") == "xe") || (images[i].getAttribute("class") == "xm") || (images[i].getAttribute("class") == "xk") || (images[i].getAttribute("class") == "xl") || (images[i].getAttribute("class") == "xo") || (images[i].getAttribute("class") == "xn") || (images[i].getAttribute("class") == "xj") || (images[i].getAttribute("class") == "xd"))) {
+								if (response.o.starCLR != null && response.o.starCLR != "")
+									images[i].parentNode.parentNode.setAttribute("style", "background-color: " + response.o.starCLR + ";");
+								else images[i].parentNode.parentNode.setAttribute("style", "background-color: #ffcc00;");
+						} else if (((images[i].getAttribute("class") == "EqK8f") || (images[i].getAttribute("class") == "xi")) && !((images[i].parentNode.previousSibling.firstChild.getAttribute("style") == "visibility: visible; ") && response.o.high)) 
+							images[i].parentNode.parentNode.setAttribute("style", "");
+					}
 				}
-			} catch (e) { /* console.error(e); */ }
+			} catch (e) { console.warn(e); }
 		}
-		if (response.o.high && !f_rows) {
-			try {
-				var test = document.getElementsByClassName("VP5otc-pzeoBf")[0];
-				if(response.o.high) {
-					if (response.o.highCLR != null && response.o.highCLR != "")
-						if (test.nextSibling.nextSibling.nextSibling.nextSibling.firstChild.firstChild.firstChild.firstChild.firstChild.childNodes[1].firstChild.getAttribute("class").indexOf("zE") != -1)
-							test.nextSibling.nextSibling.nextSibling.nextSibling.firstChild.firstChild.firstChild.firstChild.firstChild.childNodes[1].firstChild.setAttribute("style", "background-color: " + response.o.highCLRu + ";");
-						else test.nextSibling.nextSibling.nextSibling.nextSibling.firstChild.firstChild.firstChild.firstChild.firstChild.childNodes[1].firstChild.setAttribute("style", "background-color: " + response.o.highCLR + ";");
-					else test.nextSibling.nextSibling.nextSibling.nextSibling.firstChild.firstChild.firstChild.firstChild.firstChild.childNodes[1].firstChild.setAttribute("style", "background-color: #0099ff !important;");
-				}
-				f_rows = true;
-			} catch (e) { /* console.error(e); */ }
-		}
-		/* if (response.o.high) {
-			try {
-				var test = document.getElementsByClassName("VP5otc-pzeoBf")[0];
-				if(response.o.high) {
-					if (response.o.highCLR != null && response.o.highCLR != "")
-						if (test.nextSibling.nextSibling.nextSibling.nextSibling.firstChild.firstChild.firstChild.firstChild.firstChild.childNodes[1].firstChild.getAttribute("class").indexOf("zE") != -1)
-							test.nextSibling.nextSibling.nextSibling.nextSibling.firstChild.firstChild.firstChild.firstChild.firstChild.childNodes[1].firstChild.setAttribute("style", "background-color: " + response.o.highCLRu + ";");
-						else test.nextSibling.nextSibling.nextSibling.nextSibling.firstChild.firstChild.firstChild.firstChild.firstChild.childNodes[1].firstChild.setAttribute("style", "background-color: " + response.o.highCLR + ";");
-					else test.nextSibling.nextSibling.nextSibling.nextSibling.firstChild.firstChild.firstChild.firstChild.firstChild.childNodes[1].firstChild.setAttribute("style", "background-color: #0099ff !important;");
-				}
-				f_rows = true;
-			} catch (e) { console.error(e); }
-		} */ 
-		if (!f_navToggle) {
+		if ((response.o.nav || response.o.navWC) && !f_navToggle) {
+			console.log("MINIMALIST GMAIL: fucking up the nav...");
 			var nav = document.getElementsByClassName("cP")[0].childNodes[1].childNodes[1].firstChild.childNodes[1].firstChild.firstChild;
 				nav.setAttribute("style", "display: none !important;");
 				nav.nextSibling.setAttribute("style", "width: " + (document.getElementsByClassName("cQ")[0].scrollWidth - 10) + "px !important;");
@@ -92,7 +80,8 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 				toggleN.setAttribute("id", "navToggle");
 			nav.parentNode.insertBefore(toggleN, nav);
 			document.getElementById("navToggle").setAttribute("onClick", "javascript:if(document.getElementById('navToggle').nextSibling.getAttribute('style')=='width: " + response.o.navW + "px !important'){document.getElementById('navToggle').nextSibling.setAttribute('style', 'display: none !important;');document.getElementById('navToggle').nextSibling.nextSibling.setAttribute('style', 'width: ' + (document.getElementsByClassName(\"cQ\")[0].scrollWidth - 10) + 'px !important;');}else{document.getElementById('navToggle').nextSibling.setAttribute('style', 'width: " + response.o.navW + "px !important');document.getElementById('navToggle').nextSibling.nextSibling.setAttribute('style', 'width: ' + (document.getElementsByClassName(\"cQ\")[0].scrollWidth - 10 - " + response.o.navW + ") + 'px !important;');};");
-			document.getElementById("navToggle").setAttribute("onMouseOver", "javascript:if(document.getElementById('navToggle').nextSibling.getAttribute('style')!='width: " + response.o.navW + "px !important'){document.getElementById('navToggle').nextSibling.setAttribute('style', 'width: " + response.o.navW + "px !important');document.getElementById('navToggle').nextSibling.nextSibling.setAttribute('style', 'width: ' + (document.getElementsByClassName(\"cQ\")[0].scrollWidth - 10 - " + response.o.navW + ") + 'px !important;');};");
+			if (response.o.navO)
+				document.getElementById("navToggle").setAttribute("onMouseOver", "javascript:if(document.getElementById('navToggle').nextSibling.getAttribute('style')!='width: " + response.o.navW + "px !important'){document.getElementById('navToggle').nextSibling.setAttribute('style', 'width: " + response.o.navW + "px !important');document.getElementById('navToggle').nextSibling.nextSibling.setAttribute('style', 'width: ' + (document.getElementsByClassName(\"cQ\")[0].scrollWidth - 10 - " + response.o.navW + ") + 'px !important;');};");
 			f_navToggle = true;
 			if (!response.o.nav) {
 				toggleN.setAttribute("style", "display: none;");
@@ -102,6 +91,7 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 			}
 		}
 		if (response.o.gbarH && !f_gbarToggle) {
+			console.log("MINIMALIST GMAIL: hiding Google Bar & adding toggle...");
 			try {
 				var login = document.getElementById("guser");
 					login.parentNode.parentNode.setAttribute("style", "display: none !important;");
@@ -118,18 +108,23 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 			} catch (e) { console.error(e); }
 		}
 		if (response.o.f_activity_move && !f_actPlace) {
+			console.log("MINIMALIST GMAIL: moving activity to top...");
 			try {
-				var act = document.getElementsByClassName("nH l2 ov")[0].childNodes[4];
-					act = act.removeChild(act.firstChild);
-					if (response.o.gbar)
-						act.setAttribute("style","float: left; height: 20px !important; padding-top: 5px !important; padding-left: 5px !important;");
-					else act.setAttribute("style","float: left; height: 20px !important; width: 50%; text-align: center; padding-top: 5px !important;");
-				var bar = document.getElementById("gbar").parentNode;
-					bar.insertBefore(act, document.getElementById("gbar").nextSibling);
-				f_actPlace = true;
+				if (document.getElementsByClassName("nH l2 ov")) {
+					f_actPlace = true;
+					var act = document.getElementsByClassName("nH l2 ov")[0].childNodes[4];
+						//act.setAttribute('style', 'display: none !important');
+						act.parentNode.insertBefore(document.createElement('div'),act);
+						if (response.o.gbar)
+							act.setAttribute("style","float: left; height: 20px !important; margin-top: -7px !important; padding-left: 5px !important;");
+						else act.setAttribute("style","float: left; height: 20px !important; width: 50%; text-align: center; margin-top: -7px !important;");
+					var bar = document.getElementById("gbar").parentNode;
+						bar.insertBefore(act, document.getElementById("gbar").nextSibling);
+				}
 			} catch (e) { console.error(e); }
 		}
 		if (response.o.header && !f_headerToggle) {
+			console.log("MINIMALIST GMAIL: hiding header and adding toggle...");
 				var logo = document.getElementById(":rm");
 				logo.parentNode.parentNode.setAttribute("style", "display: none !important;");
 				if (!response.o.gbarH) {
@@ -141,6 +136,7 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 				f_headerToggle = true;
 		}
 		if (response.o.cbar && !document.getElementById('cbarOne')) {
+			console.log("MINIMALIST GMAIL: customizing Google links...");
 			var one = document.getElementById("gbar").childNodes[0].childNodes[0];
 				one.setAttribute("style", "font-weight: normal;");
 				one.setAttribute("class", "");
@@ -165,54 +161,101 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 				six.setAttribute("href", response.o.c_u_6);
 				six.setAttribute("target", response.o.c_t_6);
 				six.innerHTML = response.o.c_n_6;
-			var more = document.getElementById("gbar").childNodes[0].childNodes[12];
-				more.setAttribute("style","display: none !important;");
+			if (response.o.cbarM) {
+				var moreD = document.querySelectorAll("#gbar div.gbm")[0];
+				var current = document.createElement("div");
+					current.setAttribute('class','gb2');
+				var hr = document.createElement("div");
+					hr.setAttribute('class','gbd');
+					current.appendChild(hr);
+					moreD.insertBefore(current, moreD.firstChild);
+				current = document.createElement("a");
+					current.setAttribute('target','_blank');
+					current.setAttribute('class','gb2');
+					current.setAttribute('href','http://www.google.com');
+					current.appendChild(document.createTextNode("Web"));
+					moreD.insertBefore(current, moreD.firstChild);
+				current = document.createElement("a");
+					current.setAttribute('target','_blank');
+					current.setAttribute('class','gb2');
+					current.setAttribute('href','http://picasaweb.google.com');
+					current.appendChild(document.createTextNode("Photos"));
+					moreD.insertBefore(current, moreD.firstChild);
+				current = document.createElement("a");
+					current.setAttribute('target','_blank');
+					current.setAttribute('class','gb2');
+					current.setAttribute('href','http://www.google.com/reader');
+					current.appendChild(document.createTextNode("Reader"));
+					moreD.insertBefore(current, moreD.firstChild);
+				current = document.createElement("a");
+					current.setAttribute('target','_blank');
+					current.setAttribute('class','gb2');
+					current.setAttribute('href','http://docs.google.com');
+					current.appendChild(document.createTextNode("Documents"));
+					moreD.insertBefore(current, moreD.firstChild);
+				current = document.createElement("a");
+					current.setAttribute('target','_blank');
+					current.setAttribute('class','gb2');
+					current.setAttribute('href','http://www.google.com/calendar');
+					current.appendChild(document.createTextNode("Calendar"));
+					moreD.insertBefore(current, moreD.firstChild);
+			} else {
+				var more = document.getElementById("gbar").childNodes[0].childNodes[12];
+					more.setAttribute("style","display: none !important;");
+			}
 		}
 		if ( !f_guser && (response.o.user || response.o.labs || response.o.settings || response.o.help || response.o.out)) {
-			var guser;
+			console.log("MINIMALIST GMAIL: targetting Google User bar...");
 			try {
-				guser = document.getElementById("guser").firstChild;
-				f_guser = true;
+				if (document.getElementById("guser")) {
+					f_guser = true;
+					guser = document.getElementById("guser").firstChild;
+				}
 			} catch (e) { console.error(e); }
 		}
 		if (response.o.user && !f_user && f_guser) {
+			console.log("MINIMALIST GMAIL: hiding signed in...");
 			try {
+				f_user = true;
 				var user = guser.childNodes[0];
 					user.setAttribute("style","display: none !important;");
 					user.nextSibling.setAttribute("style","display: none !important;");
-				f_user = true;
 			} catch (e) { console.error(e); }
 		}
 		if (response.o.labs && !f_labs && f_guser) {
+			console.log("MINIMALIST GMAIL: hiding labs icon...");
 			try {
+				f_labs = true;
 				var labs = guser.childNodes[4];
 					labs.setAttribute("style","display: none !important;");
 					labs.previousSibling.previousSibling.previousSibling.setAttribute("style","display: none !important;");
-				f_labs = true;
 			} catch (e) { console.error(e); }
 		}
 		if (response.o.settings && !f_settings && f_guser) {
+			console.log("MINIMALIST GMAIL: hiding settings...");
 			try {
+				f_settings = true;
 				var settings = guser.childNodes[6];
 					settings.setAttribute("style","display: none !important;");
 					settings.previousSibling.setAttribute("style","display: none !important;");
-				f_settings = true;
 			} catch (e) { console.error(e); }
 		}
 		if (response.o.help && !f_help && f_guser) {
+			console.log("MINIMALIST GMAIL: hiding help...");
 			try {
+				f_help = true;
 				var help = guser.childNodes[8];
 					help.setAttribute("style","display: none !important;");
 					help.previousSibling.setAttribute("style","display: none !important;");
-				f_help = true;
 			} catch (e) { console.error(e); }
 		}
 		if (response.o.out && !f_out && f_guser) {
+			console.log("MINIMALIST GMAIL: hiding sign out...");
 			try {
+				f_out = true;
 				var out = guser.childNodes[10];
 					out.setAttribute("style","display: none !important;");
 					out.previousSibling.setAttribute("style","display: none !important;");
-				f_out = true;
 			} catch (e) { console.error(e); }
 		}
 		/* if (response.o.details && !f_details) {
@@ -222,17 +265,19 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 				f_details = true;
 			} catch (e) { console.error(e); }
 		} */
+		if (response.o.nav || response.o.navWC && counter < 10) {
+			console.log("MINIMALIST GMAIL: making up for stupidity...");
+			reconfig();
+		}
+		counter++;
 	}
 	//---- END MAIN LOOP ----//
-	
-	// LOAD > ACTION TIME DELAY
-	function wait() {
-		var starcheck = setInterval(run, 1000);
-	}
 
 	//---- RESIZE HANDLER ----//
 	function reconfig() {
-		if (f_navToggle) {
+		console.log("MINIMALIST GMAIL: resize detected. reconfigure?");
+		if ((response.o.nav || response.o.navWC) && f_navToggle) {
+			console.log("MINIMALIST GMAIL: yep. reconfiguring...");
 			if (response.o.nav) {
 				document.getElementById("navToggle").nextSibling.nextSibling.setAttribute("style", "width: 600px !important;");
 				var viewport = document.getElementsByClassName("cQ")[0].scrollWidth - 10;
@@ -252,10 +297,14 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 	}
 	//---- END RESIZE HANDLER ----//
 	
+	function wait() {
+		var recheck = setInterval(run, 1000);
+	}
+	
 	init();
 	
 	// LISTENERS
-	document.addEventListener("keypress", keypress, false);
+	document.addEventListener("keyup", keyup, false);
 	document.addEventListener("click", wait, false);
 	window.addEventListener("resize", reconfig, false);
 });
