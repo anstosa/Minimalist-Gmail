@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name             Minimalist Gmail
+// @name             Minimalist for Gmail
 // @author           Ansel Santosa
 // @namespace        http://chrome.google.com/webstore
 // @description      Stylesheet construction and injection
@@ -12,6 +12,8 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 	// css += "::-webkit-scrollbar { width: 6px !important; background-color: #000; }\n";
 	// css += "::-webkit-scrollbar-track-piece { background-color: rgba(0,0,0,.75); -webkit-border-radius: 2px; }\n";
 	css += "div.nH.qp[role = 'navigation'] { margin-bottom: 0px !important; }\n";
+	//css += ".aC * { z-index: 999; }\n";
+	//css += ".VP5otc-pzeoBf { position: fixed; top: 0; z-index: 99;}\n"; //[min = 'float']
 	
 	// GENERAL
 		if (response.o.BTN)
@@ -77,24 +79,24 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 		if (response.o.borders || response.o.simplify)
 			css += "tr.yO td, tr.zE td { border: 0 !important; }\n";
 		if (response.o.simplify) {
-			css += "tr.yO td:first-child, tr.zE td:first-child { opacity: 0; }\n";
-			css += "tr.yO td:last-child > span, tr.zE td:last-child > span { opacity: 0; }\n";
-			css += "tr.yO td:nth-child(5), tr.zE td:nth-child(5) { opacity: 0; }\n";
-			css += "tr.x7 td:first-child, tr.yO:hover td:first-child, tr.zE:hover td:first-child { opacity: 1; }\n";
-			css += "tr.x7 td:last-child > span, tr.yO:hover td:last-child > span, tr.zE:hover td:last-child > span { opacity: 1; }\n";
-			css += "tr.x7 td:nth-child(5), tr.yO:hover td:nth-child(5), tr.zE:hover td:nth-child(5) { opacity: 1; }\n";
-			css += "tr.yO:hover td img.EqK8f, tr.zE:hover td img.xi { visibility: visible !important; }\n";
+			css += "tr.zA td:first-child, tr.zA td:last-child > span, tr.zA td:nth-child(5) { opacity: 0; }\n";
+			css += "tr.zA[min ~= 'select'] td:first-child, tr.x7 td:first-child { opacity: 1; }\n";
+			css += "tr.zA[min ~= 'select'] td:last-child > span, tr.x7 td:last-child > span, tr.zA:hover td:last-child > span { opacity: 1; }\n";
+			css += "tr.zA[min ~= 'select'] td:nth-child(5), tr.x7 td:nth-child(5), tr.zA:hover td:nth-child(5) { opacity: 1; }\n";
+			css += "tr.zA[min ~= 'select'] td img.xi, tr.zA[min ~= 'select'] td img.EqK8f, tr.zA:hover td img.EqK8f, tr.zA:hover td img.xi { visibility: visible !important; }\n";
 		}
-		if (response.o.uHigh)
-			css += "tr.zE { background-color: " + response.o.uCLR + "; }\n";
+		if (response.o.starHigh) {
+			css += "tr.yO[min ~= 'star'] { background-color: " + response.o.starCLR + "; }\n";
+			css += "tr.yO[min ~= 'star']:hover, tr.yO[min ~= 'star'][min ~= 'select'] { background-color: " + average(response.o.starCLR, response.o.highCLR) + " !important; }\n";
+			css += "tr.zE[min ~= 'star'] { background-color: " + average(response.o.starCLR, response.o.uCLR) + " !important; }\n";
+		}
+		if (response.o.uHigh) {
+			css += "tr.zE { background-color: " + response.o.uCLR + " !important; }\n";
+			css += "tr.zE:hover, tr.zE[min ~= 'select'] { background-color: " + average(response.o.uCLR, response.o.highCLR) + " !important; }\n";
+		}
 		if (response.o.high) {
-			if (response.o.highCLR != null && response.o.highCLR != "") {
-				css += "table.F.cf.dqpCVe tr.MT:hover, tr.yO:hover { background-color: " + response.o.highCLR + " !important; }\n";
-				css += "tr.zE:hover { background-color: " + response.o.highCLRu + " !important; }\n";
-			} else {
-				css += "table.F.cf.dqpCVe tr.MT:hover, tr.zE:hover, tr.yO:hover { background-color: #0099ff !important; }\n";
-				css += "tr.zE:hover { background-color: #00ccff !important; }\n";
-			}
+			css += "table.F.cf.dqpCVe tr.MT:hover, tr.yO:hover, tr.yO[min ~= 'select']:not([min ~= 'star']) { background-color: " + response.o.highCLR + "; }\n";
+			css += "tr.zE:hover, tr.zE[min ~= 'select']:not([min ~= 'star']) { background-color: " + response.o.highCLRu + "; }\n";
 		}
 		if (response.o.stars || response.o.simplify)
 			css += "img.EqK8f, img.xi { visibility: hidden !important; }\n";
@@ -203,11 +205,15 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 		}
 		if (response.o.compose)
 			css += "div.z0 { display: none !important; }\n";
-		if (response.o.inboxH)
-			css += "div[role = 'navigation'] div.TO:first-child { display: none; }\n";
+		/* if (response.o.inboxH)
+			css += "div[role = 'navigation'] div.TO:first-child { display: none; }\n"; */
 		if (response.o.spam) {
 			css += "div.TO a[href$='#spam'] { visibility: hidden; }\n";
 			css += "div.TO a[href$='#spam']:before { content: 'Spam'; visibility: visible; font-weight: 400; }\n";
+		}
+		if (response.o.drafts) {
+			css += "div.TO a[href$='#drafts'] { visibility: hidden; }\n";
+			css += "div.TO a[href$='#drafts']:before { content: 'Drafts'; visibility: visible; font-weight: 400; }\n";
 		}
 		if (response.o.buzz) {
 			css += "div.TO a[href$='#buzz'] { visibility: hidden; }\n";
@@ -228,7 +234,6 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			css += "input[class = 'dI dG'] { display: none !important; } \n";
 		if (response.o.c_invisible){
 			css += "div.ul[role = 'alert'] { display: none; }\n";
-			//css += "div.nH.pp.T0:nth-child(4) > div > div > div > div:nth-child(2) > div:nth-child(3), div.nH.pp.ps.TZ:nth-child(4) > div > div > div > div:nth-child(2) > div:nth-child(3) { display: none !important; } \n";
 		}
 		if (response.o.status)
 			css += "table.cf.vH tr.vm { display: none !important; }\n";
@@ -249,8 +254,12 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			css += "div.nH.l2.ov div:nth-child(4) td:nth-child(3) .mh { display: none !important; }\n";
 		if (response.o.f_s_menu)
 			css += "div.nH.l2.ov div:nth-child(4) td:nth-child(3) .mm { display: none !important; }\n";
-		/* if (response.o.f_activity_move)
-			css += "div.16 { margin-top: -12px !important;}"; */
+		if (response.o.f_activity_move) {
+			if (response.o.gbar) 
+				css += "div.nH.l2.ov div:nth-child(5) { position: absolute; top: -6px; left: 5px; opacity: .35; }\n";
+			else css += "div.nH.l2.ov div:nth-child(5) { position: absolute; top: -6px; left: 30%; right: 30%; opacity: .35; }\n";
+			css += "div.nH.l2.ov div:nth-child(5):hover { opacity: 1; }\n";
+		}
 		if (response.o.f_activity_hide)
 			css += "div.nH.l2.ov div:nth-child(5) { display: none !important; }\n";
 	// CUSTOM
@@ -266,4 +275,17 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 		heads[0].appendChild(node);
 	}
 	//---- END INJECT CSS ----//
+	
+	//---- HELPER METHODS ----//
+	function HexToR(h) { return parseInt((cutHex(h)).substring(0,2),16) }
+	function HexToG(h) { return parseInt((cutHex(h)).substring(2,4),16) }
+	function HexToB(h) { return parseInt((cutHex(h)).substring(4,6),16) }
+	function cutHex(h) { return (h.charAt(0) == "#") ? h.substring(1,7) : h }
+	function average(one, two) {
+		var r = (HexToR(one) + HexToR(two)) / 2;
+		var g = (HexToG(one) + HexToG(two)) / 2;
+		var b = (HexToB(one) + HexToB(two)) / 2;
+		return "rgb(" + Math.round(r) + "," + Math.round(g) + "," + Math.round(b) + ")";
+	}
+	//---- HELPER METHODS ----//
 });

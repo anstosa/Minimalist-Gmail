@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name             Minimalist Gmail
+// @name             Minimalist for Gmail
 // @author           Ansel Santosa
 // @namespace        http://chrome.google.com/webstore
 // @description      Features that require one time initialization on complete page load.
@@ -19,100 +19,102 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 	var f_headerToggle = false;
 	var f_navToggle = false;
 	var f_nav = false;
-	var f_rows = false;
-	var f_details = false;
+	//var f_float = false;
+	//var f_details = false;
 	var f_actPlace = false;
-	var secondary = false;
 	var guser;
 	var counter = 0;
-	//var loaded = false;
+	var cP = null;
+	var running = false;
+	var allow = true;
 	//---- END VARIABLES ----//
-	
+
 	//---- CHECK PAGE LOAD ----//
+	function getLoad() {
+		return document.getElementsByClassName('cP');
+	}
 	function init() {
-		//console.log("MINIMALIST GMAIL: Waiting for Gmail to load...");
-		var el = document.body.getElementsByTagName('b');
-		if (el && el.length && (el[0].innerHTML == 'Gmail' || el[0].innerHTML == 'Mail' || el[0].innerHTML == 'Google Mail')) {
-			//console.log("MINIMALIST GMAIL: Gmail loaded! Work the magic...");
-			wait()
-		} else window.setTimeout(init, 1000);
+		if (getLoad()[0] == cP) return;
+		if (cP != null)
+			cP.removeEventListener("DOMSubtreeModified", run, false);
+		if ((cP = getLoad()[0]) != null) {
+			console.log("MINIMALIST GMAIL: Gmail loaded! Work the magic...");
+			cP.addEventListener("DOMSubtreeModified", run, false);
+		}
 	}
 	//---- END CHECK PAGE LOAD ----//
 
-	
-	// KEYSTROKE INTERCEPTION. ONLY ACT IF NOT ENTERING INPUT
-	function keyup(event) {
-		element = event.target;
-		elementName = element.nodeName.toLowerCase();
-		if (elementName == "input" || elementName == "textarea") return true;
-		else {
-			console.log("MINIMALIST GMAIL: keystroke intercepted by active.js");
-			wait();
-		}
-		return true;
-	}
-	
 	//---- MAIN LOOP ----//
 	function run() {
-		console.log("MINIMALIST GMAIL: active.js main loop running...");
+		// only run loop if it hasn't run this second and isn't running already
+		if (running || !allow) return true;
+		else {
+			running = true;
+			allow = false;
+			window.setTimeout(function() {
+				allow = true;
+			}, 1000);
+		}
+		// go loop go!
+		console.log("MINIMALIST GMAIL: **MAIN LOOP**");
 		if (response.o.starHigh) {
 			console.log("MINIMALIST GMAIL: checking for starred items");
-			var images = document.querySelectorAll("tr.yO > td:nth-child(2) > img");
+			var images = document.querySelectorAll("tr.zA > td:nth-child(2) > img");
 			try {
-				for (var i = 0; i < images.length; i++) {
-					if (images[i].parentNode.previousSibling.firstChild.getAttribute("style") == null || images[i].parentNode.previousSibling.firstChild.getAttribute("style") != "visiblity: visible;") {
-						if (((images[i].getAttribute("class") == "W5RYx") || (images[i].getAttribute("class") == "xf") || (images[i].getAttribute("class") == "xd") || (images[i].getAttribute("class") == "xc") || (images[i].getAttribute("class") == "xh") || (images[i].getAttribute("class") == "xe") || (images[i].getAttribute("class") == "xm") || (images[i].getAttribute("class") == "xk") || (images[i].getAttribute("class") == "xl") || (images[i].getAttribute("class") == "xo") || (images[i].getAttribute("class") == "xn") || (images[i].getAttribute("class") == "xj") || (images[i].getAttribute("class") == "xd"))) {
-								if (response.o.starCLR != null && response.o.starCLR != "")
-									images[i].parentNode.parentNode.setAttribute("style", "background-color: " + response.o.starCLR + ";");
-								else images[i].parentNode.parentNode.setAttribute("style", "background-color: #ffcc00;");
-						} else if (((images[i].getAttribute("class") == "EqK8f") || (images[i].getAttribute("class") == "xi")) && !((images[i].parentNode.previousSibling.firstChild.getAttribute("style") == "visibility: visible; ") && response.o.high)) 
-							images[i].parentNode.parentNode.setAttribute("style", "");
+				if (images.length > 0) {
+					for (var i = 0; i < images.length; i++) {
+							if (((images[i].getAttribute("class") == "W5RYx") || (images[i].getAttribute("class") == "xf") || (images[i].getAttribute("class") == "xd") || (images[i].getAttribute("class") == "xc") || (images[i].getAttribute("class") == "xh") || (images[i].getAttribute("class") == "xe") || (images[i].getAttribute("class") == "xm") || (images[i].getAttribute("class") == "xk") || (images[i].getAttribute("class") == "xl") || (images[i].getAttribute("class") == "xo") || (images[i].getAttribute("class") == "xn") || (images[i].getAttribute("class") == "xj") || (images[i].getAttribute("class") == "xd")))
+								minimalist(images[i].parentNode.parentNode, false, "star");
+							else minimalist(images[i].parentNode.parentNode, true, "star");
 					}
 				}
-			} catch (e) { console.warn(e); }
+			} catch (e) { console.error(e); }
 		}
 		if ((response.o.nav || response.o.navWC) && !f_navToggle) {
-			console.log("MINIMALIST GMAIL: fucking up the nav...");
-			var nav = document.getElementsByClassName("cP")[0].childNodes[1].childNodes[1].firstChild.childNodes[1].firstChild.firstChild;
-				nav.setAttribute("style", "display: none !important;");
-				nav.nextSibling.setAttribute("style", "width: " + (document.getElementsByClassName("cQ")[0].scrollWidth - 10) + "px !important;");
-			var toggleN = document.createElement("div");
-				toggleN.setAttribute("id", "navToggle");
-			nav.parentNode.insertBefore(toggleN, nav);
-			f_navToggle = true;
-			document.getElementById("navToggle").setAttribute("onClick", "javascript:if(document.getElementById('navToggle').nextSibling.getAttribute('style')=='width: " + response.o.navW + "px !important'){document.getElementById('navToggle').nextSibling.setAttribute('style', 'display: none !important;');document.getElementById('navToggle').nextSibling.nextSibling.setAttribute('style', 'width: ' + (document.getElementsByClassName(\"cQ\")[0].scrollWidth - 10) + 'px !important;');}else{document.getElementById('navToggle').nextSibling.setAttribute('style', 'width: " + response.o.navW + "px !important');document.getElementById('navToggle').nextSibling.nextSibling.setAttribute('style', 'width: ' + (document.getElementsByClassName(\"cQ\")[0].scrollWidth - 10 - " + response.o.navW + ") + 'px !important;');};");
-			if (response.o.navO)
-				document.getElementById("navToggle").setAttribute("onMouseOver", "javascript:if(document.getElementById('navToggle').nextSibling.getAttribute('style')!='width: " + response.o.navW + "px !important'){document.getElementById('navToggle').nextSibling.setAttribute('style', 'width: " + response.o.navW + "px !important');document.getElementById('navToggle').nextSibling.nextSibling.setAttribute('style', 'width: ' + (document.getElementsByClassName(\"cQ\")[0].scrollWidth - 10 - " + response.o.navW + ") + 'px !important;');};");
-			if (!response.o.nav) {
-				toggleN.setAttribute("style", "display: none;");
-				var navs = document.getElementById("navToggle").nextSibling;
-					navs.setAttribute("style", "width: " + response.o.navW + "px !important");
-					navs.nextSibling.setAttribute('style', 'width: ' + (document.getElementsByClassName("cQ")[0].scrollWidth - response.o.navW) + 'px !important;');
-			}
+			console.log("MINIMALIST GMAIL: Adding the nav hook...");
+			console.warn("MINIMALIST GMAIL: If Gmail runs slow, disable Hide Nav and Custom Nav Width");
+			console.warn("MINIMALIST GMAIL: If messages appear below sidebar, disable hide inactive scrollbar");
+			try {
+				var nav = document.getElementsByClassName("cP")[0].childNodes[1].childNodes[1].firstChild.childNodes[1].firstChild.firstChild;
+					nav.setAttribute("style", "display: none !important;");
+					nav.nextSibling.setAttribute("style", "width: " + (document.getElementsByClassName("cQ")[0].scrollWidth - 10) + "px !important;");
+				var toggleN = document.createElement("div");
+					toggleN.setAttribute("id", "navToggle");
+					toggleN.setAttribute("onClick", "javascript:if(document.getElementById('navToggle').nextSibling.getAttribute('style')=='width: " + response.o.navW + "px !important'){document.getElementById('navToggle').nextSibling.setAttribute('style', 'display: none !important;');document.getElementById('navToggle').nextSibling.nextSibling.setAttribute('style', 'width: ' + (document.getElementsByClassName(\"cQ\")[0].scrollWidth - 10) + 'px !important;');}else{document.getElementById('navToggle').nextSibling.setAttribute('style', 'width: " + response.o.navW + "px !important');document.getElementById('navToggle').nextSibling.nextSibling.setAttribute('style', 'width: ' + (document.getElementsByClassName(\"cQ\")[0].scrollWidth - 10 - " + response.o.navW + ") + 'px !important;');};");
+				if (response.o.navO)
+					toggleN.setAttribute("onMouseOver", "javascript:if(document.getElementById('navToggle').nextSibling.getAttribute('style')!='width: " + response.o.navW + "px !important'){document.getElementById('navToggle').nextSibling.setAttribute('style', 'width: " + response.o.navW + "px !important');document.getElementById('navToggle').nextSibling.nextSibling.setAttribute('style', 'width: ' + (document.getElementsByClassName(\"cQ\")[0].scrollWidth - 10 - " + response.o.navW + ") + 'px !important;');};");
+				nav.parentNode.insertBefore(toggleN, nav);
+				if (!response.o.nav) {
+					toggleN.setAttribute("style", "display: none;");
+					var navs = document.getElementById("navToggle").nextSibling;
+						navs.setAttribute("style", "width: " + response.o.navW + "px !important");
+						navs.nextSibling.setAttribute('style', 'width: ' + (document.getElementsByClassName("cQ")[0].scrollWidth - response.o.navW) + 'px !important;');
+				}
+				f_navToggle = true;
+			} catch (e) { console.error(e); }
 		}
 		if (response.o.gbarH && !f_gbarToggle) {
-			console.log("MINIMALIST GMAIL: hiding Google Bar & adding toggle...");
+			console.log("MINIMALIST GMAIL: hiding Google Bar & adding the header hook...");
 			try {
 				var login = document.getElementById("guser");
 					login.parentNode.parentNode.setAttribute("style", "display: none !important;");
 				var toggleG = document.createElement("div");
 					toggleG.setAttribute("id", "gbarToggle");
 				if (!response.o.header) {
+					toggleG.setAttribute("onClick", "javascript:if(document.getElementById('gbarToggle').nextSibling.getAttribute('style')==''){document.getElementById('gbarToggle').nextSibling.setAttribute('style', 'display: none !important;');}else{document.getElementById('gbarToggle').nextSibling.setAttribute('style', '');};");
 					login.parentNode.parentNode.parentNode.insertBefore(toggleG, login.parentNode.parentNode);
-					document.getElementById("gbarToggle").setAttribute("onClick", "javascript:if(document.getElementById('gbarToggle').nextSibling.getAttribute('style')==''){document.getElementById('gbarToggle').nextSibling.setAttribute('style', 'display: none !important;');}else{document.getElementById('gbarToggle').nextSibling.setAttribute('style', '');};");
 				} else {
+					toggleG.setAttribute("onClick", "javascript:if(document.getElementById('gbarToggle').nextSibling.firstChild.getAttribute('style')==''){document.getElementById('gbarToggle').nextSibling.firstChild.setAttribute('style', 'display: none !important;');document.getElementById('gbarToggle').nextSibling.nextSibling.nextSibling.firstChild.setAttribute('style', 'display: none !important;');}else{document.getElementById('gbarToggle').nextSibling.firstChild.setAttribute('style', '');document.getElementById('gbarToggle').nextSibling.nextSibling.nextSibling.firstChild.setAttribute('style', '');};");
 					login.parentNode.parentNode.parentNode.parentNode.insertBefore(toggleG, login.parentNode.parentNode.parentNode);
-					document.getElementById("gbarToggle").setAttribute("onClick", "javascript:if(document.getElementById('gbarToggle').nextSibling.firstChild.getAttribute('style')==''){document.getElementById('gbarToggle').nextSibling.firstChild.setAttribute('style', 'display: none !important;');document.getElementById('gbarToggle').nextSibling.nextSibling.nextSibling.firstChild.setAttribute('style', 'display: none !important;');}else{document.getElementById('gbarToggle').nextSibling.firstChild.setAttribute('style', '');document.getElementById('gbarToggle').nextSibling.nextSibling.nextSibling.firstChild.setAttribute('style', '');};");
 				}
 				f_gbarToggle = true;
 			} catch (e) { console.error(e); }
 		}
-		if (response.o.f_activity_move && !f_actPlace) {
+		/* if (response.o.f_activity_move && !f_actPlace) {
 			console.log("MINIMALIST GMAIL: moving activity to top...");
-			try {
-				if (document.getElementsByClassName("nH l2 ov")) {
-					var act = document.getElementsByClassName("nH l2 ov")[0].childNodes[4];
-						//act.setAttribute('style', 'display: none !important');
+			//try {
+				if (document.getElementsByClassName('nH l2 ov') != null && document.getElementsByClassName('nH l2 ov') != undefined && document.getElementsByClassName('nH l2 ov').length > 0) {
+					var act = document.getElementsByClassName('nH l2 oV')[0].firstChild;
 						act.parentNode.insertBefore(document.createElement('div'),act);
 						if (response.o.gbar)
 							act.setAttribute("style","float: left; height: 20px !important; margin-top: -7px !important; padding-left: 5px !important;");
@@ -121,88 +123,95 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 						bar.insertBefore(act, document.getElementById("gbar").nextSibling);
 					f_actPlace = true;
 				}
-			} catch (e) { console.error(e); }
-		}
+			//} catch (e) { console.error(e); }
+		} */
+		/* if (!f_float) {
+			console.log("MINIMALIST GMAIL: Adding floater");
+		} */
 		if (response.o.header && !f_headerToggle) {
 			console.log("MINIMALIST GMAIL: hiding header and adding toggle...");
-				var logo = document.getElementById(":rm");
+			var logo = document.getElementById(":rm");
+			try {
 				logo.parentNode.parentNode.setAttribute("style", "display: none !important;");
 				if (!response.o.gbarH) {
 					var toggle = document.createElement("div");
 					toggle.setAttribute("id", "headerToggle");
+					toggle.setAttribute("onClick", "javascript:if(document.getElementById('headerToggle').nextSibling.getAttribute('style')==''){document.getElementById('headerToggle').nextSibling.setAttribute('style', 'display: none !important;');}else{document.getElementById('headerToggle').nextSibling.setAttribute('style', '');};");
 					logo.parentNode.parentNode.parentNode.insertBefore(toggle, logo.parentNode.parentNode);
-					document.getElementById("headerToggle").setAttribute("onClick", "javascript:if(document.getElementById('headerToggle').nextSibling.getAttribute('style')==''){document.getElementById('headerToggle').nextSibling.setAttribute('style', 'display: none !important;');}else{document.getElementById('headerToggle').nextSibling.setAttribute('style', '');};");
 				}
 				f_headerToggle = true;
+			} catch (e) { console.error(e); }
 		}
 		if (response.o.cbar && !document.getElementById('cbarOne')) {
 			console.log("MINIMALIST GMAIL: customizing Google links...");
-			var one = document.getElementById("gbar").childNodes[0].childNodes[0];
-				one.setAttribute("style", "font-weight: normal;");
-				one.setAttribute("class", "");
-				one.innerHTML = "<a target=\"" + response.o.c_t_1 + "\" id=\"cbarOne\" href=\"" + response.o.c_u_1 + "\" class=\"gb1 qq\">" + response.o.c_n_1 + "</a>";
-			var two = document.getElementById("gbar").childNodes[0].childNodes[2];
-				two.setAttribute("href", response.o.c_u_2);
-				two.setAttribute("target", response.o.c_t_2);
-				two.innerHTML = response.o.c_n_2;
-			var three = document.getElementById("gbar").childNodes[0].childNodes[4];
-				three.setAttribute("href", response.o.c_u_3);
-				three.setAttribute("target", response.o.c_t_3);
-				three.innerHTML = response.o.c_n_3;
-			var four = document.getElementById("gbar").childNodes[0].childNodes[6];
-				four.setAttribute("href", response.o.c_u_4);
-				four.setAttribute("target", response.o.c_t_4);
-				four.innerHTML = response.o.c_n_4;
-			var five = document.getElementById("gbar").childNodes[0].childNodes[8];
-				five.setAttribute("href", response.o.c_u_5);
-				five.setAttribute("target", response.o.c_t_5);
-				five.innerHTML = response.o.c_n_5;
-			var six = document.getElementById("gbar").childNodes[0].childNodes[10];
-				six.setAttribute("href", response.o.c_u_6);
-				six.setAttribute("target", response.o.c_t_6);
-				six.innerHTML = response.o.c_n_6;
-			if (response.o.cbarM) {
-				var moreD = document.querySelectorAll("#gbar div.gbm")[0];
-				var current = document.createElement("div");
-					current.setAttribute('class','gb2');
-				var hr = document.createElement("div");
-					hr.setAttribute('class','gbd');
-					current.appendChild(hr);
-					moreD.insertBefore(current, moreD.firstChild);
-				current = document.createElement("a");
-					current.setAttribute('target','_blank');
-					current.setAttribute('class','gb2');
-					current.setAttribute('href','http://www.google.com');
-					current.appendChild(document.createTextNode("Web"));
-					moreD.insertBefore(current, moreD.firstChild);
-				current = document.createElement("a");
-					current.setAttribute('target','_blank');
-					current.setAttribute('class','gb2');
-					current.setAttribute('href','http://picasaweb.google.com');
-					current.appendChild(document.createTextNode("Photos"));
-					moreD.insertBefore(current, moreD.firstChild);
-				current = document.createElement("a");
-					current.setAttribute('target','_blank');
-					current.setAttribute('class','gb2');
-					current.setAttribute('href','http://www.google.com/reader');
-					current.appendChild(document.createTextNode("Reader"));
-					moreD.insertBefore(current, moreD.firstChild);
-				current = document.createElement("a");
-					current.setAttribute('target','_blank');
-					current.setAttribute('class','gb2');
-					current.setAttribute('href','http://docs.google.com');
-					current.appendChild(document.createTextNode("Documents"));
-					moreD.insertBefore(current, moreD.firstChild);
-				current = document.createElement("a");
-					current.setAttribute('target','_blank');
-					current.setAttribute('class','gb2');
-					current.setAttribute('href','http://www.google.com/calendar');
-					current.appendChild(document.createTextNode("Calendar"));
-					moreD.insertBefore(current, moreD.firstChild);
-			} else {
-				var more = document.getElementById("gbar").childNodes[0].childNodes[12];
-					more.setAttribute("style","display: none !important;");
-			}
+			try {
+				var one = document.getElementById("gbar").childNodes[0].childNodes[0];
+					one.setAttribute("style", "font-weight: normal;");
+					one.setAttribute("class", "");
+					one.innerHTML = "<a target=\"" + response.o.c_t_1 + "\" id=\"cbarOne\" href=\"" + response.o.c_u_1 + "\" class=\"gb1 qq\">" + response.o.c_n_1 + "</a>";
+				var two = document.getElementById("gbar").childNodes[0].childNodes[2];
+					two.setAttribute("href", response.o.c_u_2);
+					two.setAttribute("target", response.o.c_t_2);
+					two.innerHTML = response.o.c_n_2;
+				var three = document.getElementById("gbar").childNodes[0].childNodes[4];
+					three.setAttribute("href", response.o.c_u_3);
+					three.setAttribute("target", response.o.c_t_3);
+					three.innerHTML = response.o.c_n_3;
+				var four = document.getElementById("gbar").childNodes[0].childNodes[6];
+					four.setAttribute("href", response.o.c_u_4);
+					four.setAttribute("target", response.o.c_t_4);
+					four.innerHTML = response.o.c_n_4;
+				var five = document.getElementById("gbar").childNodes[0].childNodes[8];
+					five.setAttribute("href", response.o.c_u_5);
+					five.setAttribute("target", response.o.c_t_5);
+					five.innerHTML = response.o.c_n_5;
+				var six = document.getElementById("gbar").childNodes[0].childNodes[10];
+					six.setAttribute("href", response.o.c_u_6);
+					six.setAttribute("target", response.o.c_t_6);
+					six.innerHTML = response.o.c_n_6;
+				if (response.o.cbarM) {
+					var moreD = document.querySelectorAll("#gbar div.gbm")[0];
+					var current = document.createElement("div");
+						current.setAttribute('class','gb2');
+					var hr = document.createElement("div");
+						hr.setAttribute('class','gbd');
+						current.appendChild(hr);
+						moreD.insertBefore(current, moreD.firstChild);
+					current = document.createElement("a");
+						current.setAttribute('target','_blank');
+						current.setAttribute('class','gb2');
+						current.setAttribute('href','http://www.google.com');
+						current.appendChild(document.createTextNode("Web"));
+						moreD.insertBefore(current, moreD.firstChild);
+					current = document.createElement("a");
+						current.setAttribute('target','_blank');
+						current.setAttribute('class','gb2');
+						current.setAttribute('href','http://picasaweb.google.com');
+						current.appendChild(document.createTextNode("Photos"));
+						moreD.insertBefore(current, moreD.firstChild);
+					current = document.createElement("a");
+						current.setAttribute('target','_blank');
+						current.setAttribute('class','gb2');
+						current.setAttribute('href','http://www.google.com/reader');
+						current.appendChild(document.createTextNode("Reader"));
+						moreD.insertBefore(current, moreD.firstChild);
+					current = document.createElement("a");
+						current.setAttribute('target','_blank');
+						current.setAttribute('class','gb2');
+						current.setAttribute('href','http://docs.google.com');
+						current.appendChild(document.createTextNode("Documents"));
+						moreD.insertBefore(current, moreD.firstChild);
+					current = document.createElement("a");
+						current.setAttribute('target','_blank');
+						current.setAttribute('class','gb2');
+						current.setAttribute('href','http://www.google.com/calendar');
+						current.appendChild(document.createTextNode("Calendar"));
+						moreD.insertBefore(current, moreD.firstChild);
+				} else {
+					var more = document.getElementById("gbar").childNodes[0].childNodes[12];
+						more.setAttribute("style","display: none !important;");
+				}
+			} catch (e) { console.error(e); }
 		}
 		if ( !f_guser && (response.o.user || response.o.labs || response.o.settings || response.o.help || response.o.out)) {
 			console.log("MINIMALIST GMAIL: targetting Google User bar...");
@@ -265,15 +274,35 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 				f_details = true;
 			} catch (e) { console.error(e); }
 		} */
-		if (response.o.nav || response.o.navWC && counter < 10) {
-			console.log("MINIMALIST GMAIL: making up for stupidity...");
+		if ((response.o.nav || response.o.navWC) && counter < 10) {
+			console.log("MINIMALIST GMAIL: Fixing load errors for nav width calculations...");
 			reconfig();
 		}
-		counter++;
+		if (counter < 50) counter++;
+		running  = false;
 	}
 	//---- END MAIN LOOP ----//
 
-	//---- RESIZE HANDLER ----//
+	//---- HELPER METHODS ----//
+	function minimalist(element, remove, minClass) {
+		var classes = new Array();
+		try { classes = element.getAttribute("min").split(" "); } catch(e) {}
+		if (remove)
+			classes = removeItems(classes, minClass);
+		else classes.push(minClass);
+		element.setAttribute("min", classes.join(" "));
+	}
+	
+	function removeItems(array, item) {
+		var i = 0;
+		while (i < array.length) {
+			if (array[i] == item)
+				array.splice(i, 1);
+			else i++;
+		}
+		return array;
+	}
+
 	function reconfig() {
 		console.log("MINIMALIST GMAIL: resize detected. reconfigure?");
 		if ((response.o.nav || response.o.navWC) && f_navToggle) {
@@ -295,16 +324,23 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 			}
 		}
 	}
-	//---- END RESIZE HANDLER ----//
 	
-	function wait() {
-		var recheck = setInterval(run, 1000);
+	function keyup(event) {
+		element = event.target;
+		elementName = element.nodeName.toLowerCase();
+		if (elementName == "input" || elementName == "textarea") return true;
+		else {
+			console.log("MINIMALIST GMAIL: keystroke detected by active.js. Run checks");
+			run();
+		}
+		return true;
 	}
-	
-	init();
-	
+	//---- END HELPER METHODS ----//
+
 	// LISTENERS
-	document.addEventListener("keyup", keyup, false);
-	document.addEventListener("click", wait, false);
+	if (response.o.starHigh)
+		window.addEventListener("keyup", keyup, false);
+	window.addEventListener("click", run, false);
 	window.addEventListener("resize", reconfig, false);
+	window.addEventListener("DOMSubtreeModified", init, false);
 });

@@ -11,7 +11,7 @@ $(function(){
 		if (!localStorage["starCLR"]) localStorage["starCLR"] = "#ffcc00";
 		if (!localStorage["uCLR"]) localStorage["uCLR"] = "#00ccff";
 		if (!localStorage["highCLR"]) localStorage["highCLR"] = "#0099ff";
-		if (!localStorage["highCLRu"]) localStorage["highCLRu"] = "#00ccff";
+		//if (!localStorage["highCLRu"]) localStorage["highCLRu"] = "#00ccff";
 		if (!localStorage["EIC_1"]) localStorage["EIC_1"] = "";
 		if (!localStorage["EIC_2"]) localStorage["EIC_2"] = "";
 		if (!localStorage["EIC_3"]) localStorage["EIC_3"] = "";
@@ -131,8 +131,8 @@ $(function(){
 			$("#high").attr('checked', o.high);
 			if ((o.highCLR != null) && (o.highCLR != ""))
 				$("#highCLRsub").attr("style","background-color:" + o.highCLR + ";");
-			if ((o.highCLRu != null) && (o.highCLRu != ""))
-				$("#highCLRusub").attr("style","background-color:" + o.highCLRu + ";");
+			//if ((o.highCLRu != null) && (o.highCLRu != ""))
+				//$("#highCLRusub").attr("style","background-color:" + o.highCLRu + ";");
 			$("#stars").attr('checked', o.stars);
 			$("#attach").attr('checked', o.attach);
 			$("#attachNew").attr('checked', o.attachNew);
@@ -173,7 +173,7 @@ $(function(){
 			$("#t_actions").attr('checked', o.t_actions);
 			$("#t_refresh").attr('checked', o.t_refresh);
 			$("#t_top").attr('checked', o.t_top);
-			$("#details").attr('checked', o.details);
+			//$("#details").attr('checked', o.details);
 			$("#reply").attr('checked', o.reply);
 			$("#zads").attr('checked', o.zads);
 			$("#ads").attr('checked', o.ads);
@@ -192,9 +192,10 @@ $(function(){
 			$("#tasks").attr('checked', o.tasks);
 			$("#middle").attr('checked', o.middle);
 			$("#compose").attr('checked', o.compose);
-			$("#inboxH").attr('checked', o.inboxH);
+			//$("#inboxH").attr('checked', o.inboxH);
 			$("#spam").attr('checked', o.spam);
-			$("#spamH").attr('checked', o.spamH);
+			$("#drafts").attr('checked', o.drafts);
+			//$("#spamH").attr('checked', o.spamH);
 			$("#buzz").attr('checked', o.buzz);
 			$("#icons").attr('checked', o.icons);
 			$("#moreC").attr('checked', o.moreC);
@@ -295,7 +296,7 @@ $(function(){
 					"uCLR":localStorage["uCLR"],
 				"high":$("#high").attr('checked'),
 					"highCLR":localStorage["highCLR"],
-					"highCLRu":localStorage["highCLRu"],
+					//"highCLRu":localStorage["highCLRu"],
 				"stars":$("#stars").attr('checked'),
 				"attach":$("#attach").attr('checked'),
 				"attachNew":$("#attachNew").attr('checked'),
@@ -318,7 +319,7 @@ $(function(){
 				"t_move":$("#t_move").attr('checked'),
 				"t_actions":$("#t_actions").attr('checked'),
 				"t_refresh":$("#t_refresh").attr('checked'),
-				"details":$("#details").attr('checked'),
+				//"details":$("#details").attr('checked'),
 				"reply":$("#reply").attr('checked'),
 				"zads":$("#zads").attr('checked'),
 				"ads":$("#ads").attr('checked'),
@@ -335,9 +336,10 @@ $(function(){
 				"tasks":$("#tasks").attr('checked'),
 				"middle":$("#middle").attr('checked'),
 				"compose":$("#compose").attr('checked'),
-				"inboxH":$("#inboxH").attr('checked'),
+				"inboxH": false,//$("#inboxH").attr('checked'),
 				"spam":$("#spam").attr('checked'),
-				"spamH":$("#spamH").attr('checked'),
+				"drafts":$("#drafts").attr('checked'),
+				//"spamH":$("#spamH").attr('checked'),
 				"buzz":$("#buzz").attr('checked'),
 				"icons":$("#icons").attr('checked'),
 				"moreC":$("#moreC").attr('checked'),
@@ -487,7 +489,7 @@ function export(EIid) {
 		prefOut[7] = localStorage["starCLR"];
 		prefOut[8] = localStorage["uCLR"];
 		prefOut[9] = localStorage["highCLR"];
-		prefOut[10] = localStorage["highCLRu"];
+		prefOut[10] = ""//localStorage["highCLRu"];
 	var prefsOut = prefOut[0];	// fencepost
 	for (var i = 1; i <= 10; i++) {
 		prefsOut += '\n' + prefOut[i];
@@ -509,7 +511,7 @@ function import(EIid) {
 		localStorage["starCLR"] = prefIn[7];
 		localStorage["uCLR"] = prefIn[8];
 		localStorage["highCLR"] = prefIn[9];
-		localStorage["highCLRu"] = prefIn[10];
+		//localStorage["highCLRu"] = prefIn[10];
 	window.location.hash = "imps";
 	window.location.reload();
 }

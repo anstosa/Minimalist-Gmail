@@ -1,6 +1,6 @@
 {
 	"name": "Minimalist for Gmail",
-	"version": "1.6.5",
+	"version": "1.6.7",
 	"description": "Individually hide almost 100 interface elements, custom logos and row highlighting, favicon/desktop notifier, and more...",
 	"icons": {
          "16": "img/icons/icon16.png",
@@ -8,13 +8,13 @@
 		"128": "img/icons/icon128.png" },
 	"page_action": {
 		"default_icon": "img/icons/icon19.png",
-		"default_title": "Minimalist Gmail Options",
+		"default_title": "Minimalist for Gmail Options",
 		"default_popup": "popup.html"
 	},
 	"background_page": "background.html",
 	"content_scripts": [ {
 		"matches": [ "*://mail.google.com/*" ],
-		"js": [ "js/stylesheet.js" , "js/passive.js", "js/active.js", "js/constant.js", "js/favicon.js" ],
+		"js": [ "js/stylesheet.js", "js/passive.js", "js/active.js", "js/constant.js", "js/favicon.js" ],
 		"run_at": "document_end",
 		"all_frames": true
 	}, {

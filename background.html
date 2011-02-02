@@ -3,7 +3,7 @@
 	<script>
 		// ---- CHECK UPDATE ----//
 		var major = 6;
-		var minor = 9;
+		var minor = 10;
 		if (localStorage["major"] == undefined) {
 			localStorage["major"] = 0;
 		}
@@ -27,10 +27,10 @@
 		function checkForGmail(tabId, changeInfo, tab) {
 			if (localStorage["uncheckedUpdate"] == "true") {
 				chrome.pageAction.setIcon({tabId: tab.id, path: "img/icons/icon19_update.png"});
-				chrome.pageAction.setTitle({tabId: tab.id, title:"Minimalist Gmail has been updated! Click to dismiss."});
+				chrome.pageAction.setTitle({tabId: tab.id, title:"Minimalist for Gmail has been updated! Click to dismiss."});
 			} else {
 				chrome.pageAction.setIcon({tabId: tab.id, path: "img/icons/icon19.png"});
-				chrome.pageAction.setTitle({tabId: tab.id, title: "Minimalist Gmail Options"});
+				chrome.pageAction.setTitle({tabId: tab.id, title: "Minimalist for Gmail Options"});
 				localStorage["uncheckedUpdate"] = false;
 			}
 			var o = JSON.parse(localStorage["options"]);
@@ -43,7 +43,7 @@
 			if (localStorage["uncheckedUpdate"] == "true") {
 				chrome.tabs.create({url:chrome.extension.getURL("options.html#update")});
 				chrome.pageAction.setIcon({tabId: tab.id, path:"img/icons/icon19.png"});
-				chrome.pageAction.setTitle({tabId: tab.id, title:"Minimalist Gmail Options"});
+				chrome.pageAction.setTitle({tabId: tab.id, title:"Minimalist for Gmail Options"});
 				localStorage["uncheckedUpdate"] = false;
 			} else {
 				chrome.tabs.create({url:chrome.extension.getURL("options.html")});
@@ -52,7 +52,7 @@
 		//---- END TALK TO ICON ----//
 
 		//---- TALK TO SCRIPTS ----//
-		var joy = true; // whether or not Minimalist Gmail is activated [via icon]
+		var joy = true; // whether or not Minimalist for Gmail is activated [via icon]
 		chrome.extension.onRequest.addListener(function (request, sender, sendResponse) {
 			if (request.elements == "o" && joy) {
 				sendResponse({

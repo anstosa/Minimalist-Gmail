@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Minimalist Gmail Options</title>
+	<title>Minimalist for Gmail Options</title>
 	<link type="text/css" rel="stylesheet" href="css/options.css" />
 	<link type="text/css" rel="stylesheet" href="css/picker/colorpicker.css" />
 	<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
@@ -125,7 +125,7 @@
 						localStorage["highCLR"] = "#" + hex;
 					}
 				});
-				$('#highCLRu').ColorPicker({
+				/*$('#highCLRu').ColorPicker({
 					color: localStorage["highCLRu"],
 					onShow: function (colpkr) {
 						$(colpkr).fadeIn(500);
@@ -139,7 +139,7 @@
 						$('#highCLRu div').css('backgroundColor', '#' + hex);
 						localStorage["highCLRu"] = "#" + hex;
 					}
-				});
+				});*/
 			};
 			EYE.register(initLayout, 'init');
 		})(jQuery)
@@ -209,7 +209,7 @@
 			<h3>Options Icon</h3>
 			<div>
 				<input type="checkbox" id="mgicon" />
-					&nbsp;<label for="mgicon" title="">Hide Minimalist Gmail options icon</label><br />
+					&nbsp;<label for="mgicon" title="">Hide Minimalist for Gmail options icon</label><br />
 					<span class="note"><strong>NOT RECOMMENDED:</strong> Only shows up in Gmail</span>
 			</div>
 		</section>
@@ -269,6 +269,7 @@
 			<div>
 				<input type="checkbox" id="scroll" />
 					&nbsp;<label for="scroll" title="">Hide inactive scrollbar</label><br />
+					<span class="note">Note: Interferes with nav hiding/width at load on small screens</span><br />
 			</div>
 		</section>
 		<section>
@@ -306,12 +307,15 @@
 					&nbsp;<label for="desktop" title="">Show desktop notifications</label><br /></span>
 					<span class="note">Note: Gmail's <a href="https://mail.google.com/mail/u/0/#settings" target="_blank">Dekstop Notifications</a> are much more stable.</span><br />
 					<span class="note">I recommend using theirs for now. Mine will be improved.</span><br />
-					<span class="note">Power Users: try <a href="https://chrome.google.com/webstore/detail/gffjhibehnempbkeheiccaincokdjbfe" target="_blank">Google Mail Checker Plus</a></span>
+					<span class="note">Power Users: try <a href="https://chrome.google.com/webstore/detail/gffjhibehnempbkeheiccaincokdjbfe" target="_blank">Google Mail Checker Plus</a></span><br />
+					<span class="note"><strong>Disabling? Make sure you restart your browser.</strong></span>
 				<br /><br />
+				<div style="opacity: .35;">
 				<input type="checkbox" id="apps" />
 					&nbsp;<label for="apps" title="">Google Apps domain:</label><br />
 					<input type="text" id="appsURL" size="40" class="field" value="https://mail.google.com/a/yourdomain.com" /><br />
 					<span class="note">Make sure there is no trailing slash!</span>
+				</div>
 			</div>
 		</section>
 	</div>
@@ -436,31 +440,16 @@
 					&nbsp;<label for="borders" title="">Hide row borders</label><br />
 				<input type="checkbox" id="simplify" />
 					&nbsp;<label for="simplify" title="">Simplify rows</label><br />
-					<span class="note">Hides all but the essentials until mouseover</span><br /><br />
-				<input type="checkbox" id="starHigh" />
-					&nbsp;<label for="starHigh" title="">Show starred item row highlights</label>
-					<table>
-						<tr>
-							<td style="width:50px;">Starred</td><td><div c id="starCLR"><div id="starCLRsub" style="background-color: #ffcc00;"></div></div></td>
-						</tr>
-					</table><br />
+					<span class="note">Hides all but the essentials until mouseover</span><br />
+					<span class="note"><strong>NOTE:</strong> Must have <a href="https://mail.google.com/mail/u/0/#settings/labs" target="_blank">Move Icon Column</a> enabled</span><br /><br />
 				<input type="checkbox" id="uHigh" />
-					&nbsp;<label for="uHigh" title="">Show unread item row highlights</label>
-					<table>
-						<tr>
-							<td style="width:50px;">Unread</td><td><div c id="uCLR"><div id="uCLRsub" style="background-color: #00ccff;"></div></div></td>
-						</tr>
-					</table><br />
+					&nbsp;<label for="uHigh" title="">Show unread item row highlights</label><div c id="uCLR"><div id="uCLRsub" style="background-color: #00ccff;"></div></div><br />
+				<input type="checkbox" id="starHigh" />
+					&nbsp;<label for="starHigh" title="">Show starred item row highlights</label><div c id="starCLR"><div id="starCLRsub" style="background-color: #ffcc00;"></div></div><br />
 				<input type="checkbox" id="high" />
-					&nbsp;<label for="high" title="">Show hover/select row highlights</label>
-					<table>
-						<tr>
-							<td>Standard</td><td><div c id="highCLR"><div id="highCLRsub" style="background-color: #0099ff;"></div></div></td>
-						</tr>
-						<tr>
-							<td>Unread</td><td><div c id="highCLRu"><div id="highCLRusub" style="background-color: #00ccff;"></div></div>
-						</tr>
-					</table>
+					&nbsp;<label for="high" title="">Show hover/select row highlights</label><div c id="highCLR"><div id="highCLRsub" style="background-color: #0099ff;"></div></div><br />
+					<br />
+					<span class="note">Colors blend in multiple cases [i.e. unread and hovering]</span><br />
 			</div>
 		</section>
 		<section>
@@ -615,14 +604,16 @@
 					&nbsp;<label for="compose" title="">Hide compose button</label><br />
 				<input type="checkbox" id="icons" />
 					&nbsp;<label for="icons" title="">Hide icons</label><br />
-				<input type="checkbox" id="inboxH" />
-					&nbsp;<label for="inboxH" title="">Hide Inbox link</label><br />
+				<!-- <input type="checkbox" id="inboxH" />
+					&nbsp;<label for="inboxH" title="">Hide Inbox link</label><br /> -->
 				<input type="checkbox" id="spam" />
-					&nbsp;<label for="spam" title="">Hide spam count</label><br />
+					&nbsp;<label for="spam" title="">Hide Spam count</label><br />
+				<input type="checkbox" id="drafts" />
+					&nbsp;<label for="drafts" title="">Hide Drafts count</label><br />
 				<!-- <input type="checkbox" id="spamH" />
 					&nbsp;<label for="spamH" title="">Hide spam link</label><br /> -->
 				<input type="checkbox" id="buzz" />
-					&nbsp;<label for="buzz" title="">Hide buzz count</label><br />
+					&nbsp;<label for="buzz" title="">Hide Buzz count</label><br />
 				<input type="checkbox" id="moreC" />
 					&nbsp;<label for="moreC" title="">Hide more count</label><br />
 				<input type="checkbox" id="more" />
@@ -812,7 +803,7 @@ https://mail.google.com/a/yourdomain.com
 					<li><a href="https://mail.google.com/mail/#settings/themes" target="_blank">Themes</a>: I recommend "Minimalist"</li>
 					<li><a href="https://mail.google.com/mail/#settings/labs" target="_blank">Gmail Labs</a>: great stuff in here, check it out
 						<ul>
-							<li>Caution: some labs features conflict with Minimalst Gmail. If you point them out I'll write exceptions for them.</li>
+							<li>Caution: some labs features conflict with Minimalist for Gmail. If you point them out I'll write exceptions for them.</li>
 						</ul>
 					</li>
 				</ul>
@@ -839,14 +830,14 @@ https://mail.google.com/a/yourdomain.com
 		<section id="updated" style="display: none;">
 			<h3>Update</h3>
 			<div>
-				Minimalist Gmail has been updated!
+				Minimalist for Gmail has been updated!
 			</div>
 		</section>
 		<section>
 			<h3>Announcements</h3>
 			<div>
-				Minimalist Gmail has exploded overnight thanks to <a href="http://lifehacker.com/5741771/minimalist-gmail-is-the-best-gmail-tweaker-for-chrome-yet" target="_blank">Lifehacker</a>.<br />
-				The improvements and fixes in this release are all thanks the detailed bug reports and ideas from new users. Thanks!
+				This update and the silent ones before it should help a lot with the performance problems<br /><br />
+				I'm going to switch my focus to Minimalist Google Calendar for the time being so Minimalist for Gmail will be feature-locked. Bugfixes will still come when necessary but the current feature set is how it will stay for a couple weeks or so.
 			</div>
 		</section>
 		<section>
@@ -855,63 +846,44 @@ https://mail.google.com/a/yourdomain.com
 				Full changelog on <a href="http://code.google.com/p/minimalist-gmail/#CHANGELOG" target="_blank">Google Code</a><br /><br />
 				<strong>General</strong>
 				<ul>
-					<li>New Dropdown from URL icon. Options, Toggle Minimalist Gmail on/off, Panic!</li>
-					<li>Reset button for custom colors</li>
-					<li>Minimalist Gmail style loading screen</li>
-					<li>Rounded corners for fields and textareas</li>
-					<li>Custom CSS input for advanced users</li>
+					<li>Mailto script now optional</li>
+					<li>Option to hide inactive scrollbar [can cause bugs]</li>
+					<li>Subtle transition animations</li>
 				</ul>
-				<strong>Google Bar</strong>
+				<strong>Google Bar / Header</strong>
 				<ul>
-					<li>Hide border &amp; background</li>
-					<li>6th custom link and "more" auto-hidden</li>
-				</ul>
-				<strong>Header</strong>
-				<ul>
-					<li>Hide logo</li>
-					<li>[ / ] focuses search and header if hidden. Rehide with [ \ ]</li>
+					<li>[ \ ] now toggles the Google Bar and the header</li>
+					<li>Now have option to show the "more" dropdown when using custom links. Original added to top of that menu.</li>
 				</ul>
 				<strong>Main</strong>
 				<ul>
-					<li>Hide row borders</li>
-					<li>Simplify rows until mouseover</li>
-					<li>Unread item highlighting</li>
-					<li>Seperate highlight color for hover over unread items</li>
-					<li>User classic selection links instead of dropdown menu</li>
-					<li>Hide reply textbox in message view</li>
+					<li>Color blending for row highlights [red unread color + blue hover color = purple hover on unread item]</li>
+					<li>If simplify rows is enabled, selecting a row with keyboard navigation will reveal hidden items</li>
 				</ul>
 				<strong>Navigation</strong>
 				<ul>
-					<li>Custom nav width</li>
-					<li>Hidden nav has click to toggle and mouseover to show</li>
-					<li>Hide Inbox link</li>
-					<li>Hide "more" count</li>
+					<li>[ ` ] tilde key now toggles the navigation</li>
+					<li>Show nav on mouseover now optional</li>
 				</ul>
 				<strong>Chat</strong>
 				<ul>
-					<li>Hide "You are invisible" alert in chat</li>
+					<li>Re-write of offline script should offer performance increase and fix a lot of bugs</li>
 				</ul>
 				<strong>Footer</strong>
 				<ul>
-					<li>Activity no longer replaces Google Links when moved to top</li>
-				</ul>
-				<strong>Import/Export</strong>
-				<ul>
-					<li>Easy settings transfer and presets</li>
-					<li>Instructions/clarification improved, graphics tweaked</li>
+					<li>Move activity changed. It's not as pretty if you hide the Google Bar, but at least the link works</li>
 				</ul>
 				<strong>Backend/Options page</strong>
 				<ul>
-					<li>Messages in upper left of Options page for autosave, easter egg, etc</li>
-					<li>Instructions/clarification improved, graphics tweaked</li>
-					<li><a href="http://code.google.com/p/minimalist-gmail/#CHANGELOG" target="_blank"><strong>TONS OF BIGFIXES</strong></a></li>
+					<li>Total revamp of triggers and timers. Significant performance improvement. Especially while idle.</li>
+					<li><a href="http://code.google.com/p/minimalist-gmail/#CHANGELOG" target="_blank">Bugfixes</a></li>
 				</ul>
 			</div>
 		</section>
 		<section>
 			<h3>Rate &amp; Review</h3>
 			<div>
-				Like Minimalist Gmail? Please <a href="https://chrome.google.com/webstore/detail/oddhbkghjoccbljmagcgoklbfdjeiinb" target="_blank">rate and review it in the Web Store!</a>
+				Like Minimalist for Gmail? Please <a href="https://chrome.google.com/webstore/detail/oddhbkghjoccbljmagcgoklbfdjeiinb" target="_blank">rate and review it in the Web Store!</a>
 			</div>
 		</section>
 		<section>
@@ -957,7 +929,7 @@ https://mail.google.com/a/yourdomain.com
 		<section>
 			<h3>Rate &amp; Review</h3>
 			<div>
-				Like Minimalist Gmail? Please <a href="https://chrome.google.com/webstore/detail/oddhbkghjoccbljmagcgoklbfdjeiinb" target="_blank">rate and review it in the Web Store!</a>
+				Like Minimalist for Gmail? Please <a href="https://chrome.google.com/webstore/detail/oddhbkghjoccbljmagcgoklbfdjeiinb" target="_blank">rate and review it in the Web Store!</a>
 			</div>
 		</section>
 		<section>

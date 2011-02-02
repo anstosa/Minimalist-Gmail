@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name             Minimalist Gmail
+// @name             Minimalist for Gmail
 // @author           Ansel Santosa
 // @namespace        http://chrome.google.com/webstore
 // @description      Features that require constant checking
@@ -7,22 +7,49 @@
 
 chrome.extension.sendRequest({elements: "o"}, function(response) {
 	if (response.o.offline) {
-		var interval = 1000;
-		window.setTimeout(check, interval);
+		var contacts = null;
+
+		function getContacts() {
+			var tables = document.getElementsByTagName('table');
+			for (var i = 0; i < tables.length; i++) {
+				if (tables[i].getAttribute('class') == 'cf vH' && tables[i].getAttribute('role') == 'listbox' && tables[i].getElementsByTagName('tr').length > 0) {
+						return tables[i];
+				}
+			}
+			return null;
+		}
+
 		function check() {
-			console.log("MINIMALIST GMAIL: constant.js checking...");
 			if (response.o.offline) {
-				console.log("MINIMALIST GMAIL: checking offline...");
+				console.log("MINIMALIST GMAIL: Chat modified. Checking offline...");
 				try {
-					var images = document.querySelectorAll("div.nH.pp.T0:nth-child(4) img, div.nH.pp.ps.TZ:nth-child(4) img");
-						for (var i = 0; i < images.length; i++) {
-							if (((images[i].getAttribute("alt") == "Offline") || (images[i].getAttribute("alt").length <= 0)) && (images[i].parentNode.parentNode.parentNode.parentNode.getAttribute("role") == "listbox"))
-								images[i].parentNode.parentNode.parentNode.setAttribute("style", "display: none !important;");
+					var buddies = contacts.getElementsByTagName("tr");
+					if (buddies.length > 0) {
+						contacts.removeEventListener("DOMSubtreeModified", check, false);
+						for (var i = 0; i < buddies.length; i++) {
+							var images = buddies[i].getElementsByTagName('img');
+							if (images.length < 1) continue;
+							if(images[0].alt == "Offline" || images[0].alt == "")
+								buddies[i].style.display = 'none';
+							else
+								buddies[i].style.display = '';
 						}
+						contacts.addEventListener("DOMSubtreeModified", check, false);
+					}
 				} catch (e) { console.error(e)}
 			}
-			if (interval < 10000) interval += 2000;
-			window.setTimeout(check, interval);
 		}
+
+		function load() {
+			if (getContacts() == contacts) return;
+			if (contacts != null)
+				contacts.removeEventListener("DOMSubtreeModified", check, false);
+			if ((contacts = getContacts()) != null) {
+				contacts.addEventListener("DOMSubtreeModified", check, false);
+				check();
+			}
+		}
+
+		window.addEventListener("DOMSubtreeModified", load, false);
 	}
 });

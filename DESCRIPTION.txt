@@ -1,12 +1,12 @@
 == ANNOUNCEMENTS ==
-
-  Huge Post-Lifehacker update! I know there are going to be issues and I will be pushing small silent
-  patches over the next few days. Issue Tracker is here: [http://code.google.com/p/minimalist-gmail/issues]
   
-  Featured on Lifehacker! http://lifehacker.com/5741771/minimalist-gmail-is-the-best-gmail-tweaker-for-chrome-yet
+  There has been confusion between this extension and "Minimalist Gmail by Matt Constantine" because of the names
+  His extension is not related to mine in any way and precedes mine by over a year and I would like to apologize publicly
+  for not doing my due diligence before I published. You can find Matt's extension here: http://mattconstantine.com/mg/
   
-  Minimalist Google Calendar pushed back a week to accomodate all the great feature requests and bugs from Lifehackers
+  As seen on Lifehacker! http://lifehacker.com/5741771/minimalist-gmail-is-the-best-gmail-tweaker-for-chrome-yet
   
+  Questions about permissions? See PERMISSIONS section below.
 
 == WHAT DOES IT DO? ==
 
@@ -24,7 +24,7 @@
 
   The following elements can be modified individually:
  == GENERAL
-  * Hide Minimalist Gmail options icon
+  * Hide Minimalist for Gmail options icon
   * Custom loading screen
   * Customize button colors
   * Rounded corners on input fields and textareas
@@ -55,7 +55,7 @@
   * Simplify rows until mouseover
   * Show starred item row highlighting
   * Show unread item highlighting
-  * Show select/hover highlights with custom colors [in mail and contacts. keyboard navigation support]
+  * Show select/hover highlights [in mail and contacts. keyboard navigation support]
   * Hide star icons
   * Show better attachment icons [file specific, two built in styles and custom input via URL or base64]
   * Hide top toolbar
@@ -76,7 +76,6 @@
   * Hide top of nav
   * Hide mail button
   * Hide contacts button
-  * Hide Inbox link
   * Hide tasks button
   * Hide middle of nav
   * Hide compose mail button
@@ -127,9 +126,6 @@
 
 == COMING SOON ==
 
-  Want to see what's coming up? See the public to-do list:
-  [https://www.rememberthemilk.com/home/anstosa/10200213]
-
   Want to recommend a feature? Submit it in the Issues Tracker:
   [http://code.google.com/p/minimalist-gmail/issues/list]
 
@@ -158,8 +154,18 @@
 
 == CHANGELOG ==
 
+ == 1.6.7
+  * Fixed: Something stupid...
+ == 1.6.6
+  * Added: Color blending for row highlighting. [red unread color + blue hover color = purple hover on unread item]
+  * Fixed: Offline chat not hiding
+  * Improved: Row selected with keyboard navigation with un-simplify
+  * Improved: Total revamp of triggers and timers. Significant performance improvement. Especially while idle.
+  * Changed: Move activity to top. Translucent and centered. Will not hide or fade with Google Bar or header.
+  * Removed: Unread color for select/hover. Now when multiple cases overlap, the colors blend.
+  * Removed: Hide Inbox link [impossible to do universaly unless it's first on the list. Do it in Custom CSS]
  == 1.6.5
-  * Fixed: Random backend stuff to make remotedbug diagnostics easier
+  * Fixed: Random backend stuff to make remote bug diagnostics easier
  == 1.6.4
   * Added: Made animated transitions optional [may decrease performance on slower machines]
  == 1.6.3
@@ -184,7 +190,7 @@
  == 1.6.1
   * Fixed: Messages appearing below chat because of gadgets
  == 1.6.0
-  * Added: Toggle Minimalist Gmail on/off. New dropdown from URL bar icon allows toggling and link to Options
+  * Added: Toggle Minimalist for Gmail on/off. New dropdown from URL bar icon allows toggling and link to Options
   * Added: "Panic!" button in URL icon dropdown. Just reloads the page but that fixes a lot of problems
   * Added: Reset option for custom button colors
   * Added: Hide "You are invisible" alert in chat
@@ -339,7 +345,7 @@
   * Added: Send using gmail [mailto:]. Needs more testing, will be fully functional in next release
  == 1.1.3
   * Added: Hide chat [incoming chats still come through]
-  * Added: Minimalist Gmail options shortcut in URL bar [can be disabled in options]
+  * Added: Minimalist for Gmail options shortcut in URL bar [can be disabled in options]
  == 1.1.2
   * Improved: Web store screenshots
   * Improved: Web store description formatting
@@ -355,13 +361,17 @@
 
 == CREDITS ==
 
-  Most of Minimalist Gmail is written from the ground-up but some things are just perfect already:
+  Most of Minimalist for Gmail is written from the ground-up but some things are just perfect already:
   * mailto script by Julien Couvreur
   * favicon unread counter by Peter Wooley 
-  Full details on the About page: [http://www.anselsantosa.com/sites/MinimalistGmai/options.html#abo] 
+  Full details on the About page: [http://www.anselsantosa.com/sites/MinimalistGmail/options.html#abo] 
 
 == LEGAL ==
 
   I am not a Google Employee or officially affiliated with Google in any way. This extension is not endorsed by Google.
-  Google, Gmail, and the Gmail logo are trademarks of Google Inc. Use of these trademarks is subject to Google Permissions.
+  Google, Gmail, and the Gmail logo are trademarks of Google Inc.
+  Use of these trademarks is subject to Google Permissions.
+
   All bundled scripts are copyright of their original authors.
+
+  I am not, nor is my extension related to "Minimalist Gmail By Matt Constantine" http://mattconstantine.com/mg/
