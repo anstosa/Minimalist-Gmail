@@ -62,19 +62,17 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			}
 		}
 		if (response.o.logo)
-			css += "div.a9.Rgky9 { background-image: url(" + response.o.logoSRC + ") !important; background-position: 0% 0%; background-repeat: no-repeat no-repeat; }\n";
-		if (response.o.logoH) {
-			//css += "div.no div.nH.nn[style = 'width: 172px; height: 65px; '] + div.nH.nn[style ^= 'width: '] { margin-left: -162px !important; }\n";
+			css += "div[id = ':rm'] { background-image: url(" + response.o.logoSRC + ") !important; }\n";
+		if (response.o.logoH)
 			css += "div[id = ':rm'] { display: none !important; }\n";
-		}
 		if (response.o.s_all)
-			css += "table.cf.d { display: none !important; }\n";
+			css += "div[style = 'width: 172px; height: 65px; '] + div > div:first-child { display: none !important; }\n";
 		if (response.o.s_mail)
-			css += "td.bN.bM div:nth-child(2), td.bN.bM div:nth-child(3) { display: none !important; }\n";
+			css += "td.GcwpPb-uq0Mrf > div:nth-child(2), td.GcwpPb-uq0Mrf > div:nth-child(3) { display: none !important; }\n";
 		if (response.o.s_web)
-			css += "td.bN.bM div:last-child { display: none !important; }\n";
+			css += "td.GcwpPb-uq0Mrf > div:last-child { display: none !important; }\n";
 		if (response.o.s_links)
-			css += "td.bN.bR { display: none !important; }\n";
+			css += "td.GcwpPb-txTtjf { display: none !important; }\n";
 	// MAIN
 		if (response.o.borders || response.o.simplify)
 			css += "tr.yO td, tr.zE td { border: 0 !important; }\n";
@@ -86,17 +84,20 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			css += "tr.zA[min ~= 'select'] td img.xi, tr.zA[min ~= 'select'] td img.EqK8f, tr.zA:hover td img.EqK8f, tr.zA:hover td img.xi { visibility: visible !important; }\n";
 		}
 		if (response.o.starHigh) {
-			css += "tr.yO[min ~= 'star'] { background-color: " + response.o.starCLR + "; }\n";
-			css += "tr.yO[min ~= 'star']:hover, tr.yO[min ~= 'star'][min ~= 'select'] { background-color: " + average(response.o.starCLR, response.o.highCLR) + " !important; }\n";
-			css += "tr.zE[min ~= 'star'] { background-color: " + average(response.o.starCLR, response.o.uCLR) + " !important; }\n";
+			css += "tr.yO[min ~= 'star'], tr.zE[min ~= 'star'] { background-color: " + response.o.starCLR + "; }\n";
+			if (response.o.high)
+				css += "tr.zE[min ~= 'star']:hover, tr.zE[min ~= 'star'][min ~= 'select'], tr.yO[min ~= 'star']:hover, tr.yO[min ~= 'star'][min ~= 'select'] { background-color: " + average(response.o.starCLR, response.o.highCLR) + " !important; }\n";
+			if (response.o.uHigh)
+				css += "tr.zE[min ~= 'star'] { background-color: " + average(response.o.starCLR, response.o.uCLR) + " !important; }\n";
 		}
 		if (response.o.uHigh) {
 			css += "tr.zE { background-color: " + response.o.uCLR + " !important; }\n";
-			css += "tr.zE:hover, tr.zE[min ~= 'select'] { background-color: " + average(response.o.uCLR, response.o.highCLR) + " !important; }\n";
+			if (response.o.high)
+				css += "tr.zE:hover, tr.zE[min ~= 'select'] { background-color: " + average(response.o.uCLR, response.o.highCLR) + " !important; }\n";
 		}
 		if (response.o.high) {
 			css += "table.F.cf.dqpCVe tr.MT:hover, tr.yO:hover, tr.yO[min ~= 'select']:not([min ~= 'star']) { background-color: " + response.o.highCLR + "; }\n";
-			css += "tr.zE:hover, tr.zE[min ~= 'select']:not([min ~= 'star']) { background-color: " + response.o.highCLRu + "; }\n";
+			//css += "tr.zE:hover, tr.zE[min ~= 'select']:not([min ~= 'star']) { background-color: " + response.o.highCLRu + "; }\n";
 		}
 		if (response.o.stars || response.o.simplify)
 			css += "img.EqK8f, img.xi { visibility: hidden !important; }\n";

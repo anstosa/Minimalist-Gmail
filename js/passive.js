@@ -50,13 +50,17 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			}
 			// [ \ ]
 			if ((response.o.header || response.o.gbarH) && (event.which == "92" || (String.fromCharCode(event.which) == "l" && g)) && !event.ctrlKey && !event.metaKey) {
-				if (response.o.gbarH) {
+				if (response.o.gbarH && !response.o.header) {
+					if (document.getElementById('gbarToggle').nextSibling.getAttribute('style') != 'display: none !important;')
+						document.getElementById('gbarToggle').nextSibling.setAttribute('style', 'display: none !important;');
+					else document.getElementById('gbarToggle').nextSibling.setAttribute('style', '');
+				} else if (response.o.gbarH && response.o.header) {
 					if (document.getElementById('gbarToggle').nextSibling.firstChild.getAttribute('style') != 'display: none !important;') {
 						document.getElementById('gbarToggle').nextSibling.firstChild.setAttribute('style', 'display: none !important;');
-						//document.getElementById('gbarToggle').nextSibling.nextSibling.nextSibling.firstChild.setAttribute('style', 'display: none !important;');
+						document.getElementById('gbarToggle').nextSibling.nextSibling.nextSibling.firstChild.setAttribute('style', 'display: none !important;');
 					} else {
 						document.getElementById('gbarToggle').nextSibling.firstChild.setAttribute('style', '');
-						//document.getElementById('gbarToggle').nextSibling.nextSibling.nextSibling.firstChild.setAttribute('style', '');
+						document.getElementById('gbarToggle').nextSibling.nextSibling.nextSibling.firstChild.setAttribute('style', '');
 					}
 				} else {
 					if (document.getElementById('headerToggle').nextSibling.getAttribute('style') != 'display: none !important;')
@@ -84,9 +88,8 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 	function minimalist(element, remove, minClass) {
 		var classes = new Array();
 		try { classes = element.getAttribute("min").split(" "); } catch(e) {}
-		if (remove)
-			classes = removeItems(classes, minClass);
-		else classes.push(minClass);
+		classes = removeItems(classes, minClass);
+		if (!remove) classes.push(minClass);
 		element.setAttribute("min", classes.join(" "));
 	}
 	

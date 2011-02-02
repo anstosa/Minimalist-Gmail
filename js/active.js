@@ -287,9 +287,8 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 	function minimalist(element, remove, minClass) {
 		var classes = new Array();
 		try { classes = element.getAttribute("min").split(" "); } catch(e) {}
-		if (remove)
-			classes = removeItems(classes, minClass);
-		else classes.push(minClass);
+		classes = removeItems(classes, minClass);
+		if (!remove) classes.push(minClass);
 		element.setAttribute("min", classes.join(" "));
 	}
 	

@@ -154,9 +154,13 @@
 
 == CHANGELOG ==
 
- == 1.6.7
+ == 1.6.8 [2 Feb]
+  * Fixed: Header not toggling when Hide Google Bar is enabled
+  * Fixed: Header options not working
+  * Fixed: Row highlights only working as expected with all enabled
+ == 1.6.7 [1 Feb]
   * Fixed: Something stupid...
- == 1.6.6
+ == 1.6.6 [1 Feb]
   * Added: Color blending for row highlighting. [red unread color + blue hover color = purple hover on unread item]
   * Fixed: Offline chat not hiding
   * Improved: Row selected with keyboard navigation with un-simplify
