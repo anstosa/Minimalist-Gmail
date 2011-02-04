@@ -121,6 +121,7 @@ $(function(){
 			$("#s_links").attr('checked', o.s_links);
 		// MAIN
 			$("#borders").attr('checked', o.borders);
+			$("#grabbers").attr('checked', o.grabbers);
 			$("#simplify").attr('checked', o.simplify);
 			$("#starHigh").attr('checked', o.starHigh);
 			if ((o.starCLR != null) && (o.starCLR != ""))
@@ -131,8 +132,7 @@ $(function(){
 			$("#high").attr('checked', o.high);
 			if ((o.highCLR != null) && (o.highCLR != ""))
 				$("#highCLRsub").attr("style","background-color:" + o.highCLR + ";");
-			//if ((o.highCLRu != null) && (o.highCLRu != ""))
-				//$("#highCLRusub").attr("style","background-color:" + o.highCLRu + ";");
+			$("#zero").attr('checked', o.zero);
 			$("#stars").attr('checked', o.stars);
 			$("#attach").attr('checked', o.attach);
 			$("#attachNew").attr('checked', o.attachNew);
@@ -185,7 +185,7 @@ $(function(){
 			if ((o.navW != null) && (o.navW != ""))
 				$("#navW").val(o.navW);
 			else $("#navW").val("172");
-			$("#invites").attr('checked', o.invites);
+			$("#hr").attr('checked', o.hr);
 			$("#top").attr('checked', o.top);
 			$("#mail").attr('checked', o.mail);
 			$("#contacts").attr('checked', o.contacts);
@@ -200,12 +200,17 @@ $(function(){
 			$("#icons").attr('checked', o.icons);
 			$("#moreC").attr('checked', o.moreC);
 			$("#more").attr('checked', o.more);
+			$("#invites").attr('checked', o.invites);
 		// CHAT
 			$("#chat").attr('checked', o.chat);
 			$("#c_search").attr('checked', o.c_search);
+			$("#c_set").attr('checked', o.c_set);
+			$("#c_aim").attr('checked', o.c_aim);
 			$("#c_invisible").attr('checked', o.c_invisible);
-			$("#offline").attr('checked', o.offline);
 			$("#status").attr('checked', o.status);
+			$("#offline").attr('checked', o.offline);
+			$("#sms").attr('checked', o.sms);
+			$("#idle").attr('checked', o.idle);
 		// FOOTER
 			$("#f_tips").attr('checked', o.f_tips);
 			$("#f_options").attr('checked', o.f_options);
@@ -289,6 +294,7 @@ $(function(){
 				"s_links":$("#s_links").attr('checked'),
 			// MAIN
 				"borders":$("#borders").attr('checked'),
+				"grabbers":$("#grabbers").attr('checked'),
 				"simplify":$("#simplify").attr('checked'),
 				"starHigh":$("#starHigh").attr('checked'),
 					"starCLR":localStorage["starCLR"],
@@ -297,6 +303,7 @@ $(function(){
 				"high":$("#high").attr('checked'),
 					"highCLR":localStorage["highCLR"],
 					//"highCLRu":localStorage["highCLRu"],
+				"zero":$("#zero").attr('checked'),
 				"stars":$("#stars").attr('checked'),
 				"attach":$("#attach").attr('checked'),
 				"attachNew":$("#attachNew").attr('checked'),
@@ -329,7 +336,7 @@ $(function(){
 				"navO":$("#navO").attr('checked'),
 				"navWC":$("#navWC").attr('checked'),
 				"navW":$("#navW").val(),
-				"invites":$("#invites").attr('checked'),
+				"hr":$("#hr").attr('checked'),
 				"top":$("#top").attr('checked'),
 				"mail":$("#mail").attr('checked'),
 				"contacts":$("#contacts").attr('checked'),
@@ -344,12 +351,17 @@ $(function(){
 				"icons":$("#icons").attr('checked'),
 				"moreC":$("#moreC").attr('checked'),
 				"more":$("#more").attr('checked'),
+				"invites":$("#invites").attr('checked'),
 			// CHAT
 				"chat":$("#chat").attr('checked'),
 				"c_search":$("#c_search").attr('checked'),
+				"c_set":$("#c_set").attr('checked'),
+				"c_aim":$("#c_aim").attr('checked'),
 				"c_invisible":$("#c_invisible").attr('checked'),
-				"offline":$("#offline").attr('checked'),
 				"status":$("#status").attr('checked'),
+				"offline":$("#offline").attr('checked'),
+				"sms":$("#sms").attr('checked'),
+				"idle":$("#idle").attr('checked'),
 			// FOOTER
 				"f_tips":$("#f_tips").attr('checked'),
 				"f_options":$("#f_options").attr('checked'),

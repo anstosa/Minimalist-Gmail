@@ -52,10 +52,12 @@
   * Hide search sub-links
  == MAIN
   * Hide row borders
+  * Hide grabbers in rows
   * Simplify rows until mouseover
   * Show starred item row highlighting
   * Show unread item highlighting
   * Show select/hover highlights [in mail and contacts. keyboard navigation support]
+  * Hide zero-inbox whitespace
   * Hide star icons
   * Show better attachment icons [file specific, two built in styles and custom input via URL or base64]
   * Hide top toolbar
@@ -73,6 +75,7 @@
  == NAVIGATION
   * Hide navigation
   * Custom nav width
+  * Hide dividing lines
   * Hide top of nav
   * Hide mail button
   * Hide contacts button
@@ -88,8 +91,12 @@
  == CHAT
   * Hide chat
   * Hide "Search, add, or invite" box in chat
+  * Hide "Set status here"
+  * Hide "Sign in to AIM"
   * Hide "You are invisible" alert in chat
   * Hide offline chat contacts
+  * Hide offline sms contacts
+  * Hide idle chat contacts
   * Hide chat statuses
  == FOOTER
   * Tips
@@ -154,6 +161,19 @@
 
 == CHANGELOG ==
 
+ == 1.6.11 [4 Feb]
+  * Fixed: Keyboard shortcuts only working if Select/hover row highlights enabled
+ == 1.6.10 [3 Feb]
+  * Fixed: Options button in popup didn't open version notes on minor updates
+ == 1.6.9 [3 Feb]
+  * Added: Hide sms contacts in chat
+  * Added: Hide Idle contacts in chat
+  * Added: Hide "Sign in to AIM" in chat
+  * Added: Hide Zero-inbox whitespace
+  * Added: Hide dividing lines in navigation
+  * Added: Hide grabbers in rows
+  * Fixed: Search options in header not working on macs
+  * Fixed: When select highlights are enabled and unread highlights aren't unread rows aren't highlighted on mouseover
  == 1.6.8 [2 Feb]
   * Fixed: Header not toggling when Hide Google Bar is enabled
   * Fixed: Header options not working

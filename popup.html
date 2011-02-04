@@ -56,7 +56,14 @@
 			chrome.extension.sendRequest({action: 'reload'}, function(response) {});
 		}
 		function options() {
-			chrome.tabs.create({url:chrome.extension.getURL("options.html")});
+			if (localStorage["uncheckedUpdate"] == "true") {
+				chrome.tabs.create({url:chrome.extension.getURL("options.html#update")});
+				chrome.pageAction.setIcon({tabId: tab.id, path:"img/icons/icon19.png"});
+				chrome.pageAction.setTitle({tabId: tab.id, title:"Minimalist for Gmail Options"});
+				localStorage["uncheckedUpdate"] = false;
+			} else {
+				chrome.tabs.create({url:chrome.extension.getURL("options.html")});
+			}
 		}
 		function reload() {
 			chrome.extension.sendRequest({action: 'reload'}, function(response) {});

@@ -68,14 +68,16 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 		if (response.o.s_all)
 			css += "div[style = 'width: 172px; height: 65px; '] + div > div:first-child { display: none !important; }\n";
 		if (response.o.s_mail)
-			css += "td.GcwpPb-uq0Mrf > div:nth-child(2), td.GcwpPb-uq0Mrf > div:nth-child(3) { display: none !important; }\n";
+			css += ".aC .no td:nth-child(2) > div:nth-child(2), .aC .no td:nth-child(2) > div:nth-child(3) { display: none !important; }\n";
 		if (response.o.s_web)
-			css += "td.GcwpPb-uq0Mrf > div:last-child { display: none !important; }\n";
+			css += ".aC .no td:nth-child(2) > div:last-child { display: none !important; }\n";
 		if (response.o.s_links)
-			css += "td.GcwpPb-txTtjf { display: none !important; }\n";
+			css += ".aC .no td:last-child { display: none !important; }\n";
 	// MAIN
 		if (response.o.borders || response.o.simplify)
 			css += "tr.yO td, tr.zE td { border: 0 !important; }\n";
+		if (response.o.grabbers)
+			css += "td.oZ-x3 { background: transparent !important; }\n";
 		if (response.o.simplify) {
 			css += "tr.zA td:first-child, tr.zA td:last-child > span, tr.zA td:nth-child(5) { opacity: 0; }\n";
 			css += "tr.zA[min ~= 'select'] td:first-child, tr.x7 td:first-child { opacity: 1; }\n";
@@ -96,9 +98,11 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 				css += "tr.zE:hover, tr.zE[min ~= 'select'] { background-color: " + average(response.o.uCLR, response.o.highCLR) + " !important; }\n";
 		}
 		if (response.o.high) {
-			css += "table.F.cf.dqpCVe tr.MT:hover, tr.yO:hover, tr.yO[min ~= 'select']:not([min ~= 'star']) { background-color: " + response.o.highCLR + "; }\n";
+			css += "table.F.cf.dqpCVe tr.MT:hover, tr.zA:hover, tr.zA[min ~= 'select']:not([min ~= 'star']) { background-color: " + response.o.highCLR + "; }\n";
 			//css += "tr.zE:hover, tr.zE[min ~= 'select']:not([min ~= 'star']) { background-color: " + response.o.highCLRu + "; }\n";
 		}
+		if (response.o.zero)
+			css += ".VP5otc-pzeoBf + div + div + div + div > div > div:nth-child(2) { display: none !important; }\n";
 		if (response.o.stars || response.o.simplify)
 			css += "img.EqK8f, img.xi { visibility: hidden !important; }\n";
 		if (response.o.attach) {
@@ -190,8 +194,10 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 		if (response.o.nav)
 			css += "#navToggle { background-color: rgba(0,0,0,0); width: 10px !important; height: 300px !important; float: left !important; cursor: pointer !important; }\n";
 			css += "#navToggle:hover { background: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,.2)), to(rgba(0,0,0,0))); }\n";
-		if (response.o.invites)
-			css += "div.pY { display: none !important; } \n";
+		if (response.o.hr) {
+			css += ".T4 { border-bottom: 0 !important; }\n";
+			css += ".T0, .TZ { border-top: 0 !important; }\n";
+		}
 		if (response.o.top)
 			css += "div.nH.CX.pp, div.nH.T4.pp { display: none !important; }\n";
 		if (response.o.mail)
@@ -228,11 +234,21 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 		}
 		if (response.o.more)
 			css += "div.n6 { display: none !important; }\n";
+		if (response.o.invites)
+			css += "div.pY { display: none !important; } \n";
 	// CHAT
 		if (response.o.chat)
 			css += "div.nH.pp.T0:nth-child(4), div.nH.pp.ps.TZ:nth-child(4) { display: none !important; } \n";
 		if (response.o.c_search)
 			css += "input[class = 'dI dG'] { display: none !important; } \n";
+		if (response.o.c_set) {
+			css += "div.nH.pp.T0 div.pt div.uk > div:nth-child(3) { display: none !important; }\n";
+			css += "div.nH.pp.T0 div.pt div.uk { margin-bottom: 10px !important; }\n";
+		}
+		if (response.o.c_aim) {
+			css += "div.ux + hr + div.ux[type = 'ai'] { display: none !important; }\n";
+			css += "hr + div.ux[type = 'ai'] + hr { display: none !important; }\n";
+		}
 		if (response.o.c_invisible){
 			css += "div.ul[role = 'alert'] { display: none; }\n";
 		}

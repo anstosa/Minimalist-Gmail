@@ -3,7 +3,7 @@
 	<script>
 		// ---- CHECK UPDATE ----//
 		var major = 6;
-		var minor = 10;
+		var minor = 11;
 		if (localStorage["major"] == undefined) {
 			localStorage["major"] = 0;
 		}
@@ -38,17 +38,6 @@
 				chrome.pageAction.show(tabId);
 			}
 		};
-
-		chrome.pageAction.onClicked.addListener(function(tab) {
-			if (localStorage["uncheckedUpdate"] == "true") {
-				chrome.tabs.create({url:chrome.extension.getURL("options.html#update")});
-				chrome.pageAction.setIcon({tabId: tab.id, path:"img/icons/icon19.png"});
-				chrome.pageAction.setTitle({tabId: tab.id, title:"Minimalist for Gmail Options"});
-				localStorage["uncheckedUpdate"] = false;
-			} else {
-				chrome.tabs.create({url:chrome.extension.getURL("options.html")});
-			}
-		});
 		//---- END TALK TO ICON ----//
 
 		//---- TALK TO SCRIPTS ----//

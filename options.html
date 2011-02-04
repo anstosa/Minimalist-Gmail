@@ -287,6 +287,8 @@
 				<input type="checkbox" id="customCSS" />
 					&nbsp;<label for="customCSS" title="">Use custom CSS</label><br />
 					<textarea id="customCSSval" rows="5" cols="40" style="margin-left: 25px;"></textarea>
+					<br />
+					<span class="note">Don't know CSS? <a href="https://groups.google.com/forum/?hl=en#!forum/minimalist-gmail" target="_blank">Ask questions and see examples here</a></span>
 			</div>
 		</section>
 	</div>
@@ -438,6 +440,8 @@
 			<div>
 				<input type="checkbox" id="borders" />
 					&nbsp;<label for="borders" title="">Hide row borders</label><br />
+				<input type="checkbox" id="grabbers" />
+					&nbsp;<label for="grabbers" title="">Hide grabber images</label><br />
 				<input type="checkbox" id="simplify" />
 					&nbsp;<label for="simplify" title="">Simplify rows</label><br />
 					<span class="note">Hides all but the essentials until mouseover</span><br />
@@ -448,8 +452,11 @@
 					&nbsp;<label for="starHigh" title="">Show starred item row highlights</label><div c id="starCLR"><div id="starCLRsub" style="background-color: #ffcc00;"></div></div><br />
 				<input type="checkbox" id="high" />
 					&nbsp;<label for="high" title="">Show hover/select row highlights</label><div c id="highCLR"><div id="highCLRsub" style="background-color: #0099ff;"></div></div><br />
-					<br />
 					<span class="note">Colors blend in multiple cases [i.e. unread and hovering]</span><br />
+					<br />
+				<input type="checkbox" id="zero" />
+					&nbsp;<label for="zero" title="">Hide zero-inbox whitespace</label><br />
+					<span class="note"><strong>NOTE:</strong> not compatible with Priority Inbox</span><br />
 			</div>
 		</section>
 		<section>
@@ -514,7 +521,7 @@
 			<h3>Toolbars</h3>
 			<div>
 				<input type="checkbox" id="pi" />
-					&nbsp;<label for="pi" title="">Priority Inbox User? Check this box!</label><br />
+					&nbsp;<label for="pi" title=""><strong><em>Priority Inbox User? Check this box!</em></strong></label><br />
 				<input type="checkbox" id="t_top" />
 					&nbsp;<label for="t_top" title="">Hide top toolbar</label><br />
 				<input type="checkbox" id="bottom" />
@@ -551,6 +558,7 @@
 					&nbsp;<label for="zads" title="">Hide zero-inbox Google Reader ad</label><br />
 				<input type="checkbox" id="ads" />
 					&nbsp;<label for="ads" title="">Hide sidebar ads</label><br />
+					<span class="note"><strong>Note:</strong> Do not use this option with Rapportive</span><br />
 				<input type="checkbox" id="bads" />
 					&nbsp;<label for="bads" title="">Hide bottom ads</label><br />
 				<br />
@@ -580,6 +588,13 @@
 					<span class="note"><strong>WARNING:</strong> Possible CPU drain. Disable if Gmail slows.</span><br />
 				<input type="text" id="navW" size="3" class="field" value="172" /> pixels<!-- <input type="button" value="Confirm" /> --><br />
 				<span class="note">Default is 172</span>
+			</div>
+		</section>
+		<section>
+			<h3>Appearance</h3>
+			<div>
+				<input type="checkbox" id="hr" />
+					&nbsp;<label for="hr" title="">Hide dividing lines</label><br />
 			</div>
 		</section>
 		<section>
@@ -618,6 +633,8 @@
 					&nbsp;<label for="moreC" title="">Hide more count</label><br />
 				<input type="checkbox" id="more" />
 					&nbsp;<label for="more" title="">Hide more link</label><br />
+					<br />
+					<span class="note">To hide other items, <a href="https://groups.google.com/forum/?hl=en#!topic/minimalist-gmail/nCW-KllHihw" target="_blank">instructions are here</a></span>
 			</div>
 		</section>
 		<section>
@@ -643,12 +660,22 @@
 			<div>
 				<input type="checkbox" id="c_search" />
 					&nbsp;<label for="c_search" title="">Hide search box</label><br />
+				<input type="checkbox" id="c_set" />
+					&nbsp;<label for="c_set" title="">Hide "Set status here</label><br />
+				<input type="checkbox" id="c_aim" />
+					&nbsp;<label for="c_aim" title="">Hide "Sign in to AIM"</label><br />
 				<input type="checkbox" id="c_invisible" />
 					&nbsp;<label for="c_invisible" title="">Hide "You are invisible" alert</label><br />
-				<input type="checkbox" id="offline" />
-					&nbsp;<label for="offline" title="">Hide offline</label><br />
 				<input type="checkbox" id="status" />
 					&nbsp;<label for="status" title="">Hide statuses</label><br />
+				<input type="checkbox" id="offline" />
+					&nbsp;<label for="offline" title="">Hide offline</label><br />
+					<div style="margin-left:25px;">
+					<input type="checkbox" id="sms" />
+						&nbsp;<label for="sms" title="">Hide offline sms</label><br />
+					<input type="checkbox" id="idle" />
+						&nbsp;<label for="idle" title="">Hide idle</label><br />
+					</div>
 			</div>
 		</section>
 	</div>
@@ -836,40 +863,40 @@ https://mail.google.com/a/yourdomain.com
 		<section>
 			<h3>Announcements</h3>
 			<div>
-				This update and the silent ones before it should help a lot with the performance problems<br /><br />
-				I'm going to switch my focus to Minimalist Google Calendar for the time being so Minimalist for Gmail will be feature-locked. Bugfixes will still come when necessary but the current feature set is how it will stay for a couple weeks or so.
+				All the small features in this update are from people who requested custom CSS in the <a href="https://groups.google.com/forum/?hl=en#!forum/minimalist-gmail" target="_blank">discussion group</a>. Ask your questions or share your CSS there.
 			</div>
 		</section>
 		<section>
 			<h3>What's new</h3>
 			<div>
 				Full changelog on <a href="http://code.google.com/p/minimalist-gmail/#CHANGELOG" target="_blank">Google Code</a><br /><br />
-				<strong>General</strong>
+				<!-- <strong>General</strong>
 				<ul>
 					<li>Mailto script now optional</li>
 					<li>Option to hide inactive scrollbar [can cause bugs]</li>
 					<li>Subtle transition animations</li>
-				</ul>
-				<strong>Google Bar / Header</strong>
+				</ul> -->
+				<strong>Header</strong>
 				<ul>
-					<li>[ \ ] now toggles the Google Bar and the header</li>
-					<li>Now have option to show the "more" dropdown when using custom links. Original added to top of that menu.</li>
+					<li>Fixed search options for macs</li>
 				</ul>
 				<strong>Main</strong>
 				<ul>
-					<li>Color blending for row highlights [red unread color + blue hover color = purple hover on unread item]</li>
-					<li>If simplify rows is enabled, selecting a row with keyboard navigation will reveal hidden items</li>
+					<li>Fixed: When select highlights are enabled and unread highlights aren't unread rows aren't highlighted on mouseover
+					<li>Hide zero-inbox whitespace</li>
+					<li>Hide row grabbers</li>
 				</ul>
 				<strong>Navigation</strong>
 				<ul>
-					<li>[ ` ] tilde key now toggles the navigation</li>
-					<li>Show nav on mouseover now optional</li>
+					<li>Hide dividing lines</li>
 				</ul>
 				<strong>Chat</strong>
 				<ul>
-					<li>Re-write of offline script should offer performance increase and fix a lot of bugs</li>
+					<li>Hide sms contacts</li>
+					<li>Hide Idle contacts</li>
+					<li>Hide "Sign in to AIM"</li>
 				</ul>
-				<strong>Footer</strong>
+				<!-- <strong>Footer</strong>
 				<ul>
 					<li>Move activity changed. It's not as pretty if you hide the Google Bar, but at least the link works</li>
 				</ul>
@@ -877,7 +904,7 @@ https://mail.google.com/a/yourdomain.com
 				<ul>
 					<li>Total revamp of triggers and timers. Significant performance improvement. Especially while idle.</li>
 					<li><a href="http://code.google.com/p/minimalist-gmail/#CHANGELOG" target="_blank">Bugfixes</a></li>
-				</ul>
+				</ul> -->
 			</div>
 		</section>
 		<section>
