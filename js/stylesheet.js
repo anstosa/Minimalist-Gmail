@@ -80,7 +80,7 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			css += "td.oZ-x3 { background: transparent !important; }\n";
 		if (response.o.simplify) {
 			css += "tr.zA td:first-child, tr.zA td:last-child > span, tr.zA td:nth-child(5) { opacity: 0; }\n";
-			css += "tr.zA[min ~= 'select'] td:first-child, tr.x7 td:first-child { opacity: 1; }\n";
+			css += "tr.zA[min ~= 'select'] td:first-child, tr.zA:hover td:first-child, tr.x7 td:first-child { opacity: 1; }\n";
 			css += "tr.zA[min ~= 'select'] td:last-child > span, tr.x7 td:last-child > span, tr.zA:hover td:last-child > span { opacity: 1; }\n";
 			css += "tr.zA[min ~= 'select'] td:nth-child(5), tr.x7 td:nth-child(5), tr.zA:hover td:nth-child(5) { opacity: 1; }\n";
 			css += "tr.zA[min ~= 'select'] td img.xi, tr.zA[min ~= 'select'] td img.EqK8f, tr.zA:hover td img.EqK8f, tr.zA:hover td img.xi { visibility: visible !important; }\n";
@@ -172,7 +172,7 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 		if (response.o.zads)
 			css += ".TC[colspan = '3'] { display: none !important; }\n";
 		if (response.o.ads) {
-			css += "h1.ha { margin-right: 160px !important }\n";
+			css += "h1.ha { margin-right: 200px !important }\n";
 			css += "table.iY > tr > td:first-child + td + td > div { width: 0 !important; position: relative !important; }\n";
 			css += "table.iY > tr > td:first-child + td + td > div > div { position: absolute !important; right: 15px !important; top: 10px !important}\n";
 			css += "table.iY > tr > td:first-child + td + td > div > div u { display: none !important; }\n";

@@ -161,6 +161,9 @@
 
 == CHANGELOG ==
 
+ == 1.6.12 [7 Feb]
+  * Fixed: Naming convension not adhereing to Google's branding policies
+  * Fixed: [ g ] + [ l ] unhiding Google Bar when Header wasn't hidden
  == 1.6.11 [4 Feb]
   * Fixed: Keyboard shortcuts only working if Select/hover row highlights enabled
  == 1.6.10 [3 Feb]

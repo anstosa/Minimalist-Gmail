@@ -49,7 +49,7 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 		}
 		// [ \ ]
 		if ((response.o.header || response.o.gbarH) && (event.which == "92" || (String.fromCharCode(event.which) == "l" && g)) && !event.ctrlKey && !event.metaKey) {
-			if (response.o.gbarH && !response.o.header) {
+			if (response.o.gbarH && !response.o.header && event.which == "92") {
 				if (document.getElementById('gbarToggle').nextSibling.getAttribute('style') != 'display: none !important;')
 					document.getElementById('gbarToggle').nextSibling.setAttribute('style', 'display: none !important;');
 				else document.getElementById('gbarToggle').nextSibling.setAttribute('style', '');
