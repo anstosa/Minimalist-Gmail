@@ -161,6 +161,8 @@
 
 == CHANGELOG ==
 
+ == 1.6.17 [10 Feb]
+  * Fixed: Offline chat contacts not hiding in French Gmail
  == 1.6.16 [10 Feb]
   * Removed: Calendar script from easter egg
   * Fixed: Custom checkbox tools button shifting to left on hover

@@ -29,7 +29,7 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 						for (var i = 0; i < buddies.length; i++) {
 							var images = buddies[i].getElementsByTagName('img');
 							if (images.length < 1) continue;
-							if(images[0].alt == "Offline" || images[0].alt == "hors connexion" || (response.o.sms && images[0].alt == "") || (response.o.idle && images[0].alt == "Idle") || (response.o.idle && images[0].alt == "Absent"))
+							if(images[0].alt == "Offline" || images[0].alt == "Hors connexion" || (response.o.sms && images[0].alt == "") || (response.o.idle && images[0].alt == "Idle") || (response.o.idle && images[0].alt == "Absent"))
 								buddies[i].style.display = 'none';
 							else
 								buddies[i].style.display = '';
