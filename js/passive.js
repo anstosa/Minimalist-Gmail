@@ -54,7 +54,7 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 					document.getElementById('gbarToggle').nextSibling.setAttribute('style', 'display: none !important;');
 				else document.getElementById('gbarToggle').nextSibling.setAttribute('style', '');
 			} else if (response.o.gbarH && response.o.header) {
-				if (document.getElementById('gbarToggle').nextSibling.firstChild.getAttribute('style') != 'display: none !important;') {
+				if (document.getElementById('gbarToggle').nextSibling.firstChild.getAttribute('style') != 'display: none !important;' && String.fromCharCode(event.which) != "l") {
 					document.getElementById('gbarToggle').nextSibling.firstChild.setAttribute('style', 'display: none !important;');
 					document.getElementById('gbarToggle').nextSibling.nextSibling.nextSibling.firstChild.setAttribute('style', 'display: none !important;');
 				} else {
@@ -62,7 +62,7 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 					document.getElementById('gbarToggle').nextSibling.nextSibling.nextSibling.firstChild.setAttribute('style', '');
 				}
 			} else {
-				if (document.getElementById('headerToggle').nextSibling.getAttribute('style') != 'display: none !important;')
+				if (document.getElementById('headerToggle').nextSibling.getAttribute('style') != 'display: none !important;' && String.fromCharCode(event.which) != "l")
 					document.getElementById('headerToggle').nextSibling.setAttribute('style', 'display: none !important;');
 				else document.getElementById('headerToggle').nextSibling.setAttribute('style', '');
 			}

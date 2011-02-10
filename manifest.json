@@ -1,6 +1,6 @@
 {
 	"name": "Minimalist for Gmail™",
-	"version": "1.6.12",
+	"version": "1.6.16",
 	"description": "Individually hide almost 100 interface elements and add custom blended row highlights, attachment icons, and more...",
 	"icons": {
          "16": "img/icons/icon16.png",
@@ -29,11 +29,7 @@
 		"matches": [ "*://www.google.com/reader/*" ],
 		"js": [ "js/reader.js" ],
 		"all_frames": true
-	}, {
-		"matches": [ "*://www.google.com/calendar/*" ],
-		"js": [ "js/calendar.js" ],
-		"all_frames": true
-	} ],
+	}],
 	"converted_from_user_script": true,
 	"options_page": "options.html",	
 	"permissions": [

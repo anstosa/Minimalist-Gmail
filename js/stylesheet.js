@@ -16,8 +16,11 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 	//css += ".VP5otc-pzeoBf { position: fixed; top: 0; z-index: 99;}\n"; //[min = 'float']
 	
 	// GENERAL
-		if (response.o.BTN)
+		if (response.o.BTN) {
 			css += ".J-Zh-I { color: " + response.o.BTNcolor + "; border: 1px solid " + response.o.BTNborder + "; background: -webkit-gradient(linear,0% 40%,0% 70%,from(" + response.o.BTNbottom + "),to(" + response.o.BTNtop + ")); }\n";
+			css += ".J-Zh-I-JW { padding-left: 8px !important; }\n";
+			css += ".J-Pm-I.J-Zh-I-JW { padding-left: 6px !important; }\n";
+		}
 		if (response.o.loader) {
 			css += "#loading { background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAK8CAMAAAD/Ke59AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAE5QTFRFHx8fMzMzMjIyNjY2MTExMDAwLi4uLy8vLS0tNTU1NDQ0Hh4eKysrHR0dLCwsKioqKCgoKSkpICAgJSUlJiYmJycnJCQkISEhIyMjIiIiHhf88QAAAR9JREFUeNrs1NtuwyAMBmCS5tSWcgiHwPu/6LwsEm2BhATSadJuflnflYWN0eVCKSJkHJFSVYUeD87Rv51s9Y9dr87qMw3jFOO+8W1jLGi3235rmrDdX0xKsPsZVlWFrH0ySmdrC1hdpxpEAev7b1O+qbA1TaZxOk2e8ah1IesWa31rd5sQYAjFTfmmPOt7Z8NQyBhzJmWydd26EfI5G4aQQSyG8YYpdchIyMhe0xqu6DgKkWUYZ5qUUYPLsBjEm1H6+wY/ajbOU0z7phcTopgx5gy2c8UgnE3TixlTwpRaN5j0umlhrWf6kEmZYMZsGrzkToNIMCEyzZioQVfZpkOmS5i1YNYeNKiiZkyCzV2FzIbMJttcnWDWtz8SXwIMAM8UwWqEpG2GAAAAAElFTkSuQmCC) repeat-x #222 !important; color: #fff;}\n";
 			css += "#loading #stb { background-color: rgba(0,0,0,0); color: #fff; }\n";
@@ -32,7 +35,7 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			css += "input[type = 'text'], textarea, div.Ar.Au { -webkit-border-radius: 5px; }\n";
 		}
 		if (response.o.trans) {
-			css += "* { -webkit-transition-property: height, background-color, border-color, color, opacity, width; -webkit-transition-duration: .15s; -webkit-transition-timing-function: ease-out; }\n"
+			css += "* { -webkit-transition-property: all; -webkit-transition-duration: .15s; -webkit-transition-timing-function: ease-out; }\n"
 			if (response.o.nav || response.o.navW)
 				css += "* { -webkit-transition-property: height, background-color, border-color, color, opacity; }\n"
 		}
@@ -84,6 +87,8 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			css += "tr.zA[min ~= 'select'] td:last-child > span, tr.x7 td:last-child > span, tr.zA:hover td:last-child > span { opacity: 1; }\n";
 			css += "tr.zA[min ~= 'select'] td:nth-child(5), tr.x7 td:nth-child(5), tr.zA:hover td:nth-child(5) { opacity: 1; }\n";
 			css += "tr.zA[min ~= 'select'] td img.xi, tr.zA[min ~= 'select'] td img.EqK8f, tr.zA:hover td img.EqK8f, tr.zA:hover td img.xi { visibility: visible !important; }\n";
+			css += "tr.zA div.ar { opacity: .25; }\n";
+			css += "tr.zA[min ~= 'select'] div.ar, tr.zA:hover div.ar { opacity: 1; }\n";
 		}
 		if (response.o.starHigh) {
 			css += "tr.yO[min ~= 'star'], tr.zE[min ~= 'star'] { background-color: " + response.o.starCLR + "; }\n";

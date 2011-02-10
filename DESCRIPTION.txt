@@ -161,6 +161,19 @@
 
 == CHANGELOG ==
 
+ == 1.6.16 [10 Feb]
+  * Removed: Calendar script from easter egg
+  * Fixed: Custom checkbox tools button shifting to left on hover
+ == 1.6.15 [10 Feb]
+  * Fixed: Custom buttons shifting way left on hover
+ == 1.6.14 [9 Feb]
+  * Fixed: stupid typo...
+ == 1.6.13 [9 Feb]
+  * Improved: Simplify rows dims labels until mouseover
+  * Fixed: Simplify rows permanently hiding checkboxes
+  * Fixed: Offline and idle chat contacts not hiding in French Gmail
+  * Fixed: [ g ] + [ l ] hiding header when it was open
+  * Fixed: Custom buttons shifting to left on hover
  == 1.6.12 [7 Feb]
   * Fixed: Naming convension not adhereing to Google's branding policies
   * Fixed: [ g ] + [ l ] unhiding Google Bar when Header wasn't hidden

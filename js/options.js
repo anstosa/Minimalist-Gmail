@@ -400,9 +400,7 @@ $(function(){
 	document.getElementById("OPTmai").addEventListener("click", save, false);
 	document.getElementById("OPTgat").addEventListener("keyup", save, false);
 	document.getElementById("OPTgat").addEventListener("click", save, false);
-	document.getElementById("OPTcha").addEventListener("keyup", save, false);
 	document.getElementById("OPTcha").addEventListener("click", save, false);
-	document.getElementById("OPTfoo").addEventListener("keyup", save, false);
 	document.getElementById("OPTfoo").addEventListener("click", save, false);
 	document.getElementById("EIC_1").addEventListener("keyup", save, false);
 	document.getElementById("EIC_2").addEventListener("keyup", save, false);
