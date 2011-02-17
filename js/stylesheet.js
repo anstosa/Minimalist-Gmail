@@ -11,9 +11,9 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 	// css += "@import url(http://fonts.googleapis.com/css?family=Raleway:100)";
 	// css += "::-webkit-scrollbar { width: 6px !important; background-color: #000; }\n";
 	// css += "::-webkit-scrollbar-track-piece { background-color: rgba(0,0,0,.75); -webkit-border-radius: 2px; }\n";
-	css += "div.nH.qp[role = 'navigation'] { margin-bottom: 0px !important; }\n";
-	//css += ".aC * { z-index: 999; }\n";
-	//css += ".VP5otc-pzeoBf { position: fixed; top: 0; z-index: 99;}\n"; //[min = 'float']
+	// css += "div.nH.qp[role = 'navigation'] { margin-bottom: 0px !important; }\n";
+	// css += ".aC * { z-index: 999; }\n";
+	// css += ".VP5otc-pzeoBf { position: fixed; top: 0; z-index: 99;}\n"; //[min = 'float']
 	
 	// GENERAL
 		if (response.o.BTN) {
@@ -35,25 +35,29 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			css += "input[type = 'text'], textarea, div.Ar.Au { -webkit-border-radius: 5px; }\n";
 		}
 		if (response.o.trans) {
-			css += "* { -webkit-transition-property: all; -webkit-transition-duration: .15s; -webkit-transition-timing-function: ease-out; }\n"
+			css += "* { -webkit-transition-property: all; -webkit-transition-duration: .15s; -webkit-transition-timing-function: ease-out; }\n";
+			css += "#gbz *, #gbg * { -webkit-transition-property: opacity; }\n";
 			if (response.o.nav || response.o.navW)
-				css += "* { -webkit-transition-property: height, background-color, border-color, color, opacity; }\n"
+				css += "* { -webkit-transition-property: height, background-color, border-color, color, opacity; }\n";
 		}
 		if (response.o.scroll)
 			css += "html.cQ { overflow-y: auto !important; }\n";
 	// GOOGLE BAR
 		if (response.o.gbar)
-			css += "#gbar { display: none !important; }\n";
+			css += "#gbar, #gbz { display: none !important; }\n";
 		if (response.o.gbarH) {
+			css += "#gbx1, #gbx2, #gbz, #gbg { top: 10px !important; }\n";
+			css += "#gbx3, #gbx4 { top: 12px !important; }\n";
+			css += "#gbs { top: 42px !important; }";
 			css += "#gbarToggle { background-color: rgba(0,0,0,0); height: 10px !important; cursor: pointer !important;}\n";
 			css += "#gbarToggle:hover { background-color: rgba(0,0,0,.15); }\n";
 		}
 		if (response.o.gbarO) {
-			css += "div[role='navigation'] div.nH, div[role='navigation'] #guser, div[role='navigation'] #gbar { opacity: 0; -webkit-transition-delay: .25s; }\n";
-			css += "div.aC:hover div[role='navigation'] div.nH, div.aC:hover div[role='navigation'] #guser, div.aC:hover div[role='navigation'] #gbar { opacity: 1; }\n"
+			css += "div[role='navigation'] div.nH, div[role='navigation'] #guser, div[role='navigation'] #gbg, div[role='navigation'] #guser, div[role='navigation'] #gbz { opacity: 0; -webkit-transition-delay: .25s; }\n";
+			css += "div.aC:hover div[role='navigation'] div.nH, div.aC:hover div[role='navigation'] #guser, div.aC:hover div[role='navigation'] #gbg, div.aC:hover div[role='navigation'] #gbar, div.aC:hover div[role='navigation'] #gbz { opacity: 1; }\n"
 		}
 		if (response.o.gbarB)
-			css += "div.nH.qp[role = 'navigation'] { background-color: rgba(255,255,255,0) !important; border: 0 !important; }\n";
+			css += "div.nH.qp[role = 'navigation'], #gbx3, #gbx4 { background-image: none !important; background-color: rgba(255,255,255,0) !important; border: 0 !important; }\n";
 	// HEADER
 		if (response.o.header) {
 			// css += "div.b8.UC { padding-top: 0 !important; position: fixed !Important; top: 0 !important; left: 0 !important; width: 100% !important; }\n";
@@ -82,8 +86,8 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 		if (response.o.grabbers)
 			css += "td.oZ-x3 { background: transparent !important; }\n";
 		if (response.o.simplify) {
-			css += "tr.zA td:first-child, tr.zA td:last-child > span, tr.zA td:nth-child(5) { opacity: 0; }\n";
-			css += "tr.zA[min ~= 'select'] td:first-child, tr.zA:hover td:first-child, tr.x7 td:first-child { opacity: 1; }\n";
+			css += "tr.zA td:first-child *:not(img), tr.zA td:last-child > span, tr.zA td:nth-child(5) { opacity: 0; }\n";
+			css += "tr.zA[min ~= 'select'] td:first-child *, tr.zA:hover td:first-child *, tr.x7 td:first-child { opacity: 1; }\n";
 			css += "tr.zA[min ~= 'select'] td:last-child > span, tr.x7 td:last-child > span, tr.zA:hover td:last-child > span { opacity: 1; }\n";
 			css += "tr.zA[min ~= 'select'] td:nth-child(5), tr.x7 td:nth-child(5), tr.zA:hover td:nth-child(5) { opacity: 1; }\n";
 			css += "tr.zA[min ~= 'select'] td img.xi, tr.zA[min ~= 'select'] td img.EqK8f, tr.zA:hover td img.EqK8f, tr.zA:hover td img.xi { visibility: visible !important; }\n";
@@ -278,8 +282,8 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			css += "div.nH.l2.ov div:nth-child(4) td:nth-child(3) .mm { display: none !important; }\n";
 		if (response.o.f_activity_move) {
 			if (response.o.gbar) 
-				css += "div.nH.l2.ov div:nth-child(5) { position: absolute; top: -6px; left: 5px; opacity: .35; }\n";
-			else css += "div.nH.l2.ov div:nth-child(5) { position: absolute; top: -6px; left: 30%; right: 30%; opacity: .35; }\n";
+				css += "div.nH.l2.ov div:nth-child(5) { z-index: 99999 !important; position: absolute; top: -6px; left: 5px; opacity: .35; }\n";
+			else css += "div.nH.l2.ov div:nth-child(5) { z-index: 99999 !important; position: absolute; top: -6px; left: 30%; right: 30%; opacity: .35; }\n";
 			css += "div.nH.l2.ov div:nth-child(5):hover { opacity: 1; }\n";
 		}
 		if (response.o.f_activity_hide)

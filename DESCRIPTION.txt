@@ -1,10 +1,8 @@
 == ANNOUNCEMENTS ==
   
-  There has been confusion between this extension and "Minimalist Gmail by Matt Constantine" because of the names
-  His extension is not related to mine in any way and precedes mine by over a year and I would like to apologize publicly
-  for not doing my due diligence before I published. You can find Matt's extension here: http://mattconstantine.com/mg/
+  Minor update for the new Google Bar.
   
-  As seen on Lifehacker! http://lifehacker.com/5741771/minimalist-gmail-is-the-best-gmail-tweaker-for-chrome-yet
+  Minimalist for Google Reader coming in a couple weeks. Follow me for details and beta invites: @anstosa
   
   Questions about permissions? See PERMISSIONS section below.
 
@@ -161,6 +159,12 @@
 
 == CHANGELOG ==
 
+ == 1.6.18 [16 Feb]
+  * Added: Donate tab in options
+  * Fixed: Selection indicator hidden in simplify rows
+  * Fixed: Install failure on Chrome for Fedora
+  * Fixed: Google Bar features incompatible with new Google Bar
+  * Fixed: Activity under new Google Bar when moved to top
  == 1.6.17 [10 Feb]
   * Fixed: Offline chat contacts not hiding in French Gmail
  == 1.6.16 [10 Feb]

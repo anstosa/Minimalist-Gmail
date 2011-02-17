@@ -96,8 +96,14 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 		if (response.o.gbarH && !f_gbarToggle) {
 			console.log("MINIMALIST GMAIL: hiding Google Bar & adding the header hook...");
 			try {
-				var login = document.getElementById("guser");
-					login.parentNode.parentNode.setAttribute("style", "display: none !important;");
+				try {
+					var login = document.getElementById("gbar");
+						login.parentNode.parentNode.setAttribute("style", "display: none !important;");
+				} catch (e) { console.error(e); }
+				try {
+					var login = document.getElementById("gbw");
+						login.parentNode.parentNode.setAttribute("style", "display: none !important;");
+				} catch (e) { console.error(e); }
 				var toggleG = document.createElement("div");
 					toggleG.setAttribute("id", "gbarToggle");
 				if (!response.o.header) {
@@ -144,74 +150,163 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 		}
 		if (response.o.cbar && !document.getElementById('cbarOne')) {
 			console.log("MINIMALIST GMAIL: customizing Google links...");
-			try {
-				var one = document.getElementById("gbar").childNodes[0].childNodes[0];
-					one.setAttribute("style", "font-weight: normal;");
-					one.setAttribute("class", "");
-					one.innerHTML = "<a target=\"" + response.o.c_t_1 + "\" id=\"cbarOne\" href=\"" + response.o.c_u_1 + "\" class=\"gb1 qq\">" + response.o.c_n_1 + "</a>";
-				var two = document.getElementById("gbar").childNodes[0].childNodes[2];
-					two.setAttribute("href", response.o.c_u_2);
-					two.setAttribute("target", response.o.c_t_2);
-					two.innerHTML = response.o.c_n_2;
-				var three = document.getElementById("gbar").childNodes[0].childNodes[4];
-					three.setAttribute("href", response.o.c_u_3);
-					three.setAttribute("target", response.o.c_t_3);
-					three.innerHTML = response.o.c_n_3;
-				var four = document.getElementById("gbar").childNodes[0].childNodes[6];
-					four.setAttribute("href", response.o.c_u_4);
-					four.setAttribute("target", response.o.c_t_4);
-					four.innerHTML = response.o.c_n_4;
-				var five = document.getElementById("gbar").childNodes[0].childNodes[8];
-					five.setAttribute("href", response.o.c_u_5);
-					five.setAttribute("target", response.o.c_t_5);
-					five.innerHTML = response.o.c_n_5;
-				var six = document.getElementById("gbar").childNodes[0].childNodes[10];
-					six.setAttribute("href", response.o.c_u_6);
-					six.setAttribute("target", response.o.c_t_6);
-					six.innerHTML = response.o.c_n_6;
-				if (response.o.cbarM) {
-					var moreD = document.querySelectorAll("#gbar div.gbm")[0];
-					var current = document.createElement("div");
-						current.setAttribute('class','gb2');
-					var hr = document.createElement("div");
-						hr.setAttribute('class','gbd');
-						current.appendChild(hr);
-						moreD.insertBefore(current, moreD.firstChild);
-					current = document.createElement("a");
-						current.setAttribute('target','_blank');
-						current.setAttribute('class','gb2');
-						current.setAttribute('href','http://www.google.com');
-						current.appendChild(document.createTextNode("Web"));
-						moreD.insertBefore(current, moreD.firstChild);
-					current = document.createElement("a");
-						current.setAttribute('target','_blank');
-						current.setAttribute('class','gb2');
-						current.setAttribute('href','http://picasaweb.google.com');
-						current.appendChild(document.createTextNode("Photos"));
-						moreD.insertBefore(current, moreD.firstChild);
-					current = document.createElement("a");
-						current.setAttribute('target','_blank');
-						current.setAttribute('class','gb2');
-						current.setAttribute('href','http://www.google.com/reader');
-						current.appendChild(document.createTextNode("Reader"));
-						moreD.insertBefore(current, moreD.firstChild);
-					current = document.createElement("a");
-						current.setAttribute('target','_blank');
-						current.setAttribute('class','gb2');
-						current.setAttribute('href','http://docs.google.com');
-						current.appendChild(document.createTextNode("Documents"));
-						moreD.insertBefore(current, moreD.firstChild);
-					current = document.createElement("a");
-						current.setAttribute('target','_blank');
-						current.setAttribute('class','gb2');
-						current.setAttribute('href','http://www.google.com/calendar');
-						current.appendChild(document.createTextNode("Calendar"));
-						moreD.insertBefore(current, moreD.firstChild);
-				} else {
-					var more = document.getElementById("gbar").childNodes[0].childNodes[12];
-						more.setAttribute("style","display: none !important;");
-				}
-			} catch (e) { console.error(e); }
+			if (document.getElementById("gbar")) {
+				try {
+					var one = document.getElementById("gbar").childNodes[0].childNodes[0];
+						one.setAttribute("style", "font-weight: normal;");
+						one.setAttribute("class", "");
+						one.innerHTML = "<a target=\"" + response.o.c_t_1 + "\" id=\"cbarOne\" href=\"" + response.o.c_u_1 + "\" class=\"gb1 qq\">" + response.o.c_n_1 + "</a>";
+					var two = document.getElementById("gbar").childNodes[0].childNodes[2];
+						two.setAttribute("href", response.o.c_u_2);
+						two.setAttribute("target", response.o.c_t_2);
+						two.innerHTML = response.o.c_n_2;
+					var three = document.getElementById("gbar").childNodes[0].childNodes[4];
+						three.setAttribute("href", response.o.c_u_3);
+						three.setAttribute("target", response.o.c_t_3);
+						three.innerHTML = response.o.c_n_3;
+					var four = document.getElementById("gbar").childNodes[0].childNodes[6];
+						four.setAttribute("href", response.o.c_u_4);
+						four.setAttribute("target", response.o.c_t_4);
+						four.innerHTML = response.o.c_n_4;
+					var five = document.getElementById("gbar").childNodes[0].childNodes[8];
+						five.setAttribute("href", response.o.c_u_5);
+						five.setAttribute("target", response.o.c_t_5);
+						five.innerHTML = response.o.c_n_5;
+					var six = document.getElementById("gbar").childNodes[0].childNodes[10];
+						six.setAttribute("href", response.o.c_u_6);
+						six.setAttribute("target", response.o.c_t_6);
+						six.innerHTML = response.o.c_n_6;
+					if (response.o.cbarM) {
+						var moreD = document.querySelectorAll("#gbar div.gbm")[0];
+						var current = document.createElement("div");
+							current.setAttribute('class','gb2');
+						var hr = document.createElement("div");
+							hr.setAttribute('class','gbd');
+							current.appendChild(hr);
+							moreD.insertBefore(current, moreD.firstChild);
+						current = document.createElement("a");
+							current.setAttribute('target','_blank');
+							current.setAttribute('class','gb2');
+							current.setAttribute('href','http://www.google.com');
+							current.appendChild(document.createTextNode("Web"));
+							moreD.insertBefore(current, moreD.firstChild);
+						current = document.createElement("a");
+							current.setAttribute('target','_blank');
+							current.setAttribute('class','gb2');
+							current.setAttribute('href','http://picasaweb.google.com');
+							current.appendChild(document.createTextNode("Photos"));
+							moreD.insertBefore(current, moreD.firstChild);
+						current = document.createElement("a");
+							current.setAttribute('target','_blank');
+							current.setAttribute('class','gb2');
+							current.setAttribute('href','http://www.google.com/reader');
+							current.appendChild(document.createTextNode("Reader"));
+							moreD.insertBefore(current, moreD.firstChild);
+						current = document.createElement("a");
+							current.setAttribute('target','_blank');
+							current.setAttribute('class','gb2');
+							current.setAttribute('href','http://docs.google.com');
+							current.appendChild(document.createTextNode("Documents"));
+							moreD.insertBefore(current, moreD.firstChild);
+						current = document.createElement("a");
+							current.setAttribute('target','_blank');
+							current.setAttribute('class','gb2');
+							current.setAttribute('href','http://www.google.com/calendar');
+							current.appendChild(document.createTextNode("Calendar"));
+							moreD.insertBefore(current, moreD.firstChild);
+					} else {
+						var more = document.getElementById("gbar").childNodes[0].childNodes[12];
+							more.setAttribute("style","display: none !important;");
+					}
+				} catch (e) { console.error(e); }
+			} else {
+				try {
+					var one = document.getElementById("gbz").childNodes[1].childNodes[0].childNodes[0];
+						one.setAttribute("href", response.o.c_u_1);
+						one.setAttribute("target", response.o.c_t_1);
+						one.setAttribute("id", "cbarOne");
+						one.childNodes[1].innerHTML = response.o.c_n_1;
+					var two = document.getElementById("gbz").childNodes[1].childNodes[1].childNodes[0];
+						two.setAttribute("href", response.o.c_u_2);
+						two.setAttribute("target", response.o.c_t_2);
+						two.childNodes[1].innerHTML = response.o.c_n_2;
+					var three = document.getElementById("gbz").childNodes[1].childNodes[2].childNodes[0];
+						three.setAttribute("href", response.o.c_u_3);
+						three.setAttribute("target", response.o.c_t_3);
+						three.childNodes[1].innerHTML = response.o.c_n_3;
+					var four = document.getElementById("gbz").childNodes[1].childNodes[3].childNodes[0];
+						four.setAttribute("href", response.o.c_u_4);
+						four.setAttribute("target", response.o.c_t_4);
+						four.childNodes[1].innerHTML = response.o.c_n_4;
+					var five = document.getElementById("gbz").childNodes[1].childNodes[4].childNodes[0];
+						five.setAttribute("href", response.o.c_u_5);
+						five.setAttribute("target", response.o.c_t_5);
+						five.childNodes[1].innerHTML = response.o.c_n_5;
+					var six = document.getElementById("gbz").childNodes[1].childNodes[5].childNodes[0];
+						six.setAttribute("href", response.o.c_u_6);
+						six.setAttribute("target", response.o.c_t_6);
+						six.childNodes[1].innerHTML = response.o.c_n_6;
+					if (response.o.cbarM) {
+						var moreD = document.querySelectorAll("#gbz div.gbm ol")[0];
+						var li = document.createElement("li");
+							li.setAttribute("class", "gbmtc");
+						var current = document.createElement("div");
+							current.setAttribute('class','gbmt gbmh');
+						var hr = document.createElement("div");
+							hr.setAttribute('class','gbd');
+							li.appendChild(hr);
+							moreD.insertBefore(li, moreD.firstChild);
+						current = document.createElement("a");
+							current.setAttribute('target','_blank');
+							current.setAttribute('class','gbmt');
+							current.setAttribute('href','http://www.google.com');
+							current.appendChild(document.createTextNode("Web"));
+							li = document.createElement("li");
+							li.setAttribute("class", "gbmtc");
+							li.appendChild(current);
+							moreD.insertBefore(li, moreD.firstChild);
+						current = document.createElement("a");
+							current.setAttribute('target','_blank');
+							current.setAttribute('class','gbmt');
+							current.setAttribute('href','http://picasaweb.google.com');
+							current.appendChild(document.createTextNode("Photos"));
+							li = document.createElement("li");
+							li.setAttribute("class", "gbmtc");
+							li.appendChild(current);
+							moreD.insertBefore(current, moreD.firstChild);
+						current = document.createElement("a");
+							current.setAttribute('target','_blank');
+							current.setAttribute('class','gbmt');
+							current.setAttribute('href','http://www.google.com/reader');
+							current.appendChild(document.createTextNode("Reader"));
+							li = document.createElement("li");
+							li.setAttribute("class", "gbmtc");
+							li.appendChild(current);
+							moreD.insertBefore(current, moreD.firstChild);
+						current = document.createElement("a");
+							current.setAttribute('target','_blank');
+							current.setAttribute('class','gbmt');
+							current.setAttribute('href','http://docs.google.com');
+							current.appendChild(document.createTextNode("Documents"));
+							li = document.createElement("li");
+							li.setAttribute("class", "gbmtc");
+							li.appendChild(current);
+							moreD.insertBefore(current, moreD.firstChild);
+						current = document.createElement("a");
+							current.setAttribute('target','_blank');
+							current.setAttribute('class','gbmt');
+							current.setAttribute('href','http://www.google.com/calendar');
+							current.appendChild(document.createTextNode("Calendar"));
+							li = document.createElement("li");
+							li.setAttribute("class", "gbmtc");
+							li.appendChild(current);
+							moreD.insertBefore(current, moreD.firstChild);
+					} else {
+						var more = document.getElementById("gbar").childNodes[0].childNodes[12];
+							more.setAttribute("style","display: none !important;");
+					}
+				} catch (e) { console.error(e); }
+			}
 		}
 		if ( !f_guser && (response.o.user || response.o.labs || response.o.settings || response.o.help || response.o.out)) {
 			console.log("MINIMALIST GMAIL: targetting Google User bar...");
