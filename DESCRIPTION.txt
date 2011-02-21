@@ -159,6 +159,10 @@
 
 == CHANGELOG ==
 
+ == 1.6.20 [20 Feb]
+  * Fixed: Problems with old Google Bar
+ == 1.6.19 [16 Feb]
+  * Fixed: "More" drop-down on new Google bar not hide-able
  == 1.6.18 [16 Feb]
   * Added: Donate tab in options
   * Fixed: Selection indicator hidden in simplify rows

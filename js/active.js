@@ -96,14 +96,11 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 		if (response.o.gbarH && !f_gbarToggle) {
 			console.log("MINIMALIST GMAIL: hiding Google Bar & adding the header hook...");
 			try {
-				try {
-					var login = document.getElementById("gbar");
-						login.parentNode.parentNode.setAttribute("style", "display: none !important;");
-				} catch (e) { console.error(e); }
-				try {
-					var login = document.getElementById("gbw");
-						login.parentNode.parentNode.setAttribute("style", "display: none !important;");
-				} catch (e) { console.error(e); }
+				var login = null;
+				if (document.getElementById("gbw"))
+					login = document.getElementById("gbw");
+				else login = document.getElementById("gbar");
+				login.parentNode.parentNode.setAttribute("style", "display: none !important;");
 				var toggleG = document.createElement("div");
 					toggleG.setAttribute("id", "gbarToggle");
 				if (!response.o.header) {
@@ -302,7 +299,7 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 							li.appendChild(current);
 							moreD.insertBefore(current, moreD.firstChild);
 					} else {
-						var more = document.getElementById("gbar").childNodes[0].childNodes[12];
+						var more = document.getElementById("gbz").childNodes[1].childNodes[6];
 							more.setAttribute("style","display: none !important;");
 					}
 				} catch (e) { console.error(e); }
