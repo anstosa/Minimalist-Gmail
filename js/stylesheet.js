@@ -86,7 +86,7 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 		if (response.o.grabbers)
 			css += "td.oZ-x3 { background: transparent !important; }\n";
 		if (response.o.simplify) {
-			css += "tr.zA td:first-child *:not(img), tr.zA td:last-child > span, tr.zA td:nth-child(5) { opacity: 0; }\n";
+			css += "tr.zA:not(.x7) td:first-child *:not(img), tr.zA td:last-child > span, tr.zA td:nth-child(5) { opacity: 0; }\n";
 			css += "tr.zA[min ~= 'select'] td:first-child *, tr.zA:hover td:first-child *, tr.x7 td:first-child { opacity: 1; }\n";
 			css += "tr.zA[min ~= 'select'] td:last-child > span, tr.x7 td:last-child > span, tr.zA:hover td:last-child > span { opacity: 1; }\n";
 			css += "tr.zA[min ~= 'select'] td:nth-child(5), tr.x7 td:nth-child(5), tr.zA:hover td:nth-child(5) { opacity: 1; }\n";
