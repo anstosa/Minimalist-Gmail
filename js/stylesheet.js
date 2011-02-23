@@ -86,13 +86,13 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 		if (response.o.grabbers)
 			css += "td.oZ-x3 { background: transparent !important; }\n";
 		if (response.o.simplify) {
-			css += "tr.zA:not(.x7) td:first-child *:not(img), tr.zA td:last-child > span, tr.zA td:nth-child(5) { opacity: 0; }\n";
-			css += "tr.zA[min ~= 'select'] td:first-child *, tr.zA:hover td:first-child *, tr.x7 td:first-child { opacity: 1; }\n";
-			css += "tr.zA[min ~= 'select'] td:last-child > span, tr.x7 td:last-child > span, tr.zA:hover td:last-child > span { opacity: 1; }\n";
-			css += "tr.zA[min ~= 'select'] td:nth-child(5), tr.x7 td:nth-child(5), tr.zA:hover td:nth-child(5) { opacity: 1; }\n";
-			css += "tr.zA[min ~= 'select'] td img.xi, tr.zA[min ~= 'select'] td img.EqK8f, tr.zA:hover td img.EqK8f, tr.zA:hover td img.xi { visibility: visible !important; }\n";
-			css += "tr.zA div.ar { opacity: .25; }\n";
-			css += "tr.zA[min ~= 'select'] div.ar, tr.zA:hover div.ar { opacity: 1; }\n";
+			css += "tr.zA > td:first-child > input, tr.zA > td:last-child > span, tr.zA > td:nth-child(5) { opacity: 0; }\n";
+			css += "tr.zA[min ~= 'select'] > td:first-child input, tr.zA:hover > td:first-child input, tr.zA.x7 > td:first-child input { opacity: 1; }\n";
+			css += "tr.zA[min ~= 'select'] > td:last-child > span, tr.x7 td:last-child > span, tr.zA:hover td:last-child > span { opacity: 1; }\n";
+			css += "tr.zA[min ~= 'select'] > td:nth-child(5), tr.x7 > td:nth-child(5), tr.zA:hover > td:nth-child(5) { opacity: 1; }\n";
+			css += "tr.zA[min ~= 'select'] > td img.xi, tr.zA[min ~= 'select'] > td > img.EqK8f, tr.zA:hover > td > img.EqK8f, tr.zA:hover > td > img.xi { visibility: visible !important; }\n";
+			css += "tr.zA div.ar, tr.zA > td:nth-child(3) { opacity: .5; }\n";
+			css += "tr.zA[min ~= 'select'] div.ar, tr.zA:hover div.ar, tr.zA.x7 div.ar, tr.zA:hover > td:nth-child(3), tr.zA[min ~= 'select'] > td:nth-child(3), tr.zA.x7 > td:nth-child(3) { opacity: 1; }\n";
 		}
 		if (response.o.starHigh) {
 			css += "tr.yO[min ~= 'star'], tr.zE[min ~= 'star'] { background-color: " + response.o.starCLR + "; }\n";

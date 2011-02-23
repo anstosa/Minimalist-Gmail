@@ -160,6 +160,8 @@
 == CHANGELOG ==
 
  == 1.6.21 [22 Feb]
+  * Improved: Simplify rows code, also attachment icons fade until selction or mouseover
+ == 1.6.21 [22 Feb]
   * Fixed: Checked checkboxes don't stay visible with Simplify Rows
  == 1.6.20 [20 Feb]
   * Fixed: Problems with old Google Bar
