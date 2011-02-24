@@ -53,8 +53,9 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			css += "#gbarToggle:hover { background-color: rgba(0,0,0,.15); }\n";
 		}
 		if (response.o.gbarO) {
-			css += "div[role='navigation'] div.nH, div[role='navigation'] #guser, div[role='navigation'] #gbg, div[role='navigation'] #guser, div[role='navigation'] #gbz { opacity: 0; -webkit-transition-delay: .25s; }\n";
-			css += "div.aC:hover div[role='navigation'] div.nH, div.aC:hover div[role='navigation'] #guser, div.aC:hover div[role='navigation'] #gbg, div.aC:hover div[role='navigation'] #gbar, div.aC:hover div[role='navigation'] #gbz { opacity: 1; }\n"
+			css += "div[role='navigation'] div.nH, div[role='navigation'] #guser, div[role='navigation'] #gbg, div[role='navigation'] #gbar, div[role='navigation'] #gbz { opacity: 0; -webkit-transition-delay: .25s; }\n";
+			css += "div.aC:hover div[role='navigation'] div.nH, div.aC:hover div[role='navigation'] #guser, div.aC:hover div[role='navigation'] #gbg, div.aC:hover div[role='navigation'] #gbar, div.aC:hover div[role='navigation'] #gbz { opacity: 1; }\n";
+			css += "div.GcwpPb-Z8OBDd:hover div[role='navigation'] div.nH, div.GcwpPb-Z8OBDd:hover div[role='navigation'] #guser, div.GcwpPb-Z8OBDd:hover div[role='navigation'] #gbg, div.GcwpPb-Z8OBDd:hover div[role='navigation'] #gbar, div.GcwpPb-Z8OBDd:hover div[role='navigation'] #gbz { opacity: 1; }\n"
 		}
 		if (response.o.gbarB)
 			css += "div.nH.qp[role = 'navigation'], #gbx3, #gbx4 { background-image: none !important; background-color: rgba(255,255,255,0) !important; border: 0 !important; }\n";

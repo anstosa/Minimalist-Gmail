@@ -159,7 +159,10 @@
 
 == CHANGELOG ==
 
- == 1.6.21 [22 Feb]
+ == 1.6.23 [24 Feb]
+  * Fixed: Make invisible until mouseover not reappearing on mouseover in Google Apps
+  * Fixed: Make invisible until mouseover not hiding Google Apps links
+ == 1.6.22 [22 Feb]
   * Improved: Simplify rows code, also attachment icons fade until selction or mouseover
  == 1.6.21 [22 Feb]
   * Fixed: Checked checkboxes don't stay visible with Simplify Rows
