@@ -7,7 +7,7 @@
 
 chrome.extension.sendRequest({elements: 'o'}, function(response) {
 	var css = "";
-
+	
 	// css += "@import url(http://fonts.googleapis.com/css?family=Raleway:100)";
 	// css += "::-webkit-scrollbar { width: 6px !important; background-color: #000; }\n";
 	// css += "::-webkit-scrollbar-track-piece { background-color: rgba(0,0,0,.75); -webkit-border-radius: 2px; }\n";
@@ -36,6 +36,7 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 		}
 		if (response.o.trans) {
 			css += "* { -webkit-transition-property: all; -webkit-transition-duration: .15s; -webkit-transition-timing-function: ease-out; }\n";
+			css += ".q0CeU.z * { -webkit-transition-duration: 0s; }\n";
 			css += "#gbz *, #gbg * { -webkit-transition-property: opacity; }\n";
 			if (response.o.nav || response.o.navW)
 				css += "* { -webkit-transition-property: height, background-color, border-color, color, opacity; }\n";
@@ -149,6 +150,11 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			css += "table img[title $= 'odp'], table img[title $= 'ppt'], table img[title $= 'pps'], table img[title $= 'PPT'], table img[title $= 'PPS'], table img[title $= 'pptx'], table img[title $= 'ppsx'], table img[title $= 'PPTX'], table img[title $= 'pot'], table img[title $= 'PPSX'] { width: 0 !important; height: 0 !important; padding: 16px 0 0 16px !important;background-position: top left !important;background-image: url(" + response.o.ci_8 + ") !important;}";
 			css += "table img[title $= 'mov'], table img[title $= 'MOV'], table img[title $= 'm4v'], table img[title $= 'mp4'], table img[title $= 'M4V'], table img[title $= 'MP4'], table img[title $= 'avi'], table img[title $= 'AVI'], table img[title $= 'wmv'], table img[title $= 'WMV'], table img[title $= 'amv'], table img[title $= 'AMV'], table img[title $= 'mpeg'], table img[title $= 'MPEG'], table img[title $= 'mkv'], table img[title $= 'MKV'], table img[title $= 'flv'], table img[title $= 'FLV'] { width: 0 !important; height: 0 !important; padding: 16px 0 0 16px !important;background-position: top left !important;background-image: url(" + response.o.ci_9 + ") !important;}";
 		}
+		if (response.o.t_fix) {
+			try {
+				css += ".VP5otc-pzeoBf.D.E[min ~= 'fix'], .iI.D.E[min ~= 'fix'] { position: fixed; top: 0; z-index: 9999; -webkit-box-shadow: 0 0 15px rgba(0,0,0,.65); width: " + (document.getElementsByClassName('cQ')[0].scrollWidth - response.o.navW - 11) + "px; }\n";
+			} catch (e) {}
+		}
 		if (response.o.t_top)
 			css += "div.VP5otc-pzeoBf.D.E { display: none !important; }\n";
 		if (response.o.bottom)
@@ -201,9 +207,16 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 		if (response.o.bads)
 			css += "div.nH.MC, div.z0DeRc { display: none !important; }\n";
 	// NAVIGATION
-		if (response.o.nav)
+		if (response.o.nav) {
 			css += "#navToggle { background-color: rgba(0,0,0,0); width: 10px !important; height: 300px !important; float: left !important; cursor: pointer !important; }\n";
 			css += "#navToggle:hover { background: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,.2)), to(rgba(0,0,0,0))); }\n";
+		}
+		if (response.o.navF) {
+			css += ".GcwpPb-Z8OBDd + .nH > div:first-child > div:first-child[min ~= 'fix'] { position: fixed; top: 0; }\n";
+			if (response.o.navWC)
+				css += ".GcwpPb-Z8OBDd + .nH > div:first-child > div:nth-child(2)[min ~= 'fix'] { margin-left: " + response.o.navW + "px; }\n";
+			else css += ".GcwpPb-Z8OBDd + .nH > div:first-child > div:nth-child(2)[min ~= 'fix'] { margin-left: 172px; }\n";
+		}
 		if (response.o.hr) {
 			css += ".T4 { border-bottom: 0 !important; }\n";
 			css += ".T0, .TZ { border-top: 0 !important; }\n";

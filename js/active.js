@@ -27,6 +27,9 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 	var cP = null;
 	var running = false;
 	var allow = true;
+	var curtop = 0;
+	var passed = false;
+	var Npassed = false;
 	//---- END VARIABLES ----//
 
 	//---- CHECK PAGE LOAD ----//
@@ -55,6 +58,7 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 				allow = true;
 			}, 1000);
 		}
+		passed = false;
 		// go loop go!
 		console.log("MINIMALIST GMAIL: **MAIN LOOP**");
 		if (response.o.starHigh) {
@@ -376,6 +380,61 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 	//---- END MAIN LOOP ----//
 
 	//---- HELPER METHODS ----//
+	function scroll(event) {
+		var curtop = document.getElementsByClassName("GcwpPb-Z8OBDd")[0].offsetHeight;
+		if (response.o.t_fix) {
+			var msg = null;
+			var lst = null;
+			if (msg = document.getElementsByClassName(" iI D E")[0]) {
+				if (window.pageYOffset > curtop) {
+					if (!passed) {
+						passed = true;
+						msg.parentNode.setAttribute("style", "height: 36px !important;");
+						minimalist(msg, false, "fix");
+					}
+				} else {
+					if (passed) {
+						passed = false;
+						msg.parentNode.setAttribute("style", "");
+						minimalist(msg, true, "fix");
+					}
+				}
+			}
+			if (lst = document.getElementsByClassName("VP5otc-pzeoBf D E")[0]) {
+				if (window.pageYOffset > curtop) {
+					if (!passed) {
+						passed = true;
+						lst.parentNode.setAttribute("style", "padding-top: 36px !important;");
+						minimalist(lst, false, "fix");
+					}
+				} else {
+					if (passed) {
+						passed = false;
+						lst.parentNode.setAttribute("style", "");
+						minimalist(lst, true, "fix");
+					}
+				}
+			}
+		}
+		if (response.o.navF) {
+			var nav = null;
+			if (nav = document.getElementsByClassName("GcwpPb-Z8OBDd")[0].nextSibling.firstChild.firstChild.nextSibling) {
+				if (window.pageYOffset > curtop) {
+					if (!Npassed) {
+						Npassed = true;
+						minimalist(nav.previousSibling, false, "fix");
+						minimalist(nav, false, "fix");
+					}
+				} else {
+					if (Npassed) {
+						Npassed = false;
+						minimalist(nav.previousSibling, true, "fix");
+						minimalist(nav, true, "fix");
+					}
+				}
+			}
+		}
+	}
 	function minimalist(element, remove, minClass) {
 		var classes = new Array();
 		try { classes = element.getAttribute("min").split(" "); } catch(e) {}
@@ -429,6 +488,7 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 	//---- END HELPER METHODS ----//
 
 	// LISTENERS
+	window.addEventListener("scroll", scroll, false);
 	if (response.o.starHigh)
 		window.addEventListener("keyup", keyup, false);
 	window.addEventListener("click", run, false);

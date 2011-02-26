@@ -1,7 +1,5 @@
 == ANNOUNCEMENTS ==
-  
-  Minor update for the new Google Bar.
-  
+
   Minimalist for Google Reader coming in a couple weeks. Follow me for details and beta invites: @anstosa
   
   Questions about permissions? See PERMISSIONS section below.
@@ -58,6 +56,7 @@
   * Hide zero-inbox whitespace
   * Hide star icons
   * Show better attachment icons [file specific, two built in styles and custom input via URL or base64]
+  * Floating toolbars scroll with page
   * Hide top toolbar
   * Hide bottom toolbar
   * Use classic selection links instead of dropdown menu
@@ -72,6 +71,7 @@
   * Hide experimental bottom ads
  == NAVIGATION
   * Hide navigation
+  * Floating nav bar scrolls with page
   * Custom nav width
   * Hide dividing lines
   * Hide top of nav
@@ -159,6 +159,9 @@
 
 == CHANGELOG ==
 
+ == 1.7.0 [26 Feb]
+  * Added: Floating navigation scrolls with page
+  * Added: Floating toolbars scroll with page
  == 1.6.23 [24 Feb]
   * Fixed: Make invisible until mouseover not reappearing on mouseover in Google Apps
   * Fixed: Make invisible until mouseover not hiding Google Apps links

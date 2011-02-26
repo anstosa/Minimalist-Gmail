@@ -166,6 +166,7 @@ $(function(){
 			else $("#ci_9").val("data:image/gif;base64,R0lGODlhEAAQAMQfAMS35mtMwlItt5N70lw5vEUdsVUwuGNCvnJTxFsnpFg0ukwmtVUgoa2b3aCL2IZszWdGwGA+vU8otntfyXdax0sktEgfsm9QxKiV27Gg3lk1ukghs2k4qUQbsbOi3////yH5BAEAAB8ALAAAAAAQABAAAAWk4AdkwwCcDkSdAPI5ntcMDxYPR9DE1wR7mMfE5hkQIDtPIsFpLplOBvRCmUwolEsAciAoDJJKIXBBmLXciFcg2XQggXg8TdAYBAtL5wDpcw9qdmwbBQURh4CHdXdhehsaBJGRGl9sFXoWEgYKnF93lnoFC58CpWwSCxuhCwIaC6+oCxUbhB0WrAoaFrS0FoUdBRuauQofvG4dybTDxR/Oz9DRHyEAOw==");
 			$("#pi").attr('checked', o.pi);
 			$("#bottom").attr('checked', o.bottom);
+			$("#t_fix").attr('checked', o.t_fix);
 			$("#t_check").attr('checked', o.t_check);
 			$("#t_check_l").attr('checked', o.t_check_l);
 			$("#t_arch").attr('checked', o.t_arch);
@@ -180,6 +181,7 @@ $(function(){
 			$("#bads").attr('checked', o.bads);
 		// NAVIGATION
 			$("#nav").attr('checked', o.nav);
+			$("#navF").attr('checked', o.navF);
 			$("#navO").attr('checked', o.navO);
 			$("#navWC").attr('checked', o.navWC);
 			if ((o.navW != null) && (o.navW != ""))
@@ -318,6 +320,7 @@ $(function(){
 					"ci_8":$("#ci_8").val(),
 					"ci_9":$("#ci_9").val(),
 				"pi":$("#pi").attr('checked'),
+				"t_fix":$("#t_fix").attr('checked'),
 				"t_top":$("#t_top").attr('checked'),
 				"bottom":$("#bottom").attr('checked'),
 				"t_check":$("#t_check").attr('checked'),
@@ -333,6 +336,7 @@ $(function(){
 				"bads":$("#bads").attr('checked'),
 			// NAVIGATION
 				"nav":$("#nav").attr('checked'),
+				"navF":$("#navF").attr('checked'),
 				"navO":$("#navO").attr('checked'),
 				"navWC":$("#navWC").attr('checked'),
 				"navW":$("#navW").val(),
