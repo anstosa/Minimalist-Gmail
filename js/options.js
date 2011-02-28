@@ -402,7 +402,7 @@ $(function(){
 			backgroundWindow.toggleSync(true);
 		} else if(wasSyncing && !isSyncingNow) {
 			backgroundWindow.toggleSync(false);
-		} else {
+		} else if(isSyncingNow) {
 			backgroundWindow.syncSave();
 		}
 		
