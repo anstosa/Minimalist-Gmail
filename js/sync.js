@@ -34,7 +34,7 @@ var syncFolderId = false;
 var syncUrl = "http://minimalist-gmail/?data=";
 var isSyncing = false;
 
-function syncLoad(isInit) {
+function syncLoad(saveIfNotFound, showNotification) {
 	chrome.bookmarks.search(syncBookmarkName, function(bookmarks) {
         if (bookmarks.length != 0) {
 			// TODO: handle duplicates
@@ -43,41 +43,39 @@ function syncLoad(isInit) {
             syncFolderId = bookmark.parentId;
             var data = getSyncDataFromUrl(bookmark.url);
 			localStorage["options"] = data;
+			console.log("Sync: Loaded settings from bookmark.");
 			
-			if (!isInit) {
+			if (showNotification) {
 				var notification = webkitNotifications.createNotification(null, 'Settings updated!', 'Some settings were just synced from another computer. Please refresh your GMail tab.');
 				notification.show();
 				setTimeout(function(){notification.cancel();}, 10000);
 			}
-        } else if (isInit) {
+        } else if (saveIfNotFound) {
+			console.log("Sync: Can't find bookmark to load settings from. Will create it instead.");
 			syncSave();
 		}
     });
 }
 
 function syncSave() {
-	var notification = webkitNotifications.createNotification(null, 'Minimalist-GMail', 'Saving...');
-	notification.show();
-	setTimeout(function(){notification.cancel();}, 2000);
-	
 	var data = localStorage["options"];
     var url = getSyncUrlFromData(data);
     if (!syncBookmarkId) {
-		alert("No bookmark:"+syncBookmarkId);
 		isSyncing = true;
         createBookmark(syncFolderName, null, null, function(folder) {
 			createBookmark(syncBookmarkName, url, folder.id, function(bookmark) {
                 syncBookmarkId = bookmark.id;
                 syncFolderId = bookmark.parentId;
 				isSyncing = false;
+				console.log("Sync: created bookmark.");
             });
         });
     }
     else {
-		alert("Saving to existing:"+syncBookmarkId);
 		isSyncing = true;
 		chrome.bookmarks.update(syncBookmarkId, {url: url}, function(bookmark) {
 			isSyncing = false;
+			console.log("Sync: updated bookmark.");
 		});
     }
 }

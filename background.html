@@ -153,7 +153,7 @@
 		//---- SYNC ----//
 		function toggleSync(enable) {
 			if (enable) {
-				syncSave();
+				syncLoad(true, false);
 				attachSyncListeners();
 			} else {
 				detachSyncListeners();
@@ -178,13 +178,13 @@
 
 		function onBookmarkUpdate(id, properties) {
 			if (localStorage["SNC_on"] == "true" && id == syncBookmarkId && !isSyncing) {
-				syncLoad(false);
+				syncLoad(false, true);
 			}
 		}
 		
+		// Initialize sync.
 		if (localStorage["SNC_on"] == "true") {
-			syncLoad(true);
-			attachSyncListeners();
+			toggleSync(true);
 		}
 		//---- END SYNC ----//
 

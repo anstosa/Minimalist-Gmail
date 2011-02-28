@@ -21,7 +21,7 @@ $(function(){
 		try {
 			var o = JSON.parse(localStorage['options']);
 		} catch(e) {
-			alert("Error, resetting options");
+			console.error("Corrupted options found in local storage. Resetting to defaults.");
 			localStorage['options'] = "{}";
 			o = JSON.parse(localStorage['options']);
 		}
@@ -393,13 +393,22 @@ $(function(){
 		localStorage["EIC_1"] = $("#EIC_1").val();
 		localStorage["EIC_2"] = $("#EIC_2").val();
 		localStorage["EIC_3"] = $("#EIC_3").val();
+		
+		var wasSyncing = (localStorage["SNC_on"] == 'true');
 		localStorage["SNC_on"] = $("#SNC_on").attr('checked');
+		var isSyncingNow = (localStorage["SNC_on"] == 'true');
+		var backgroundWindow = chrome.extension.getBackgroundPage();
+		if (!wasSyncing && isSyncingNow) {
+			backgroundWindow.toggleSync(true);
+		} else if(wasSyncing && !isSyncingNow) {
+			backgroundWindow.toggleSync(false);
+		} else {
+			backgroundWindow.syncSave();
+		}
+		
 		$("#announce").attr("style", "");
 		$("#refreshEI").attr("style", "");
 		$("#refresh").attr("style", "display: block !important;");
-		
-		var backgroundWindow = chrome.extension.getBackgroundPage();
-		backgroundWindow.toggleSync(localStorage["SNC_on"] == "true");
 	}
 	//---- END SAVE ----//
 	
