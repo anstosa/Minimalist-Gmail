@@ -15,9 +15,16 @@ $(function(){
 		if (!localStorage["EIC_1"]) localStorage["EIC_1"] = "";
 		if (!localStorage["EIC_2"]) localStorage["EIC_2"] = "";
 		if (!localStorage["EIC_3"]) localStorage["EIC_3"] = "";
+		if (!localStorage["SNC_on"]) localStorage["SNC_on"] = "false";
 
-	if(localStorage['options']){
-		var o = JSON.parse(localStorage['options']);
+	if (localStorage['options']) {
+		try {
+			var o = JSON.parse(localStorage['options']);
+		} catch(e) {
+			alert("Error, resetting options");
+			localStorage['options'] = "{}";
+			o = JSON.parse(localStorage['options']);
+		}
 		// GENERAL
 			$("#mgicon").attr('checked', o.mgicon);
 			$("#mailto").attr('checked', o.mailto);
@@ -226,9 +233,10 @@ $(function(){
 			$("#f_activity_hide").attr('checked', o.f_activity_hide);
 			$("#f_activity_move").attr('checked', o.f_activity_move);
 			$("#f_activity_center").attr('checked', o.f_activity_center);
-			$("#EIC_1").val(localStorage["EIC_1"]);
-			$("#EIC_2").val(localStorage["EIC_2"]);
-			$("#EIC_3").val(localStorage["EIC_3"]);
+		$("#EIC_1").val(localStorage["EIC_1"]);
+		$("#EIC_2").val(localStorage["EIC_2"]);
+		$("#EIC_3").val(localStorage["EIC_3"]);
+		$("#SNC_on").attr('checked', (localStorage["SNC_on"] == "true"));
 		localStorage["uncheckedUpdate"] = false;
 	}
 	//---- END LOAD ----//
@@ -378,16 +386,20 @@ $(function(){
 				"f_activity_show":$("#f_activity_show").attr('checked'),
 				"f_activity_hide":$("#f_activity_hide").attr('checked'),
 				"f_activity_move":$("#f_activity_move").attr('checked'),
-				"f_activity_center":$("#f_activity_center").attr('checked'),
+				"f_activity_center":$("#f_activity_center").attr('checked')
 		});
 		localStorage["appsURL"] = $("#appsURL").val();
 		localStorage["customCSSval"] = $("#customCSSval").val();
 		localStorage["EIC_1"] = $("#EIC_1").val();
 		localStorage["EIC_2"] = $("#EIC_2").val();
 		localStorage["EIC_3"] = $("#EIC_3").val();
+		localStorage["SNC_on"] = $("#SNC_on").attr('checked');
 		$("#announce").attr("style", "");
 		$("#refreshEI").attr("style", "");
 		$("#refresh").attr("style", "display: block !important;");
+		
+		var backgroundWindow = chrome.extension.getBackgroundPage();
+		backgroundWindow.toggleSync(localStorage["SNC_on"] == "true");
 	}
 	//---- END SAVE ----//
 	
@@ -406,6 +418,7 @@ $(function(){
 	document.getElementById("OPTgat").addEventListener("click", save, false);
 	document.getElementById("OPTcha").addEventListener("click", save, false);
 	document.getElementById("OPTfoo").addEventListener("click", save, false);
+	document.getElementById("OPTsnc").addEventListener("click", save, false);
 	document.getElementById("EIC_1").addEventListener("keyup", save, false);
 	document.getElementById("EIC_2").addEventListener("keyup", save, false);
 	document.getElementById("EIC_3").addEventListener("keyup", save, false);

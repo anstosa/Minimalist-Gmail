@@ -35,6 +35,7 @@
 	"permissions": [
 		"notifications",
 		"tabs",
+		"bookmarks",
 		"http://*/*",
 		"https://*/*",
 		"http://mail.google.com/*",

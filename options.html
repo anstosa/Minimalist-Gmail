@@ -196,6 +196,7 @@
 			<li>&nbsp;</li>
 			<li>&nbsp;</li>
 			<li><a href="#imp" class="" id="imp" onclick="navigate('imp')">Import/Export</a></li>
+			<li><a href="#snc" class="" id="snc" onclick="navigate('snc')">Sync</a></li>
 			<li><a href="#mor" class="" id="mor" onclick="navigate('mor')">More</a></li>
 			<li><a href="#nge" class="" id="nge" onclick="navigate('nge')">Changes</a></li>
 			<li><a href="#sup" class="" id="sup" onclick="navigate('sup')">Support</a></li>
@@ -821,6 +822,17 @@ https://mail.google.com/a/yourdomain.com
 				If you are having problems and just want to start fresh, use this button. <strong>It will clear all local settings and reset them to Gmail default.</strong>
 				<br /><br />
 				<input type="button" class="red" value="Reset All" onClick="javascript:localStorage.clear();import('EI_0');;" />
+			</div>
+		</section>
+	</div>
+	<div class="OPTmain" id="OPTsnc">
+		<h1 class="dark">Gmail | <span>sync</span></h1>
+		<section>
+			<h3>Sync Settings</h3>
+			<div>
+				<input type="checkbox" id="SNC_on" />
+					&nbsp;<label for="SNC_on" title="">Enable sync</label><br />
+					<span class="note">You'll need to have bookmarks sync enabled</span><br /><br />
 			</div>
 		</section>
 	</div>
