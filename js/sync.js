@@ -46,7 +46,7 @@ function syncLoad(saveIfNotFound, showNotification) {
 			console.log("Sync: Loaded settings from bookmark.");
 			
 			if (showNotification) {
-				var notification = webkitNotifications.createNotification(null, 'Settings updated!', 'Some settings were just synced from another computer. Please refresh your GMail tab.');
+				var notification = webkitNotifications.createNotification('../img/icons/icon48.png', 'Settings updated!', 'Some of your Minimalist-Gmail settings were just synced from another computer. Refresh your GMail tab to see them!');
 				notification.show();
 				setTimeout(function(){notification.cancel();}, 10000);
 			}
