@@ -34,6 +34,13 @@ var syncFolderId = false;
 var syncUrl = "http://minimalist-gmail/?data=";
 var isSyncing = false;
 
+function hasSyncData(callback) {
+	if (syncBookmarkId !== false) callback(true);
+	chrome.bookmarks.search(syncBookmarkName, function(bookmarks) {
+		callback(bookmarks.length > 0);
+	});
+}
+
 function syncLoad(saveIfNotFound, showNotification) {
 	chrome.bookmarks.search(syncBookmarkName, function(bookmarks) {
         if (bookmarks.length != 0) {

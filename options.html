@@ -4,6 +4,7 @@
 	<link type="text/css" rel="stylesheet" href="css/options.css" />
 	<link type="text/css" rel="stylesheet" href="css/picker/colorpicker.css" />
 	<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.8.10.custom.min.js"></script>
 	<script type="text/javascript" src="js/options.js"></script>
 	<script type="text/javascript" src="js/picker/colorpicker.js"></script>
 	<script type="text/javascript" src="js/picker/eye.js"></script>
@@ -1014,6 +1015,23 @@ https://mail.google.com/a/yourdomain.com
 					</li>
 				</ul>
 			</div>
+		</section>
+	</div>
+</div>
+<div class="modalBackground" id="sncDirDlg">
+	<div class="modalPopup">
+		<p>Which way do you want to proceed for your initial sync?</p>
+		<section>
+			<input type="radio" name="SNC_way" id="SNC_usebookmark" checked="true" />
+				&nbsp;<label for="SNC_usebookmark" title="">Use synced settings</label><br />
+					<span class="note">Your local settings will be overwritten with those synced from
+									   your other computers.</span><br /><br />
+		</section>
+		<section>
+			<input type="radio" name="SNC_way" id="SNC_uselocal" />
+				&nbsp;<label for="SNC_uselocal" title="">Keep local settings</label><br />
+					<span class="note">All your other computers with sync enabled will get their settings
+									   from here.</span><br /><br />
 		</section>
 	</div>
 </div>

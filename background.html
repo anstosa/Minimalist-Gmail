@@ -150,16 +150,7 @@
 		}
 		//---- END NOTIFICATIONS ----//
 		
-		//---- SYNC ----//
-		function toggleSync(enable) {
-			if (enable) {
-				syncLoad(true, false);
-				attachSyncListeners();
-			} else {
-				detachSyncListeners();
-			}
-		}
-		
+		//---- SYNC ----//		
 		var syncListenersAttached = false;
 		
 		function attachSyncListeners() {
@@ -184,7 +175,8 @@
 		
 		// Initialize sync.
 		if (localStorage["SNC_on"] == "true") {
-			toggleSync(true);
+			attachSyncListeners();
+			syncLoad(true, false);
 		}
 		//---- END SYNC ----//
 
