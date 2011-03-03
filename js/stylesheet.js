@@ -82,7 +82,7 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			css += ".no td:nth-child(2) > div:last-child { display: none !important; }\n";
 		if (response.o.s_links)
 			css += ".no td:last-child { display: none !important; }\n";
-		if (response.o_apps_manage)
+		if (response.o.apps_manage)
 			css += ".no nobr { display: none !important; }\n";
 	// MAIN
 		if (response.o.borders || response.o.simplify)
