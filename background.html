@@ -152,6 +152,7 @@
 		
 		//---- SYNC ----//		
 		var syncListenersAttached = false;
+		var syncNotify = o.snc_notify;
 		
 		function attachSyncListeners() {
 			if (!syncListenersAttached) {
@@ -169,7 +170,7 @@
 
 		function onBookmarkUpdate(id, properties) {
 			if (localStorage["SNC_on"] == "true" && id == syncBookmarkId && !isSyncing) {
-				syncLoad(false, true);
+				syncLoad(false, syncNotify);
 			}
 			isSyncing = false;
 		}

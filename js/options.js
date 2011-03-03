@@ -127,6 +127,7 @@ $(function(){
 				$("#s_mail").attr('checked', o.s_mail);
 				$("#s_web").attr('checked', o.s_web);
 				$("#s_links").attr('checked', o.s_links);
+				$("#apps_manage").attr('checked', o.apps_manage);
 			// MAIN
 				$("#borders").attr('checked', o.borders);
 				$("#grabbers").attr('checked', o.grabbers);
@@ -234,6 +235,8 @@ $(function(){
 				$("#f_activity_hide").attr('checked', o.f_activity_hide);
 				$("#f_activity_move").attr('checked', o.f_activity_move);
 				$("#f_activity_center").attr('checked', o.f_activity_center);
+			// SYNC
+				$("#SNC_notify").attr('checked', o.snc_notify);
 			$("#EIC_1").val(localStorage["EIC_1"]);
 			$("#EIC_2").val(localStorage["EIC_2"]);
 			$("#EIC_3").val(localStorage["EIC_3"]);
@@ -305,6 +308,7 @@ $(function(){
 				"s_mail":$("#s_mail").attr('checked'),
 				"s_web":$("#s_web").attr('checked'),
 				"s_links":$("#s_links").attr('checked'),
+				"apps_manage":$("#apps_manage").attr('checked'),
 			// MAIN
 				"borders":$("#borders").attr('checked'),
 				"grabbers":$("#grabbers").attr('checked'),
@@ -389,7 +393,9 @@ $(function(){
 				"f_activity_show":$("#f_activity_show").attr('checked'),
 				"f_activity_hide":$("#f_activity_hide").attr('checked'),
 				"f_activity_move":$("#f_activity_move").attr('checked'),
-				"f_activity_center":$("#f_activity_center").attr('checked')
+				"f_activity_center":$("#f_activity_center").attr('checked'),
+			// SYNC
+				"snc_notify":$("#SNC_notify").attr('checked')
 		});
 		localStorage["appsURL"] = $("#appsURL").val();
 		localStorage["customCSSval"] = $("#customCSSval").val();
@@ -458,6 +464,10 @@ $(function(){
 			// Sync was just disabled.
 			save();
 			backgroundWindow.detachSyncListeners();
+		} else {
+			// Sync didn't change, but some options (like notifications)
+			// may have. Just save.
+			save();
 		}
 	}
 	//---- END SYNC ----//

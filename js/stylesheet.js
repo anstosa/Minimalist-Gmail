@@ -75,13 +75,15 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 		if (response.o.logoH)
 			css += "div[id = ':rm'] { display: none !important; }\n";
 		if (response.o.s_all)
-			css += "div[style = 'width: 172px; height: 65px; '] + div > div:first-child { display: none !important; }\n";
+			css += "table[role = 'search'] { display: none !important; }\n";
 		if (response.o.s_mail)
-			css += ".aC .no td:nth-child(2) > div:nth-child(2), .aC .no td:nth-child(2) > div:nth-child(3) { display: none !important; }\n";
+			css += ".no td:nth-child(2) > div:nth-child(2), .aC .no td:nth-child(2) > div:nth-child(3) { display: none !important; }\n";
 		if (response.o.s_web)
-			css += ".aC .no td:nth-child(2) > div:last-child { display: none !important; }\n";
+			css += ".no td:nth-child(2) > div:last-child { display: none !important; }\n";
 		if (response.o.s_links)
-			css += ".aC .no td:last-child { display: none !important; }\n";
+			css += ".no td:last-child { display: none !important; }\n";
+		if (response.o_apps_manage)
+			css += ".no nobr { display: none !important; }\n";
 	// MAIN
 		if (response.o.borders || response.o.simplify)
 			css += "tr.yO td, tr.zE td { border: 0 !important; }\n";
