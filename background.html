@@ -171,6 +171,7 @@
 			if (localStorage["SNC_on"] == "true" && id == syncBookmarkId && !isSyncing) {
 				syncLoad(false, true);
 			}
+			isSyncing = false;
 		}
 		
 		// Initialize sync.

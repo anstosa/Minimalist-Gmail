@@ -53,7 +53,10 @@ function syncLoad(saveIfNotFound, showNotification) {
 			console.log("Sync: Loaded settings from bookmark.");
 			
 			if (showNotification) {
-				var notification = webkitNotifications.createNotification('../img/icons/icon48.png', 'Settings updated!', 'Some of your Minimalist-Gmail settings were just synced from another computer. Refresh your GMail tab to see them!');
+				var notification = webkitNotifications.createNotification(
+					'../img/icons/icon48.png', 
+					'Settings updated!', 
+					'Some of your Minimalist-Gmail settings were just synced from another computer. Refresh your GMail tab to see them!');
 				notification.show();
 				setTimeout(function(){notification.cancel();}, 10000);
 			}
@@ -73,7 +76,6 @@ function syncSave() {
 			createBookmark(syncBookmarkName, url, folder.id, function(bookmark) {
                 syncBookmarkId = bookmark.id;
                 syncFolderId = bookmark.parentId;
-				isSyncing = false;
 				console.log("Sync: created bookmark.");
             });
         });
@@ -81,7 +83,6 @@ function syncSave() {
     else {
 		isSyncing = true;
 		chrome.bookmarks.update(syncBookmarkId, {url: url}, function(bookmark) {
-			isSyncing = false;
 			console.log("Sync: updated bookmark.");
 		});
     }
