@@ -35,8 +35,7 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			css += "input[type = 'text'], textarea, div.Ar.Au { -webkit-border-radius: 5px; }\n";
 		}
 		if (response.o.trans) {
-			css += "* { -webkit-transition-property: all; -webkit-transition-duration: .15s; -webkit-transition-timing-function: ease-out; }\n";
-			css += ".q0CeU.z * { -webkit-transition-duration: 0s; }\n";
+			css += "* { -webkit-transition-property: background-color, background-image, background-position, background-size, border-color, border-radius, border-width, box-shadow, color, font-size, font-weight, height, margin, opacity, width, visibility ; -webkit-transition-duration: .15s; -webkit-transition-timing-function: ease-out; }\n";
 			css += "#gbz *, #gbg * { -webkit-transition-property: opacity; }\n";
 			if (response.o.nav || response.o.navW)
 				css += "* { -webkit-transition-property: height, background-color, border-color, color, opacity; }\n";
@@ -61,27 +60,26 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 		if (response.o.gbarB)
 			css += "div.nH.qp[role = 'navigation'], #gbx3, #gbx4 { background-image: none !important; background-color: rgba(255,255,255,0) !important; border: 0 !important; }\n";
 	// HEADER
-		if (response.o.header) {
-			// css += "div.b8.UC { padding-top: 0 !important; position: fixed !Important; top: 0 !important; left: 0 !important; width: 100% !important; }\n";
-			// css += "div.b8.UC > J-J5-Ji { margin: 0 auto !important; }\n";
-			// css += "div.b8.UC > J-J5-Ji > div.UD { display: none !important; }\n";
-			if (!response.o.gbarH) {
-				css += "#headerToggle { background-color: rgba(0,0,0,0); height: 10px !important; cursor: pointer !important;}\n";
-				css += "#headerToggle:hover { background-color: rgba(0,0,0,.15); }\n";
-			}
+		if (response.o.header || response.o.gbarH) {
+			css += "[min ~= 'hideH'], [min ~= 'hideH'] *, [min ~= 'hideG'], [min ~= 'hideG'] * { opacity: 0; margin: 0 !important; padding: 0 !important; height: 0 !important; overflow: hidden; }\n";
+			css += "#headerToggle + .nH:not([min ~= 'hideH']) { height: 65px !important; }\n";
+		}
+		if (response.o.header && !response.o.gbarH) {
+			css += "#headerToggle { background-color: rgba(0,0,0,0); height: 10px !important; cursor: pointer !important;}\n";
+			css += "#headerToggle:hover { background-color: rgba(0,0,0,.15); }\n";
 		}
 		if (response.o.logo)
-			css += "div[id = ':rm'] { background-image: url(" + response.o.logoSRC + ") !important; }\n";
+			css += "div[title = 'Gmail by Google'] { background-image: url(" + response.o.logoSRC + ") !important; }\n";
 		if (response.o.logoH)
-			css += "div[id = ':rm'] { display: none !important; }\n";
+			css += "div[title = 'Gmail by Google'] { display: none !important; }\n";
 		if (response.o.s_all)
-			css += "div[style = 'width: 172px; height: 65px; '] + div > div:first-child { display: none !important; }\n";
+			css += "table[role='search'] { display: none !important; }\n";
 		if (response.o.s_mail)
-			css += ".aC .no td:nth-child(2) > div:nth-child(2), .aC .no td:nth-child(2) > div:nth-child(3) { display: none !important; }\n";
+			css += "table[role='search'] div[role='button']:nth-child(2), .table[role='search'] div[role='button']:nth-child(3) { display: none !important; }\n";
 		if (response.o.s_web)
-			css += ".aC .no td:nth-child(2) > div:last-child { display: none !important; }\n";
+			css += "table[role='search'] div[role='button']:last-child { display: none !important; }\n";
 		if (response.o.s_links)
-			css += ".aC .no td:last-child { display: none !important; }\n";
+			css += "table[role='search'] td:last-child { display: none !important; }\n";
 	// MAIN
 		if (response.o.borders || response.o.simplify)
 			css += "tr.yO td, tr.zE td { border: 0 !important; }\n";
@@ -160,9 +158,9 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 		if (response.o.bottom)
 			css += "div.VP5otc-U4m8q.D.E, div.iE.D.E { display: none !important; }\n";
 		if (response.o.t_check_l) {
-			css += "div.J-J5-Ji + div.J-M.AW { display: block !important; position: relative; overflow: hidden; margin: 0 0 -2px 0;}\n";
-			css += "div.J-J5-Ji + div.J-M.AW > div { -webkit-box-shadow: 0 0 0 rgba(0,0,0,0) !important; background: transparent; padding: 0 !important; }\n";
-			css += "div.J-J5-Ji + div.J-M.AW > div > div { display: block !important; float: left !important; padding: 3px 7px; }\n";
+			css += "div.J-J5-Ji:not([class *= Wn]) + div.J-M.AW { display: block !important; position: relative; overflow: hidden; margin: 0 0 -2px 0;}\n";
+			css += "div.J-J5-Ji:not([class *= Wn]) + div.J-M.AW td { -webkit-box-shadow: 0 0 0 rgba(0,0,0,0) !important; background: transparent; padding: 0 !important; }\n";
+			css += "div.J-J5-Ji:not([class *= Wn]) + div.J-M.AW td > div { display: block !important; float: left !important; padding: 3px 7px; }\n";
 		}
 		if (response.o.t_check || response.o.t_check_l)
 			css += "[class=\"VP5otc-HT6HAf J-J5-Ji\"]:nth-child(1) { display: none !important; }\n";
