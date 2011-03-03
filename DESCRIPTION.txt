@@ -24,6 +24,8 @@
   * Custom loading screen
   * Customize button colors
   * Rounded corners on input fields and textareas
+  * Hide inactive scrollbar
+  * Show transition animations
   * Custom CSS input
  == NOTIFICATIONS
   * Favicon unread count
@@ -159,6 +161,17 @@
 
 == CHANGELOG ==
 
+ == 1.7.1 [3 MAR]
+  * Added: Minimalist for Google Reader info
+  * Improved: all favicons updated to Google's most recent versions
+  * Improved: favicon unread icon numbers now black on grey instead of gray on yellow
+  * Improved: Google Bar, Header, and Navigation toggling code
+  * Fixed: Header not hiding after 3 MAR Gmail update
+  * Fixed: Dividing bars not hidden in Google User Bar for Google Apps users
+  * Fixed: Priority Inbox menu's broken with checkbox tools list
+  * Fixed: Show checkbox list not showing up inline
+  * Fixed: Message and list properties not animating
+  * Fixed: Floating toolbar gets stuck at top of inbox
  == 1.7.0 [26 Feb]
   * Added: Floating navigation scrolls with page
   * Added: Floating toolbars scroll with page

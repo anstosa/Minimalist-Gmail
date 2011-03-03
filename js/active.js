@@ -19,9 +19,11 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 	var f_headerToggle = false;
 	var f_navToggle = false;
 	var f_nav = false;
-	//var f_float = false;
-	//var f_details = false;
 	var f_actPlace = false;
+	var keyinit = false;
+	var hiddenG = false;
+	var hiddenH = false;
+	var hiddenN = false;
 	var guser;
 	var counter = 0;
 	var cP = null;
@@ -30,6 +32,9 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 	var curtop = 0;
 	var passed = false;
 	var Npassed = false;
+	var previous = null;
+	var selected = null;
+	var g = false;
 	//---- END VARIABLES ----//
 
 	//---- CHECK PAGE LOAD ----//
@@ -60,6 +65,7 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 		}
 		passed = false;
 		// go loop go!
+		scroll();
 		console.log("MINIMALIST GMAIL: **MAIN LOOP**");
 		if (response.o.starHigh) {
 			console.log("MINIMALIST GMAIL: checking for starred items");
@@ -104,50 +110,43 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 				if (document.getElementById("gbw"))
 					login = document.getElementById("gbw");
 				else login = document.getElementById("gbar");
-				login.parentNode.parentNode.setAttribute("style", "display: none !important;");
+				minimalist(login.parentNode.parentNode, false, "hideG");
 				var toggleG = document.createElement("div");
 					toggleG.setAttribute("id", "gbarToggle");
-				if (!response.o.header) {
-					toggleG.setAttribute("onClick", "javascript:if(document.getElementById('gbarToggle').nextSibling.getAttribute('style')==''){document.getElementById('gbarToggle').nextSibling.setAttribute('style', 'display: none !important;');}else{document.getElementById('gbarToggle').nextSibling.setAttribute('style', '');};");
-					login.parentNode.parentNode.parentNode.insertBefore(toggleG, login.parentNode.parentNode);
-				} else {
-					toggleG.setAttribute("onClick", "javascript:if(document.getElementById('gbarToggle').nextSibling.firstChild.getAttribute('style')==''){document.getElementById('gbarToggle').nextSibling.firstChild.setAttribute('style', 'display: none !important;');document.getElementById('gbarToggle').nextSibling.nextSibling.nextSibling.firstChild.setAttribute('style', 'display: none !important;');}else{document.getElementById('gbarToggle').nextSibling.firstChild.setAttribute('style', '');document.getElementById('gbarToggle').nextSibling.nextSibling.nextSibling.firstChild.setAttribute('style', '');};");
-					login.parentNode.parentNode.parentNode.parentNode.insertBefore(toggleG, login.parentNode.parentNode.parentNode);
-				}
+				login.parentNode.parentNode.parentNode.insertBefore(toggleG, login.parentNode.parentNode);
 				f_gbarToggle = true;
 			} catch (e) { console.error(e); }
 		}
-		/* if (response.o.f_activity_move && !f_actPlace) {
-			console.log("MINIMALIST GMAIL: moving activity to top...");
-			//try {
-				if (document.getElementsByClassName('nH l2 ov') != null && document.getElementsByClassName('nH l2 ov') != undefined && document.getElementsByClassName('nH l2 ov').length > 0) {
-					var act = document.getElementsByClassName('nH l2 oV')[0].firstChild;
-						act.parentNode.insertBefore(document.createElement('div'),act);
-						if (response.o.gbar)
-							act.setAttribute("style","float: left; height: 20px !important; margin-top: -7px !important; padding-left: 5px !important;");
-						else act.setAttribute("style","float: left; height: 20px !important; width: 50%; text-align: center; margin-top: -7px !important;");
-					var bar = document.getElementById("gbar").parentNode;
-						bar.insertBefore(act, document.getElementById("gbar").nextSibling);
-					f_actPlace = true;
-				}
-			//} catch (e) { console.error(e); }
-		} */
-		/* if (!f_float) {
-			console.log("MINIMALIST GMAIL: Adding floater");
-		} */
 		if (response.o.header && !f_headerToggle) {
 			console.log("MINIMALIST GMAIL: hiding header and adding toggle...");
-			var logo = document.getElementById(":rm");
+			var logo = document.querySelectorAll(".ce[role = 'banner']")[0];
 			try {
-				logo.parentNode.parentNode.setAttribute("style", "display: none !important;");
+				minimalist(logo.parentNode.parentNode.parentNode, false, "hideH");
 				if (!response.o.gbarH) {
 					var toggle = document.createElement("div");
 					toggle.setAttribute("id", "headerToggle");
-					toggle.setAttribute("onClick", "javascript:if(document.getElementById('headerToggle').nextSibling.getAttribute('style')==''){document.getElementById('headerToggle').nextSibling.setAttribute('style', 'display: none !important;');}else{document.getElementById('headerToggle').nextSibling.setAttribute('style', '');};");
-					logo.parentNode.parentNode.parentNode.insertBefore(toggle, logo.parentNode.parentNode);
+					logo.parentNode.parentNode.parentNode.parentNode.insertBefore(toggle, logo.parentNode.parentNode.parentNode);
 				}
 				f_headerToggle = true;
 			} catch (e) { console.error(e); }
+		}
+		if (!keyinit) {
+			try {
+				if (response.o.gbarH) {
+					hiddenG = true;
+					document.getElementById('gbarToggle').addEventListener("click", toggleHeader, false);
+				}
+				if (response.o.header) {
+					hiddenH = true;
+					if (!response.o.gbarH)
+						document.getElementById('headerToggle').addEventListener("click", toggleHeader, false);
+				}
+				if (response.o.nav) {
+					hiddenN = true;
+					document.getElementById('navToggle').addEventListener("click", toggleNav, false);
+				}
+				keyinit = true;
+			} catch (e) {}
 		}
 		if (response.o.cbar && !document.getElementById('cbarOne')) {
 			console.log("MINIMALIST GMAIL: customizing Google links...");
@@ -323,7 +322,7 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 			try {
 				var user = guser.childNodes[0];
 					user.setAttribute("style","display: none !important;");
-					user.nextSibling.setAttribute("style","display: none !important;");
+					user.parentNode.removeChild(user.nextSibling);
 				f_user = true;
 			} catch (e) { console.error(e); }
 		}
@@ -332,7 +331,7 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 			try {
 				var labs = guser.childNodes[4];
 					labs.setAttribute("style","display: none !important;");
-					labs.previousSibling.previousSibling.previousSibling.setAttribute("style","display: none !important;");
+					labs.parentNode.removeChild(labs.nextSibling);
 				f_labs = true;
 			} catch (e) { console.error(e); }
 		}
@@ -341,7 +340,7 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 			try {
 				var settings = guser.childNodes[6];
 					settings.setAttribute("style","display: none !important;");
-					settings.previousSibling.setAttribute("style","display: none !important;");
+					settings.parentNode.removeChild(settings.nextSibling);
 				f_settings = true;
 			} catch (e) { console.error(e); }
 		}
@@ -350,7 +349,7 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 			try {
 				var help = guser.childNodes[8];
 					help.setAttribute("style","display: none !important;");
-					help.previousSibling.setAttribute("style","display: none !important;");
+					help.parentNode.removeChild(help.nextSibling);
 				f_help = true;
 			} catch (e) { console.error(e); }
 		}
@@ -359,17 +358,10 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 			try {
 				var out = guser.childNodes[10];
 					out.setAttribute("style","display: none !important;");
-					out.previousSibling.setAttribute("style","display: none !important;");
+					out.parentNode.removeChild(out.previousSibling);
 				f_out = true;
 			} catch (e) { console.error(e); }
 		}
-		/* if (response.o.details && !f_details) {
-			try {
-				document.getElementsByClassName("gE ib gt")[0].setAttribute("style","");
-				document.getElementsByClassName("gE iv gt")[0].setAttribute("style","display: none;");
-				f_details = true;
-			} catch (e) { console.error(e); }
-		} */
 		if ((response.o.nav || response.o.navWC) && counter < 10) {
 			console.log("MINIMALIST GMAIL: Fixing load errors for nav width calculations...");
 			reconfig();
@@ -389,7 +381,7 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 				if (window.pageYOffset > curtop) {
 					if (!passed) {
 						passed = true;
-						msg.parentNode.setAttribute("style", "height: 36px !important;");
+						msg.parentNode.setAttribute("style", "padding-top: 36px !important");
 						minimalist(msg, false, "fix");
 					}
 				} else {
@@ -435,6 +427,54 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 			}
 		}
 	}
+
+	function toggleHeader(){
+		if (response.o.gbarH && !response.o.header) {
+			if (hiddenG) {
+				minimalist(document.getElementById('gbarToggle').nextSibling, true, "hideG");
+				hiddenG = false;
+			} else {
+				minimalist(document.getElementById('gbarToggle').nextSibling, false, "hideG");
+				hiddenG = true;
+			}
+		} else if (response.o.gbarH && response.o.header) {
+			if (hiddenH) {
+				minimalist(document.getElementById('gbarToggle').nextSibling, true, "hideG");
+				minimalist(document.getElementById('gbarToggle').nextSibling.nextSibling.nextSibling, true, "hideH");
+				hiddenH = false;
+			} else {
+				minimalist(document.getElementById('gbarToggle').nextSibling, false, "hideG");
+				minimalist(document.getElementById('gbarToggle').nextSibling.nextSibling.nextSibling, false, "hideH");
+				hiddenH = true;
+			}
+		} else {
+			console.warn("TOGGLE");
+			if (hiddenH){
+				console.warn("TOGGLE");
+				minimalist(document.getElementById('headerToggle').nextSibling, true, "hideH");
+				console.warn("TOGGLE");
+				hiddenH = false;
+			} else {
+				minimalist(document.getElementById('headerToggle').nextSibling, false, "hideH");
+				hiddenH = true;
+			}
+		}
+	}
+
+	function toggleNav() {
+		if (response.o.nav) {
+			if (hiddenN) {
+				minimalist(document.getElementById('sidebar'), true, "hideN");
+				minimalist(document.getElementById('nav'), true, "hideN");
+				hiddenN = false;
+			} else {
+				minimalist(document.getElementById('sidebar'), false, "hideN");
+				minimalist(document.getElementById('nav'), false, "hideN");
+				hiddenN = true;
+			}
+		}
+	}
+
 	function minimalist(element, remove, minClass) {
 		var classes = new Array();
 		try { classes = element.getAttribute("min").split(" "); } catch(e) {}
@@ -485,13 +525,57 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 		}
 		return true;
 	}
+
+	function keypress(event) {
+		element = event.target;
+		elementName = element.nodeName.toLowerCase();
+		if (elementName == "input" || elementName == "textarea") return true;
+		console.log("MINIMALIST GMAIL: keystroke intercepted by passive.js");
+		if (String.fromCharCode(event.which) == "g") {
+			g = true;
+			window.setTimeout(function(){
+				g = false;
+			}, 1000);
+		}
+		// [ j ] [ k ]
+		if ((String.fromCharCode(event.which) == "j" || String.fromCharCode(event.which) == "k") && !event.ctrlKey && !event.metaKey) {
+			var images = document.querySelectorAll("tr.zA > td:first-child > img");
+			for (var i = 0; i < images.length; i++) {
+				if (images[i].getAttribute("style") == "visibility: visible; ") {
+					if (String.fromCharCode(event.which) == "j")
+						selected = images[i].parentNode.parentNode.nextSibling;
+					else selected = images[i].parentNode.parentNode.previousSibling;
+					if (selected == null) return true;
+					if (previous != null) minimalist(previous, true, "select");
+					minimalist(selected, false, "select");
+					previous = selected;
+				}
+			}
+		}
+		// [ / ]
+		if (response.o.header && (event.which == "47" || (String.fromCharCode(event.which) == "l" && g)) && !event.ctrlKey && !event.metaKey && hiddenH) {
+			toggleHeader();
+		}
+		// [ \ ]
+		if ((response.o.header || response.o.gbarH) && event.which == "92" && !event.ctrlKey && !event.metaKey) {
+			toggleHeader();
+		}
+		// [ ` ] tilde key
+		if (response.o.nav && event.which == "96" && !event.ctrlKey && !event.metaKey) {
+			toggleNav();
+		}
+		return true;
+	}
 	//---- END HELPER METHODS ----//
 
 	// LISTENERS
 	window.addEventListener("scroll", scroll, false);
 	if (response.o.starHigh)
 		window.addEventListener("keyup", keyup, false);
+	if (response.o.gbarH || response.o.header || response.o.navH)
+		document.addEventListener("keypress", keypress, false);
 	window.addEventListener("click", run, false);
 	window.addEventListener("resize", reconfig, false);
 	window.addEventListener("DOMSubtreeModified", init, false);
+	
 });
