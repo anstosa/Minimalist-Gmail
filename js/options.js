@@ -17,7 +17,7 @@ $(function(){
 		if (!localStorage["EIC_3"]) localStorage["EIC_3"] = "";
 		if (!localStorage["SNC_on"]) localStorage["SNC_on"] = "false";
 
-	function load() {
+	function load(onlyOptions) {
 		if (localStorage['options']) {
 			try {
 				var o = JSON.parse(localStorage['options']);
@@ -237,6 +237,8 @@ $(function(){
 				$("#f_activity_center").attr('checked', o.f_activity_center);
 			// SYNC
 				$("#SNC_notify").attr('checked', o.snc_notify);
+		}
+		if (onlyOptions !== true) {
 			$("#EIC_1").val(localStorage["EIC_1"]);
 			$("#EIC_2").val(localStorage["EIC_2"]);
 			$("#EIC_3").val(localStorage["EIC_3"]);
@@ -421,7 +423,7 @@ $(function(){
 		title: "Initial Sync",
 		closeText: "cancel",
 		open: function(event, ui) { $(this).removeAttr("isOk"); },
-		close: function(event, ui) { 
+		close: function(event, ui) {
 			if (!$(this).attr("isOk")) {
 				$("#SNC_on").removeAttr("checked");
 			}
@@ -433,7 +435,7 @@ $(function(){
 					console.log("Sync: enabling, loading from bookmark.");
 					backgroundWindow.syncLoad(true, false);
 					backgroundWindow.attachSyncListeners();
-					load();
+					load(true);
 				} else if ($("#SNC_uselocal").attr("checked")) {
 					console.log("Sync: enabling, saving local settings.");
 					save();
