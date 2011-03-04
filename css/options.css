@@ -303,14 +303,14 @@ body {
 			}
 
 .ui-widget-overlay {
-	background: rgba(0,0,0,.50);
+	background: -webkit-radial-gradient(rgba(127, 127, 127, 0.5), rgba(127, 127, 127, 0.5) 35%, rgba(0, 0, 0, 0.7));
 	position: fixed;
 	top: 0;
 	left: 0;
 }
 .ui-dialog {
-	-webkit-box-shadow: 0 5px 15px #333;
-	box-shadow: 0 5px 15px #333;
+	-webkit-box-shadow: 0 5px 30px rgba(0, 0, 0, .75);
+	box-shadow: 0 5px 30px rgba(0, 0, 0, .75);
 	padding: 2px;
 	background: #f2f2f2;
 }
