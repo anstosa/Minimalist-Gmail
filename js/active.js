@@ -119,7 +119,7 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 		}
 		if (response.o.header && !f_headerToggle) {
 			console.log("MINIMALIST GMAIL: hiding header and adding toggle...");
-			var logo = document.querySelectorAll(".ce[role = 'banner']")[0];
+			var logo = document.querySelectorAll("[id = ':rk']")[0].parentNode;
 			try {
 				minimalist(logo.parentNode.parentNode.parentNode, false, "hideH");
 				if (!response.o.gbarH) {
@@ -572,10 +572,8 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 	window.addEventListener("scroll", scroll, false);
 	if (response.o.starHigh)
 		window.addEventListener("keyup", keyup, false);
-	if (response.o.gbarH || response.o.header || response.o.navH)
-		document.addEventListener("keypress", keypress, false);
+	document.addEventListener("keypress", keypress, false);
 	window.addEventListener("click", run, false);
 	window.addEventListener("resize", reconfig, false);
 	window.addEventListener("DOMSubtreeModified", init, false);
-	
 });

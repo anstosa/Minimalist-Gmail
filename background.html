@@ -1,9 +1,10 @@
 <html>
 <head>
+	<script type="text/javascript" src="js/sync.js"></script>
 	<script>
 		// ---- CHECK UPDATE ----//
 		var major = 7;
-		var minor = 12;
+		var minor = 13;
 		if (localStorage["major"] == undefined) {
 			localStorage["major"] = 0;
 		}
@@ -148,6 +149,38 @@
 			}
 		}
 		//---- END NOTIFICATIONS ----//
+		
+		//---- SYNC ----//		
+		var syncListenersAttached = false;
+		var syncNotify = o.snc_notify;
+		
+		function attachSyncListeners() {
+			if (!syncListenersAttached) {
+				chrome.bookmarks.onChanged.addListener(onBookmarkUpdate);
+				syncListenersAttached = true;
+			}
+		}
+
+		function detachSyncListeners() {
+			if (syncListenersAttached) {
+				chrome.bookmarks.onChanged.removeListener(onBookmarkUpdate);
+				syncListenersAttached = false;
+			}
+		}
+
+		function onBookmarkUpdate(id, properties) {
+			if (localStorage["SNC_on"] == "true" && id == syncBookmarkId && !isSyncing) {
+				syncLoad(false, syncNotify);
+			}
+			isSyncing = false;
+		}
+		
+		// Initialize sync.
+		if (localStorage["SNC_on"] == "true") {
+			attachSyncListeners();
+			syncLoad(true, false);
+		}
+		//---- END SYNC ----//
 
 		//---- HELPERS ----//
 		function reloadTab() {

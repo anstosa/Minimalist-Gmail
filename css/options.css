@@ -143,7 +143,7 @@ body {
 				width: 50%;
 				margin-bottom: 15px;
 			}
-			input[type = 'button'], .button {
+			button, input[type = 'button'], .button {
 				padding: 3px 20px;
 				-webkit-border-radius: 2px;
 				border-top: 1px solid #fff;
@@ -152,10 +152,10 @@ body {
 				border-right: 1px solid #444;
 				background: -webkit-gradient(linear, left bottom, left top, from(rgb(150,150,150)), to(rgb(200,200,200)));
 			}
-				input[type = 'button']:hover, .button:hover {
+				button:hover, input[type = 'button']:hover, .button:hover {
 					background: -webkit-gradient(linear, left bottom, left top, from(rgb(150,150,150)), to(rgb(150,150,150)));
 				}
-				input[type = 'button']:active, .button:active {
+				button:active, input[type = 'button']:active, .button:active {
 					border-top: 1px solid #444;
 					border-left: 1px solid #444;
 					border-bottom: 1px solid #fff;
@@ -301,3 +301,28 @@ body {
 				-webkit-border-radius: 3px;
 				background: -webkit-gradient(linear,0% 40%,0% 70%,from(#F9F9F9),to(#E3E3E3));
 			}
+
+.ui-widget-overlay {
+	background: -webkit-radial-gradient(rgba(127, 127, 127, 0.5), rgba(127, 127, 127, 0.5) 35%, rgba(0, 0, 0, 0.7));
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+.ui-dialog {
+	-webkit-box-shadow: 0 5px 30px rgba(0, 0, 0, .75);
+	box-shadow: 0 5px 30px rgba(0, 0, 0, .75);
+	padding: 2px;
+	background: #f2f2f2;
+}
+.ui-dialog-titlebar {
+	background: url("../img/bg.png") repeat-x #222;
+	color: #fff;
+	padding: 10px;
+}
+.ui-dialog-titlebar a:link,
+.ui-dialog-titlebar a:visited,
+.ui-dialog-titlebar a:hover, 
+.ui-dialog-titlebar a:active { color: #fff; text-decoration: none; }
+.ui-dialog-titlebar a:hover { text-decoration: underline; }
+.ui-dialog-titlebar-close { float: right; }
+.ui-dialog-content { padding: 10px; }

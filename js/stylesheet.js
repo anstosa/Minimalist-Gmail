@@ -69,9 +69,9 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			css += "#headerToggle:hover { background-color: rgba(0,0,0,.15); }\n";
 		}
 		if (response.o.logo)
-			css += "div[title = 'Gmail by Google'] { background-image: url(" + response.o.logoSRC + ") !important; }\n";
+			css += "[id = ':rk'] { background-image: url(" + response.o.logoSRC + ") !important; }\n";
 		if (response.o.logoH)
-			css += "div[title = 'Gmail by Google'] { display: none !important; }\n";
+			css += "[id = ':rk'] { display: none !important; }\n";
 		if (response.o.s_all)
 			css += "table[role='search'] { display: none !important; }\n";
 		if (response.o.s_mail)
@@ -80,6 +80,8 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			css += "table[role='search'] div[role='button']:last-child { display: none !important; }\n";
 		if (response.o.s_links)
 			css += "table[role='search'] td:last-child { display: none !important; }\n";
+		if (response.o.apps_manage)
+			css += ".no nobr { display: none !important; }\n";
 	// MAIN
 		if (response.o.borders || response.o.simplify)
 			css += "tr.yO td, tr.zE td { border: 0 !important; }\n";
@@ -158,6 +160,7 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 		if (response.o.bottom)
 			css += "div.VP5otc-U4m8q.D.E, div.iE.D.E { display: none !important; }\n";
 		if (response.o.t_check_l) {
+			css += "h1.ha span, h1.ha table { float: left; }\n";
 			css += "div.J-J5-Ji:not([class *= Wn]) + div.J-M.AW { display: block !important; position: relative; overflow: hidden; margin: 0 0 -2px 0;}\n";
 			css += "div.J-J5-Ji:not([class *= Wn]) + div.J-M.AW td { -webkit-box-shadow: 0 0 0 rgba(0,0,0,0) !important; background: transparent; padding: 0 !important; }\n";
 			css += "div.J-J5-Ji:not([class *= Wn]) + div.J-M.AW td > div { display: block !important; float: left !important; padding: 3px 7px; }\n";
@@ -190,8 +193,7 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			css += "table.iY > tr > td:first-child + td + td > div { width: 0 !important; position: relative !important; }\n";
 			css += "table.iY > tr > td:first-child + td + td > div > div { position: absolute !important; right: 15px !important; top: 10px !important}\n";
 			css += "table.iY > tr > td:first-child + td + td > div > div u { display: none !important; }\n";
-			css += "table.iY > tr > td:first-child + td + td > div > div > div:nth-child(3) > div:first-child { font-size: .75em !important; position: absolute; right: 150px !important; top: -30px !important; width: 150px !important; height: 0 !important; display: block !important; }\n";
-			css += "table.iY > tr > td:first-child + td + td > div > div > div:nth-child(3) > div:first-child > div > div > div:first-of-type { display: none !important; }\n";
+			css += "table.iY > tr > td:first-child + td + td > div > div > div:nth-child(3) > div:first-child { font-size: .75em !important; position: absolute; right: 150px !important; top: -30px !important; width: 200px !important; height: 0 !important; display: block !important; }\n";
 			css += "table.iY > tr > td:first-child + td + td > div > div > div:nth-child(3) > div:first-child * { border: 0 !important; }\n";
 			css += "table.iY > tr > td:first-child + td + td > div > div > div:nth-child(3) > div:first-child > div:last-child { display: none !important; }\n";
 			css += "table.iY > tr > td:first-child + td + td > div > div > div:nth-child(3) > div:first-child img { display: none !important; }\n";

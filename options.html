@@ -4,6 +4,7 @@
 	<link type="text/css" rel="stylesheet" href="css/options.css" />
 	<link type="text/css" rel="stylesheet" href="css/picker/colorpicker.css" />
 	<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.8.10.custom.min.js"></script>
 	<script type="text/javascript" src="js/options.js"></script>
 	<script type="text/javascript" src="js/picker/colorpicker.js"></script>
 	<script type="text/javascript" src="js/picker/eye.js"></script>
@@ -196,6 +197,7 @@
 			<li>&nbsp;</li>
 			<li>&nbsp;</li>
 			<li><a href="#imp" class="" id="imp" onclick="navigate('imp')">Import/Export</a></li>
+			<li><a href="#snc" class="" id="snc" onclick="navigate('snc')">Sync</a></li>
 			<li><a href="#mor" class="" id="mor" onclick="navigate('mor')">More</a></li>
 			<li><a href="#nge" class="" id="nge" onclick="navigate('nge')">Changes</a></li>
 			<li><a href="#sup" class="" id="sup" onclick="navigate('sup')">Support</a></li>
@@ -277,7 +279,7 @@
 			<h3>Animate Transitions</h3>
 			<div>
 				<input type="checkbox" id="trans" />
-					&nbsp;<label for="trans" title="">Show transition animations</label><br />
+					&nbsp;<label for="trans" hide title="">Show transition animations</label><br />
 					<span class="note">Very subtle. Not possible for all transitions.</span><br />
 					<span class="note"><strong>Note:</strong> May decrease performance slightly on slower machines</span>
 			</div>
@@ -286,7 +288,7 @@
 			<h3>Custom CSS</h3>
 			<div>
 				<input type="checkbox" id="customCSS" />
-					&nbsp;<label for="customCSS" title="">Use custom CSS</label><br />
+					&nbsp;<label for="customCSS" hide title="">Use custom CSS</label><br />
 					<textarea id="customCSSval" rows="5" cols="40" style="margin-left: 25px;"></textarea>
 					<br />
 					<span class="note">Don't know CSS? <a href="https://groups.google.com/forum/?hl=en#!forum/minimalist-gmail" target="_blank">Ask questions and see examples here</a></span>
@@ -308,7 +310,7 @@
 			<div>
 				<span style="opacity: .35;"><input type="checkbox" id="desktop" />
 					&nbsp;<label for="desktop" title="">Show desktop notifications</label><br /></span>
-					<span class="note">Note: Gmail's <a href="https://mail.google.com/mail/u/0/#settings" target="_blank">Dekstop Notifications</a> are much more stable.</span><br />
+					<span class="note">Note: Gmail's <a href="https://mail.google.com/mail/u/0/#settings" target="_blank">Desktop Notifications</a> are much more stable.</span><br />
 					<span class="note">I recommend using theirs for now. Mine will be improved.</span><br />
 					<span class="note">Power Users: try <a href="https://chrome.google.com/webstore/detail/gffjhibehnempbkeheiccaincokdjbfe" target="_blank">Google Mail Checker Plus</a></span><br />
 					<span class="note"><strong>Disabling? Make sure you restart your browser.</strong></span>
@@ -432,6 +434,14 @@
 					&nbsp;<label for="s_web" title="">Hide web search</label><br />
 				<input type="checkbox" id="s_links" />
 					&nbsp;<label for="s_links" title="">Hide search tools</label><br />
+			</div>
+		</section>
+		<section>
+			<h3>Google Apps</h3>
+			<div>
+				<input type="checkbox" id="apps_manage" />
+					&nbsp;<label for="apps_manage" title="">Hide dashboard link</label><br />
+					<span class="note">Only for Google Apps administrators</span><br /><br />
 			</div>
 		</section>
 	</div>
@@ -824,6 +834,20 @@ https://mail.google.com/a/yourdomain.com
 			</div>
 		</section>
 	</div>
+	<div class="OPTmain" id="OPTsnc">
+		<h1 class="dark">Gmail | <span>sync</span></h1>
+		<section>
+			<h3>Sync Settings</h3>
+			<div>
+				<input type="checkbox" id="SNC_on" />
+					&nbsp;<label for="SNC_on" title="">Enable sync</label><br />
+					<span class="note">You'll need to have bookmarks sync enabled</span><br /><br />
+				<input type="checkbox" id="SNC_notify" />
+					&nbsp;<label for="SNC_notify" title="">Notify on sync</label><br />
+					<span class="note">Display a notification message when your settings have been changed by a background sync</span><br /><br />
+			</div>
+		</section>
+	</div>
 	<div class="OPTmain" id="OPTmor">
 		<h1 class="dark">Gmail <span onclick="easterEgg()" style="cursor:pointer;">| more</span></h1>
 		<section>
@@ -835,7 +859,7 @@ https://mail.google.com/a/yourdomain.com
 							<li><a href="http://www.anselsantosa.com/sites/MinimalistGoogleCalendar/options.html" target="_blank">See the full options page</a></li>
 						</ul>
 					</li>
-					<li><a href="">Minimalist for Google Reader</a>: Individually hide almost 50 interface elements, custom logos, keyboard toggles, and more...
+					<li><a href="https://chrome.google.com/webstore/detail/pgpppbiipcfcldpgcjlhoehdffdjjall">Minimalist for Google Reader</a>: Individually hide almost 50 interface elements, custom logos, keyboard toggles, and more...
 						<ul>
 							<li><a href="http://www.anselsantosa.com/sites/MinimalistGoogleReader/options.html" target="_blank">See the full options page</a></li>
 						</ul>
@@ -884,32 +908,43 @@ https://mail.google.com/a/yourdomain.com
 		<section>
 			<h3>Announcements</h3>
 			<div>
-				Hi everyone! I know I haven't added features in a while. This is partially because I'm running out of features to add, but mostly because I've been busy with other projects (Minimalst for Google Calendar and Google Reader).<br />
-				This is pretty small for a major update but I'm considering it major because of how requested this feature has been.
+				Hi all, I know how obnoxious it is to have to re-authorize an extension and I'm very sorry I had to do it<br />
+				but I think you'll agree that settings sync is worth the effort? The feature saves your settings into a bookmark that sync between browsers.<br />
+				That is why you had to re-authorize. I didn't request the bookmarks permission until now.<br /><br />
+				<strong>NOTE:</strong> The settings sync feature is still considered experimental, make sure you export and save your settings just in case.<br /><br />
+				<strong>ALSO:</strong> If you were one of the many who requested this feature, make sure to thank <a href="http://ludovic.chabant.com/" target="_blank">Ludovic Chabant</a>, developer of the sync feature.
 			</div>
 		</section>
 		<section>
 			<h3>What's new</h3>
 			<div>
 				Full changelog on <a href="http://code.google.com/p/minimalist-gmail/#CHANGELOG" target="_blank">Google Code</a><br /><br />
-				<!--<strong>General</strong>
+				<strong>General</strong>
 				<ul>
-					<li>Fixed: Custom buttons shifting to left on hover</li>
+					<li>Added: Experimental sync feature [thanks to @ludovicchabant for writing this]</li>
+				</ul>
+				<strong>Google Bar</strong>
+				<ul>
+					<li>Fixed: Dividing bars not hidden in Google User Bar for Google Apps users</li>
 				</ul>
 				<strong>Header</strong>
 				<ul>
-					<li>Fixed: [ g ] + [ l ] unhiding Google Bar when Header wasn't hidden</li>
-					<li>Fixed: [ g ] + [ l ] hiding header when it was open</li>
-				</ul>-->
+					<li>Fixed: Header not hiding after 3 MAR Gmail update</li>
+					<li>Added: Hide Dashboard link for apps domain admins</li>
+				</ul>
 				<strong>Main</strong>
 				<ul>
-					<li>Added: Floating toolbars scroll with page</li>
+					<li>Fixed: Context windows from sidebar not showing up above message.</li>
+					<li>Fixed: Show checkbox list displays vertically</li>
+					<li>Fixed: Priority Inbox menu's broken with checkbox tools list</li>
+					<li>Fixed: Message and list properties not animating</li>
+					<li>Fixed: Floating toolbar gets stuck at top of inbox</li>
 				</ul>
-				<strong>Navigation</strong>
+				<!--<strong>Navigation</strong>
 				<ul>
 					<li>Added: Floating navigation scrolls with page</li>
 				</ul>
-				<!--<strong>Chat</strong>
+				<strong>Chat</strong>
 				<ul>
 					<li>Fixed: Offline and idle chat contacts not hiding in French Gmail</li>
 				</ul>
@@ -967,7 +1002,8 @@ https://mail.google.com/a/yourdomain.com
 				<ul>
 					<li><a href="http://userscripts.org/scripts/show/595" target="_blank">mailto script by Julien Couvreur</a></li>
 					<li><a href="http://userscripts.org/scripts/show/24430" target="_blank">favicon script by Peter Wooley </a></li>
-				</ul>
+				</ul><br />
+				Last but certainly not least, my first contributor, <a href="http://ludovic.chabant.com/" target="_blank">Ludovic Chabant</a>, creator of the much requested sync feature.
 			</div>
 		</section>
 		<section>
@@ -1007,6 +1043,23 @@ https://mail.google.com/a/yourdomain.com
 					</li>
 				</ul>
 			</div>
+		</section>
+	</div>
+</div>
+<div class="modalBackground" id="sncDirDlg">
+	<div class="modalPopup">
+		<p>Which way do you want to proceed for your initial sync?</p>
+		<section>
+			<input type="radio" name="SNC_way" id="SNC_usebookmark" checked="true" />
+				&nbsp;<label for="SNC_usebookmark" title="">Use synced settings</label><br />
+					<span class="note">Your local settings will be overwritten with those synced from
+									   your other computers.</span><br /><br />
+		</section>
+		<section>
+			<input type="radio" name="SNC_way" id="SNC_uselocal" />
+				&nbsp;<label for="SNC_uselocal" title="">Keep local settings</label><br />
+					<span class="note">All your other computers with sync enabled will get their settings
+									   from here.</span><br /><br />
 		</section>
 	</div>
 </div>
