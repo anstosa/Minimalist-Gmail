@@ -1,6 +1,15 @@
 == ANNOUNCEMENTS ==
 
-  Minimalist for Google Reader coming in a couple weeks. Follow me for details and beta invites: @anstosa
+  Hi all, I know how obnoxious it is to to re-authorize extensions, very sorry about that
+  but I think you'll agree that settings sync is worth the effort?
+  The feature saves your settings into a bookmark that sync between browsers.
+  That is why you had to re-authorize. Chrome requires re-authorization on settings changes
+        
+  *NOTE:* The settings sync feature is still considered experimental
+  make sure you export and save your settings just in case.
+
+  *ALSO:* If you were one of the many who requested this feature make sure to thank 
+  Ludovic Chabant [http://ludovic.chabant.com], developer of the sync feature.
   
   Questions about permissions? See PERMISSIONS section below.
 
@@ -148,6 +157,10 @@
   * I *NEVER* access your browsing history.
   * I need this permission to open tabs. I use this to open the options page on major updates.
   * This permission is also used to refresh the Gmail tab when you save your settings.
+ == "bookmarks"
+  * This permission results in the "This item can access your bookmars" warning.
+  * I *NEVER* access, read, modify, store, or transmit any of bookmarks.
+  * I need this permission to create a bookmark that is used to sync settings accross computers.
  == "http://*/*", "https://*/*"
   * This permission results in the "This extension can access your data on all websites" warning.
   * I *NEVER* access, read, store, or transmit your personal data.
@@ -161,12 +174,17 @@
 
 == CHANGELOG ==
 
+ == 1.7.3 [6 MAR]
+  * Added: Experimental sync feature
+  * Fixed: Navigation hotkey not working after 1.7.1
+ == 1.7.2 [3 MAR]
+  * Fixed: Row highlighting disabled after 1.7.1
+  * Fixed: Header not hiding after 1.7.1 Gmail update
  == 1.7.1 [3 MAR]
   * Added: Minimalist for Google Reader info
   * Improved: all favicons updated to Google's most recent versions
   * Improved: favicon unread icon numbers now black on grey instead of gray on yellow
   * Improved: Google Bar, Header, and Navigation toggling code
-  * Fixed: Header not hiding after 3 MAR Gmail update
   * Fixed: Dividing bars not hidden in Google User Bar for Google Apps users
   * Fixed: Priority Inbox menu's broken with checkbox tools list
   * Fixed: Show checkbox list not showing up inline

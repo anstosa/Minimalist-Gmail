@@ -562,7 +562,15 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 		}
 		// [ ` ] tilde key
 		if (response.o.nav && event.which == "96" && !event.ctrlKey && !event.metaKey) {
-			toggleNav();
+			if (response.o.nav) {
+				if (document.getElementById('navToggle').nextSibling.getAttribute('style') != 'width: ' + response.o.navW + 'px !important') {
+					document.getElementById('navToggle').nextSibling.setAttribute('style', 'width: ' + response.o.navW + 'px !important');
+					document.getElementById('navToggle').nextSibling.nextSibling.setAttribute('style', 'width: ' + (document.getElementsByClassName("cQ")[0].scrollWidth - 10 - response.o.navW) + 'px !important;');
+				} else {
+					document.getElementById('navToggle').nextSibling.setAttribute('style', 'display: none !important;');
+					document.getElementById('navToggle').nextSibling.nextSibling.setAttribute('style', 'width: ' + (document.getElementsByClassName("cQ")[0].scrollWidth - 10) + 'px !important;');
+				}
+			}
 		}
 		return true;
 	}
