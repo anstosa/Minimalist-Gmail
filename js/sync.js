@@ -7,10 +7,10 @@ function createBookmark(title, url, parentId, callback) {
 		chrome.bookmarks.getTree(function(bookmarks) {
 			var folder = bookmarks[0].children[1];
 			var bookmark = {
-				parentId: folder.id,
-				title: title,
-				url: url
-			};
+                parentId: folder.id,
+                title: title
+            };
+            if (url) bookmark.url = url;
 			chrome.bookmarks.create(bookmark, callback);
 		});
     }
