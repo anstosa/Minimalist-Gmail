@@ -433,9 +433,13 @@ $(function(){
 				var backgroundWindow = chrome.extension.getBackgroundPage();
 				if ($("#SNC_usebookmark").attr("checked")) {
 					console.log("Sync: enabling, loading from bookmark.");
+					// Load all options...
 					backgroundWindow.syncLoad(true, false);
 					backgroundWindow.attachSyncListeners();
 					load(true);
+					// ...and save that we turned sync on.
+					localStorage["SNC_on"] = "true";
+					$("#SNC_on").attr('checked', true);
 				} else if ($("#SNC_uselocal").attr("checked")) {
 					console.log("Sync: enabling, saving local settings.");
 					save();
