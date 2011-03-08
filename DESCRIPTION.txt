@@ -13,6 +13,33 @@
   
   Questions about permissions? See PERMISSIONS section below.
 
+
+== PERMISSIONS ==
+
+  Learn more about Chrome Extension permissions here: http://www.google.com/support/chrome/bin/answer.py?hl=en&answer=186213
+  If you look as the permissions required by similar extensions in the Web Store, you will see that they are exactly the same
+  so before you make assumptions based on two short and broad statements, please read the following:
+
+ == "tabs"
+  * This permissions results in the "This extensions can access your browsing history" warning.
+  * I *NEVER* access your browsing history.
+  * I need this permission to open tabs. I use this to open the options page on major updates.
+  * This permission is also used to refresh the Gmail tab when you save your settings.
+ == "bookmarks"
+  * This permission results in the "This item can access your bookmars" warning.
+  * I *NEVER* access, read, modify, store, or transmit any of bookmarks.
+  * I need this permission to create a bookmark that is used to sync settings accross computers.
+ == "http://*/*", "https://*/*"
+  * This permission results in the "This extension can access your data on all websites" warning.
+  * I *NEVER* access, read, store, or transmit your personal data.
+  * I need this permission to run user scripts behind specific pages in the browser.
+  * These scripts inject Javascript and CSS into Gmail to enhance functionality and hide elements
+  * The reason I ask for permissions to all pages and not just Gmail is because of my open in Gmail feature
+    which replaces all "mailto:" links in websites with a script that opens clickable email addresses in Gmail.
+
+  Still don't trust me? Go to [https://github.com/anstosa/Minimalist-Gmail] to see the entire source code.
+
+  
 == WHAT DOES IT DO? ==
 
   It is a personalized solution for those who are tired of useless and distracting elements in the Gmail interface.
@@ -146,34 +173,10 @@
   [http://code.google.com/p/minimalist-gmail/issues/list]
 
 
-== PERMISSIONS ==
-
-  Learn more about Chrome Extension permissions here: http://www.google.com/support/chrome/bin/answer.py?hl=en&answer=186213
-  If you look as the permissions required by similar extensions in the Web Store, you will see that they are exactly the same
-  so before you make assumptions based on two short and broad statements, please read the following:
-
- == "tabs"
-  * This permissions results in the "This extensions can access your browsing history" warning.
-  * I *NEVER* access your browsing history.
-  * I need this permission to open tabs. I use this to open the options page on major updates.
-  * This permission is also used to refresh the Gmail tab when you save your settings.
- == "bookmarks"
-  * This permission results in the "This item can access your bookmars" warning.
-  * I *NEVER* access, read, modify, store, or transmit any of bookmarks.
-  * I need this permission to create a bookmark that is used to sync settings accross computers.
- == "http://*/*", "https://*/*"
-  * This permission results in the "This extension can access your data on all websites" warning.
-  * I *NEVER* access, read, store, or transmit your personal data.
-  * I need this permission to run user scripts behind specific pages in the browser.
-  * These scripts inject Javascript and CSS into Gmail to enhance functionality and hide elements
-  * The reason I ask for permissions to all pages and not just Gmail is because of my open in Gmail feature
-    which replaces all "mailto:" links in websites with a script that opens clickable email addresses in Gmail.
-
-  Still don't trust me? Go to [https://github.com/anstosa/Minimalist-Gmail] to see the entire source code.
-
-
 == CHANGELOG ==
 
+ == 1.7.4 [7 MAR]
+  * Fixed: Checkbox list displaying vertically in stable and beta channels
  == 1.7.3 [6 MAR]
   * Added: Experimental sync feature
   * Fixed: Navigation hotkey not working after 1.7.1

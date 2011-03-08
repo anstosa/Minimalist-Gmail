@@ -164,6 +164,9 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			css += "div.J-J5-Ji:not([class *= Wn]) + div.J-M.AW { display: block !important; position: relative; overflow: hidden; margin: 0 0 -2px 0;}\n";
 			css += "div.J-J5-Ji:not([class *= Wn]) + div.J-M.AW td { -webkit-box-shadow: 0 0 0 rgba(0,0,0,0) !important; background: transparent; padding: 0 !important; }\n";
 			css += "div.J-J5-Ji:not([class *= Wn]) + div.J-M.AW td > div { display: block !important; float: left !important; padding: 3px 7px; }\n";
+			css += "div.J-J5-Ji + div.J-M.AW { display: block !important; position: relative; overflow: hidden; margin: 0 0 -2px 0;}\n";
+			css += "div.J-J5-Ji + div.J-M.AW > div { -webkit-box-shadow: 0 0 0 rgba(0,0,0,0) !important; background: transparent; padding: 0 !important; }\n";
+			css += "div.J-J5-Ji + div.J-M.AW > div > div { display: block !important; float: left !important; padding: 3px 7px; }\n";
 		}
 		if (response.o.t_check || response.o.t_check_l)
 			css += "[class=\"VP5otc-HT6HAf J-J5-Ji\"]:nth-child(1) { display: none !important; }\n";
