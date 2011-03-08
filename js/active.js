@@ -121,11 +121,11 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 			console.log("MINIMALIST GMAIL: hiding header and adding toggle...");
 			var logo = document.querySelectorAll("[id = ':rk']")[0].parentNode;
 			try {
-				minimalist(logo.parentNode.parentNode.parentNode, false, "hideH");
+				minimalist(logo.parentNode.parentNode, false, "hideH");
 				if (!response.o.gbarH) {
 					var toggle = document.createElement("div");
 					toggle.setAttribute("id", "headerToggle");
-					logo.parentNode.parentNode.parentNode.parentNode.insertBefore(toggle, logo.parentNode.parentNode.parentNode);
+					logo.parentNode.parentNode.parentNode.insertBefore(toggle, logo.parentNode.parentNode);
 				}
 				f_headerToggle = true;
 			} catch (e) { console.error(e); }
@@ -448,11 +448,8 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 				hiddenH = true;
 			}
 		} else {
-			console.warn("TOGGLE");
 			if (hiddenH){
-				console.warn("TOGGLE");
 				minimalist(document.getElementById('headerToggle').nextSibling, true, "hideH");
-				console.warn("TOGGLE");
 				hiddenH = false;
 			} else {
 				minimalist(document.getElementById('headerToggle').nextSibling, false, "hideH");

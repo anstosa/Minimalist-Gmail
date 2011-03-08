@@ -175,7 +175,8 @@
 
 == CHANGELOG ==
 
- == 1.7.4 [7 MAR]
+ == 1.7.4 [8 MAR]
+  * Fixed: Google bar and header hiding eachother
   * Fixed: Checkbox list displaying vertically in stable and beta channels
  == 1.7.3 [6 MAR]
   * Added: Experimental sync feature
