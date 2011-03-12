@@ -24,6 +24,7 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 	var hiddenG = false;
 	var hiddenH = false;
 	var hiddenN = false;
+	var oldGbar = false;
 	var guser;
 	var counter = 0;
 	var cP = null;
@@ -101,6 +102,7 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 						navs.nextSibling.setAttribute('style', 'width: ' + (document.getElementsByClassName("cQ")[0].scrollWidth - response.o.navW) + 'px !important;');
 				}
 				f_navToggle = true;
+				toggleNav();
 			} catch (e) { console.error(e); }
 		}
 		if (response.o.gbarH && !f_gbarToggle) {
@@ -109,7 +111,10 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 				var login = null;
 				if (document.getElementById("gbw"))
 					login = document.getElementById("gbw");
-				else login = document.getElementById("gbar");
+				else {
+					login = document.getElementById("gbar").firstChild;
+					oldGbar = true;
+				}
 				minimalist(login.parentNode.parentNode, false, "hideG");
 				var toggleG = document.createElement("div");
 					toggleG.setAttribute("id", "gbarToggle");
@@ -144,6 +149,7 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 				if (response.o.nav) {
 					hiddenN = true;
 					document.getElementById('navToggle').addEventListener("click", toggleNav, false);
+					document.getElementById('navToggle').addEventListener("mouseover", toggleNavO, false);
 				}
 				keyinit = true;
 			} catch (e) {}
@@ -414,14 +420,26 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 				if (window.pageYOffset > curtop) {
 					if (!Npassed) {
 						Npassed = true;
-						minimalist(nav.previousSibling, false, "fix");
-						minimalist(nav, false, "fix");
+						if (response.o.nav) {
+							minimalist(nav.previousSibling, false, "fix");
+							minimalist(nav, false, "fix");
+							minimalist(nav.nextSibling, false, "fix");
+						} else {
+							minimalist(nav.previousSibling, false, "fix");
+							minimalist(nav, false, "fix");	
+						}
 					}
 				} else {
 					if (Npassed) {
 						Npassed = false;
-						minimalist(nav.previousSibling, true, "fix");
-						minimalist(nav, true, "fix");
+						if (response.o.nav) {
+							minimalist(nav.previousSibling, true, "fix");
+							minimalist(nav, true, "fix");
+							minimalist(nav.nextSibling, true, "fix");
+						} else {
+							minimalist(nav.previousSibling, true, "fix");
+							minimalist(nav, true, "fix");	
+						}
 					}
 				}
 			}
@@ -440,11 +458,15 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 		} else if (response.o.gbarH && response.o.header) {
 			if (hiddenH) {
 				minimalist(document.getElementById('gbarToggle').nextSibling, true, "hideG");
-				minimalist(document.getElementById('gbarToggle').nextSibling.nextSibling.nextSibling, true, "hideH");
+				if (oldGbar)
+					minimalist(document.getElementById('gbarToggle').nextSibling.nextSibling.firstChild.firstChild.nextSibling.firstChild.nextSibling, true, "hideH");
+				else minimalist(document.getElementById('gbarToggle').nextSibling.nextSibling.nextSibling, true, "hideH");
 				hiddenH = false;
 			} else {
 				minimalist(document.getElementById('gbarToggle').nextSibling, false, "hideG");
-				minimalist(document.getElementById('gbarToggle').nextSibling.nextSibling.nextSibling, false, "hideH");
+				if (oldGbar)
+					minimalist(document.getElementById('gbarToggle').nextSibling.nextSibling.firstChild.firstChild.nextSibling.firstChild.nextSibling, false, "hideH");
+				else minimalist(document.getElementById('gbarToggle').nextSibling.nextSibling.nextSibling, false, "hideH");
 				hiddenH = true;
 			}
 		} else {
@@ -458,15 +480,14 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 		}
 	}
 
+	function toggleNavO() {	if (hiddenN) toggleNav(); }
 	function toggleNav() {
 		if (response.o.nav) {
 			if (hiddenN) {
-				minimalist(document.getElementById('sidebar'), true, "hideN");
-				minimalist(document.getElementById('nav'), true, "hideN");
+				minimalist(document.getElementById('navToggle').nextSibling.nextSibling, true, "hideN");
 				hiddenN = false;
 			} else {
-				minimalist(document.getElementById('sidebar'), false, "hideN");
-				minimalist(document.getElementById('nav'), false, "hideN");
+				minimalist(document.getElementById('navToggle').nextSibling.nextSibling, false, "hideN");
 				hiddenN = true;
 			}
 		}
@@ -559,6 +580,7 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 		}
 		// [ ` ] tilde key
 		if (response.o.nav && event.which == "96" && !event.ctrlKey && !event.metaKey) {
+			toggleNav();
 			if (response.o.nav) {
 				if (document.getElementById('navToggle').nextSibling.getAttribute('style') != 'width: ' + response.o.navW + 'px !important') {
 					document.getElementById('navToggle').nextSibling.setAttribute('style', 'width: ' + response.o.navW + 'px !important');

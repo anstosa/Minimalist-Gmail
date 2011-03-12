@@ -175,6 +175,16 @@
 
 == CHANGELOG ==
 
+ == 1.7.7 [11 MAR]
+  * Fixed: Sidebar ads not hiding
+ == 1.7.6 [11 MAR]
+  * Fixed: Sidebar info overlapping messages with ads hidden [hidden entirely for now]
+  * Fixed: Floating nav not clickable
+ == 1.7.5 [10 MAR]
+  * Fixed: Hide header and Hide Google Bar problems with old Google bar
+  * Fixed: Floating nav floating over messages in small windows
+  * Fixed: Hide Nav and Floating Nav conflicting
+  * Improved: Larger margin at bottom of General tab to facilitate Custom CSS resizing
  == 1.7.4 [8 MAR]
   * Fixed: Google bar and header hiding eachother
   * Fixed: Checkbox list displaying vertically in stable and beta channels
