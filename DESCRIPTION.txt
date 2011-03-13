@@ -1,15 +1,14 @@
 == ANNOUNCEMENTS ==
 
-  Hi all, I know how obnoxious it is to to re-authorize extensions, very sorry about that
-  but I think you'll agree that settings sync is worth the effort?
-  The feature saves your settings into a bookmark that sync between browsers.
-  That is why you had to re-authorize. Chrome requires re-authorization on settings changes
-        
-  *NOTE:* The settings sync feature is still considered experimental
-  make sure you export and save your settings just in case.
+  Hi all, I know it's been pretty touchy lately and I'm doing my best to keep up with the changes to Gmail
+  I don't want to give the impression that my extensions are unreliable, they aren't. Gmail is. I know it
+  looks the same every day but little things, names of elements, etc change in the background eall the time
+  (more than usual this last couple weeks) and although I catch up within 24 hours, I can't guaruntee it
+  will be perfect every time you log in.
 
-  *ALSO:* If you were one of the many who requested this feature make sure to thank 
-  Ludovic Chabant [http://ludovic.chabant.com], developer of the sync feature.
+  I suspect the frequency of these changes recently is preperation for the launch of Google's social network.
+  Once "Me", "+1", "Circles" or whatever they end up calling it launches (possibly at SXSW) I anticipate
+  things will stabilize. In the mean time, please bear with me. I'm doing the best I can.
   
   Questions about permissions? See PERMISSIONS section below.
 
@@ -175,6 +174,14 @@
 
 == CHANGELOG ==
 
+ == 1.7.10 [13 MAR]
+  * Imporoved: resource usage for apps check and floating element init functions
+  * Fixed: Floating nav and Toolbar not working
+ == 1.7.9 [12 MAR]
+  * Fixed: Hide nav not working in Google Apps accounts
+  * Fixed: Hide Header and Google Bar not working together in Google Apps accounts with new Google Bar
+ == 1.7.8 [11 MAR]
+  * Fixed: Contextual information showing over messages with hide sidebar ads
  == 1.7.7 [11 MAR]
   * Fixed: Sidebar ads not hiding
  == 1.7.6 [11 MAR]

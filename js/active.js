@@ -28,6 +28,8 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 	var guser;
 	var counter = 0;
 	var cP = null;
+	var scrollinit = false;
+	var appsinit = false;
 	var running = false;
 	var allow = true;
 	var curtop = 0;
@@ -66,7 +68,16 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 		}
 		passed = false;
 		// go loop go!
-		scroll();
+		if (!scrollinit) {
+			try {
+				scroll();
+				scrollinit == true;
+			} catch(e) {}
+		}
+		if (document.querySelectorAll("[title *= 'Mail by Google']").length != null && document.querySelectorAll("[title *= 'Mail by Google']").length > 0 && !appsinit) {
+			oldGbar = true;
+			appsinit = true;
+		}
 		console.log("MINIMALIST GMAIL: **MAIN LOOP**");
 		if (response.o.starHigh) {
 			console.log("MINIMALIST GMAIL: checking for starred items");
@@ -86,9 +97,12 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 			console.warn("MINIMALIST GMAIL: If Gmail runs slow, disable Hide Nav and Custom Nav Width");
 			console.warn("MINIMALIST GMAIL: If messages appear below sidebar, disable hide inactive scrollbar");
 			try {
-				var nav = document.getElementsByClassName("cP")[0].childNodes[1].childNodes[1].firstChild.childNodes[1].firstChild.firstChild;
-					nav.setAttribute("style", "display: none !important;");
-					nav.nextSibling.setAttribute("style", "width: " + (document.getElementsByClassName("cQ")[0].scrollWidth - 10) + "px !important;");
+				if (oldGbar) {
+					var nav = document.getElementsByClassName("cP")[0].childNodes[1].childNodes[1].firstChild.childNodes[1].firstChild.firstChild.nextSibling;
+						nav.previousSibling.setAttribute("style","");
+				} else var nav = document.getElementsByClassName("cP")[0].childNodes[1].childNodes[1].firstChild.childNodes[1].firstChild.firstChild;
+				nav.setAttribute("style", "display: none !important;");
+				nav.nextSibling.setAttribute("style", "width: " + (document.getElementsByClassName("cQ")[0].scrollWidth - 10) + "px !important;");
 				var toggleN = document.createElement("div");
 					toggleN.setAttribute("id", "navToggle");
 					toggleN.setAttribute("onClick", "javascript:if(document.getElementById('navToggle').nextSibling.getAttribute('style')=='width: " + response.o.navW + "px !important'){document.getElementById('navToggle').nextSibling.setAttribute('style', 'display: none !important;');document.getElementById('navToggle').nextSibling.nextSibling.setAttribute('style', 'width: ' + (document.getElementsByClassName(\"cQ\")[0].scrollWidth - 10) + 'px !important;');}else{document.getElementById('navToggle').nextSibling.setAttribute('style', 'width: " + response.o.navW + "px !important');document.getElementById('navToggle').nextSibling.nextSibling.setAttribute('style', 'width: ' + (document.getElementsByClassName(\"cQ\")[0].scrollWidth - 10 - " + response.o.navW + ") + 'px !important;');};");
@@ -111,10 +125,7 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 				var login = null;
 				if (document.getElementById("gbw"))
 					login = document.getElementById("gbw");
-				else {
-					login = document.getElementById("gbar").firstChild;
-					oldGbar = true;
-				}
+				else login = document.getElementById("gbar").firstChild;
 				minimalist(login.parentNode.parentNode, false, "hideG");
 				var toggleG = document.createElement("div");
 					toggleG.setAttribute("id", "gbarToggle");
@@ -379,7 +390,8 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 
 	//---- HELPER METHODS ----//
 	function scroll(event) {
-		var curtop = document.getElementsByClassName("GcwpPb-Z8OBDd")[0].offsetHeight;
+		var head = document.getElementById(":rk").parentNode.parentNode.parentNode.parentNode;
+		var curtop = head.offsetHeight;
 		if (response.o.t_fix) {
 			var msg = null;
 			var lst = null;
@@ -416,7 +428,7 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 		}
 		if (response.o.navF) {
 			var nav = null;
-			if (nav = document.getElementsByClassName("GcwpPb-Z8OBDd")[0].nextSibling.firstChild.firstChild.nextSibling) {
+			if (nav = head.nextSibling.firstChild.firstChild.nextSibling) {
 				if (window.pageYOffset > curtop) {
 					if (!Npassed) {
 						Npassed = true;

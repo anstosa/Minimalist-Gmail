@@ -197,6 +197,7 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			css += "table.iY > tr > td:first-child + td + td > div > div { position: absolute !important; right: 15px !important; top: 10px !important}\n";
 			css += "table.iY > tr > td:first-child + td + td > div > div u { display: none !important; }\n";
 			css += "table.iY > tr > td:first-child + td + td > div > div > div:nth-child(3) > div:first-child > div:last-child { display: none !important; }\n";
+			css += "table.iY > tr > td:first-child + td + td > div > div > div:nth-child(3) > div:first-child > div:first-child { display: none !important; }\n";
 			/*css += "table.iY > tr > td:first-child + td + td > div > div > div:nth-child(3) > div:first-child { font-size: .75em !important; position: absolute; right: 150px !important; top: -30px !important; width: 200px !important; height: 0 !important; display: block !important; }\n";
 			css += "table.iY > tr > td:first-child + td + td > div > div > div:nth-child(3) > div:first-child * { border: 0 !important; }\n";
 			css += "table.iY > tr > td:first-child + td + td > div > div > div:nth-child(3) > div:first-child img { display: none !important; }\n";*/
@@ -216,21 +217,21 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 		}
 		if (response.o.navF) {
 			if (response.o.nav)
-				css += ".GcwpPb-Z8OBDd + .nH > div:first-child > div:nth-child(3) { z-index: 9998 !important; }\n";
-			css += ".GcwpPb-Z8OBDd + .nH > div:first-child > div:nth-child(2) { z-index: 9998 !important; }\n";
+				css += ".cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2) > div:first-child > div:nth-child(3) { z-index: 9998 !important; }\n";
+			css += ".cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2)  > div:first-child > div:nth-child(2) { z-index: 9998 !important; }\n";
 			if (response.o.nav)
-				css += ".GcwpPb-Z8OBDd + .nH > div:first-child > div:nth-child(2)[min ~= 'fix'] { position: fixed; top: 0; left: 10px; }\n";
-			css += ".GcwpPb-Z8OBDd + .nH > div:first-child > div:first-child[min ~= 'fix'] { position: fixed; top: 0; }\n";
+				css += ".cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2)  > div:first-child > div:nth-child(2)[min ~= 'fix'] { position: fixed; top: 0; left: 10px; }\n";
+			css += ".cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2)  > div:first-child > div:first-child[min ~= 'fix'] { position: fixed; top: 0; }\n";
 			if (response.o.navWC) {
 				if (response.o.nav) {
-					css += ".GcwpPb-Z8OBDd + .nH > div:first-child > div:nth-child(3)[min ~= 'fix']:not([min ~= 'hideN']) { margin-left: " + (parseInt(response.o.navW) + 10) + "px; }\n";
-					css += ".GcwpPb-Z8OBDd + .nH > div:first-child > div:nth-child(3)[min ~= 'fix'][min ~= 'hideN'] { margin-left: 10px; }\n";
-				} else css += ".GcwpPb-Z8OBDd + .nH > div:first-child > div:nth-child(2)[min ~= 'fix']:not([min ~= 'hideN']) { margin-left: " + (parseInt(response.o.navW) + 10) + "px; }\n";
+					css += ".cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2)  > div:first-child > div:nth-child(3)[min ~= 'fix']:not([min ~= 'hideN']) { margin-left: " + (parseInt(response.o.navW) + 10) + "px; }\n";
+					css += ".cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2)  > div:first-child > div:nth-child(3)[min ~= 'fix'][min ~= 'hideN'] { margin-left: 10px; }\n";
+				} else css += ".cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2)  > div:first-child > div:nth-child(2)[min ~= 'fix']:not([min ~= 'hideN']) { margin-left: " + (parseInt(response.o.navW) + 10) + "px; }\n";
 			} else {
 				if (response.o.nav) {
-					css += ".GcwpPb-Z8OBDd + .nH > div:first-child > div:nth-child(3)[min ~= 'fix']:not([min ~= 'hideN']) { margin-left: 182px; }\n";
-					css += ".GcwpPb-Z8OBDd + .nH > div:first-child > div:nth-child(3)[min ~= 'fix'][min ~= 'hideN'] { margin-left: 10px; }\n";
-				} else css += ".GcwpPb-Z8OBDd + .nH > div:first-child > div:nth-child(2)[min ~= 'fix']:not([min ~= 'hideN']) { margin-left: 172px; }\n";
+					css += ".cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2)  > div:first-child > div:nth-child(3)[min ~= 'fix']:not([min ~= 'hideN']) { margin-left: 182px; }\n";
+					css += ".cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2)  > div:first-child > div:nth-child(3)[min ~= 'fix'][min ~= 'hideN'] { margin-left: 10px; }\n";
+				} else css += ".cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2)  > div:first-child > div:nth-child(2)[min ~= 'fix']:not([min ~= 'hideN']) { margin-left: 172px; }\n";
 			}
 		}
 		if (response.o.hr) {
