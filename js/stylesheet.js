@@ -55,7 +55,7 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 		if (response.o.gbarO) {
 			css += "div[role='navigation'] div.nH, div[role='navigation'] #guser, div[role='navigation'] #gbg, div[role='navigation'] #gbar, div[role='navigation'] #gbz { opacity: 0; -webkit-transition-delay: .25s; }\n";
 			css += "div.aC:hover div[role='navigation'] div.nH, div.aC:hover div[role='navigation'] #guser, div.aC:hover div[role='navigation'] #gbg, div.aC:hover div[role='navigation'] #gbar, div.aC:hover div[role='navigation'] #gbz { opacity: 1; }\n";
-			css += "div.GcwpPb-Z8OBDd:hover div[role='navigation'] div.nH, div.GcwpPb-Z8OBDd:hover div[role='navigation'] #guser, div.GcwpPb-Z8OBDd:hover div[role='navigation'] #gbg, div.GcwpPb-Z8OBDd:hover div[role='navigation'] #gbar, div.GcwpPb-Z8OBDd:hover div[role='navigation'] #gbz { opacity: 1; }\n"
+			css += ".cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2):hover div[role='navigation'] div.nH, .cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2):hover div[role='navigation'] #guser, .cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2):hover div[role='navigation'] #gbg, .cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2):hover div[role='navigation'] #gbar, .cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2):hover div[role='navigation'] #gbz { opacity: 1; }\n"
 		}
 		if (response.o.gbarB)
 			css += "div.nH.qp[role = 'navigation'], #gbx3, #gbx4 { background-image: none !important; background-color: rgba(255,255,255,0) !important; border: 0 !important; }\n";
@@ -218,20 +218,20 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 		if (response.o.navF) {
 			if (response.o.nav)
 				css += ".cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2) > div:first-child > div:nth-child(3) { z-index: 9998 !important; }\n";
-			css += ".cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2)  > div:first-child > div:nth-child(2) { z-index: 9998 !important; }\n";
+			css += ".cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2) > div:first-child > div:nth-child(2) { z-index: 9998 !important; }\n";
 			if (response.o.nav)
-				css += ".cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2)  > div:first-child > div:nth-child(2)[min ~= 'fix'] { position: fixed; top: 0; left: 10px; }\n";
-			css += ".cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2)  > div:first-child > div:first-child[min ~= 'fix'] { position: fixed; top: 0; }\n";
+				css += ".cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2) > div:first-child > div:nth-child(2)[min ~= 'fix'] { position: fixed; top: 0; left: 10px; }\n";
+			css += ".cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2) > div:first-child > div:first-child[min ~= 'fix'] { position: fixed; top: 0; }\n";
 			if (response.o.navWC) {
 				if (response.o.nav) {
-					css += ".cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2)  > div:first-child > div:nth-child(3)[min ~= 'fix']:not([min ~= 'hideN']) { margin-left: " + (parseInt(response.o.navW) + 10) + "px; }\n";
-					css += ".cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2)  > div:first-child > div:nth-child(3)[min ~= 'fix'][min ~= 'hideN'] { margin-left: 10px; }\n";
-				} else css += ".cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2)  > div:first-child > div:nth-child(2)[min ~= 'fix']:not([min ~= 'hideN']) { margin-left: " + (parseInt(response.o.navW) + 10) + "px; }\n";
+					css += ".cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2) > div:first-child > div:nth-child(3)[min ~= 'fix']:not([min ~= 'hideN']) { margin-left: " + (parseInt(response.o.navW) + 10) + "px; }\n";
+					css += ".cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2) > div:first-child > div:nth-child(3)[min ~= 'fix'][min ~= 'hideN'] { margin-left: 10px; }\n";
+				} else css += ".cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2) > div:first-child > div:nth-child(2)[min ~= 'fix']:not([min ~= 'hideN']) { margin-left: " + (parseInt(response.o.navW) + 10) + "px; }\n";
 			} else {
 				if (response.o.nav) {
-					css += ".cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2)  > div:first-child > div:nth-child(3)[min ~= 'fix']:not([min ~= 'hideN']) { margin-left: 182px; }\n";
-					css += ".cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2)  > div:first-child > div:nth-child(3)[min ~= 'fix'][min ~= 'hideN'] { margin-left: 10px; }\n";
-				} else css += ".cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2)  > div:first-child > div:nth-child(2)[min ~= 'fix']:not([min ~= 'hideN']) { margin-left: 172px; }\n";
+					css += ".cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2) > div:first-child > div:nth-child(3)[min ~= 'fix']:not([min ~= 'hideN']) { margin-left: 182px; }\n";
+					css += ".cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2) > div:first-child > div:nth-child(3)[min ~= 'fix'][min ~= 'hideN'] { margin-left: 10px; }\n";
+				} else css += ".cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2) > div:first-child > div:nth-child(2)[min ~= 'fix']:not([min ~= 'hideN']) { margin-left: 172px; }\n";
 			}
 		}
 		if (response.o.hr) {
