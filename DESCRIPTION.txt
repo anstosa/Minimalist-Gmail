@@ -1,16 +1,15 @@
 == ANNOUNCEMENTS ==
 
-  Hi all, I know it's been pretty touchy lately and I'm doing my best to keep up with the changes to Gmail
-  I don't want to give the impression that my extensions are unreliable, they aren't. Gmail is. I know it
-  looks the same every day but little things, names of elements, etc change in the background eall the time
-  (more than usual this last couple weeks) and although I catch up within 24 hours, I can't guaruntee it
-  will be perfect every time you log in.
-
-  I suspect the frequency of these changes recently is preperation for the launch of Google's social network.
-  Once "Me", "+1", "Circles" or whatever they end up calling it launches (possibly at SXSW) I anticipate
-  things will stabilize. In the mean time, please bear with me. I'm doing the best I can.
+  Gmail appears to be stable again which means that Minimalist will be more stable as well.
   
   Questions about permissions? See PERMISSIONS section below.
+
+  
+== WHAT DOES IT DO? ==
+
+  It is a personalized solution for those who are tired of useless and distracting elements in the Gmail interface.
+  It removes as much or as little as you want. It also adds functionality if you so choose.
+  Look around the options page to see what it does first hand. Link below.
 
 
 == PERMISSIONS ==
@@ -37,13 +36,6 @@
     which replaces all "mailto:" links in websites with a script that opens clickable email addresses in Gmail.
 
   Still don't trust me? Go to [https://github.com/anstosa/Minimalist-Gmail] to see the entire source code.
-
-  
-== WHAT DOES IT DO? ==
-
-  It is a personalized solution for those who are tired of useless and distracting elements in the Gmail interface.
-  It removes as much or as little as you want. It also adds functionality if you so choose.
-  Look around the options page to see what it does first hand. Link below.
 
 
 == OPTIONS ==
@@ -174,6 +166,14 @@
 
 == CHANGELOG ==
 
+ == 1.7.14 [20 MAR]
+  * Changed: URL bar icons are smaller and lighter to not be intrusive
+ == 1.7.13 [18 MAR]
+  * Changed: Logos to comply with Google's branding guidelines
+  * Fixed: Width bug in stable and beta channels with Hide Sidebar ads enabled [thanks Stephen!]
+ == 1.7.12 [16 MAR]
+  * Fixed: Make Google Bar invisible until mouseover not appearing on hover [for real this time]
+  * Fixed: Some chat features not working after
  == 1.7.11 [13 MAR]
   * Fixed: Make Google Bar invisible until mouseover not appearing on hover
  == 1.7.10 [13 MAR]

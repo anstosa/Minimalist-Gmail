@@ -12,7 +12,7 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 		function getContacts() {
 			var tables = document.getElementsByTagName('table');
 			for (var i = 0; i < tables.length; i++) {
-				if (tables[i].getAttribute('class') == 'cf vH' && tables[i].getAttribute('role') == 'listbox' && tables[i].getElementsByTagName('tr').length > 0) {
+				if (tables[i].getAttribute('class') == 'vH' && tables[i].getAttribute('role') == 'listbox' && tables[i].getElementsByTagName('tr').length > 0) {
 						return tables[i];
 				}
 			}

@@ -1,6 +1,6 @@
 {
 	"name": "Minimalist for Gmail™",
-	"version": "1.7.11",
+	"version": "1.7.14",
 	"description": "Individually hide almost 100 interface elements and add custom blended row highlights, attachment icons, and more...",
 	"icons": {
          "16": "img/icons/icon16.png",
@@ -15,7 +15,7 @@
 	"content_scripts": [ {
 		"matches": [ "http://mail.google.com/*", "https://mail.google.com/*" ],
 		"js": [ "js/stylesheet.js", "js/active.js", "js/constant.js", "js/favicon.js" ],
-		"run_at": "document_end",
+		"run_at": "document_start",
 		"all_frames": true
 	}, {
 		"matches": [ "http://*/*", "https://*/*" ],

@@ -55,7 +55,7 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 		if (response.o.gbarO) {
 			css += "div[role='navigation'] div.nH, div[role='navigation'] #guser, div[role='navigation'] #gbg, div[role='navigation'] #gbar, div[role='navigation'] #gbz { opacity: 0; -webkit-transition-delay: .25s; }\n";
 			css += "div.aC:hover div[role='navigation'] div.nH, div.aC:hover div[role='navigation'] #guser, div.aC:hover div[role='navigation'] #gbg, div.aC:hover div[role='navigation'] #gbar, div.aC:hover div[role='navigation'] #gbz { opacity: 1; }\n";
-			css += ".cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2):hover div[role='navigation'] div.nH, .cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2):hover div[role='navigation'] #guser, .cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2):hover div[role='navigation'] #gbg, .cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2):hover div[role='navigation'] #gbar, .cP > div:nth-child(2) > div:nth-child(2)> div > div:nth-child(2):hover div[role='navigation'] #gbz { opacity: 1; }\n"
+			css += ".cP > div:nth-child(2) > div:nth-child(2) > div > div:first-child:hover div[role='navigation'] div.nH, .cP > div:nth-child(2) > div:nth-child(2) > div > div:first-child:hover div[role='navigation'] #guser, .cP > div:nth-child(2) > div:nth-child(2) > div > div:first-child:hover div[role='navigation'] #gbg, .cP > div:nth-child(2) > div:nth-child(2) > div > div:first-child:hover div[role='navigation'] #gbar, .cP > div:nth-child(2) > div:nth-child(2) > div > div:first-child:hover div[role='navigation'] #gbz { opacity: 1; }\n"
 		}
 		if (response.o.gbarB)
 			css += "div.nH.qp[role = 'navigation'], #gbx3, #gbx4 { background-image: none !important; background-color: rgba(255,255,255,0) !important; border: 0 !important; }\n";
@@ -204,6 +204,7 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			// css += "table.iY div.hj { width: auto !important; }\n";
 			css += "table.iY div.hj div.hk { display: inline !important; padding-right: 5px !important;}"
 			css += ".u8 { display: none !important; }\n";
+			css += ".u5 { width: 0px !important; }\n";
 			// css += "table[class=\"T1HY1 nH iY\"] { width: 100% !important;}\n"
 			css += "div[class=\"ip iq\"] { margin-right: 13px !important;}\n"
 			css += "textarea.ir { width: 100% !important; }";
@@ -293,7 +294,7 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			css += "div.ul[role = 'alert'] { display: none; }\n";
 		}
 		if (response.o.status)
-			css += "table.cf.vH tr.vm { display: none !important; }\n";
+			css += "table.vH tr.vm { display: none !important; }\n";
 	// FOOTER
 		if (response.o.f_tips)
 			css += "div.nH.l2.ov div:nth-child(3) { display: none !important; }\n";

@@ -94,6 +94,8 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 					(emailSubject ? ("&su=" + emailSubject) : "") +
 					(emailBody ? ("&body=" + emailBody) : "");
 				// mailtoLink.onclick = function() { location.href = newUrl; return false; };
+				
+				mailtoLink.target = "_blank";
 			}
 		}
 
