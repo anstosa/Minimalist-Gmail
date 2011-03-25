@@ -166,6 +166,8 @@
 
 == CHANGELOG ==
 
+ == 1.7.15 [24 MAR]
+  * Fixed: Send with Gmail and similar extensions popup compose dialog with missing fields
  == 1.7.14 [20 MAR]
   * Changed: URL bar icons are smaller and lighter to not be intrusive
  == 1.7.13 [18 MAR]

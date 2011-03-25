@@ -71,7 +71,7 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 		if (response.o.logo)
 			css += "[id = ':rk'] { background-image: url(" + response.o.logoSRC + ") !important; }\n";
 		if (response.o.logoH)
-			css += "[id = ':rk'] { display: none !important; }\n";
+			css += "[style][id = ':rk'] { display: none !important; }\n";
 		if (response.o.s_all)
 			css += "table[role='search'] { display: none !important; }\n";
 		if (response.o.s_mail)
