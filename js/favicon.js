@@ -285,8 +285,7 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 			}
 			
 			this.poll = function() {
-				if(!self.searchElement)
-					return self.searchElement = self.getSearchElement();
+				self.searchElement = self.getSearchElement();
 				
 				if(self.getChat() && self.newChat()) {
 					return self.setIcon(self.icons.chat);

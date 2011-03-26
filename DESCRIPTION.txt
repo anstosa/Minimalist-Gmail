@@ -166,6 +166,10 @@
 
 == CHANGELOG ==
 
+ == 1.7.17 [25 MAR]
+  * Fixed: Some CSS-based chat and navigation features broken 3/25
+ == 1.7.16
+  * Fixed: favicon counter only updating once per load
  == 1.7.15 [24 MAR]
   * Fixed: Send with Gmail and similar extensions popup compose dialog with missing fields
  == 1.7.14 [20 MAR]

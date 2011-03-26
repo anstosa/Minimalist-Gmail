@@ -240,16 +240,16 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			css += ".T0, .TZ { border-top: 0 !important; }\n";
 		}
 		if (response.o.top)
-			css += "div.nH.CX.pp, div.nH.T4.pp { display: none !important; }\n";
+			css += "div.CX.pp, div.T4.pp { display: none !important; }\n";
 		if (response.o.mail)
-			css += "div.nH.CX.pp div:nth-child(1) { display: none !important; }\n";
+			css += "div.CX.pp div:nth-child(1) { display: none !important; }\n";
 		if (response.o.contacts)
-			css += "div.nH.CX.pp div:nth-child(2) { display: none !important; }\n";
+			css += "div.CX.pp div:nth-child(2) { display: none !important; }\n";
 		if (response.o.tasks)
-			css += "div.nH.T4.pp div { display: none !important; }\n";
+			css += "div.T4.pp div { display: none !important; }\n";
 		if (response.o.middle) {
-			css += "div.nH.T4.pp + div.nH.pp[style] { display: none !important; }\n";
-			css += "div.nH.CX.pp + div.nH.T4.pp { border-bottom: none !important; }\n";
+			css += "div.T4.pp + div.pp[style] { display: none !important; }\n";
+			css += "div.CX.pp + div.T4.pp { border-bottom: none !important; }\n";
 		}
 		if (response.o.compose)
 			css += "div.z0 { display: none !important; }\n";
@@ -279,12 +279,12 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			css += "div.pY { display: none !important; } \n";
 	// CHAT
 		if (response.o.chat)
-			css += "div.nH.pp.T0:nth-child(4), div.nH.pp.ps.TZ:nth-child(4) { display: none !important; } \n";
+			css += "div.pp.T0:nth-child(4), div.pp.ps.TZ:nth-child(4) { display: none !important; } \n";
 		if (response.o.c_search)
 			css += "input[class = 'dI dG'] { display: none !important; } \n";
 		if (response.o.c_set) {
-			css += "div.nH.pp.T0 div.pt div.uk > div:nth-child(3) { display: none !important; }\n";
-			css += "div.nH.pp.T0 div.pt div.uk { margin-bottom: 10px !important; }\n";
+			css += "div.pp.T0 div.pt div.uk > div:nth-child(3) { display: none !important; }\n";
+			css += "div.pp.T0 div.pt div.uk { margin-bottom: 10px !important; }\n";
 		}
 		if (response.o.c_aim) {
 			css += "div.ux + hr + div.ux[type = 'ai'] { display: none !important; }\n";
