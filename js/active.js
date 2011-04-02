@@ -560,7 +560,6 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 		element = event.target;
 		elementName = element.nodeName.toLowerCase();
 		if (elementName == "input" || elementName == "textarea") return true;
-		console.log("MINIMALIST GMAIL: keystroke intercepted by passive.js");
 		if (String.fromCharCode(event.which) == "g") {
 			g = true;
 			window.setTimeout(function(){
@@ -608,7 +607,8 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 	//---- END HELPER METHODS ----//
 
 	// LISTENERS
-	window.addEventListener("scroll", scroll, false);
+	if (response.o.t_fix || response.o.navF)
+		window.addEventListener("scroll", scroll, false);
 	if (response.o.starHigh)
 		window.addEventListener("keyup", keyup, false);
 	document.addEventListener("keypress", keypress, false);
