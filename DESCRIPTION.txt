@@ -166,6 +166,10 @@
 
 == CHANGELOG ==
 
+ == 1.7.23 [6 APR]
+  * Fixed: Classic storage footer always hidden in non-apps mail
+ == 1.7.22 [4 APR]
+  * Fixed: Classic storage footer no longer hiding in non-apps mail
  == 1.7.21 [2 APR]
   * Fixed: Check for Google Apps did not detect all Google Apps accounts.
  == 1.7.20 [2 APR]

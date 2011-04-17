@@ -323,8 +323,10 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			css += ".l2:not(.oy8Mbf) > div:nth-child(7) { display: none !important; }\n";
 			css += ".l2.oy8Mbf > div:nth-child(6) { display: none !important; }\n";
 		}
-		if (response.o.f_s_classic)
+		if (response.o.f_s_classic) {
 			css += ".l2:not(.oy8Mbf) > div:nth-child(4) { display: none !important; }\n";
+			css += ".l2.oy8Mbf > div:nth-child(3) { display: none !important; }\n";
+		}
 		if (response.o.f_s_label)
 			css += ".l2.oy8Mbf > div:nth-child(3) td:nth-child(1) { display: none !important; }\n";
 		if (response.o.f_s_graphic)
