@@ -166,6 +166,9 @@
 
 == CHANGELOG ==
 
+ == 1.7.24 [8 MAY]
+  * Fixed: Zero inbox whitespace not hiding
+  * Fixed: CHat not hiding
  == 1.7.23 [6 APR]
   * Fixed: Classic storage footer always hidden in non-apps mail
  == 1.7.22 [4 APR]

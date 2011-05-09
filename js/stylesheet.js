@@ -117,7 +117,7 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			//css += "tr.zE:hover, tr.zE[min ~= 'select']:not([min ~= 'star']) { background-color: " + response.o.highCLRu + "; }\n";
 		}
 		if (response.o.zero)
-			css += ".VP5otc-pzeoBf + div + div + div + div > div > div:nth-child(2) { display: none !important; }\n";
+			css += ".oy8Mbf > div:first-child + div  { display: none !important; }\n";
 		if (response.o.stars || response.o.simplify)
 			css += "img.EqK8f, img.xi { visibility: hidden !important; }\n";
 		if (response.o.attach) {
@@ -294,7 +294,7 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			css += "div.pY { display: none !important; } \n";
 	// CHAT
 		if (response.o.chat)
-			css += "div.pp.T0:nth-child(4), div.pp.ps.TZ:nth-child(4) { display: none !important; } \n";
+			css += ".Ls77Lb + .Ls77Lb > .pp.T0 + .pp.T0 { display: none !important; } \n";
 		if (response.o.c_search)
 			css += "input[class = 'dI dG'] { display: none !important; } \n";
 		if (response.o.c_set) {
