@@ -166,9 +166,16 @@
 
 == CHANGELOG ==
 
+ == 1.7.27 [11 MAY]
+  * Fixed: Floating toolbars not working on some pages
+ == 1.7.26 [10 MAY]
+  * Fixed: Hide Chat hiding all gadgets
+ == 1.7.25 [9 MAY]
+  * Fixed: Zero inbox whitespace hiding chat
+  * Fixed: Chat not hiding (for real this time)
  == 1.7.24 [8 MAY]
   * Fixed: Zero inbox whitespace not hiding
-  * Fixed: CHat not hiding
+  * Fixed: Chat not hiding
  == 1.7.23 [6 APR]
   * Fixed: Classic storage footer always hidden in non-apps mail
  == 1.7.22 [4 APR]

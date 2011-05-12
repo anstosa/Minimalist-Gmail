@@ -117,7 +117,7 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			//css += "tr.zE:hover, tr.zE[min ~= 'select']:not([min ~= 'star']) { background-color: " + response.o.highCLRu + "; }\n";
 		}
 		if (response.o.zero)
-			css += ".oy8Mbf > div:first-child + div  { display: none !important; }\n";
+			css += ".oy8Mbf:not(.Ls77Lb) > div:first-child + div  { display: none !important; }\n";
 		if (response.o.stars || response.o.simplify)
 			css += "img.EqK8f, img.xi { visibility: hidden !important; }\n";
 		if (response.o.attach) {
@@ -156,7 +156,7 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 		}
 		if (response.o.t_fix) {
 			try {
-				css += ".VP5otc-pzeoBf.D.E[min ~= 'fix'], .iI.D.E[min ~= 'fix'] { position: fixed; top: 0; z-index: 9999; -webkit-box-shadow: 0 0 15px rgba(0,0,0,.65); width: " + (document.getElementsByClassName('cQ')[0].scrollWidth - response.o.navW - 11) + "px; }\n";
+				css += ".VP5otc-pzeoBf[min ~= 'fix'], .iI[min ~= 'fix'] { position: fixed; top: 0; z-index: 9999; -webkit-box-shadow: 0 0 15px rgba(0,0,0,.65); width: " + (document.getElementsByClassName('cQ')[0].scrollWidth - response.o.navW - 11) + "px; }\n";
 			} catch (e) {}
 		}
 		if (response.o.t_top)
@@ -294,7 +294,7 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			css += "div.pY { display: none !important; } \n";
 	// CHAT
 		if (response.o.chat)
-			css += ".Ls77Lb + .Ls77Lb > .pp.T0 + .pp.T0 { display: none !important; } \n";
+			css += ".Ls77Lb + .Ls77Lb > .pp.T0:first-child, .Ls77Lb + .Ls77Lb > .pp.T0:first-child + .pp.T0 { display: none !important; } \n";
 		if (response.o.c_search)
 			css += "input[class = 'dI dG'] { display: none !important; } \n";
 		if (response.o.c_set) {

@@ -395,7 +395,7 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 		if (response.o.t_fix) {
 			var msg = null;
 			var lst = null;
-			if (msg = document.getElementsByClassName(" iI D E")[0]) {
+			if (msg = document.getElementsByClassName("iI")[0]) {
 				if (window.pageYOffset > curtop) {
 					if (!passed) {
 						passed = true;
@@ -410,7 +410,7 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 					}
 				}
 			}
-			if (lst = document.getElementsByClassName("VP5otc-pzeoBf D E")[0]) {
+			if (lst = document.getElementsByClassName("VP5otc-pzeoBf")[0]) {
 				if (window.pageYOffset > curtop) {
 					if (!passed) {
 						passed = true;
