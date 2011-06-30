@@ -185,6 +185,7 @@ $(function(){
 				$("#t_top").attr('checked', o.t_top);
 				//$("#details").attr('checked', o.details);
 				$("#reply").attr('checked', o.reply);
+				$("#pw").attr('checked', o.pw);
 				$("#zads").attr('checked', o.zads);
 				$("#ads").attr('checked', o.ads);
 				$("#bads").attr('checked', o.bads);
@@ -348,6 +349,7 @@ $(function(){
 				"t_refresh":$("#t_refresh").attr('checked'),
 				//"details":$("#details").attr('checked'),
 				"reply":$("#reply").attr('checked'),
+				"pw":$("#pw").attr('checked'),
 				"zads":$("#zads").attr('checked'),
 				"ads":$("#ads").attr('checked'),
 				"bads":$("#bads").attr('checked'),

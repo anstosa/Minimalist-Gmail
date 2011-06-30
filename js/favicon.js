@@ -21,7 +21,7 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 			}
 		}
 
-		// Register GM Commands and Methods
+		/*// Register GM Commands and Methods
 		if(GM_registerMenuCommand) {
 			GM_registerMenuCommand( "Gmail Favicon Alerts > Chat Alerts On", function() { setChat(true) } );
 			GM_registerMenuCommand( "Gmail Favicon Alerts > Chat Alerts Off", function() { setChat(false) } );
@@ -29,7 +29,7 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 			GM_registerMenuCommand( "Gmail Favicon Alerts > Unread Count Off", function() { setUnreadCountDisplay(false) } );
 			function setChat(val) { GM_setValue('chatEnabled', val) };
 			function setUnreadCountDisplay(val) { GM_setValue('unreadCountDisplay', val) };
-		}
+		}*/
 
 		var gfia_instance;
 		var gfia_chat = GM_getValue('chatEnabled', true);

@@ -546,7 +546,7 @@
 			<h3>Toolbars</h3>
 			<div>
 				<input type="checkbox" id="pi" />
-					&nbsp;<label for="pi" title=""><strong><em>Priority Inbox User? Check this box!</em></strong></label><br />
+					&nbsp;<label for="pi" title=""><strong><em>Got importance buttons? Check this box!</em></strong></label><br />
 				<input type="checkbox" id="t_fix" />
 					&nbsp;<label for="t_fix" title="">Floating toolbars</label><br />
 				<input type="checkbox" id="t_top" />
@@ -576,6 +576,13 @@
 				<input type="checkbox" id="reply" />
 					&nbsp;<label for="reply" title="">Hide reply textarea</label><br />
 					<span class="note">[ r ] and the reply links will still trigger reply</span><br />
+			</div>
+		</section>
+		<section>
+			<h3>People Widget</h3>
+			<div>
+				<input type="checkbox" id="pw" />
+					&nbsp;<label for="pw" title="">Hide People Widget</label><br />
 			</div>
 		</section>
 		<section style="height: 300px;">
@@ -687,7 +694,7 @@
 			<div>
 				<input type="checkbox" id="chat" />
 					&nbsp;<label for="chat" title="">Hide chat</label><br />
-					<span class="note">Must be 2<sup>nd</sup> and follow nav links if Drag & Drop is enabled</span>
+					<span class="note">Must be immediately follow nav links!</span>
 			</div>
 		</section>
 		<section>
@@ -922,12 +929,16 @@ https://mail.google.com/a/yourdomain.com
 		<section>
 			<h3>Announcements</h3>
 			<div>
-				Hi everyone! I know I haven't added features in a while. This is partially because I'm running out of features to add, but mostly because I've been busy with other projects (Minimalst for Google Calendar and Google Reader).<br />
-				This is pretty small for a major update but I'm considering it major because of how requested this feature has been.
+				Hey all. Google is hitting hard with the new design and new social features. I'll keep up as best I can but I'm getting hammered at work lately so bear with me.<br />
+				<strong>Note:</strong> If you have the People Widget, you can disable Floating Toolbar. Google is making it an official feature!
 			</div>
 		</section>
 		<section>
 			<h3>What's new</h3>
+			<ul>
+				<li>Hide Ads no longer hides the whole sidebar.</li>
+				<li>Hide People Widget <em>will</em> hide the whole sidebar</li>
+			</ul>
 			<div>
 				Full changelog on <a href="http://code.google.com/p/minimalist-gmail/#CHANGELOG" target="_blank">Google Code</a><br /><br />
 				<!--<strong>General</strong>

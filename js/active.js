@@ -135,7 +135,12 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 		}
 		if (response.o.header && !f_headerToggle) {
 			console.log("MINIMALIST GMAIL: hiding header and adding toggle...");
-			var logo = document.querySelectorAll("[id = ':rk']")[0].parentNode;
+			var logo;
+			if (document.querySelectorAll("[id = ':rl']").length > 0) {
+				logo = document.querySelectorAll("[id = ':rl']")[0].parentNode;
+			} else {
+				logo = document.querySelectorAll("[id = ':rk']")[0].parentNode;
+			}
 			try {
 				minimalist(logo.parentNode.parentNode, false, "hideH");
 				if (!response.o.gbarH) {
@@ -390,22 +395,46 @@ chrome.extension.sendRequest({elements: "o"}, function(response) {
 
 	//---- HELPER METHODS ----//
 	function scroll(event) {
-		var head = document.getElementById(":rk").parentNode.parentNode.parentNode.parentNode;
+		var head;
+		try {
+			head = document.getElementById(":rl").parentNode.parentNode.parentNode.parentNode;	
+		} catch (e) {
+			head = document.getElementById(":rk").parentNode.parentNode.parentNode.parentNode;	
+		}
+		
 		var curtop = head.offsetHeight;
 		if (response.o.t_fix) {
-			var msg = null;
+			var msgList = null;
 			var lst = null;
-			if (msg = document.getElementsByClassName("iI")[0]) {
+			var msg = null;
+			if (msgList = document.querySelectorAll(".iI.D.E,.D.E.VP5otc-pzeoBf")) {
+				for (var i = 0; i <= msgList.length; i++ ) {
+					if (msgList[i] != undefined && msgList[i] != null) {
+						if (msgList[i].getAttribute("class").indexOf("iI") == -1) {
+							if (msgList[i].parentNode.getAttribute("style") != 'display: none; ') {
+								msg = msgList[i];
+							}
+						} else {
+							if (msgList[i].parentNode.parentNode.parentNode.getAttribute("style") != 'display: none; ') {
+								msg = msgList[i];
+							}
+						}
+					}
+				}
 				if (window.pageYOffset > curtop) {
 					if (!passed) {
 						passed = true;
-						msg.parentNode.setAttribute("style", "padding-top: 36px !important");
+						if (msg.parentNode.getAttribute("style") != 'display: none; ') {
+							msg.parentNode.setAttribute("style", "padding-top: 36px !important");
+						}
 						minimalist(msg, false, "fix");
 					}
 				} else {
 					if (passed) {
 						passed = false;
-						msg.parentNode.setAttribute("style", "");
+						if (msg.parentNode.getAttribute("style") != 'display: none; ') {
+							msg.parentNode.setAttribute("style", "");
+						}
 						minimalist(msg, true, "fix");
 					}
 				}

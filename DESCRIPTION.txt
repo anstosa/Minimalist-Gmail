@@ -1,6 +1,8 @@
 == ANNOUNCEMENTS ==
 
-  Gmail appears to be stable again which means that Minimalist will be more stable as well.
+  Hey all. Google is hitting hard with the new design and new social features. I'll keep up as best I can but I'm getting hammered at work lately so bear with me.
+  
+  NOTE: If you have the People Widget, you can disable Floating Toolbar. Google is making it an official feature!
   
   Questions about permissions? See PERMISSIONS section below.
 
@@ -96,6 +98,7 @@
   * Hide Refresh link
   * Hide reply textbox in message view
   * Hide "No new mail! Want to read updates from your favorite sites? Try Google Reader"
+  * Hide People Widget
   * Hide sidebar ads
   * Hide experimental bottom ads
  == NAVIGATION
@@ -166,6 +169,38 @@
 
 == CHANGELOG ==
 
+ == 1.7.38 [XX JUN]
+  * Fixed: Hide Chat > Search now working after People Widget rollout
+ == 1.7.37 [29 JUN]
+  * Added: Hide People Widget
+  * Changed: Hide Sidebar Ads no longer collapses sidebar
+  * Fixed: Hide Sidebar Ads breaking layout after People Widget rollout
+ == 1.7.36 [10 JUN]
+  * Fixed: Header not hiding
+ == 1.7.35 [9 JUN]
+  * Fixed: Messages opening below inbox when toolbar is floating
+ == 1.7.34 [7 JUN]
+  * Changed: Verbaige for the priority button workaround
+  * Fixed: Hide logo not working
+  * Fixed: Custom Logo not working
+  * Fixed: Hide header not always working
+  * Fixed: Hide chat hiding next gadget in list
+  * Fixed: Floating toolbars breaking layout when activated
+ == 1.7.33 [24 MAY]
+  * Fixed: Hide sidebar ads hiding sidebar but not ads
+ == 1.7.32 [20 MAY]
+  * Fixed: Custom buttons not working in late Gmail Priority update
+ == 1.7.31 [20 MAY]
+  * Fixed: Star icon not hiding in navigation
+  * Fixed: Favicon notifications not showing
+  * Fixed: Hide xero-inbox whitespace hiding chat
+ == 1.7.30 [18 MAY]
+  * Fixed: Unreliability in 13.*
+ == 1.7.29 [17 MAY]
+  * Fixed: Typo in background.html
+ == 1.7.28 [17 MAY]
+  * Fixed: Hide Chat not working on secondary accounts.
+  * Fixed: Workaround for Chromium 82784: http://goo.gl/XZMSr. No icon for affected builds
  == 1.7.27 [11 MAY]
   * Fixed: Floating toolbars not working on some pages
  == 1.7.26 [10 MAY]

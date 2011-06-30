@@ -21,7 +21,7 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 	
 	// GENERAL
 		if (response.o.BTN) {
-			css += ".J-Zh-I { color: " + response.o.BTNcolor + "; border: 1px solid " + response.o.BTNborder + "; background: -webkit-gradient(linear,0% 40%,0% 70%,from(" + response.o.BTNbottom + "),to(" + response.o.BTNtop + ")); }\n";
+			css += ".J-Zh-I { color: " + response.o.BTNcolor + " !important; border: 1px solid " + response.o.BTNborder + "; background: -webkit-gradient(linear,0% 40%,0% 70%,from(" + response.o.BTNbottom + "),to(" + response.o.BTNtop + ")) !important; }\n";
 			css += ".J-Zh-I-JW { padding-left: 8px !important; }\n";
 			css += ".J-Pm-I.J-Zh-I-JW { padding-left: 6px !important; }\n";
 		}
@@ -73,9 +73,9 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			css += "#headerToggle:hover { background-color: rgba(0,0,0,.15); }\n";
 		}
 		if (response.o.logo)
-			css += "[style *= 'height:'] > [id = ':rk'] { background-image: url(" + response.o.logoSRC + ") !important; }\n";
+			css += "[style *= 'height:'] > [id = ':rk'], [style *= 'height:'] > [id = ':rl'] { background-image: url(" + response.o.logoSRC + ") !important; }\n";
 		if (response.o.logoH)
-			css += "[style *= 'height:'] > [id = ':rk'] { display: none !important; }\n";
+			css += "[style *= 'height:'] > [id = ':rk'], [style *= 'height:'] > [id = ':rl'] { display: none !important; }\n";
 		if (response.o.s_all)
 			css += "table[role='search'] { display: none !important; }\n";
 		if (response.o.s_mail)
@@ -117,7 +117,7 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			//css += "tr.zE:hover, tr.zE[min ~= 'select']:not([min ~= 'star']) { background-color: " + response.o.highCLRu + "; }\n";
 		}
 		if (response.o.zero)
-			css += ".oy8Mbf:not(.Ls77Lb) > div:first-child + div  { display: none !important; }\n";
+			css += ".oy8Mbf + div .oy8Mbf table[role = 'main']  { display: none !important; }\n";
 		if (response.o.stars || response.o.simplify)
 			css += "img.EqK8f, img.xi { visibility: hidden !important; }\n";
 		if (response.o.attach) {
@@ -156,8 +156,9 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 		}
 		if (response.o.t_fix) {
 			try {
-				css += ".VP5otc-pzeoBf[min ~= 'fix'], .iI[min ~= 'fix'] { position: fixed; top: 0; z-index: 9999; -webkit-box-shadow: 0 0 15px rgba(0,0,0,.65); width: " + (document.getElementsByClassName('cQ')[0].scrollWidth - response.o.navW - 11) + "px; }\n";
-			} catch (e) {}
+				css += ".D.E[min *= 'fix'] { position: fixed; top: 0; z-index: 9999; -webkit-box-shadow: 0 0 15px rgba(0,0,0,.65); width: " + (document.getElementsByClassName('cQ')[0].scrollWidth - response.o.navW - 11) + "px; }\n";
+				console.warn("SUCCESS!")
+			} catch (e) {console.warn("FAIL: " + e)}
 		}
 		if (response.o.t_top)
 			css += "div.VP5otc-pzeoBf.D.E { display: none !important; }\n";
@@ -173,56 +174,55 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			css += "div.J-J5-Ji + div.J-M.AW > div > div { display: block !important; float: left !important; padding: 3px 7px; }\n";
 		}
 		if (response.o.t_check || response.o.t_check_l)
-				css += ".l.n[style = \"margin-left: 5px; \"] [class=\"VP5otc-HT6HAf J-J5-Ji\"]:nth-child(1) { display: none !important; }\n";
+				css += ".l.n[style = 'margin-left: 5px; '] [class='VP5otc-HT6HAf J-J5-Ji']:nth-child(1) { display: none !important; }\n";
 		if (response.o.t_arch) {
-			css += ".l.n[style = \"margin-left: 4px; \"] [class=\"VP5otc-HT6HAf J-J5-Ji\"]:nth-child(1) { display: none !important; }\n";
-			css += ".l.n[style = \"margin-left: 5px; \"] [class=\"VP5otc-HT6HAf J-J5-Ji\"]:nth-child(2) { display: none !important; }\n";
+			css += ".l.n[style = 'margin-left: 4px; '] [class='VP5otc-HT6HAf J-J5-Ji']:nth-child(1) { display: none !important; }\n";
+			css += ".l.n[style = 'margin-left: 5px; '] [class='VP5otc-HT6HAf J-J5-Ji']:nth-child(2) { display: none !important; }\n";
 		}
 		if (response.o.t_move) {
 			if (response.o.pi)
-				css += "[class=\"VP5otc-HT6HAf J-J5-Ji\"]:nth-child(4) { display: none !important; }\n";
+				css += "[class='VP5otc-HT6HAf J-J5-Ji']:nth-child(4) { display: none !important; }\n";
 			else {
-				css += ".l.n[style = \"margin-left: 4px; \"] [class=\"VP5otc-HT6HAf J-J5-Ji\"]:nth-child(2) { display: none !important; }\n";
-				css += ".l.n[style = \"margin-left: 5px; \"] [class=\"VP5otc-HT6HAf J-J5-Ji\"]:nth-child(3) { display: none !important; }\n";
+				css += ".l.n[style = 'margin-left: 4px; '] [class='VP5otc-HT6HAf J-J5-Ji']:nth-child(2) { display: none !important; }\n";
+				css += ".l.n[style = 'margin-left: 5px; '] [class='VP5otc-HT6HAf J-J5-Ji']:nth-child(3) { display: none !important; }\n";
 			}
 		}
 		if (response.o.t_actions) {
 			if (response.o.pi)
-				css += "[class=\"VP5otc-HT6HAf J-J5-Ji\"]:nth-child(5) { display: none !important; }\n";
+				css += "[class='VP5otc-HT6HAf J-J5-Ji']:nth-child(5) { display: none !important; }\n";
 			else {
-				css += ".l.n[style = \"margin-left: 4px; \"] [class=\"VP5otc-HT6HAf J-J5-Ji\"]:nth-child(3) { display: none !important; }\n";
-				css += ".l.n[style = \"margin-left: 5px; \"] [class=\"VP5otc-HT6HAf J-J5-Ji\"]:nth-child(4) { display: none !important; }\n";
+				css += ".l.n[style = 'margin-left: 4px; '] [class='VP5otc-HT6HAf J-J5-Ji']:nth-child(3) { display: none !important; }\n";
+				css += ".l.n[style = 'margin-left: 5px; '] [class='VP5otc-HT6HAf J-J5-Ji']:nth-child(4) { display: none !important; }\n";
 			}
 		}
 		if (response.o.t_refresh) {
 			if (response.o.pi)
-				css += "[class=\"VP5otc-HT6HAf J-J5-Ji\"]:nth-child(6) { display: none !important; }\n";
+				css += "[class='VP5otc-HT6HAf J-J5-Ji']:nth-child(6) { display: none !important; }\n";
 			else {
-				css += ".l.n[style = \"margin-left: 4px; \"] [class=\"VP5otc-HT6HAf J-J5-Ji\"]:nth-child(4) { display: none !important; }\n";
-				css += ".l.n[style = \"margin-left: 5px; \"] [class=\"VP5otc-HT6HAf J-J5-Ji\"]:nth-child(5) { display: none !important; }\n";
+				css += ".l.n[style = 'margin-left: 4px; '] [class='VP5otc-HT6HAf J-J5-Ji']:nth-child(4) { display: none !important; }\n";
+				css += ".l.n[style = 'margin-left: 5px; '] [class='VP5otc-HT6HAf J-J5-Ji']:nth-child(5) { display: none !important; }\n";
 			}
 		}
 		if (response.o.reply)
 			css += "textarea.ir { display: none !important; }";
+		if (response.o.pw) {
+			css += ".ChoCtb + div + div > .u5, .ChoCtb, .Bu + .Bu + .Bu { display: none !important; }\n";
+		}
 		if (response.o.zads)
 			css += ".TC[colspan = '3'] { display: none !important; }\n";
 		if (response.o.ads) {
-			css += "h1.ha { margin-right: 200px !important }\n";
-			css += "table.iY > tr > td:first-child + td + td > div { width: 0 !important; position: relative !important; }\n";
+			css += ".ChoCtb + div + div > .u5 { height: 0 !important; visibility: hidden !important; overflow: hidden !important; }\n";
+			/*css += "table.iY > tr > td:first-child + td + td > div { width: 0 !important; position: relative !important; }\n";
 			css += "table.iY > tr > td:first-child + td + td > div > div { position: absolute !important; right: 15px !important; top: 10px !important}\n";
 			css += "table.iY > tr > td:first-child + td + td > div > div u { display: none !important; }\n";
+			css += ".u5, .u8 { display: none !important; }\n";
 			css += "table.iY > tr > td:first-child + td + td > div > div > div:nth-child(3) > div:first-child > div:last-child { display: none !important; }\n";
 			css += "table.iY > tr > td:first-child + td + td > div > div > div:nth-child(3) > div:first-child > div:first-child { display: none !important; }\n";
-			/*css += "table.iY > tr > td:first-child + td + td > div > div > div:nth-child(3) > div:first-child { font-size: .75em !important; position: absolute; right: 150px !important; top: -30px !important; width: 200px !important; height: 0 !important; display: block !important; }\n";
-			css += "table.iY > tr > td:first-child + td + td > div > div > div:nth-child(3) > div:first-child * { border: 0 !important; }\n";
-			css += "table.iY > tr > td:first-child + td + td > div > div > div:nth-child(3) > div:first-child img { display: none !important; }\n";*/
-			// css += "table.iY div.hj { width: auto !important; }\n";
 			css += "table.iY div.hj div.hk { display: inline !important; padding-right: 5px !important;}"
 			css += ".u8 { display: none !important; }\n";
 			css += ".u5 { width: 0px !important; }\n";
-			// css += "table[class=\"T1HY1 nH iY\"] { width: 100% !important;}\n"
-			css += "div[class=\"ip iq\"] { margin-right: 13px !important;}\n"
-			css += "textarea.ir { width: 100% !important; }";
+			css += "div[class='ip iq'] { margin-right: 13px !important;}\n"
+			css += "textarea.ir { width: 100% !important; }";*/
 		}
 		if (response.o.bads)
 			css += "div.nH.MC, div.z0DeRc { display: none !important; }\n";
@@ -283,7 +283,7 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			css += "div.TO a[href$='#buzz']:before { content: 'Buzz'; visibility: visible; }\n";
 		}
 		if (response.o.icons)
-			css += "img.Xo, img.pW, img.pH-CD, img.pV, div.u5 { display: none !important; }\n";
+			css += "img.Xo, img.pW, img.pH-CD, img.pV, img.Zzev9e { display: none !important; }\n";
 		if (response.o.moreC) {
 			css += "div[role = 'navigation'] + div > span > span.CJ { visibility: hidden; }\n";
 			css += "div[role = 'navigation'] + div > span > span.CJ:before { content: 'More'; visibility: visible; font-weight: 400; }\n";
@@ -294,9 +294,9 @@ chrome.extension.sendRequest({elements: 'o'}, function(response) {
 			css += "div.pY { display: none !important; } \n";
 	// CHAT
 		if (response.o.chat)
-			css += ".Ls77Lb + .Ls77Lb > .pp.T0:first-child, .Ls77Lb + .Ls77Lb > .pp.T0:first-child + .pp.T0 { display: none !important; } \n";
+			css += ".Ls77Lb + div .T0.pp:first-child { display: none !important; } \n";
 		if (response.o.c_search)
-			css += "input[class = 'dI dG'] { display: none !important; } \n";
+			css += "input.dI { display: none !important; } \n";
 		if (response.o.c_set) {
 			css += "div.pp.T0 div.pt div.uk > div:nth-child(3) { display: none !important; }\n";
 			css += "div.pp.T0 div.pt div.uk { margin-bottom: 10px !important; }\n";

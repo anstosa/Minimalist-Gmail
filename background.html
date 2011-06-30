@@ -4,7 +4,7 @@
 	<script>
 		// ---- CHECK UPDATE ----//
 		var major = 7;
-		var minor = 13;
+		var minor = 14;
 		if (localStorage["major"] == undefined) {
 			localStorage["major"] = 0;
 		}
@@ -23,8 +23,6 @@
 		// ---- END CHECK UPDATE ----//
 
 		//---- TALK TO ICON ----//
-		chrome.tabs.onUpdated.addListener(checkForGmail);
-
 		function checkForGmail(tabId, changeInfo, tab) {
 			if (localStorage["uncheckedUpdate"] == "true") {
 				chrome.pageAction.setIcon({tabId: tab.id, path: "img/icons/icon19_update.png"});
@@ -39,6 +37,7 @@
 				chrome.pageAction.show(tabId);
 			}
 		};
+		chrome.tabs.onUpdated.addListener(checkForGmail);
 		//---- END TALK TO ICON ----//
 
 		//---- TALK TO SCRIPTS ----//
